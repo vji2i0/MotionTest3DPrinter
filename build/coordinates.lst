@@ -1,0 +1,471 @@
+ARM GAS  /tmp/ccP0QcWU.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"coordinates.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.create_coordinates,"ax",%progbits
+  16              		.align	1
+  17              		.global	create_coordinates
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	create_coordinates:
+  24              	.LFB0:
+  25              		.file 1 "Src/coordinates.c"
+   1:Src/coordinates.c **** #include "coordinates.h"
+   2:Src/coordinates.c **** 
+   3:Src/coordinates.c **** static long x, y, z, e;
+   4:Src/coordinates.c **** 
+   5:Src/coordinates.c **** 
+   6:Src/coordinates.c **** void create_coordinates(void) { x=0; y=0; z=0; e=0; }
+  26              		.loc 1 6 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31              		.loc 1 6 0
+  32 0000 0023     		movs	r3, #0
+  33 0002 044A     		ldr	r2, .L2
+  34 0004 1360     		str	r3, [r2]
+  35 0006 044A     		ldr	r2, .L2+4
+  36 0008 1360     		str	r3, [r2]
+  37 000a 044A     		ldr	r2, .L2+8
+  38 000c 1360     		str	r3, [r2]
+  39 000e 044A     		ldr	r2, .L2+12
+  40 0010 1360     		str	r3, [r2]
+  41 0012 7047     		bx	lr
+  42              	.L3:
+  43              		.align	2
+  44              	.L2:
+  45 0014 00000000 		.word	.LANCHOR0
+  46 0018 00000000 		.word	.LANCHOR1
+  47 001c 00000000 		.word	.LANCHOR2
+  48 0020 00000000 		.word	.LANCHOR3
+  49              		.cfi_endproc
+  50              	.LFE0:
+  52              		.section	.text.getX_coordinates,"ax",%progbits
+  53              		.align	1
+ARM GAS  /tmp/ccP0QcWU.s 			page 2
+
+
+  54              		.global	getX_coordinates
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu softvfp
+  60              	getX_coordinates:
+  61              	.LFB1:
+   7:Src/coordinates.c **** 
+   8:Src/coordinates.c **** long getX_coordinates(void) { return x; }
+  62              		.loc 1 8 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67              		.loc 1 8 0
+  68 0000 014B     		ldr	r3, .L5
+  69 0002 1868     		ldr	r0, [r3]
+  70 0004 7047     		bx	lr
+  71              	.L6:
+  72 0006 00BF     		.align	2
+  73              	.L5:
+  74 0008 00000000 		.word	.LANCHOR0
+  75              		.cfi_endproc
+  76              	.LFE1:
+  78              		.section	.text.getY_coordinates,"ax",%progbits
+  79              		.align	1
+  80              		.global	getY_coordinates
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  84              		.fpu softvfp
+  86              	getY_coordinates:
+  87              	.LFB2:
+   9:Src/coordinates.c **** long getY_coordinates(void) { return y; }
+  88              		.loc 1 9 0
+  89              		.cfi_startproc
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
+  93              		.loc 1 9 0
+  94 0000 014B     		ldr	r3, .L8
+  95 0002 1868     		ldr	r0, [r3]
+  96 0004 7047     		bx	lr
+  97              	.L9:
+  98 0006 00BF     		.align	2
+  99              	.L8:
+ 100 0008 00000000 		.word	.LANCHOR1
+ 101              		.cfi_endproc
+ 102              	.LFE2:
+ 104              		.section	.text.getZ_coordinates,"ax",%progbits
+ 105              		.align	1
+ 106              		.global	getZ_coordinates
+ 107              		.syntax unified
+ 108              		.thumb
+ 109              		.thumb_func
+ 110              		.fpu softvfp
+ 112              	getZ_coordinates:
+ARM GAS  /tmp/ccP0QcWU.s 			page 3
+
+
+ 113              	.LFB3:
+  10:Src/coordinates.c **** long getZ_coordinates(void) { return z; }
+ 114              		.loc 1 10 0
+ 115              		.cfi_startproc
+ 116              		@ args = 0, pretend = 0, frame = 0
+ 117              		@ frame_needed = 0, uses_anonymous_args = 0
+ 118              		@ link register save eliminated.
+ 119              		.loc 1 10 0
+ 120 0000 014B     		ldr	r3, .L11
+ 121 0002 1868     		ldr	r0, [r3]
+ 122 0004 7047     		bx	lr
+ 123              	.L12:
+ 124 0006 00BF     		.align	2
+ 125              	.L11:
+ 126 0008 00000000 		.word	.LANCHOR2
+ 127              		.cfi_endproc
+ 128              	.LFE3:
+ 130              		.section	.text.getE_coordinates,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	getE_coordinates
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 136              		.fpu softvfp
+ 138              	getE_coordinates:
+ 139              	.LFB4:
+  11:Src/coordinates.c **** long getE_coordinates(void) { return e; }
+ 140              		.loc 1 11 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 145              		.loc 1 11 0
+ 146 0000 014B     		ldr	r3, .L14
+ 147 0002 1868     		ldr	r0, [r3]
+ 148 0004 7047     		bx	lr
+ 149              	.L15:
+ 150 0006 00BF     		.align	2
+ 151              	.L14:
+ 152 0008 00000000 		.word	.LANCHOR3
+ 153              		.cfi_endproc
+ 154              	.LFE4:
+ 156              		.section	.text.incX_coordinates,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	incX_coordinates
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.fpu softvfp
+ 164              	incX_coordinates:
+ 165              	.LFB5:
+  12:Src/coordinates.c **** 
+  13:Src/coordinates.c **** void incX_coordinates(void) { x++; }
+ 166              		.loc 1 13 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccP0QcWU.s 			page 4
+
+
+ 170              		@ link register save eliminated.
+ 171              		.loc 1 13 0
+ 172 0000 024A     		ldr	r2, .L17
+ 173 0002 1368     		ldr	r3, [r2]
+ 174 0004 0133     		adds	r3, r3, #1
+ 175 0006 1360     		str	r3, [r2]
+ 176 0008 7047     		bx	lr
+ 177              	.L18:
+ 178 000a 00BF     		.align	2
+ 179              	.L17:
+ 180 000c 00000000 		.word	.LANCHOR0
+ 181              		.cfi_endproc
+ 182              	.LFE5:
+ 184              		.section	.text.incY_coordinates,"ax",%progbits
+ 185              		.align	1
+ 186              		.global	incY_coordinates
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.fpu softvfp
+ 192              	incY_coordinates:
+ 193              	.LFB6:
+  14:Src/coordinates.c **** void incY_coordinates(void) { y++; }
+ 194              		.loc 1 14 0
+ 195              		.cfi_startproc
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198              		@ link register save eliminated.
+ 199              		.loc 1 14 0
+ 200 0000 024A     		ldr	r2, .L20
+ 201 0002 1368     		ldr	r3, [r2]
+ 202 0004 0133     		adds	r3, r3, #1
+ 203 0006 1360     		str	r3, [r2]
+ 204 0008 7047     		bx	lr
+ 205              	.L21:
+ 206 000a 00BF     		.align	2
+ 207              	.L20:
+ 208 000c 00000000 		.word	.LANCHOR1
+ 209              		.cfi_endproc
+ 210              	.LFE6:
+ 212              		.section	.text.incZ_coordinates,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	incZ_coordinates
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 218              		.fpu softvfp
+ 220              	incZ_coordinates:
+ 221              	.LFB7:
+  15:Src/coordinates.c **** void incZ_coordinates(void) { z++; }
+ 222              		.loc 1 15 0
+ 223              		.cfi_startproc
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226              		@ link register save eliminated.
+ 227              		.loc 1 15 0
+ 228 0000 024A     		ldr	r2, .L23
+ARM GAS  /tmp/ccP0QcWU.s 			page 5
+
+
+ 229 0002 1368     		ldr	r3, [r2]
+ 230 0004 0133     		adds	r3, r3, #1
+ 231 0006 1360     		str	r3, [r2]
+ 232 0008 7047     		bx	lr
+ 233              	.L24:
+ 234 000a 00BF     		.align	2
+ 235              	.L23:
+ 236 000c 00000000 		.word	.LANCHOR2
+ 237              		.cfi_endproc
+ 238              	.LFE7:
+ 240              		.section	.text.incE_coordinates,"ax",%progbits
+ 241              		.align	1
+ 242              		.global	incE_coordinates
+ 243              		.syntax unified
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.fpu softvfp
+ 248              	incE_coordinates:
+ 249              	.LFB8:
+  16:Src/coordinates.c **** void incE_coordinates(void) { e++; }
+ 250              		.loc 1 16 0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 0
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254              		@ link register save eliminated.
+ 255              		.loc 1 16 0
+ 256 0000 024A     		ldr	r2, .L26
+ 257 0002 1368     		ldr	r3, [r2]
+ 258 0004 0133     		adds	r3, r3, #1
+ 259 0006 1360     		str	r3, [r2]
+ 260 0008 7047     		bx	lr
+ 261              	.L27:
+ 262 000a 00BF     		.align	2
+ 263              	.L26:
+ 264 000c 00000000 		.word	.LANCHOR3
+ 265              		.cfi_endproc
+ 266              	.LFE8:
+ 268              		.section	.text.decX_coordinates,"ax",%progbits
+ 269              		.align	1
+ 270              		.global	decX_coordinates
+ 271              		.syntax unified
+ 272              		.thumb
+ 273              		.thumb_func
+ 274              		.fpu softvfp
+ 276              	decX_coordinates:
+ 277              	.LFB9:
+  17:Src/coordinates.c **** 
+  18:Src/coordinates.c **** void decX_coordinates(void) { x--; }
+ 278              		.loc 1 18 0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              		@ link register save eliminated.
+ 283              		.loc 1 18 0
+ 284 0000 024A     		ldr	r2, .L29
+ 285 0002 1368     		ldr	r3, [r2]
+ 286 0004 013B     		subs	r3, r3, #1
+ARM GAS  /tmp/ccP0QcWU.s 			page 6
+
+
+ 287 0006 1360     		str	r3, [r2]
+ 288 0008 7047     		bx	lr
+ 289              	.L30:
+ 290 000a 00BF     		.align	2
+ 291              	.L29:
+ 292 000c 00000000 		.word	.LANCHOR0
+ 293              		.cfi_endproc
+ 294              	.LFE9:
+ 296              		.section	.text.decY_coordinates,"ax",%progbits
+ 297              		.align	1
+ 298              		.global	decY_coordinates
+ 299              		.syntax unified
+ 300              		.thumb
+ 301              		.thumb_func
+ 302              		.fpu softvfp
+ 304              	decY_coordinates:
+ 305              	.LFB10:
+  19:Src/coordinates.c **** void decY_coordinates(void) { y--; }
+ 306              		.loc 1 19 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310              		@ link register save eliminated.
+ 311              		.loc 1 19 0
+ 312 0000 024A     		ldr	r2, .L32
+ 313 0002 1368     		ldr	r3, [r2]
+ 314 0004 013B     		subs	r3, r3, #1
+ 315 0006 1360     		str	r3, [r2]
+ 316 0008 7047     		bx	lr
+ 317              	.L33:
+ 318 000a 00BF     		.align	2
+ 319              	.L32:
+ 320 000c 00000000 		.word	.LANCHOR1
+ 321              		.cfi_endproc
+ 322              	.LFE10:
+ 324              		.section	.text.decZ_coordinates,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	decZ_coordinates
+ 327              		.syntax unified
+ 328              		.thumb
+ 329              		.thumb_func
+ 330              		.fpu softvfp
+ 332              	decZ_coordinates:
+ 333              	.LFB11:
+  20:Src/coordinates.c **** void decZ_coordinates(void) { z--; }
+ 334              		.loc 1 20 0
+ 335              		.cfi_startproc
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 339              		.loc 1 20 0
+ 340 0000 024A     		ldr	r2, .L35
+ 341 0002 1368     		ldr	r3, [r2]
+ 342 0004 013B     		subs	r3, r3, #1
+ 343 0006 1360     		str	r3, [r2]
+ 344 0008 7047     		bx	lr
+ 345              	.L36:
+ARM GAS  /tmp/ccP0QcWU.s 			page 7
+
+
+ 346 000a 00BF     		.align	2
+ 347              	.L35:
+ 348 000c 00000000 		.word	.LANCHOR2
+ 349              		.cfi_endproc
+ 350              	.LFE11:
+ 352              		.section	.text.decE_coordinates,"ax",%progbits
+ 353              		.align	1
+ 354              		.global	decE_coordinates
+ 355              		.syntax unified
+ 356              		.thumb
+ 357              		.thumb_func
+ 358              		.fpu softvfp
+ 360              	decE_coordinates:
+ 361              	.LFB12:
+  21:Src/coordinates.c **** void decE_coordinates(void) { e--; }
+ 362              		.loc 1 21 0
+ 363              		.cfi_startproc
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              		@ link register save eliminated.
+ 367              		.loc 1 21 0
+ 368 0000 024A     		ldr	r2, .L38
+ 369 0002 1368     		ldr	r3, [r2]
+ 370 0004 013B     		subs	r3, r3, #1
+ 371 0006 1360     		str	r3, [r2]
+ 372 0008 7047     		bx	lr
+ 373              	.L39:
+ 374 000a 00BF     		.align	2
+ 375              	.L38:
+ 376 000c 00000000 		.word	.LANCHOR3
+ 377              		.cfi_endproc
+ 378              	.LFE12:
+ 380              		.section	.bss.e,"aw",%nobits
+ 381              		.align	2
+ 382              		.set	.LANCHOR3,. + 0
+ 385              	e:
+ 386 0000 00000000 		.space	4
+ 387              		.section	.bss.x,"aw",%nobits
+ 388              		.align	2
+ 389              		.set	.LANCHOR0,. + 0
+ 392              	x:
+ 393 0000 00000000 		.space	4
+ 394              		.section	.bss.y,"aw",%nobits
+ 395              		.align	2
+ 396              		.set	.LANCHOR1,. + 0
+ 399              	y:
+ 400 0000 00000000 		.space	4
+ 401              		.section	.bss.z,"aw",%nobits
+ 402              		.align	2
+ 403              		.set	.LANCHOR2,. + 0
+ 406              	z:
+ 407 0000 00000000 		.space	4
+ 408              		.text
+ 409              	.Letext0:
+ARM GAS  /tmp/ccP0QcWU.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 coordinates.c
+     /tmp/ccP0QcWU.s:16     .text.create_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:23     .text.create_coordinates:0000000000000000 create_coordinates
+     /tmp/ccP0QcWU.s:45     .text.create_coordinates:0000000000000014 $d
+     /tmp/ccP0QcWU.s:53     .text.getX_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:60     .text.getX_coordinates:0000000000000000 getX_coordinates
+     /tmp/ccP0QcWU.s:74     .text.getX_coordinates:0000000000000008 $d
+     /tmp/ccP0QcWU.s:79     .text.getY_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:86     .text.getY_coordinates:0000000000000000 getY_coordinates
+     /tmp/ccP0QcWU.s:100    .text.getY_coordinates:0000000000000008 $d
+     /tmp/ccP0QcWU.s:105    .text.getZ_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:112    .text.getZ_coordinates:0000000000000000 getZ_coordinates
+     /tmp/ccP0QcWU.s:126    .text.getZ_coordinates:0000000000000008 $d
+     /tmp/ccP0QcWU.s:131    .text.getE_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:138    .text.getE_coordinates:0000000000000000 getE_coordinates
+     /tmp/ccP0QcWU.s:152    .text.getE_coordinates:0000000000000008 $d
+     /tmp/ccP0QcWU.s:157    .text.incX_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:164    .text.incX_coordinates:0000000000000000 incX_coordinates
+     /tmp/ccP0QcWU.s:180    .text.incX_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:185    .text.incY_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:192    .text.incY_coordinates:0000000000000000 incY_coordinates
+     /tmp/ccP0QcWU.s:208    .text.incY_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:213    .text.incZ_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:220    .text.incZ_coordinates:0000000000000000 incZ_coordinates
+     /tmp/ccP0QcWU.s:236    .text.incZ_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:241    .text.incE_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:248    .text.incE_coordinates:0000000000000000 incE_coordinates
+     /tmp/ccP0QcWU.s:264    .text.incE_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:269    .text.decX_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:276    .text.decX_coordinates:0000000000000000 decX_coordinates
+     /tmp/ccP0QcWU.s:292    .text.decX_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:297    .text.decY_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:304    .text.decY_coordinates:0000000000000000 decY_coordinates
+     /tmp/ccP0QcWU.s:320    .text.decY_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:325    .text.decZ_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:332    .text.decZ_coordinates:0000000000000000 decZ_coordinates
+     /tmp/ccP0QcWU.s:348    .text.decZ_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:353    .text.decE_coordinates:0000000000000000 $t
+     /tmp/ccP0QcWU.s:360    .text.decE_coordinates:0000000000000000 decE_coordinates
+     /tmp/ccP0QcWU.s:376    .text.decE_coordinates:000000000000000c $d
+     /tmp/ccP0QcWU.s:381    .bss.e:0000000000000000 $d
+     /tmp/ccP0QcWU.s:385    .bss.e:0000000000000000 e
+     /tmp/ccP0QcWU.s:388    .bss.x:0000000000000000 $d
+     /tmp/ccP0QcWU.s:392    .bss.x:0000000000000000 x
+     /tmp/ccP0QcWU.s:395    .bss.y:0000000000000000 $d
+     /tmp/ccP0QcWU.s:399    .bss.y:0000000000000000 y
+     /tmp/ccP0QcWU.s:402    .bss.z:0000000000000000 $d
+     /tmp/ccP0QcWU.s:406    .bss.z:0000000000000000 z
+
+NO UNDEFINED SYMBOLS

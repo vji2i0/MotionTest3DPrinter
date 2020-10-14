@@ -1,0 +1,2796 @@
+ARM GAS  /tmp/cc5KtVqo.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"CharacterConverter_LCD.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.convertCharacter_LCD,"ax",%progbits
+  16              		.align	1
+  17              		.global	convertCharacter_LCD
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	convertCharacter_LCD:
+  24              	.LFB0:
+  25              		.file 1 "Src/LCD/CharacterConverter_LCD.c"
+   1:Src/LCD/CharacterConverter_LCD.c **** #include "CharacterConverter_LCD.h"
+   2:Src/LCD/CharacterConverter_LCD.c **** 
+   3:Src/LCD/CharacterConverter_LCD.c **** #include "stdint.h"
+   4:Src/LCD/CharacterConverter_LCD.c **** #include "unistd.h"
+   5:Src/LCD/CharacterConverter_LCD.c **** #include <wchar.h>
+   6:Src/LCD/CharacterConverter_LCD.c **** 
+   7:Src/LCD/CharacterConverter_LCD.c **** 
+   8:Src/LCD/CharacterConverter_LCD.c **** char convertCharacter_LCD(wchar_t letter)
+   9:Src/LCD/CharacterConverter_LCD.c **** {
+  26              		.loc 1 9 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31              	.LVL0:
+  10:Src/LCD/CharacterConverter_LCD.c ****     //English alphabed
+  11:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"a") return 'a';
+  32              		.loc 1 11 0
+  33 0000 B54B     		ldr	r3, .L154
+  34 0002 1B68     		ldr	r3, [r3]
+  35 0004 8342     		cmp	r3, r0
+  36 0006 00F01784 		beq	.L3
+  12:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"b") return 'b';
+  37              		.loc 1 12 0
+  38 000a B44B     		ldr	r3, .L154+4
+  39 000c 1B68     		ldr	r3, [r3]
+  40 000e 8342     		cmp	r3, r0
+  41 0010 00F01484 		beq	.L4
+  13:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"c") return 'c';
+  42              		.loc 1 13 0
+  43 0014 B24B     		ldr	r3, .L154+8
+  44 0016 1B68     		ldr	r3, [r3]
+  45 0018 8342     		cmp	r3, r0
+ARM GAS  /tmp/cc5KtVqo.s 			page 2
+
+
+  46 001a 00F01184 		beq	.L5
+  14:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"d") return 'd';
+  47              		.loc 1 14 0
+  48 001e B14B     		ldr	r3, .L154+12
+  49 0020 1B68     		ldr	r3, [r3]
+  50 0022 8342     		cmp	r3, r0
+  51 0024 00F00E84 		beq	.L6
+  15:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"e") return 'e';
+  52              		.loc 1 15 0
+  53 0028 AF4B     		ldr	r3, .L154+16
+  54 002a 1B68     		ldr	r3, [r3]
+  55 002c 8342     		cmp	r3, r0
+  56 002e 00F00B84 		beq	.L7
+  16:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"f") return 'f';
+  57              		.loc 1 16 0
+  58 0032 AE4B     		ldr	r3, .L154+20
+  59 0034 1B68     		ldr	r3, [r3]
+  60 0036 8342     		cmp	r3, r0
+  61 0038 00F00884 		beq	.L8
+  17:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"g") return 'g';
+  62              		.loc 1 17 0
+  63 003c AC4B     		ldr	r3, .L154+24
+  64 003e 1B68     		ldr	r3, [r3]
+  65 0040 8342     		cmp	r3, r0
+  66 0042 00F00584 		beq	.L9
+  18:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"h") return 'h';
+  67              		.loc 1 18 0
+  68 0046 AB4B     		ldr	r3, .L154+28
+  69 0048 1B68     		ldr	r3, [r3]
+  70 004a 8342     		cmp	r3, r0
+  71 004c 00F00284 		beq	.L10
+  19:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"i") return 'i';
+  72              		.loc 1 19 0
+  73 0050 A94B     		ldr	r3, .L154+32
+  74 0052 1B68     		ldr	r3, [r3]
+  75 0054 8342     		cmp	r3, r0
+  76 0056 00F0FF83 		beq	.L11
+  20:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"j") return 'j';
+  77              		.loc 1 20 0
+  78 005a A84B     		ldr	r3, .L154+36
+  79 005c 1B68     		ldr	r3, [r3]
+  80 005e 8342     		cmp	r3, r0
+  81 0060 00F0FC83 		beq	.L12
+  21:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"k") return 'k';
+  82              		.loc 1 21 0
+  83 0064 A64B     		ldr	r3, .L154+40
+  84 0066 1B68     		ldr	r3, [r3]
+  85 0068 8342     		cmp	r3, r0
+  86 006a 00F0F983 		beq	.L13
+  22:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"l") return 'l';
+  87              		.loc 1 22 0
+  88 006e A54B     		ldr	r3, .L154+44
+  89 0070 1B68     		ldr	r3, [r3]
+  90 0072 8342     		cmp	r3, r0
+  91 0074 00F0F683 		beq	.L14
+  23:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"m") return 'm';
+  92              		.loc 1 23 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 3
+
+
+  93 0078 A34B     		ldr	r3, .L154+48
+  94 007a 1B68     		ldr	r3, [r3]
+  95 007c 8342     		cmp	r3, r0
+  96 007e 00F0F383 		beq	.L15
+  24:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"n") return 'n';
+  97              		.loc 1 24 0
+  98 0082 A24B     		ldr	r3, .L154+52
+  99 0084 1B68     		ldr	r3, [r3]
+ 100 0086 8342     		cmp	r3, r0
+ 101 0088 00F0F083 		beq	.L16
+  25:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"o") return 'o';
+ 102              		.loc 1 25 0
+ 103 008c A04B     		ldr	r3, .L154+56
+ 104 008e 1B68     		ldr	r3, [r3]
+ 105 0090 8342     		cmp	r3, r0
+ 106 0092 00F0ED83 		beq	.L17
+  26:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"p") return 'p';
+ 107              		.loc 1 26 0
+ 108 0096 9F4B     		ldr	r3, .L154+60
+ 109 0098 1B68     		ldr	r3, [r3]
+ 110 009a 8342     		cmp	r3, r0
+ 111 009c 00F0EA83 		beq	.L18
+  27:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"q") return 'q';
+ 112              		.loc 1 27 0
+ 113 00a0 9D4B     		ldr	r3, .L154+64
+ 114 00a2 1B68     		ldr	r3, [r3]
+ 115 00a4 8342     		cmp	r3, r0
+ 116 00a6 00F0E783 		beq	.L19
+  28:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"r") return 'r';
+ 117              		.loc 1 28 0
+ 118 00aa 9C4B     		ldr	r3, .L154+68
+ 119 00ac 1B68     		ldr	r3, [r3]
+ 120 00ae 8342     		cmp	r3, r0
+ 121 00b0 00F0E483 		beq	.L20
+  29:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"s") return 's';
+ 122              		.loc 1 29 0
+ 123 00b4 9A4B     		ldr	r3, .L154+72
+ 124 00b6 1B68     		ldr	r3, [r3]
+ 125 00b8 8342     		cmp	r3, r0
+ 126 00ba 00F0E183 		beq	.L21
+  30:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"t") return 't';
+ 127              		.loc 1 30 0
+ 128 00be 994B     		ldr	r3, .L154+76
+ 129 00c0 1B68     		ldr	r3, [r3]
+ 130 00c2 8342     		cmp	r3, r0
+ 131 00c4 00F0DE83 		beq	.L22
+  31:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"u") return 'u';
+ 132              		.loc 1 31 0
+ 133 00c8 974B     		ldr	r3, .L154+80
+ 134 00ca 1B68     		ldr	r3, [r3]
+ 135 00cc 8342     		cmp	r3, r0
+ 136 00ce 00F0DB83 		beq	.L23
+  32:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"v") return 'v';
+ 137              		.loc 1 32 0
+ 138 00d2 964B     		ldr	r3, .L154+84
+ 139 00d4 1B68     		ldr	r3, [r3]
+ 140 00d6 8342     		cmp	r3, r0
+ARM GAS  /tmp/cc5KtVqo.s 			page 4
+
+
+ 141 00d8 00F0D883 		beq	.L24
+  33:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"w") return 'w';
+ 142              		.loc 1 33 0
+ 143 00dc 944B     		ldr	r3, .L154+88
+ 144 00de 1B68     		ldr	r3, [r3]
+ 145 00e0 8342     		cmp	r3, r0
+ 146 00e2 00F0D583 		beq	.L25
+  34:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"x") return 'x';
+ 147              		.loc 1 34 0
+ 148 00e6 934B     		ldr	r3, .L154+92
+ 149 00e8 1B68     		ldr	r3, [r3]
+ 150 00ea 8342     		cmp	r3, r0
+ 151 00ec 00F0D283 		beq	.L26
+  35:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"y") return 'y';
+ 152              		.loc 1 35 0
+ 153 00f0 914B     		ldr	r3, .L154+96
+ 154 00f2 1B68     		ldr	r3, [r3]
+ 155 00f4 8342     		cmp	r3, r0
+ 156 00f6 00F0CF83 		beq	.L27
+  36:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"z") return 'z';
+ 157              		.loc 1 36 0
+ 158 00fa 904B     		ldr	r3, .L154+100
+ 159 00fc 1B68     		ldr	r3, [r3]
+ 160 00fe 8342     		cmp	r3, r0
+ 161 0100 00F0CC83 		beq	.L28
+  37:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"A") return 'A';
+ 162              		.loc 1 37 0
+ 163 0104 8E4B     		ldr	r3, .L154+104
+ 164 0106 1B68     		ldr	r3, [r3]
+ 165 0108 8342     		cmp	r3, r0
+ 166 010a 00F0C983 		beq	.L29
+  38:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"B") return 'B';
+ 167              		.loc 1 38 0
+ 168 010e 8D4B     		ldr	r3, .L154+108
+ 169 0110 1B68     		ldr	r3, [r3]
+ 170 0112 8342     		cmp	r3, r0
+ 171 0114 00F0C683 		beq	.L30
+  39:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"C") return 'C';
+ 172              		.loc 1 39 0
+ 173 0118 8B4B     		ldr	r3, .L154+112
+ 174 011a 1B68     		ldr	r3, [r3]
+ 175 011c 8342     		cmp	r3, r0
+ 176 011e 00F0C383 		beq	.L31
+  40:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"D") return 'D';
+ 177              		.loc 1 40 0
+ 178 0122 8A4B     		ldr	r3, .L154+116
+ 179 0124 1B68     		ldr	r3, [r3]
+ 180 0126 8342     		cmp	r3, r0
+ 181 0128 00F0C083 		beq	.L32
+  41:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"E") return 'E';
+ 182              		.loc 1 41 0
+ 183 012c 884B     		ldr	r3, .L154+120
+ 184 012e 1B68     		ldr	r3, [r3]
+ 185 0130 8342     		cmp	r3, r0
+ 186 0132 00F0BD83 		beq	.L33
+  42:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"F") return 'F';
+ 187              		.loc 1 42 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 5
+
+
+ 188 0136 874B     		ldr	r3, .L154+124
+ 189 0138 1B68     		ldr	r3, [r3]
+ 190 013a 8342     		cmp	r3, r0
+ 191 013c 00F0BA83 		beq	.L34
+  43:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"G") return 'G';
+ 192              		.loc 1 43 0
+ 193 0140 854B     		ldr	r3, .L154+128
+ 194 0142 1B68     		ldr	r3, [r3]
+ 195 0144 8342     		cmp	r3, r0
+ 196 0146 00F0B783 		beq	.L35
+  44:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"H") return 'H';
+ 197              		.loc 1 44 0
+ 198 014a 844B     		ldr	r3, .L154+132
+ 199 014c 1B68     		ldr	r3, [r3]
+ 200 014e 8342     		cmp	r3, r0
+ 201 0150 00F0B483 		beq	.L36
+  45:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"I") return 'I';
+ 202              		.loc 1 45 0
+ 203 0154 824B     		ldr	r3, .L154+136
+ 204 0156 1B68     		ldr	r3, [r3]
+ 205 0158 8342     		cmp	r3, r0
+ 206 015a 00F0B183 		beq	.L37
+  46:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"J") return 'J';
+ 207              		.loc 1 46 0
+ 208 015e 814B     		ldr	r3, .L154+140
+ 209 0160 1B68     		ldr	r3, [r3]
+ 210 0162 8342     		cmp	r3, r0
+ 211 0164 00F0AE83 		beq	.L38
+  47:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"K") return 'K';
+ 212              		.loc 1 47 0
+ 213 0168 7F4B     		ldr	r3, .L154+144
+ 214 016a 1B68     		ldr	r3, [r3]
+ 215 016c 8342     		cmp	r3, r0
+ 216 016e 00F0AB83 		beq	.L39
+  48:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"L") return 'L';
+ 217              		.loc 1 48 0
+ 218 0172 7E4B     		ldr	r3, .L154+148
+ 219 0174 1B68     		ldr	r3, [r3]
+ 220 0176 8342     		cmp	r3, r0
+ 221 0178 00F0A883 		beq	.L40
+  49:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"M") return 'M';
+ 222              		.loc 1 49 0
+ 223 017c 7C4B     		ldr	r3, .L154+152
+ 224 017e 1B68     		ldr	r3, [r3]
+ 225 0180 8342     		cmp	r3, r0
+ 226 0182 00F0A583 		beq	.L41
+  50:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"N") return 'N';
+ 227              		.loc 1 50 0
+ 228 0186 7B4B     		ldr	r3, .L154+156
+ 229 0188 1B68     		ldr	r3, [r3]
+ 230 018a 8342     		cmp	r3, r0
+ 231 018c 00F0A283 		beq	.L42
+  51:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"O") return 'O';
+ 232              		.loc 1 51 0
+ 233 0190 794B     		ldr	r3, .L154+160
+ 234 0192 1B68     		ldr	r3, [r3]
+ 235 0194 8342     		cmp	r3, r0
+ARM GAS  /tmp/cc5KtVqo.s 			page 6
+
+
+ 236 0196 00F09F83 		beq	.L43
+  52:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"P") return 'P';
+ 237              		.loc 1 52 0
+ 238 019a 784B     		ldr	r3, .L154+164
+ 239 019c 1B68     		ldr	r3, [r3]
+ 240 019e 8342     		cmp	r3, r0
+ 241 01a0 00F09C83 		beq	.L44
+  53:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Q") return 'Q';
+ 242              		.loc 1 53 0
+ 243 01a4 764B     		ldr	r3, .L154+168
+ 244 01a6 1B68     		ldr	r3, [r3]
+ 245 01a8 8342     		cmp	r3, r0
+ 246 01aa 00F09983 		beq	.L45
+  54:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"R") return 'R';
+ 247              		.loc 1 54 0
+ 248 01ae 754B     		ldr	r3, .L154+172
+ 249 01b0 1B68     		ldr	r3, [r3]
+ 250 01b2 8342     		cmp	r3, r0
+ 251 01b4 00F09683 		beq	.L46
+  55:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"S") return 'S';
+ 252              		.loc 1 55 0
+ 253 01b8 734B     		ldr	r3, .L154+176
+ 254 01ba 1B68     		ldr	r3, [r3]
+ 255 01bc 8342     		cmp	r3, r0
+ 256 01be 00F09383 		beq	.L47
+  56:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"T") return 'T';
+ 257              		.loc 1 56 0
+ 258 01c2 724B     		ldr	r3, .L154+180
+ 259 01c4 1B68     		ldr	r3, [r3]
+ 260 01c6 8342     		cmp	r3, r0
+ 261 01c8 00F09083 		beq	.L48
+  57:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"U") return 'U';
+ 262              		.loc 1 57 0
+ 263 01cc 704B     		ldr	r3, .L154+184
+ 264 01ce 1B68     		ldr	r3, [r3]
+ 265 01d0 8342     		cmp	r3, r0
+ 266 01d2 00F08D83 		beq	.L49
+  58:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"V") return 'V';
+ 267              		.loc 1 58 0
+ 268 01d6 6F4B     		ldr	r3, .L154+188
+ 269 01d8 1B68     		ldr	r3, [r3]
+ 270 01da 8342     		cmp	r3, r0
+ 271 01dc 00F08A83 		beq	.L50
+  59:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"W") return 'W';
+ 272              		.loc 1 59 0
+ 273 01e0 6D4B     		ldr	r3, .L154+192
+ 274 01e2 1B68     		ldr	r3, [r3]
+ 275 01e4 8342     		cmp	r3, r0
+ 276 01e6 00F08783 		beq	.L51
+  60:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"X") return 'X';
+ 277              		.loc 1 60 0
+ 278 01ea 6C4B     		ldr	r3, .L154+196
+ 279 01ec 1B68     		ldr	r3, [r3]
+ 280 01ee 8342     		cmp	r3, r0
+ 281 01f0 00F08483 		beq	.L52
+  61:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Y") return 'Y';
+ 282              		.loc 1 61 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 7
+
+
+ 283 01f4 6A4B     		ldr	r3, .L154+200
+ 284 01f6 1B68     		ldr	r3, [r3]
+ 285 01f8 8342     		cmp	r3, r0
+ 286 01fa 00F08183 		beq	.L53
+  62:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Z") return 'Z';
+ 287              		.loc 1 62 0
+ 288 01fe 694B     		ldr	r3, .L154+204
+ 289 0200 1B68     		ldr	r3, [r3]
+ 290 0202 8342     		cmp	r3, r0
+ 291 0204 00F07E83 		beq	.L54
+  63:Src/LCD/CharacterConverter_LCD.c ****     //Russian alphabed
+  64:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"а") return (char)0x61;//0b01100001;
+ 292              		.loc 1 64 0
+ 293 0208 674B     		ldr	r3, .L154+208
+ 294 020a 1B68     		ldr	r3, [r3]
+ 295 020c 8342     		cmp	r3, r0
+ 296 020e 00F07B83 		beq	.L55
+  65:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"б") return (char)0xB2;//0b10110010;
+ 297              		.loc 1 65 0
+ 298 0212 664B     		ldr	r3, .L154+212
+ 299 0214 1B68     		ldr	r3, [r3]
+ 300 0216 8342     		cmp	r3, r0
+ 301 0218 00F07883 		beq	.L56
+  66:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"в") return (char)0xB3;//0b10110011;
+ 302              		.loc 1 66 0
+ 303 021c 644B     		ldr	r3, .L154+216
+ 304 021e 1B68     		ldr	r3, [r3]
+ 305 0220 8342     		cmp	r3, r0
+ 306 0222 00F07583 		beq	.L57
+  67:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"г") return (char)0xB4;//0b10110100;
+ 307              		.loc 1 67 0
+ 308 0226 634B     		ldr	r3, .L154+220
+ 309 0228 1B68     		ldr	r3, [r3]
+ 310 022a 8342     		cmp	r3, r0
+ 311 022c 00F07283 		beq	.L58
+  68:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"д") return (char)0xE3;//0b11100011;
+ 312              		.loc 1 68 0
+ 313 0230 614B     		ldr	r3, .L154+224
+ 314 0232 1B68     		ldr	r3, [r3]
+ 315 0234 8342     		cmp	r3, r0
+ 316 0236 00F06F83 		beq	.L59
+  69:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"е") return (char)0x65;//0b01100101;
+ 317              		.loc 1 69 0
+ 318 023a 604B     		ldr	r3, .L154+228
+ 319 023c 1B68     		ldr	r3, [r3]
+ 320 023e 8342     		cmp	r3, r0
+ 321 0240 00F06C83 		beq	.L60
+  70:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ё") return (char)0xB5;//0b10110101;
+ 322              		.loc 1 70 0
+ 323 0244 5E4B     		ldr	r3, .L154+232
+ 324 0246 1B68     		ldr	r3, [r3]
+ 325 0248 8342     		cmp	r3, r0
+ 326 024a 00F06983 		beq	.L61
+  71:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ж") return (char)0xB6;//0b10110110;
+ 327              		.loc 1 71 0
+ 328 024e 5D4B     		ldr	r3, .L154+236
+ 329 0250 1B68     		ldr	r3, [r3]
+ARM GAS  /tmp/cc5KtVqo.s 			page 8
+
+
+ 330 0252 8342     		cmp	r3, r0
+ 331 0254 00F06683 		beq	.L62
+  72:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"з") return (char)0xB7;//0b10110111;
+ 332              		.loc 1 72 0
+ 333 0258 5B4B     		ldr	r3, .L154+240
+ 334 025a 1B68     		ldr	r3, [r3]
+ 335 025c 8342     		cmp	r3, r0
+ 336 025e 00F06383 		beq	.L63
+  73:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"и") return (char)0xB8;//0b10111000;
+ 337              		.loc 1 73 0
+ 338 0262 5A4B     		ldr	r3, .L154+244
+ 339 0264 1B68     		ldr	r3, [r3]
+ 340 0266 8342     		cmp	r3, r0
+ 341 0268 00F06083 		beq	.L64
+  74:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"й") return (char)0xB9;//0b10111001;
+ 342              		.loc 1 74 0
+ 343 026c 584B     		ldr	r3, .L154+248
+ 344 026e 1B68     		ldr	r3, [r3]
+ 345 0270 8342     		cmp	r3, r0
+ 346 0272 00F05D83 		beq	.L65
+  75:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"к") return (char)0xBA;//0b10111010;
+ 347              		.loc 1 75 0
+ 348 0276 574B     		ldr	r3, .L154+252
+ 349 0278 1B68     		ldr	r3, [r3]
+ 350 027a 8342     		cmp	r3, r0
+ 351 027c 00F05A83 		beq	.L66
+  76:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"л") return (char)0xBB;//0b10111011;
+ 352              		.loc 1 76 0
+ 353 0280 554B     		ldr	r3, .L154+256
+ 354 0282 1B68     		ldr	r3, [r3]
+ 355 0284 8342     		cmp	r3, r0
+ 356 0286 00F05783 		beq	.L67
+  77:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"м") return (char)0xBC;//0b10111100;
+ 357              		.loc 1 77 0
+ 358 028a 544B     		ldr	r3, .L154+260
+ 359 028c 1B68     		ldr	r3, [r3]
+ 360 028e 8342     		cmp	r3, r0
+ 361 0290 00F05483 		beq	.L68
+  78:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"н") return (char)0xBD;//0b10111101;
+ 362              		.loc 1 78 0
+ 363 0294 524B     		ldr	r3, .L154+264
+ 364 0296 1B68     		ldr	r3, [r3]
+ 365 0298 8342     		cmp	r3, r0
+ 366 029a 00F05183 		beq	.L69
+  79:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"о") return (char)0x6F;//0b01101111;
+ 367              		.loc 1 79 0
+ 368 029e 514B     		ldr	r3, .L154+268
+ 369 02a0 1B68     		ldr	r3, [r3]
+ 370 02a2 8342     		cmp	r3, r0
+ 371 02a4 00F04E83 		beq	.L70
+  80:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"п") return (char)0xBE;//0b10111110;
+ 372              		.loc 1 80 0
+ 373 02a8 4F4B     		ldr	r3, .L154+272
+ 374 02aa 1B68     		ldr	r3, [r3]
+ 375 02ac 8342     		cmp	r3, r0
+ 376 02ae 00F04B83 		beq	.L71
+  81:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"р") return (char)0x70;//0b01110000;
+ARM GAS  /tmp/cc5KtVqo.s 			page 9
+
+
+ 377              		.loc 1 81 0
+ 378 02b2 4E4B     		ldr	r3, .L154+276
+ 379 02b4 1B68     		ldr	r3, [r3]
+ 380 02b6 8342     		cmp	r3, r0
+ 381 02b8 00F04883 		beq	.L72
+  82:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"с") return (char)0x63;//0b01100011;
+ 382              		.loc 1 82 0
+ 383 02bc 4C4B     		ldr	r3, .L154+280
+ 384 02be 1B68     		ldr	r3, [r3]
+ 385 02c0 8342     		cmp	r3, r0
+ 386 02c2 00F04583 		beq	.L73
+  83:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"т") return (char)0xBF;//0b10111111;
+ 387              		.loc 1 83 0
+ 388 02c6 4B4B     		ldr	r3, .L154+284
+ 389 02c8 1B68     		ldr	r3, [r3]
+ 390 02ca 8342     		cmp	r3, r0
+ 391 02cc 00F04283 		beq	.L74
+  84:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"у") return (char)0x79;//0b01111001;
+ 392              		.loc 1 84 0
+ 393 02d0 494B     		ldr	r3, .L154+288
+ 394 02d2 1B68     		ldr	r3, [r3]
+ 395 02d4 92E0     		b	.L155
+ 396              	.L156:
+ 397 02d6 00BF     		.align	2
+ 398              	.L154:
+ 399 02d8 00000000 		.word	.LC0
+ 400 02dc 08000000 		.word	.LC1
+ 401 02e0 10000000 		.word	.LC2
+ 402 02e4 18000000 		.word	.LC3
+ 403 02e8 20000000 		.word	.LC4
+ 404 02ec 28000000 		.word	.LC5
+ 405 02f0 30000000 		.word	.LC6
+ 406 02f4 38000000 		.word	.LC7
+ 407 02f8 40000000 		.word	.LC8
+ 408 02fc 48000000 		.word	.LC9
+ 409 0300 50000000 		.word	.LC10
+ 410 0304 58000000 		.word	.LC11
+ 411 0308 60000000 		.word	.LC12
+ 412 030c 68000000 		.word	.LC13
+ 413 0310 70000000 		.word	.LC14
+ 414 0314 78000000 		.word	.LC15
+ 415 0318 80000000 		.word	.LC16
+ 416 031c 88000000 		.word	.LC17
+ 417 0320 90000000 		.word	.LC18
+ 418 0324 98000000 		.word	.LC19
+ 419 0328 A0000000 		.word	.LC20
+ 420 032c A8000000 		.word	.LC21
+ 421 0330 B0000000 		.word	.LC22
+ 422 0334 B8000000 		.word	.LC23
+ 423 0338 C0000000 		.word	.LC24
+ 424 033c C8000000 		.word	.LC25
+ 425 0340 D0000000 		.word	.LC26
+ 426 0344 D8000000 		.word	.LC27
+ 427 0348 E0000000 		.word	.LC28
+ 428 034c E8000000 		.word	.LC29
+ 429 0350 F0000000 		.word	.LC30
+ 430 0354 F8000000 		.word	.LC31
+ARM GAS  /tmp/cc5KtVqo.s 			page 10
+
+
+ 431 0358 00010000 		.word	.LC32
+ 432 035c 08010000 		.word	.LC33
+ 433 0360 10010000 		.word	.LC34
+ 434 0364 18010000 		.word	.LC35
+ 435 0368 20010000 		.word	.LC36
+ 436 036c 28010000 		.word	.LC37
+ 437 0370 30010000 		.word	.LC38
+ 438 0374 38010000 		.word	.LC39
+ 439 0378 40010000 		.word	.LC40
+ 440 037c 48010000 		.word	.LC41
+ 441 0380 50010000 		.word	.LC42
+ 442 0384 58010000 		.word	.LC43
+ 443 0388 60010000 		.word	.LC44
+ 444 038c 68010000 		.word	.LC45
+ 445 0390 70010000 		.word	.LC46
+ 446 0394 78010000 		.word	.LC47
+ 447 0398 80010000 		.word	.LC48
+ 448 039c 88010000 		.word	.LC49
+ 449 03a0 90010000 		.word	.LC50
+ 450 03a4 98010000 		.word	.LC51
+ 451 03a8 A0010000 		.word	.LC52
+ 452 03ac A8010000 		.word	.LC53
+ 453 03b0 B0010000 		.word	.LC54
+ 454 03b4 B8010000 		.word	.LC55
+ 455 03b8 C0010000 		.word	.LC56
+ 456 03bc C8010000 		.word	.LC57
+ 457 03c0 D0010000 		.word	.LC58
+ 458 03c4 D8010000 		.word	.LC59
+ 459 03c8 E0010000 		.word	.LC60
+ 460 03cc E8010000 		.word	.LC61
+ 461 03d0 F0010000 		.word	.LC62
+ 462 03d4 F8010000 		.word	.LC63
+ 463 03d8 00020000 		.word	.LC64
+ 464 03dc 08020000 		.word	.LC65
+ 465 03e0 10020000 		.word	.LC66
+ 466 03e4 18020000 		.word	.LC67
+ 467 03e8 20020000 		.word	.LC68
+ 468 03ec 28020000 		.word	.LC69
+ 469 03f0 30020000 		.word	.LC70
+ 470 03f4 38020000 		.word	.LC71
+ 471 03f8 40020000 		.word	.LC72
+ 472              	.L155:
+ 473 03fc 8342     		cmp	r3, r0
+ 474 03fe 00F0AB82 		beq	.L75
+  85:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ф") return (char)0xE4;//0b11100100;
+ 475              		.loc 1 85 0
+ 476 0402 B54B     		ldr	r3, .L157
+ 477 0404 1B68     		ldr	r3, [r3]
+ 478 0406 8342     		cmp	r3, r0
+ 479 0408 00F0A882 		beq	.L76
+  86:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"х") return (char)0x78;//0b01111000;
+ 480              		.loc 1 86 0
+ 481 040c B34B     		ldr	r3, .L157+4
+ 482 040e 1B68     		ldr	r3, [r3]
+ 483 0410 8342     		cmp	r3, r0
+ 484 0412 00F0A582 		beq	.L77
+  87:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ц") return (char)0xE5;//0b11100101;
+ARM GAS  /tmp/cc5KtVqo.s 			page 11
+
+
+ 485              		.loc 1 87 0
+ 486 0416 B24B     		ldr	r3, .L157+8
+ 487 0418 1B68     		ldr	r3, [r3]
+ 488 041a 8342     		cmp	r3, r0
+ 489 041c 00F0A282 		beq	.L78
+  88:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ч") return (char)0xC0;//0b11000000;
+ 490              		.loc 1 88 0
+ 491 0420 B04B     		ldr	r3, .L157+12
+ 492 0422 1B68     		ldr	r3, [r3]
+ 493 0424 8342     		cmp	r3, r0
+ 494 0426 00F09F82 		beq	.L79
+  89:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ш") return (char)0xC1;//0b11000001;
+ 495              		.loc 1 89 0
+ 496 042a AF4B     		ldr	r3, .L157+16
+ 497 042c 1B68     		ldr	r3, [r3]
+ 498 042e 8342     		cmp	r3, r0
+ 499 0430 00F09C82 		beq	.L80
+  90:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"щ") return (char)0xE6;//0b11100110;
+ 500              		.loc 1 90 0
+ 501 0434 AD4B     		ldr	r3, .L157+20
+ 502 0436 1B68     		ldr	r3, [r3]
+ 503 0438 8342     		cmp	r3, r0
+ 504 043a 00F09982 		beq	.L81
+  91:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ъ") return (char)0xC2;//0b11000010;
+ 505              		.loc 1 91 0
+ 506 043e AC4B     		ldr	r3, .L157+24
+ 507 0440 1B68     		ldr	r3, [r3]
+ 508 0442 8342     		cmp	r3, r0
+ 509 0444 00F09682 		beq	.L82
+  92:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ы") return (char)0xC3;//0b11000011;
+ 510              		.loc 1 92 0
+ 511 0448 AA4B     		ldr	r3, .L157+28
+ 512 044a 1B68     		ldr	r3, [r3]
+ 513 044c 8342     		cmp	r3, r0
+ 514 044e 00F09382 		beq	.L83
+  93:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ь") return (char)0xC4;//0b11000100;
+ 515              		.loc 1 93 0
+ 516 0452 A94B     		ldr	r3, .L157+32
+ 517 0454 1B68     		ldr	r3, [r3]
+ 518 0456 8342     		cmp	r3, r0
+ 519 0458 00F09082 		beq	.L84
+  94:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"э") return (char)0xC5;//0b11000101;
+ 520              		.loc 1 94 0
+ 521 045c A74B     		ldr	r3, .L157+36
+ 522 045e 1B68     		ldr	r3, [r3]
+ 523 0460 8342     		cmp	r3, r0
+ 524 0462 00F08D82 		beq	.L85
+  95:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ю") return (char)0xC6;//0b11000110;
+ 525              		.loc 1 95 0
+ 526 0466 A64B     		ldr	r3, .L157+40
+ 527 0468 1B68     		ldr	r3, [r3]
+ 528 046a 8342     		cmp	r3, r0
+ 529 046c 00F08A82 		beq	.L86
+  96:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"я") return (char)0xC7;//0b11000111;
+ 530              		.loc 1 96 0
+ 531 0470 A44B     		ldr	r3, .L157+44
+ 532 0472 1B68     		ldr	r3, [r3]
+ARM GAS  /tmp/cc5KtVqo.s 			page 12
+
+
+ 533 0474 8342     		cmp	r3, r0
+ 534 0476 00F08782 		beq	.L87
+  97:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"А") return (char)0x41;//0b01000001;
+ 535              		.loc 1 97 0
+ 536 047a A34B     		ldr	r3, .L157+48
+ 537 047c 1B68     		ldr	r3, [r3]
+ 538 047e 8342     		cmp	r3, r0
+ 539 0480 00F08482 		beq	.L88
+  98:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Б") return (char)0xA0;//0b10100000;
+ 540              		.loc 1 98 0
+ 541 0484 A14B     		ldr	r3, .L157+52
+ 542 0486 1B68     		ldr	r3, [r3]
+ 543 0488 8342     		cmp	r3, r0
+ 544 048a 00F08182 		beq	.L89
+  99:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"В") return (char)0x42;//0b01000010;
+ 545              		.loc 1 99 0
+ 546 048e A04B     		ldr	r3, .L157+56
+ 547 0490 1B68     		ldr	r3, [r3]
+ 548 0492 8342     		cmp	r3, r0
+ 549 0494 00F07E82 		beq	.L90
+ 100:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Г") return (char)0xA1;//0b10100001;
+ 550              		.loc 1 100 0
+ 551 0498 9E4B     		ldr	r3, .L157+60
+ 552 049a 1B68     		ldr	r3, [r3]
+ 553 049c 8342     		cmp	r3, r0
+ 554 049e 00F07B82 		beq	.L91
+ 101:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Д") return (char)0xE0;//0b11100000;
+ 555              		.loc 1 101 0
+ 556 04a2 9D4B     		ldr	r3, .L157+64
+ 557 04a4 1B68     		ldr	r3, [r3]
+ 558 04a6 8342     		cmp	r3, r0
+ 559 04a8 00F07882 		beq	.L92
+ 102:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Е") return (char)0x45;//0b01000101;
+ 560              		.loc 1 102 0
+ 561 04ac 9B4B     		ldr	r3, .L157+68
+ 562 04ae 1B68     		ldr	r3, [r3]
+ 563 04b0 8342     		cmp	r3, r0
+ 564 04b2 00F07582 		beq	.L93
+ 103:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ё") return (char)0x45;//0b01000101;
+ 565              		.loc 1 103 0
+ 566 04b6 9A4B     		ldr	r3, .L157+72
+ 567 04b8 1B68     		ldr	r3, [r3]
+ 568 04ba 8342     		cmp	r3, r0
+ 569 04bc 00F07282 		beq	.L94
+ 104:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ж") return (char)0xA3;//0b10100011;
+ 570              		.loc 1 104 0
+ 571 04c0 984B     		ldr	r3, .L157+76
+ 572 04c2 1B68     		ldr	r3, [r3]
+ 573 04c4 8342     		cmp	r3, r0
+ 574 04c6 00F06F82 		beq	.L95
+ 105:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"З") return (char)0xA4;//0b10100100;
+ 575              		.loc 1 105 0
+ 576 04ca 974B     		ldr	r3, .L157+80
+ 577 04cc 1B68     		ldr	r3, [r3]
+ 578 04ce 8342     		cmp	r3, r0
+ 579 04d0 00F06C82 		beq	.L96
+ 106:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"И") return (char)0xA5;//0b10100101;
+ARM GAS  /tmp/cc5KtVqo.s 			page 13
+
+
+ 580              		.loc 1 106 0
+ 581 04d4 954B     		ldr	r3, .L157+84
+ 582 04d6 1B68     		ldr	r3, [r3]
+ 583 04d8 8342     		cmp	r3, r0
+ 584 04da 00F06982 		beq	.L97
+ 107:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Й") return (char)0xA6;//0b10100110;
+ 585              		.loc 1 107 0
+ 586 04de 944B     		ldr	r3, .L157+88
+ 587 04e0 1B68     		ldr	r3, [r3]
+ 588 04e2 8342     		cmp	r3, r0
+ 589 04e4 00F06682 		beq	.L98
+ 108:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"К") return (char)0x4B;//0b01001011;
+ 590              		.loc 1 108 0
+ 591 04e8 924B     		ldr	r3, .L157+92
+ 592 04ea 1B68     		ldr	r3, [r3]
+ 593 04ec 8342     		cmp	r3, r0
+ 594 04ee 00F06382 		beq	.L99
+ 109:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Л") return (char)0xA7;//0b10100111;
+ 595              		.loc 1 109 0
+ 596 04f2 914B     		ldr	r3, .L157+96
+ 597 04f4 1B68     		ldr	r3, [r3]
+ 598 04f6 8342     		cmp	r3, r0
+ 599 04f8 00F06082 		beq	.L100
+ 110:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"М") return (char)0x4D;//0b01001101;
+ 600              		.loc 1 110 0
+ 601 04fc 8F4B     		ldr	r3, .L157+100
+ 602 04fe 1B68     		ldr	r3, [r3]
+ 603 0500 8342     		cmp	r3, r0
+ 604 0502 00F05D82 		beq	.L101
+ 111:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Н") return (char)0x48;//0b01001000;
+ 605              		.loc 1 111 0
+ 606 0506 8E4B     		ldr	r3, .L157+104
+ 607 0508 1B68     		ldr	r3, [r3]
+ 608 050a 8342     		cmp	r3, r0
+ 609 050c 00F05A82 		beq	.L102
+ 112:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"О") return (char)0x4F;//0b01001111;
+ 610              		.loc 1 112 0
+ 611 0510 8C4B     		ldr	r3, .L157+108
+ 612 0512 1B68     		ldr	r3, [r3]
+ 613 0514 8342     		cmp	r3, r0
+ 614 0516 00F05782 		beq	.L103
+ 113:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"П") return (char)0xA8;//0b10101000;
+ 615              		.loc 1 113 0
+ 616 051a 8B4B     		ldr	r3, .L157+112
+ 617 051c 1B68     		ldr	r3, [r3]
+ 618 051e 8342     		cmp	r3, r0
+ 619 0520 00F05482 		beq	.L104
+ 114:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Р") return (char)0x50;//0b01010000;
+ 620              		.loc 1 114 0
+ 621 0524 894B     		ldr	r3, .L157+116
+ 622 0526 1B68     		ldr	r3, [r3]
+ 623 0528 8342     		cmp	r3, r0
+ 624 052a 00F05182 		beq	.L105
+ 115:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"С") return (char)0x43;//0b01000011;
+ 625              		.loc 1 115 0
+ 626 052e 884B     		ldr	r3, .L157+120
+ 627 0530 1B68     		ldr	r3, [r3]
+ARM GAS  /tmp/cc5KtVqo.s 			page 14
+
+
+ 628 0532 8342     		cmp	r3, r0
+ 629 0534 00F04E82 		beq	.L106
+ 116:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Т") return (char)0x54;//0b01010100;
+ 630              		.loc 1 116 0
+ 631 0538 864B     		ldr	r3, .L157+124
+ 632 053a 1B68     		ldr	r3, [r3]
+ 633 053c 8342     		cmp	r3, r0
+ 634 053e 00F04B82 		beq	.L107
+ 117:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"У") return (char)0xA9;//0b10101001;
+ 635              		.loc 1 117 0
+ 636 0542 854B     		ldr	r3, .L157+128
+ 637 0544 1B68     		ldr	r3, [r3]
+ 638 0546 8342     		cmp	r3, r0
+ 639 0548 00F04882 		beq	.L108
+ 118:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ф") return (char)0xAA;//0b10101010;
+ 640              		.loc 1 118 0
+ 641 054c 834B     		ldr	r3, .L157+132
+ 642 054e 1B68     		ldr	r3, [r3]
+ 643 0550 8342     		cmp	r3, r0
+ 644 0552 00F04582 		beq	.L109
+ 119:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Х") return (char)0x58;//0b01011000;
+ 645              		.loc 1 119 0
+ 646 0556 824B     		ldr	r3, .L157+136
+ 647 0558 1B68     		ldr	r3, [r3]
+ 648 055a 8342     		cmp	r3, r0
+ 649 055c 00F04282 		beq	.L110
+ 120:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ц") return (char)0xE1;//0b11100001;
+ 650              		.loc 1 120 0
+ 651 0560 804B     		ldr	r3, .L157+140
+ 652 0562 1B68     		ldr	r3, [r3]
+ 653 0564 8342     		cmp	r3, r0
+ 654 0566 00F03F82 		beq	.L111
+ 121:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ч") return (char)0xAB;//0b10101011;
+ 655              		.loc 1 121 0
+ 656 056a 7F4B     		ldr	r3, .L157+144
+ 657 056c 1B68     		ldr	r3, [r3]
+ 658 056e 8342     		cmp	r3, r0
+ 659 0570 00F03C82 		beq	.L112
+ 122:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ш") return (char)0xAC;//0b10101100;
+ 660              		.loc 1 122 0
+ 661 0574 7D4B     		ldr	r3, .L157+148
+ 662 0576 1B68     		ldr	r3, [r3]
+ 663 0578 8342     		cmp	r3, r0
+ 664 057a 00F03982 		beq	.L113
+ 123:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Щ") return (char)0xE2;//0b11100010;
+ 665              		.loc 1 123 0
+ 666 057e 7C4B     		ldr	r3, .L157+152
+ 667 0580 1B68     		ldr	r3, [r3]
+ 668 0582 8342     		cmp	r3, r0
+ 669 0584 00F03682 		beq	.L114
+ 124:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ъ") return (char)0xAD;//0b10101101;
+ 670              		.loc 1 124 0
+ 671 0588 7A4B     		ldr	r3, .L157+156
+ 672 058a 1B68     		ldr	r3, [r3]
+ 673 058c 8342     		cmp	r3, r0
+ 674 058e 00F03382 		beq	.L115
+ 125:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ы") return (char)0xAE;//0b10101110;
+ARM GAS  /tmp/cc5KtVqo.s 			page 15
+
+
+ 675              		.loc 1 125 0
+ 676 0592 794B     		ldr	r3, .L157+160
+ 677 0594 1B68     		ldr	r3, [r3]
+ 678 0596 8342     		cmp	r3, r0
+ 679 0598 00F03082 		beq	.L116
+ 126:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ь") return (char)0x62;//0b01100010;
+ 680              		.loc 1 126 0
+ 681 059c 774B     		ldr	r3, .L157+164
+ 682 059e 1B68     		ldr	r3, [r3]
+ 683 05a0 8342     		cmp	r3, r0
+ 684 05a2 00F02D82 		beq	.L117
+ 127:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Э") return (char)0xAF;//0b10101111;
+ 685              		.loc 1 127 0
+ 686 05a6 764B     		ldr	r3, .L157+168
+ 687 05a8 1B68     		ldr	r3, [r3]
+ 688 05aa 8342     		cmp	r3, r0
+ 689 05ac 00F02A82 		beq	.L118
+ 128:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ю") return (char)0xB0;//0b10110000;
+ 690              		.loc 1 128 0
+ 691 05b0 744B     		ldr	r3, .L157+172
+ 692 05b2 1B68     		ldr	r3, [r3]
+ 693 05b4 8342     		cmp	r3, r0
+ 694 05b6 00F02782 		beq	.L119
+ 129:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Я") return (char)0xB1;//0b10110001;
+ 695              		.loc 1 129 0
+ 696 05ba 734B     		ldr	r3, .L157+176
+ 697 05bc 1B68     		ldr	r3, [r3]
+ 698 05be 8342     		cmp	r3, r0
+ 699 05c0 00F02482 		beq	.L120
+ 130:Src/LCD/CharacterConverter_LCD.c ****     //Special characters
+ 131:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L">") return '>';
+ 700              		.loc 1 131 0
+ 701 05c4 714B     		ldr	r3, .L157+180
+ 702 05c6 1B68     		ldr	r3, [r3]
+ 703 05c8 8342     		cmp	r3, r0
+ 704 05ca 00F02182 		beq	.L121
+ 132:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"<") return '<';
+ 705              		.loc 1 132 0
+ 706 05ce 704B     		ldr	r3, .L157+184
+ 707 05d0 1B68     		ldr	r3, [r3]
+ 708 05d2 8342     		cmp	r3, r0
+ 709 05d4 00F01E82 		beq	.L122
+ 133:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L")") return ')';
+ 710              		.loc 1 133 0
+ 711 05d8 6E4B     		ldr	r3, .L157+188
+ 712 05da 1B68     		ldr	r3, [r3]
+ 713 05dc 8342     		cmp	r3, r0
+ 714 05de 00F01B82 		beq	.L123
+ 134:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"(") return '(';
+ 715              		.loc 1 134 0
+ 716 05e2 6D4B     		ldr	r3, .L157+192
+ 717 05e4 1B68     		ldr	r3, [r3]
+ 718 05e6 8342     		cmp	r3, r0
+ 719 05e8 00F01882 		beq	.L124
+ 135:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"\"") return '\"';
+ 720              		.loc 1 135 0
+ 721 05ec 6B4B     		ldr	r3, .L157+196
+ARM GAS  /tmp/cc5KtVqo.s 			page 16
+
+
+ 722 05ee 1B68     		ldr	r3, [r3]
+ 723 05f0 8342     		cmp	r3, r0
+ 724 05f2 00F01582 		beq	.L125
+ 136:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"!") return '!';
+ 725              		.loc 1 136 0
+ 726 05f6 6A4B     		ldr	r3, .L157+200
+ 727 05f8 1B68     		ldr	r3, [r3]
+ 728 05fa 8342     		cmp	r3, r0
+ 729 05fc 00F01282 		beq	.L126
+ 137:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"?") return '?';
+ 730              		.loc 1 137 0
+ 731 0600 684B     		ldr	r3, .L157+204
+ 732 0602 1B68     		ldr	r3, [r3]
+ 733 0604 8342     		cmp	r3, r0
+ 734 0606 00F00F82 		beq	.L127
+ 138:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"#") return '#';
+ 735              		.loc 1 138 0
+ 736 060a 674B     		ldr	r3, .L157+208
+ 737 060c 1B68     		ldr	r3, [r3]
+ 738 060e 8342     		cmp	r3, r0
+ 739 0610 00F00C82 		beq	.L128
+ 139:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"$") return '$';
+ 740              		.loc 1 139 0
+ 741 0614 654B     		ldr	r3, .L157+212
+ 742 0616 1B68     		ldr	r3, [r3]
+ 743 0618 8342     		cmp	r3, r0
+ 744 061a 00F00982 		beq	.L129
+ 140:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"%") return '%';
+ 745              		.loc 1 140 0
+ 746 061e 644B     		ldr	r3, .L157+216
+ 747 0620 1B68     		ldr	r3, [r3]
+ 748 0622 8342     		cmp	r3, r0
+ 749 0624 00F00682 		beq	.L130
+ 141:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"\'") return '\'';
+ 750              		.loc 1 141 0
+ 751 0628 624B     		ldr	r3, .L157+220
+ 752 062a 1B68     		ldr	r3, [r3]
+ 753 062c 8342     		cmp	r3, r0
+ 754 062e 00F00382 		beq	.L131
+ 142:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"*") return '*';
+ 755              		.loc 1 142 0
+ 756 0632 614B     		ldr	r3, .L157+224
+ 757 0634 1B68     		ldr	r3, [r3]
+ 758 0636 8342     		cmp	r3, r0
+ 759 0638 00F00082 		beq	.L132
+ 143:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"-") return '-';
+ 760              		.loc 1 143 0
+ 761 063c 5F4B     		ldr	r3, .L157+228
+ 762 063e 1B68     		ldr	r3, [r3]
+ 763 0640 8342     		cmp	r3, r0
+ 764 0642 00F0FD81 		beq	.L133
+ 144:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"+") return '+';
+ 765              		.loc 1 144 0
+ 766 0646 5E4B     		ldr	r3, .L157+232
+ 767 0648 1B68     		ldr	r3, [r3]
+ 768 064a 8342     		cmp	r3, r0
+ 769 064c 00F0FA81 		beq	.L134
+ARM GAS  /tmp/cc5KtVqo.s 			page 17
+
+
+ 145:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L".") return '.';
+ 770              		.loc 1 145 0
+ 771 0650 5C4B     		ldr	r3, .L157+236
+ 772 0652 1B68     		ldr	r3, [r3]
+ 773 0654 8342     		cmp	r3, r0
+ 774 0656 00F0F781 		beq	.L135
+ 146:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L",") return ',';
+ 775              		.loc 1 146 0
+ 776 065a 5B4B     		ldr	r3, .L157+240
+ 777 065c 1B68     		ldr	r3, [r3]
+ 778 065e 8342     		cmp	r3, r0
+ 779 0660 00F0F481 		beq	.L136
+ 147:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"_") return '_';
+ 780              		.loc 1 147 0
+ 781 0664 594B     		ldr	r3, .L157+244
+ 782 0666 1B68     		ldr	r3, [r3]
+ 783 0668 8342     		cmp	r3, r0
+ 784 066a 00F0F181 		beq	.L137
+ 148:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"=") return '=';
+ 785              		.loc 1 148 0
+ 786 066e 584B     		ldr	r3, .L157+248
+ 787 0670 1B68     		ldr	r3, [r3]
+ 788 0672 8342     		cmp	r3, r0
+ 789 0674 00F0EE81 		beq	.L138
+ 149:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"^") return '^';
+ 790              		.loc 1 149 0
+ 791 0678 564B     		ldr	r3, .L157+252
+ 792 067a 1B68     		ldr	r3, [r3]
+ 793 067c 8342     		cmp	r3, r0
+ 794 067e 00F0EB81 		beq	.L139
+ 150:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"/") return '/';
+ 795              		.loc 1 150 0
+ 796 0682 554B     		ldr	r3, .L157+256
+ 797 0684 1B68     		ldr	r3, [r3]
+ 798 0686 8342     		cmp	r3, r0
+ 799 0688 00F0E881 		beq	.L140
+ 151:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L":") return ':';
+ 800              		.loc 1 151 0
+ 801 068c 534B     		ldr	r3, .L157+260
+ 802 068e 1B68     		ldr	r3, [r3]
+ 803 0690 8342     		cmp	r3, r0
+ 804 0692 00F0E581 		beq	.L141
+ 152:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L";") return ';';
+ 805              		.loc 1 152 0
+ 806 0696 524B     		ldr	r3, .L157+264
+ 807 0698 1B68     		ldr	r3, [r3]
+ 808 069a 8342     		cmp	r3, r0
+ 809 069c 00F0E281 		beq	.L142
+ 153:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L" ") return ' ';
+ 810              		.loc 1 153 0
+ 811 06a0 504B     		ldr	r3, .L157+268
+ 812 06a2 1B68     		ldr	r3, [r3]
+ 813 06a4 8342     		cmp	r3, r0
+ 814 06a6 00F0DF81 		beq	.L143
+ 154:Src/LCD/CharacterConverter_LCD.c ****     //Numbers
+ 155:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"0") return '0';
+ 815              		.loc 1 155 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 18
+
+
+ 816 06aa 4F4B     		ldr	r3, .L157+272
+ 817 06ac 1B68     		ldr	r3, [r3]
+ 818 06ae 8342     		cmp	r3, r0
+ 819 06b0 00F0DC81 		beq	.L144
+ 156:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"1") return '1';
+ 820              		.loc 1 156 0
+ 821 06b4 4D4B     		ldr	r3, .L157+276
+ 822 06b6 1B68     		ldr	r3, [r3]
+ 823 06b8 8342     		cmp	r3, r0
+ 824 06ba 00F0D981 		beq	.L145
+ 157:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"2") return '2';
+ 825              		.loc 1 157 0
+ 826 06be 4C4B     		ldr	r3, .L157+280
+ 827 06c0 1B68     		ldr	r3, [r3]
+ 828 06c2 8342     		cmp	r3, r0
+ 829 06c4 00F0D681 		beq	.L146
+ 158:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"3") return '3';
+ 830              		.loc 1 158 0
+ 831 06c8 4A4B     		ldr	r3, .L157+284
+ 832 06ca 1B68     		ldr	r3, [r3]
+ 833 06cc 8342     		cmp	r3, r0
+ 834 06ce 00F0D381 		beq	.L147
+ 159:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"4") return '4';
+ 835              		.loc 1 159 0
+ 836 06d2 494B     		ldr	r3, .L157+288
+ 837 06d4 1B68     		ldr	r3, [r3]
+ 838 06d6 91E0     		b	.L158
+ 839              	.L159:
+ 840              		.align	2
+ 841              	.L157:
+ 842 06d8 48020000 		.word	.LC73
+ 843 06dc 50020000 		.word	.LC74
+ 844 06e0 58020000 		.word	.LC75
+ 845 06e4 60020000 		.word	.LC76
+ 846 06e8 68020000 		.word	.LC77
+ 847 06ec 70020000 		.word	.LC78
+ 848 06f0 78020000 		.word	.LC79
+ 849 06f4 80020000 		.word	.LC80
+ 850 06f8 88020000 		.word	.LC81
+ 851 06fc 90020000 		.word	.LC82
+ 852 0700 98020000 		.word	.LC83
+ 853 0704 A0020000 		.word	.LC84
+ 854 0708 A8020000 		.word	.LC85
+ 855 070c B0020000 		.word	.LC86
+ 856 0710 B8020000 		.word	.LC87
+ 857 0714 C0020000 		.word	.LC88
+ 858 0718 C8020000 		.word	.LC89
+ 859 071c D0020000 		.word	.LC90
+ 860 0720 D8020000 		.word	.LC91
+ 861 0724 E0020000 		.word	.LC92
+ 862 0728 E8020000 		.word	.LC93
+ 863 072c F0020000 		.word	.LC94
+ 864 0730 F8020000 		.word	.LC95
+ 865 0734 00030000 		.word	.LC96
+ 866 0738 08030000 		.word	.LC97
+ 867 073c 10030000 		.word	.LC98
+ 868 0740 18030000 		.word	.LC99
+ARM GAS  /tmp/cc5KtVqo.s 			page 19
+
+
+ 869 0744 20030000 		.word	.LC100
+ 870 0748 28030000 		.word	.LC101
+ 871 074c 30030000 		.word	.LC102
+ 872 0750 38030000 		.word	.LC103
+ 873 0754 40030000 		.word	.LC104
+ 874 0758 48030000 		.word	.LC105
+ 875 075c 50030000 		.word	.LC106
+ 876 0760 58030000 		.word	.LC107
+ 877 0764 60030000 		.word	.LC108
+ 878 0768 68030000 		.word	.LC109
+ 879 076c 70030000 		.word	.LC110
+ 880 0770 78030000 		.word	.LC111
+ 881 0774 80030000 		.word	.LC112
+ 882 0778 88030000 		.word	.LC113
+ 883 077c 90030000 		.word	.LC114
+ 884 0780 98030000 		.word	.LC115
+ 885 0784 A0030000 		.word	.LC116
+ 886 0788 A8030000 		.word	.LC117
+ 887 078c B0030000 		.word	.LC118
+ 888 0790 B8030000 		.word	.LC119
+ 889 0794 C0030000 		.word	.LC120
+ 890 0798 C8030000 		.word	.LC121
+ 891 079c D0030000 		.word	.LC122
+ 892 07a0 D8030000 		.word	.LC123
+ 893 07a4 E0030000 		.word	.LC124
+ 894 07a8 E8030000 		.word	.LC125
+ 895 07ac F0030000 		.word	.LC126
+ 896 07b0 F8030000 		.word	.LC127
+ 897 07b4 00040000 		.word	.LC128
+ 898 07b8 08040000 		.word	.LC129
+ 899 07bc 10040000 		.word	.LC130
+ 900 07c0 18040000 		.word	.LC131
+ 901 07c4 20040000 		.word	.LC132
+ 902 07c8 28040000 		.word	.LC133
+ 903 07cc 30040000 		.word	.LC134
+ 904 07d0 38040000 		.word	.LC135
+ 905 07d4 40040000 		.word	.LC136
+ 906 07d8 48040000 		.word	.LC137
+ 907 07dc 50040000 		.word	.LC138
+ 908 07e0 58040000 		.word	.LC139
+ 909 07e4 60040000 		.word	.LC140
+ 910 07e8 68040000 		.word	.LC141
+ 911 07ec 70040000 		.word	.LC142
+ 912 07f0 78040000 		.word	.LC143
+ 913 07f4 80040000 		.word	.LC144
+ 914 07f8 88040000 		.word	.LC145
+ 915              	.L158:
+ 916 07fc 8342     		cmp	r3, r0
+ 917 07fe 00F03D81 		beq	.L148
+ 160:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"5") return '5';
+ 918              		.loc 1 160 0
+ 919 0802 A44B     		ldr	r3, .L160
+ 920 0804 1B68     		ldr	r3, [r3]
+ 921 0806 8342     		cmp	r3, r0
+ 922 0808 00F03A81 		beq	.L149
+ 161:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"6") return '6';
+ 923              		.loc 1 161 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 20
+
+
+ 924 080c A24B     		ldr	r3, .L160+4
+ 925 080e 1B68     		ldr	r3, [r3]
+ 926 0810 8342     		cmp	r3, r0
+ 927 0812 00F03781 		beq	.L150
+ 162:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"7") return '7';
+ 928              		.loc 1 162 0
+ 929 0816 A14B     		ldr	r3, .L160+8
+ 930 0818 1B68     		ldr	r3, [r3]
+ 931 081a 8342     		cmp	r3, r0
+ 932 081c 00F03481 		beq	.L151
+ 163:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"8") return '8';
+ 933              		.loc 1 163 0
+ 934 0820 9F4B     		ldr	r3, .L160+12
+ 935 0822 1B68     		ldr	r3, [r3]
+ 936 0824 8342     		cmp	r3, r0
+ 937 0826 00F03181 		beq	.L152
+ 164:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"9") return '9';
+ 938              		.loc 1 164 0
+ 939 082a 9E4B     		ldr	r3, .L160+16
+ 940 082c 1B68     		ldr	r3, [r3]
+ 941 082e 8342     		cmp	r3, r0
+ 942 0830 40F02E81 		bne	.L153
+ 943 0834 3920     		movs	r0, #57
+ 944              	.LVL1:
+ 945 0836 7047     		bx	lr
+ 946              	.LVL2:
+ 947              	.L3:
+  11:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"b") return 'b';
+ 948              		.loc 1 11 0
+ 949 0838 6120     		movs	r0, #97
+ 950              	.LVL3:
+ 951 083a 7047     		bx	lr
+ 952              	.LVL4:
+ 953              	.L4:
+  12:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"c") return 'c';
+ 954              		.loc 1 12 0
+ 955 083c 6220     		movs	r0, #98
+ 956              	.LVL5:
+ 957 083e 7047     		bx	lr
+ 958              	.LVL6:
+ 959              	.L5:
+  13:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"d") return 'd';
+ 960              		.loc 1 13 0
+ 961 0840 6320     		movs	r0, #99
+ 962              	.LVL7:
+ 963 0842 7047     		bx	lr
+ 964              	.LVL8:
+ 965              	.L6:
+  14:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"e") return 'e';
+ 966              		.loc 1 14 0
+ 967 0844 6420     		movs	r0, #100
+ 968              	.LVL9:
+ 969 0846 7047     		bx	lr
+ 970              	.LVL10:
+ 971              	.L7:
+  15:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"f") return 'f';
+ 972              		.loc 1 15 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 21
+
+
+ 973 0848 6520     		movs	r0, #101
+ 974              	.LVL11:
+ 975 084a 7047     		bx	lr
+ 976              	.LVL12:
+ 977              	.L8:
+  16:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"g") return 'g';
+ 978              		.loc 1 16 0
+ 979 084c 6620     		movs	r0, #102
+ 980              	.LVL13:
+ 981 084e 7047     		bx	lr
+ 982              	.LVL14:
+ 983              	.L9:
+  17:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"h") return 'h';
+ 984              		.loc 1 17 0
+ 985 0850 6720     		movs	r0, #103
+ 986              	.LVL15:
+ 987 0852 7047     		bx	lr
+ 988              	.LVL16:
+ 989              	.L10:
+  18:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"i") return 'i';
+ 990              		.loc 1 18 0
+ 991 0854 6820     		movs	r0, #104
+ 992              	.LVL17:
+ 993 0856 7047     		bx	lr
+ 994              	.LVL18:
+ 995              	.L11:
+  19:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"j") return 'j';
+ 996              		.loc 1 19 0
+ 997 0858 6920     		movs	r0, #105
+ 998              	.LVL19:
+ 999 085a 7047     		bx	lr
+ 1000              	.LVL20:
+ 1001              	.L12:
+  20:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"k") return 'k';
+ 1002              		.loc 1 20 0
+ 1003 085c 6A20     		movs	r0, #106
+ 1004              	.LVL21:
+ 1005 085e 7047     		bx	lr
+ 1006              	.LVL22:
+ 1007              	.L13:
+  21:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"l") return 'l';
+ 1008              		.loc 1 21 0
+ 1009 0860 6B20     		movs	r0, #107
+ 1010              	.LVL23:
+ 1011 0862 7047     		bx	lr
+ 1012              	.LVL24:
+ 1013              	.L14:
+  22:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"m") return 'm';
+ 1014              		.loc 1 22 0
+ 1015 0864 6C20     		movs	r0, #108
+ 1016              	.LVL25:
+ 1017 0866 7047     		bx	lr
+ 1018              	.LVL26:
+ 1019              	.L15:
+  23:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"n") return 'n';
+ 1020              		.loc 1 23 0
+ 1021 0868 6D20     		movs	r0, #109
+ARM GAS  /tmp/cc5KtVqo.s 			page 22
+
+
+ 1022              	.LVL27:
+ 1023 086a 7047     		bx	lr
+ 1024              	.LVL28:
+ 1025              	.L16:
+  24:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"o") return 'o';
+ 1026              		.loc 1 24 0
+ 1027 086c 6E20     		movs	r0, #110
+ 1028              	.LVL29:
+ 1029 086e 7047     		bx	lr
+ 1030              	.LVL30:
+ 1031              	.L17:
+  25:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"p") return 'p';
+ 1032              		.loc 1 25 0
+ 1033 0870 6F20     		movs	r0, #111
+ 1034              	.LVL31:
+ 1035 0872 7047     		bx	lr
+ 1036              	.LVL32:
+ 1037              	.L18:
+  26:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"q") return 'q';
+ 1038              		.loc 1 26 0
+ 1039 0874 7020     		movs	r0, #112
+ 1040              	.LVL33:
+ 1041 0876 7047     		bx	lr
+ 1042              	.LVL34:
+ 1043              	.L19:
+  27:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"r") return 'r';
+ 1044              		.loc 1 27 0
+ 1045 0878 7120     		movs	r0, #113
+ 1046              	.LVL35:
+ 1047 087a 7047     		bx	lr
+ 1048              	.LVL36:
+ 1049              	.L20:
+  28:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"s") return 's';
+ 1050              		.loc 1 28 0
+ 1051 087c 7220     		movs	r0, #114
+ 1052              	.LVL37:
+ 1053 087e 7047     		bx	lr
+ 1054              	.LVL38:
+ 1055              	.L21:
+  29:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"t") return 't';
+ 1056              		.loc 1 29 0
+ 1057 0880 7320     		movs	r0, #115
+ 1058              	.LVL39:
+ 1059 0882 7047     		bx	lr
+ 1060              	.LVL40:
+ 1061              	.L22:
+  30:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"u") return 'u';
+ 1062              		.loc 1 30 0
+ 1063 0884 7420     		movs	r0, #116
+ 1064              	.LVL41:
+ 1065 0886 7047     		bx	lr
+ 1066              	.LVL42:
+ 1067              	.L23:
+  31:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"v") return 'v';
+ 1068              		.loc 1 31 0
+ 1069 0888 7520     		movs	r0, #117
+ 1070              	.LVL43:
+ARM GAS  /tmp/cc5KtVqo.s 			page 23
+
+
+ 1071 088a 7047     		bx	lr
+ 1072              	.LVL44:
+ 1073              	.L24:
+  32:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"w") return 'w';
+ 1074              		.loc 1 32 0
+ 1075 088c 7620     		movs	r0, #118
+ 1076              	.LVL45:
+ 1077 088e 7047     		bx	lr
+ 1078              	.LVL46:
+ 1079              	.L25:
+  33:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"x") return 'x';
+ 1080              		.loc 1 33 0
+ 1081 0890 7720     		movs	r0, #119
+ 1082              	.LVL47:
+ 1083 0892 7047     		bx	lr
+ 1084              	.LVL48:
+ 1085              	.L26:
+  34:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"y") return 'y';
+ 1086              		.loc 1 34 0
+ 1087 0894 7820     		movs	r0, #120
+ 1088              	.LVL49:
+ 1089 0896 7047     		bx	lr
+ 1090              	.LVL50:
+ 1091              	.L27:
+  35:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"z") return 'z';
+ 1092              		.loc 1 35 0
+ 1093 0898 7920     		movs	r0, #121
+ 1094              	.LVL51:
+ 1095 089a 7047     		bx	lr
+ 1096              	.LVL52:
+ 1097              	.L28:
+  36:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"A") return 'A';
+ 1098              		.loc 1 36 0
+ 1099 089c 7A20     		movs	r0, #122
+ 1100              	.LVL53:
+ 1101 089e 7047     		bx	lr
+ 1102              	.LVL54:
+ 1103              	.L29:
+  37:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"B") return 'B';
+ 1104              		.loc 1 37 0
+ 1105 08a0 4120     		movs	r0, #65
+ 1106              	.LVL55:
+ 1107 08a2 7047     		bx	lr
+ 1108              	.LVL56:
+ 1109              	.L30:
+  38:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"C") return 'C';
+ 1110              		.loc 1 38 0
+ 1111 08a4 4220     		movs	r0, #66
+ 1112              	.LVL57:
+ 1113 08a6 7047     		bx	lr
+ 1114              	.LVL58:
+ 1115              	.L31:
+  39:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"D") return 'D';
+ 1116              		.loc 1 39 0
+ 1117 08a8 4320     		movs	r0, #67
+ 1118              	.LVL59:
+ 1119 08aa 7047     		bx	lr
+ARM GAS  /tmp/cc5KtVqo.s 			page 24
+
+
+ 1120              	.LVL60:
+ 1121              	.L32:
+  40:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"E") return 'E';
+ 1122              		.loc 1 40 0
+ 1123 08ac 4420     		movs	r0, #68
+ 1124              	.LVL61:
+ 1125 08ae 7047     		bx	lr
+ 1126              	.LVL62:
+ 1127              	.L33:
+  41:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"F") return 'F';
+ 1128              		.loc 1 41 0
+ 1129 08b0 4520     		movs	r0, #69
+ 1130              	.LVL63:
+ 1131 08b2 7047     		bx	lr
+ 1132              	.LVL64:
+ 1133              	.L34:
+  42:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"G") return 'G';
+ 1134              		.loc 1 42 0
+ 1135 08b4 4620     		movs	r0, #70
+ 1136              	.LVL65:
+ 1137 08b6 7047     		bx	lr
+ 1138              	.LVL66:
+ 1139              	.L35:
+  43:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"H") return 'H';
+ 1140              		.loc 1 43 0
+ 1141 08b8 4720     		movs	r0, #71
+ 1142              	.LVL67:
+ 1143 08ba 7047     		bx	lr
+ 1144              	.LVL68:
+ 1145              	.L36:
+  44:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"I") return 'I';
+ 1146              		.loc 1 44 0
+ 1147 08bc 4820     		movs	r0, #72
+ 1148              	.LVL69:
+ 1149 08be 7047     		bx	lr
+ 1150              	.LVL70:
+ 1151              	.L37:
+  45:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"J") return 'J';
+ 1152              		.loc 1 45 0
+ 1153 08c0 4920     		movs	r0, #73
+ 1154              	.LVL71:
+ 1155 08c2 7047     		bx	lr
+ 1156              	.LVL72:
+ 1157              	.L38:
+  46:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"K") return 'K';
+ 1158              		.loc 1 46 0
+ 1159 08c4 4A20     		movs	r0, #74
+ 1160              	.LVL73:
+ 1161 08c6 7047     		bx	lr
+ 1162              	.LVL74:
+ 1163              	.L39:
+  47:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"L") return 'L';
+ 1164              		.loc 1 47 0
+ 1165 08c8 4B20     		movs	r0, #75
+ 1166              	.LVL75:
+ 1167 08ca 7047     		bx	lr
+ 1168              	.LVL76:
+ARM GAS  /tmp/cc5KtVqo.s 			page 25
+
+
+ 1169              	.L40:
+  48:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"M") return 'M';
+ 1170              		.loc 1 48 0
+ 1171 08cc 4C20     		movs	r0, #76
+ 1172              	.LVL77:
+ 1173 08ce 7047     		bx	lr
+ 1174              	.LVL78:
+ 1175              	.L41:
+  49:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"N") return 'N';
+ 1176              		.loc 1 49 0
+ 1177 08d0 4D20     		movs	r0, #77
+ 1178              	.LVL79:
+ 1179 08d2 7047     		bx	lr
+ 1180              	.LVL80:
+ 1181              	.L42:
+  50:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"O") return 'O';
+ 1182              		.loc 1 50 0
+ 1183 08d4 4E20     		movs	r0, #78
+ 1184              	.LVL81:
+ 1185 08d6 7047     		bx	lr
+ 1186              	.LVL82:
+ 1187              	.L43:
+  51:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"P") return 'P';
+ 1188              		.loc 1 51 0
+ 1189 08d8 4F20     		movs	r0, #79
+ 1190              	.LVL83:
+ 1191 08da 7047     		bx	lr
+ 1192              	.LVL84:
+ 1193              	.L44:
+  52:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Q") return 'Q';
+ 1194              		.loc 1 52 0
+ 1195 08dc 5020     		movs	r0, #80
+ 1196              	.LVL85:
+ 1197 08de 7047     		bx	lr
+ 1198              	.LVL86:
+ 1199              	.L45:
+  53:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"R") return 'R';
+ 1200              		.loc 1 53 0
+ 1201 08e0 5120     		movs	r0, #81
+ 1202              	.LVL87:
+ 1203 08e2 7047     		bx	lr
+ 1204              	.LVL88:
+ 1205              	.L46:
+  54:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"S") return 'S';
+ 1206              		.loc 1 54 0
+ 1207 08e4 5220     		movs	r0, #82
+ 1208              	.LVL89:
+ 1209 08e6 7047     		bx	lr
+ 1210              	.LVL90:
+ 1211              	.L47:
+  55:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"T") return 'T';
+ 1212              		.loc 1 55 0
+ 1213 08e8 5320     		movs	r0, #83
+ 1214              	.LVL91:
+ 1215 08ea 7047     		bx	lr
+ 1216              	.LVL92:
+ 1217              	.L48:
+ARM GAS  /tmp/cc5KtVqo.s 			page 26
+
+
+  56:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"U") return 'U';
+ 1218              		.loc 1 56 0
+ 1219 08ec 5420     		movs	r0, #84
+ 1220              	.LVL93:
+ 1221 08ee 7047     		bx	lr
+ 1222              	.LVL94:
+ 1223              	.L49:
+  57:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"V") return 'V';
+ 1224              		.loc 1 57 0
+ 1225 08f0 5520     		movs	r0, #85
+ 1226              	.LVL95:
+ 1227 08f2 7047     		bx	lr
+ 1228              	.LVL96:
+ 1229              	.L50:
+  58:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"W") return 'W';
+ 1230              		.loc 1 58 0
+ 1231 08f4 5620     		movs	r0, #86
+ 1232              	.LVL97:
+ 1233 08f6 7047     		bx	lr
+ 1234              	.LVL98:
+ 1235              	.L51:
+  59:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"X") return 'X';
+ 1236              		.loc 1 59 0
+ 1237 08f8 5720     		movs	r0, #87
+ 1238              	.LVL99:
+ 1239 08fa 7047     		bx	lr
+ 1240              	.LVL100:
+ 1241              	.L52:
+  60:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Y") return 'Y';
+ 1242              		.loc 1 60 0
+ 1243 08fc 5820     		movs	r0, #88
+ 1244              	.LVL101:
+ 1245 08fe 7047     		bx	lr
+ 1246              	.LVL102:
+ 1247              	.L53:
+  61:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Z") return 'Z';
+ 1248              		.loc 1 61 0
+ 1249 0900 5920     		movs	r0, #89
+ 1250              	.LVL103:
+ 1251 0902 7047     		bx	lr
+ 1252              	.LVL104:
+ 1253              	.L54:
+  62:Src/LCD/CharacterConverter_LCD.c ****     //Russian alphabed
+ 1254              		.loc 1 62 0
+ 1255 0904 5A20     		movs	r0, #90
+ 1256              	.LVL105:
+ 1257 0906 7047     		bx	lr
+ 1258              	.LVL106:
+ 1259              	.L55:
+  64:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"б") return (char)0xB2;//0b10110010;
+ 1260              		.loc 1 64 0
+ 1261 0908 6120     		movs	r0, #97
+ 1262              	.LVL107:
+ 1263 090a 7047     		bx	lr
+ 1264              	.LVL108:
+ 1265              	.L56:
+  65:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"в") return (char)0xB3;//0b10110011;
+ARM GAS  /tmp/cc5KtVqo.s 			page 27
+
+
+ 1266              		.loc 1 65 0
+ 1267 090c B220     		movs	r0, #178
+ 1268              	.LVL109:
+ 1269 090e 7047     		bx	lr
+ 1270              	.LVL110:
+ 1271              	.L57:
+  66:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"г") return (char)0xB4;//0b10110100;
+ 1272              		.loc 1 66 0
+ 1273 0910 B320     		movs	r0, #179
+ 1274              	.LVL111:
+ 1275 0912 7047     		bx	lr
+ 1276              	.LVL112:
+ 1277              	.L58:
+  67:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"д") return (char)0xE3;//0b11100011;
+ 1278              		.loc 1 67 0
+ 1279 0914 B420     		movs	r0, #180
+ 1280              	.LVL113:
+ 1281 0916 7047     		bx	lr
+ 1282              	.LVL114:
+ 1283              	.L59:
+  68:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"е") return (char)0x65;//0b01100101;
+ 1284              		.loc 1 68 0
+ 1285 0918 E320     		movs	r0, #227
+ 1286              	.LVL115:
+ 1287 091a 7047     		bx	lr
+ 1288              	.LVL116:
+ 1289              	.L60:
+  69:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ё") return (char)0xB5;//0b10110101;
+ 1290              		.loc 1 69 0
+ 1291 091c 6520     		movs	r0, #101
+ 1292              	.LVL117:
+ 1293 091e 7047     		bx	lr
+ 1294              	.LVL118:
+ 1295              	.L61:
+  70:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ж") return (char)0xB6;//0b10110110;
+ 1296              		.loc 1 70 0
+ 1297 0920 B520     		movs	r0, #181
+ 1298              	.LVL119:
+ 1299 0922 7047     		bx	lr
+ 1300              	.LVL120:
+ 1301              	.L62:
+  71:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"з") return (char)0xB7;//0b10110111;
+ 1302              		.loc 1 71 0
+ 1303 0924 B620     		movs	r0, #182
+ 1304              	.LVL121:
+ 1305 0926 7047     		bx	lr
+ 1306              	.LVL122:
+ 1307              	.L63:
+  72:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"и") return (char)0xB8;//0b10111000;
+ 1308              		.loc 1 72 0
+ 1309 0928 B720     		movs	r0, #183
+ 1310              	.LVL123:
+ 1311 092a 7047     		bx	lr
+ 1312              	.LVL124:
+ 1313              	.L64:
+  73:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"й") return (char)0xB9;//0b10111001;
+ 1314              		.loc 1 73 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 28
+
+
+ 1315 092c B820     		movs	r0, #184
+ 1316              	.LVL125:
+ 1317 092e 7047     		bx	lr
+ 1318              	.LVL126:
+ 1319              	.L65:
+  74:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"к") return (char)0xBA;//0b10111010;
+ 1320              		.loc 1 74 0
+ 1321 0930 B920     		movs	r0, #185
+ 1322              	.LVL127:
+ 1323 0932 7047     		bx	lr
+ 1324              	.LVL128:
+ 1325              	.L66:
+  75:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"л") return (char)0xBB;//0b10111011;
+ 1326              		.loc 1 75 0
+ 1327 0934 BA20     		movs	r0, #186
+ 1328              	.LVL129:
+ 1329 0936 7047     		bx	lr
+ 1330              	.LVL130:
+ 1331              	.L67:
+  76:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"м") return (char)0xBC;//0b10111100;
+ 1332              		.loc 1 76 0
+ 1333 0938 BB20     		movs	r0, #187
+ 1334              	.LVL131:
+ 1335 093a 7047     		bx	lr
+ 1336              	.LVL132:
+ 1337              	.L68:
+  77:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"н") return (char)0xBD;//0b10111101;
+ 1338              		.loc 1 77 0
+ 1339 093c BC20     		movs	r0, #188
+ 1340              	.LVL133:
+ 1341 093e 7047     		bx	lr
+ 1342              	.LVL134:
+ 1343              	.L69:
+  78:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"о") return (char)0x6F;//0b01101111;
+ 1344              		.loc 1 78 0
+ 1345 0940 BD20     		movs	r0, #189
+ 1346              	.LVL135:
+ 1347 0942 7047     		bx	lr
+ 1348              	.LVL136:
+ 1349              	.L70:
+  79:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"п") return (char)0xBE;//0b10111110;
+ 1350              		.loc 1 79 0
+ 1351 0944 6F20     		movs	r0, #111
+ 1352              	.LVL137:
+ 1353 0946 7047     		bx	lr
+ 1354              	.LVL138:
+ 1355              	.L71:
+  80:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"р") return (char)0x70;//0b01110000;
+ 1356              		.loc 1 80 0
+ 1357 0948 BE20     		movs	r0, #190
+ 1358              	.LVL139:
+ 1359 094a 7047     		bx	lr
+ 1360              	.LVL140:
+ 1361              	.L72:
+  81:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"с") return (char)0x63;//0b01100011;
+ 1362              		.loc 1 81 0
+ 1363 094c 7020     		movs	r0, #112
+ARM GAS  /tmp/cc5KtVqo.s 			page 29
+
+
+ 1364              	.LVL141:
+ 1365 094e 7047     		bx	lr
+ 1366              	.LVL142:
+ 1367              	.L73:
+  82:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"т") return (char)0xBF;//0b10111111;
+ 1368              		.loc 1 82 0
+ 1369 0950 6320     		movs	r0, #99
+ 1370              	.LVL143:
+ 1371 0952 7047     		bx	lr
+ 1372              	.LVL144:
+ 1373              	.L74:
+  83:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"у") return (char)0x79;//0b01111001;
+ 1374              		.loc 1 83 0
+ 1375 0954 BF20     		movs	r0, #191
+ 1376              	.LVL145:
+ 1377 0956 7047     		bx	lr
+ 1378              	.LVL146:
+ 1379              	.L75:
+  84:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ф") return (char)0xE4;//0b11100100;
+ 1380              		.loc 1 84 0
+ 1381 0958 7920     		movs	r0, #121
+ 1382              	.LVL147:
+ 1383 095a 7047     		bx	lr
+ 1384              	.LVL148:
+ 1385              	.L76:
+  85:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"х") return (char)0x78;//0b01111000;
+ 1386              		.loc 1 85 0
+ 1387 095c E420     		movs	r0, #228
+ 1388              	.LVL149:
+ 1389 095e 7047     		bx	lr
+ 1390              	.LVL150:
+ 1391              	.L77:
+  86:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ц") return (char)0xE5;//0b11100101;
+ 1392              		.loc 1 86 0
+ 1393 0960 7820     		movs	r0, #120
+ 1394              	.LVL151:
+ 1395 0962 7047     		bx	lr
+ 1396              	.LVL152:
+ 1397              	.L78:
+  87:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ч") return (char)0xC0;//0b11000000;
+ 1398              		.loc 1 87 0
+ 1399 0964 E520     		movs	r0, #229
+ 1400              	.LVL153:
+ 1401 0966 7047     		bx	lr
+ 1402              	.LVL154:
+ 1403              	.L79:
+  88:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ш") return (char)0xC1;//0b11000001;
+ 1404              		.loc 1 88 0
+ 1405 0968 C020     		movs	r0, #192
+ 1406              	.LVL155:
+ 1407 096a 7047     		bx	lr
+ 1408              	.LVL156:
+ 1409              	.L80:
+  89:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"щ") return (char)0xE6;//0b11100110;
+ 1410              		.loc 1 89 0
+ 1411 096c C120     		movs	r0, #193
+ 1412              	.LVL157:
+ARM GAS  /tmp/cc5KtVqo.s 			page 30
+
+
+ 1413 096e 7047     		bx	lr
+ 1414              	.LVL158:
+ 1415              	.L81:
+  90:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ъ") return (char)0xC2;//0b11000010;
+ 1416              		.loc 1 90 0
+ 1417 0970 E620     		movs	r0, #230
+ 1418              	.LVL159:
+ 1419 0972 7047     		bx	lr
+ 1420              	.LVL160:
+ 1421              	.L82:
+  91:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ы") return (char)0xC3;//0b11000011;
+ 1422              		.loc 1 91 0
+ 1423 0974 C220     		movs	r0, #194
+ 1424              	.LVL161:
+ 1425 0976 7047     		bx	lr
+ 1426              	.LVL162:
+ 1427              	.L83:
+  92:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ь") return (char)0xC4;//0b11000100;
+ 1428              		.loc 1 92 0
+ 1429 0978 C320     		movs	r0, #195
+ 1430              	.LVL163:
+ 1431 097a 7047     		bx	lr
+ 1432              	.LVL164:
+ 1433              	.L84:
+  93:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"э") return (char)0xC5;//0b11000101;
+ 1434              		.loc 1 93 0
+ 1435 097c C420     		movs	r0, #196
+ 1436              	.LVL165:
+ 1437 097e 7047     		bx	lr
+ 1438              	.LVL166:
+ 1439              	.L85:
+  94:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"ю") return (char)0xC6;//0b11000110;
+ 1440              		.loc 1 94 0
+ 1441 0980 C520     		movs	r0, #197
+ 1442              	.LVL167:
+ 1443 0982 7047     		bx	lr
+ 1444              	.LVL168:
+ 1445              	.L86:
+  95:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"я") return (char)0xC7;//0b11000111;
+ 1446              		.loc 1 95 0
+ 1447 0984 C620     		movs	r0, #198
+ 1448              	.LVL169:
+ 1449 0986 7047     		bx	lr
+ 1450              	.LVL170:
+ 1451              	.L87:
+  96:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"А") return (char)0x41;//0b01000001;
+ 1452              		.loc 1 96 0
+ 1453 0988 C720     		movs	r0, #199
+ 1454              	.LVL171:
+ 1455 098a 7047     		bx	lr
+ 1456              	.LVL172:
+ 1457              	.L88:
+  97:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Б") return (char)0xA0;//0b10100000;
+ 1458              		.loc 1 97 0
+ 1459 098c 4120     		movs	r0, #65
+ 1460              	.LVL173:
+ 1461 098e 7047     		bx	lr
+ARM GAS  /tmp/cc5KtVqo.s 			page 31
+
+
+ 1462              	.LVL174:
+ 1463              	.L89:
+  98:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"В") return (char)0x42;//0b01000010;
+ 1464              		.loc 1 98 0
+ 1465 0990 A020     		movs	r0, #160
+ 1466              	.LVL175:
+ 1467 0992 7047     		bx	lr
+ 1468              	.LVL176:
+ 1469              	.L90:
+  99:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Г") return (char)0xA1;//0b10100001;
+ 1470              		.loc 1 99 0
+ 1471 0994 4220     		movs	r0, #66
+ 1472              	.LVL177:
+ 1473 0996 7047     		bx	lr
+ 1474              	.LVL178:
+ 1475              	.L91:
+ 100:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Д") return (char)0xE0;//0b11100000;
+ 1476              		.loc 1 100 0
+ 1477 0998 A120     		movs	r0, #161
+ 1478              	.LVL179:
+ 1479 099a 7047     		bx	lr
+ 1480              	.LVL180:
+ 1481              	.L92:
+ 101:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Е") return (char)0x45;//0b01000101;
+ 1482              		.loc 1 101 0
+ 1483 099c E020     		movs	r0, #224
+ 1484              	.LVL181:
+ 1485 099e 7047     		bx	lr
+ 1486              	.LVL182:
+ 1487              	.L93:
+ 102:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ё") return (char)0x45;//0b01000101;
+ 1488              		.loc 1 102 0
+ 1489 09a0 4520     		movs	r0, #69
+ 1490              	.LVL183:
+ 1491 09a2 7047     		bx	lr
+ 1492              	.LVL184:
+ 1493              	.L94:
+ 103:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ж") return (char)0xA3;//0b10100011;
+ 1494              		.loc 1 103 0
+ 1495 09a4 4520     		movs	r0, #69
+ 1496              	.LVL185:
+ 1497 09a6 7047     		bx	lr
+ 1498              	.LVL186:
+ 1499              	.L95:
+ 104:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"З") return (char)0xA4;//0b10100100;
+ 1500              		.loc 1 104 0
+ 1501 09a8 A320     		movs	r0, #163
+ 1502              	.LVL187:
+ 1503 09aa 7047     		bx	lr
+ 1504              	.LVL188:
+ 1505              	.L96:
+ 105:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"И") return (char)0xA5;//0b10100101;
+ 1506              		.loc 1 105 0
+ 1507 09ac A420     		movs	r0, #164
+ 1508              	.LVL189:
+ 1509 09ae 7047     		bx	lr
+ 1510              	.LVL190:
+ARM GAS  /tmp/cc5KtVqo.s 			page 32
+
+
+ 1511              	.L97:
+ 106:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Й") return (char)0xA6;//0b10100110;
+ 1512              		.loc 1 106 0
+ 1513 09b0 A520     		movs	r0, #165
+ 1514              	.LVL191:
+ 1515 09b2 7047     		bx	lr
+ 1516              	.LVL192:
+ 1517              	.L98:
+ 107:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"К") return (char)0x4B;//0b01001011;
+ 1518              		.loc 1 107 0
+ 1519 09b4 A620     		movs	r0, #166
+ 1520              	.LVL193:
+ 1521 09b6 7047     		bx	lr
+ 1522              	.LVL194:
+ 1523              	.L99:
+ 108:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Л") return (char)0xA7;//0b10100111;
+ 1524              		.loc 1 108 0
+ 1525 09b8 4B20     		movs	r0, #75
+ 1526              	.LVL195:
+ 1527 09ba 7047     		bx	lr
+ 1528              	.LVL196:
+ 1529              	.L100:
+ 109:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"М") return (char)0x4D;//0b01001101;
+ 1530              		.loc 1 109 0
+ 1531 09bc A720     		movs	r0, #167
+ 1532              	.LVL197:
+ 1533 09be 7047     		bx	lr
+ 1534              	.LVL198:
+ 1535              	.L101:
+ 110:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Н") return (char)0x48;//0b01001000;
+ 1536              		.loc 1 110 0
+ 1537 09c0 4D20     		movs	r0, #77
+ 1538              	.LVL199:
+ 1539 09c2 7047     		bx	lr
+ 1540              	.LVL200:
+ 1541              	.L102:
+ 111:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"О") return (char)0x4F;//0b01001111;
+ 1542              		.loc 1 111 0
+ 1543 09c4 4820     		movs	r0, #72
+ 1544              	.LVL201:
+ 1545 09c6 7047     		bx	lr
+ 1546              	.LVL202:
+ 1547              	.L103:
+ 112:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"П") return (char)0xA8;//0b10101000;
+ 1548              		.loc 1 112 0
+ 1549 09c8 4F20     		movs	r0, #79
+ 1550              	.LVL203:
+ 1551 09ca 7047     		bx	lr
+ 1552              	.LVL204:
+ 1553              	.L104:
+ 113:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Р") return (char)0x50;//0b01010000;
+ 1554              		.loc 1 113 0
+ 1555 09cc A820     		movs	r0, #168
+ 1556              	.LVL205:
+ 1557 09ce 7047     		bx	lr
+ 1558              	.LVL206:
+ 1559              	.L105:
+ARM GAS  /tmp/cc5KtVqo.s 			page 33
+
+
+ 114:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"С") return (char)0x43;//0b01000011;
+ 1560              		.loc 1 114 0
+ 1561 09d0 5020     		movs	r0, #80
+ 1562              	.LVL207:
+ 1563 09d2 7047     		bx	lr
+ 1564              	.LVL208:
+ 1565              	.L106:
+ 115:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Т") return (char)0x54;//0b01010100;
+ 1566              		.loc 1 115 0
+ 1567 09d4 4320     		movs	r0, #67
+ 1568              	.LVL209:
+ 1569 09d6 7047     		bx	lr
+ 1570              	.LVL210:
+ 1571              	.L107:
+ 116:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"У") return (char)0xA9;//0b10101001;
+ 1572              		.loc 1 116 0
+ 1573 09d8 5420     		movs	r0, #84
+ 1574              	.LVL211:
+ 1575 09da 7047     		bx	lr
+ 1576              	.LVL212:
+ 1577              	.L108:
+ 117:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ф") return (char)0xAA;//0b10101010;
+ 1578              		.loc 1 117 0
+ 1579 09dc A920     		movs	r0, #169
+ 1580              	.LVL213:
+ 1581 09de 7047     		bx	lr
+ 1582              	.LVL214:
+ 1583              	.L109:
+ 118:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Х") return (char)0x58;//0b01011000;
+ 1584              		.loc 1 118 0
+ 1585 09e0 AA20     		movs	r0, #170
+ 1586              	.LVL215:
+ 1587 09e2 7047     		bx	lr
+ 1588              	.LVL216:
+ 1589              	.L110:
+ 119:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ц") return (char)0xE1;//0b11100001;
+ 1590              		.loc 1 119 0
+ 1591 09e4 5820     		movs	r0, #88
+ 1592              	.LVL217:
+ 1593 09e6 7047     		bx	lr
+ 1594              	.LVL218:
+ 1595              	.L111:
+ 120:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ч") return (char)0xAB;//0b10101011;
+ 1596              		.loc 1 120 0
+ 1597 09e8 E120     		movs	r0, #225
+ 1598              	.LVL219:
+ 1599 09ea 7047     		bx	lr
+ 1600              	.LVL220:
+ 1601              	.L112:
+ 121:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ш") return (char)0xAC;//0b10101100;
+ 1602              		.loc 1 121 0
+ 1603 09ec AB20     		movs	r0, #171
+ 1604              	.LVL221:
+ 1605 09ee 7047     		bx	lr
+ 1606              	.LVL222:
+ 1607              	.L113:
+ 122:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Щ") return (char)0xE2;//0b11100010;
+ARM GAS  /tmp/cc5KtVqo.s 			page 34
+
+
+ 1608              		.loc 1 122 0
+ 1609 09f0 AC20     		movs	r0, #172
+ 1610              	.LVL223:
+ 1611 09f2 7047     		bx	lr
+ 1612              	.LVL224:
+ 1613              	.L114:
+ 123:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ъ") return (char)0xAD;//0b10101101;
+ 1614              		.loc 1 123 0
+ 1615 09f4 E220     		movs	r0, #226
+ 1616              	.LVL225:
+ 1617 09f6 7047     		bx	lr
+ 1618              	.LVL226:
+ 1619              	.L115:
+ 124:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ы") return (char)0xAE;//0b10101110;
+ 1620              		.loc 1 124 0
+ 1621 09f8 AD20     		movs	r0, #173
+ 1622              	.LVL227:
+ 1623 09fa 7047     		bx	lr
+ 1624              	.LVL228:
+ 1625              	.L116:
+ 125:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ь") return (char)0x62;//0b01100010;
+ 1626              		.loc 1 125 0
+ 1627 09fc AE20     		movs	r0, #174
+ 1628              	.LVL229:
+ 1629 09fe 7047     		bx	lr
+ 1630              	.LVL230:
+ 1631              	.L117:
+ 126:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Э") return (char)0xAF;//0b10101111;
+ 1632              		.loc 1 126 0
+ 1633 0a00 6220     		movs	r0, #98
+ 1634              	.LVL231:
+ 1635 0a02 7047     		bx	lr
+ 1636              	.LVL232:
+ 1637              	.L118:
+ 127:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Ю") return (char)0xB0;//0b10110000;
+ 1638              		.loc 1 127 0
+ 1639 0a04 AF20     		movs	r0, #175
+ 1640              	.LVL233:
+ 1641 0a06 7047     		bx	lr
+ 1642              	.LVL234:
+ 1643              	.L119:
+ 128:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"Я") return (char)0xB1;//0b10110001;
+ 1644              		.loc 1 128 0
+ 1645 0a08 B020     		movs	r0, #176
+ 1646              	.LVL235:
+ 1647 0a0a 7047     		bx	lr
+ 1648              	.LVL236:
+ 1649              	.L120:
+ 129:Src/LCD/CharacterConverter_LCD.c ****     //Special characters
+ 1650              		.loc 1 129 0
+ 1651 0a0c B120     		movs	r0, #177
+ 1652              	.LVL237:
+ 1653 0a0e 7047     		bx	lr
+ 1654              	.LVL238:
+ 1655              	.L121:
+ 131:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"<") return '<';
+ 1656              		.loc 1 131 0
+ARM GAS  /tmp/cc5KtVqo.s 			page 35
+
+
+ 1657 0a10 3E20     		movs	r0, #62
+ 1658              	.LVL239:
+ 1659 0a12 7047     		bx	lr
+ 1660              	.LVL240:
+ 1661              	.L122:
+ 132:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L")") return ')';
+ 1662              		.loc 1 132 0
+ 1663 0a14 3C20     		movs	r0, #60
+ 1664              	.LVL241:
+ 1665 0a16 7047     		bx	lr
+ 1666              	.LVL242:
+ 1667              	.L123:
+ 133:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"(") return '(';
+ 1668              		.loc 1 133 0
+ 1669 0a18 2920     		movs	r0, #41
+ 1670              	.LVL243:
+ 1671 0a1a 7047     		bx	lr
+ 1672              	.LVL244:
+ 1673              	.L124:
+ 134:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"\"") return '\"';
+ 1674              		.loc 1 134 0
+ 1675 0a1c 2820     		movs	r0, #40
+ 1676              	.LVL245:
+ 1677 0a1e 7047     		bx	lr
+ 1678              	.LVL246:
+ 1679              	.L125:
+ 135:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"!") return '!';
+ 1680              		.loc 1 135 0
+ 1681 0a20 2220     		movs	r0, #34
+ 1682              	.LVL247:
+ 1683 0a22 7047     		bx	lr
+ 1684              	.LVL248:
+ 1685              	.L126:
+ 136:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"?") return '?';
+ 1686              		.loc 1 136 0
+ 1687 0a24 2120     		movs	r0, #33
+ 1688              	.LVL249:
+ 1689 0a26 7047     		bx	lr
+ 1690              	.LVL250:
+ 1691              	.L127:
+ 137:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"#") return '#';
+ 1692              		.loc 1 137 0
+ 1693 0a28 3F20     		movs	r0, #63
+ 1694              	.LVL251:
+ 1695 0a2a 7047     		bx	lr
+ 1696              	.LVL252:
+ 1697              	.L128:
+ 138:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"$") return '$';
+ 1698              		.loc 1 138 0
+ 1699 0a2c 2320     		movs	r0, #35
+ 1700              	.LVL253:
+ 1701 0a2e 7047     		bx	lr
+ 1702              	.LVL254:
+ 1703              	.L129:
+ 139:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"%") return '%';
+ 1704              		.loc 1 139 0
+ 1705 0a30 2420     		movs	r0, #36
+ARM GAS  /tmp/cc5KtVqo.s 			page 36
+
+
+ 1706              	.LVL255:
+ 1707 0a32 7047     		bx	lr
+ 1708              	.LVL256:
+ 1709              	.L130:
+ 140:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"\'") return '\'';
+ 1710              		.loc 1 140 0
+ 1711 0a34 2520     		movs	r0, #37
+ 1712              	.LVL257:
+ 1713 0a36 7047     		bx	lr
+ 1714              	.LVL258:
+ 1715              	.L131:
+ 141:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"*") return '*';
+ 1716              		.loc 1 141 0
+ 1717 0a38 2720     		movs	r0, #39
+ 1718              	.LVL259:
+ 1719 0a3a 7047     		bx	lr
+ 1720              	.LVL260:
+ 1721              	.L132:
+ 142:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"-") return '-';
+ 1722              		.loc 1 142 0
+ 1723 0a3c 2A20     		movs	r0, #42
+ 1724              	.LVL261:
+ 1725 0a3e 7047     		bx	lr
+ 1726              	.LVL262:
+ 1727              	.L133:
+ 143:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"+") return '+';
+ 1728              		.loc 1 143 0
+ 1729 0a40 2D20     		movs	r0, #45
+ 1730              	.LVL263:
+ 1731 0a42 7047     		bx	lr
+ 1732              	.LVL264:
+ 1733              	.L134:
+ 144:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L".") return '.';
+ 1734              		.loc 1 144 0
+ 1735 0a44 2B20     		movs	r0, #43
+ 1736              	.LVL265:
+ 1737 0a46 7047     		bx	lr
+ 1738              	.LVL266:
+ 1739              	.L135:
+ 145:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L",") return ',';
+ 1740              		.loc 1 145 0
+ 1741 0a48 2E20     		movs	r0, #46
+ 1742              	.LVL267:
+ 1743 0a4a 7047     		bx	lr
+ 1744              	.LVL268:
+ 1745              	.L136:
+ 146:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"_") return '_';
+ 1746              		.loc 1 146 0
+ 1747 0a4c 2C20     		movs	r0, #44
+ 1748              	.LVL269:
+ 1749 0a4e 7047     		bx	lr
+ 1750              	.LVL270:
+ 1751              	.L137:
+ 147:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"=") return '=';
+ 1752              		.loc 1 147 0
+ 1753 0a50 5F20     		movs	r0, #95
+ 1754              	.LVL271:
+ARM GAS  /tmp/cc5KtVqo.s 			page 37
+
+
+ 1755 0a52 7047     		bx	lr
+ 1756              	.LVL272:
+ 1757              	.L138:
+ 148:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"^") return '^';
+ 1758              		.loc 1 148 0
+ 1759 0a54 3D20     		movs	r0, #61
+ 1760              	.LVL273:
+ 1761 0a56 7047     		bx	lr
+ 1762              	.LVL274:
+ 1763              	.L139:
+ 149:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"/") return '/';
+ 1764              		.loc 1 149 0
+ 1765 0a58 5E20     		movs	r0, #94
+ 1766              	.LVL275:
+ 1767 0a5a 7047     		bx	lr
+ 1768              	.LVL276:
+ 1769              	.L140:
+ 150:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L":") return ':';
+ 1770              		.loc 1 150 0
+ 1771 0a5c 2F20     		movs	r0, #47
+ 1772              	.LVL277:
+ 1773 0a5e 7047     		bx	lr
+ 1774              	.LVL278:
+ 1775              	.L141:
+ 151:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L";") return ';';
+ 1776              		.loc 1 151 0
+ 1777 0a60 3A20     		movs	r0, #58
+ 1778              	.LVL279:
+ 1779 0a62 7047     		bx	lr
+ 1780              	.LVL280:
+ 1781              	.L142:
+ 152:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L" ") return ' ';
+ 1782              		.loc 1 152 0
+ 1783 0a64 3B20     		movs	r0, #59
+ 1784              	.LVL281:
+ 1785 0a66 7047     		bx	lr
+ 1786              	.LVL282:
+ 1787              	.L143:
+ 153:Src/LCD/CharacterConverter_LCD.c ****     //Numbers
+ 1788              		.loc 1 153 0
+ 1789 0a68 2020     		movs	r0, #32
+ 1790              	.LVL283:
+ 1791 0a6a 7047     		bx	lr
+ 1792              	.LVL284:
+ 1793              	.L144:
+ 155:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"1") return '1';
+ 1794              		.loc 1 155 0
+ 1795 0a6c 3020     		movs	r0, #48
+ 1796              	.LVL285:
+ 1797 0a6e 7047     		bx	lr
+ 1798              	.LVL286:
+ 1799              	.L145:
+ 156:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"2") return '2';
+ 1800              		.loc 1 156 0
+ 1801 0a70 3120     		movs	r0, #49
+ 1802              	.LVL287:
+ 1803 0a72 7047     		bx	lr
+ARM GAS  /tmp/cc5KtVqo.s 			page 38
+
+
+ 1804              	.LVL288:
+ 1805              	.L146:
+ 157:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"3") return '3';
+ 1806              		.loc 1 157 0
+ 1807 0a74 3220     		movs	r0, #50
+ 1808              	.LVL289:
+ 1809 0a76 7047     		bx	lr
+ 1810              	.LVL290:
+ 1811              	.L147:
+ 158:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"4") return '4';
+ 1812              		.loc 1 158 0
+ 1813 0a78 3320     		movs	r0, #51
+ 1814              	.LVL291:
+ 1815 0a7a 7047     		bx	lr
+ 1816              	.LVL292:
+ 1817              	.L148:
+ 159:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"5") return '5';
+ 1818              		.loc 1 159 0
+ 1819 0a7c 3420     		movs	r0, #52
+ 1820              	.LVL293:
+ 1821 0a7e 7047     		bx	lr
+ 1822              	.LVL294:
+ 1823              	.L149:
+ 160:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"6") return '6';
+ 1824              		.loc 1 160 0
+ 1825 0a80 3520     		movs	r0, #53
+ 1826              	.LVL295:
+ 1827 0a82 7047     		bx	lr
+ 1828              	.LVL296:
+ 1829              	.L150:
+ 161:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"7") return '7';
+ 1830              		.loc 1 161 0
+ 1831 0a84 3620     		movs	r0, #54
+ 1832              	.LVL297:
+ 1833 0a86 7047     		bx	lr
+ 1834              	.LVL298:
+ 1835              	.L151:
+ 162:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"8") return '8';
+ 1836              		.loc 1 162 0
+ 1837 0a88 3720     		movs	r0, #55
+ 1838              	.LVL299:
+ 1839 0a8a 7047     		bx	lr
+ 1840              	.LVL300:
+ 1841              	.L152:
+ 163:Src/LCD/CharacterConverter_LCD.c ****     if (letter == *L"9") return '9';
+ 1842              		.loc 1 163 0
+ 1843 0a8c 3820     		movs	r0, #56
+ 1844              	.LVL301:
+ 1845 0a8e 7047     		bx	lr
+ 1846              	.LVL302:
+ 1847              	.L153:
+ 165:Src/LCD/CharacterConverter_LCD.c ****     //Default character
+ 166:Src/LCD/CharacterConverter_LCD.c ****     return '?';
+ 1848              		.loc 1 166 0
+ 1849 0a90 3F20     		movs	r0, #63
+ 1850              	.LVL303:
+ 167:Src/LCD/CharacterConverter_LCD.c **** }
+ARM GAS  /tmp/cc5KtVqo.s 			page 39
+
+
+ 1851              		.loc 1 167 0
+ 1852 0a92 7047     		bx	lr
+ 1853              	.L161:
+ 1854              		.align	2
+ 1855              	.L160:
+ 1856 0a94 90040000 		.word	.LC146
+ 1857 0a98 98040000 		.word	.LC147
+ 1858 0a9c A0040000 		.word	.LC148
+ 1859 0aa0 A8040000 		.word	.LC149
+ 1860 0aa4 B0040000 		.word	.LC150
+ 1861              		.cfi_endproc
+ 1862              	.LFE0:
+ 1864              		.section	.rodata.convertCharacter_LCD.str4.4,"aMS",%progbits,4
+ 1865              		.align	2
+ 1866              	.LC0:
+ 1867 0000 61000000 		.ascii	"a\000\000\000\000\000\000\000"
+ 1867      00000000 
+ 1868              	.LC1:
+ 1869 0008 62000000 		.ascii	"b\000\000\000\000\000\000\000"
+ 1869      00000000 
+ 1870              	.LC2:
+ 1871 0010 63000000 		.ascii	"c\000\000\000\000\000\000\000"
+ 1871      00000000 
+ 1872              	.LC3:
+ 1873 0018 64000000 		.ascii	"d\000\000\000\000\000\000\000"
+ 1873      00000000 
+ 1874              	.LC4:
+ 1875 0020 65000000 		.ascii	"e\000\000\000\000\000\000\000"
+ 1875      00000000 
+ 1876              	.LC5:
+ 1877 0028 66000000 		.ascii	"f\000\000\000\000\000\000\000"
+ 1877      00000000 
+ 1878              	.LC6:
+ 1879 0030 67000000 		.ascii	"g\000\000\000\000\000\000\000"
+ 1879      00000000 
+ 1880              	.LC7:
+ 1881 0038 68000000 		.ascii	"h\000\000\000\000\000\000\000"
+ 1881      00000000 
+ 1882              	.LC8:
+ 1883 0040 69000000 		.ascii	"i\000\000\000\000\000\000\000"
+ 1883      00000000 
+ 1884              	.LC9:
+ 1885 0048 6A000000 		.ascii	"j\000\000\000\000\000\000\000"
+ 1885      00000000 
+ 1886              	.LC10:
+ 1887 0050 6B000000 		.ascii	"k\000\000\000\000\000\000\000"
+ 1887      00000000 
+ 1888              	.LC11:
+ 1889 0058 6C000000 		.ascii	"l\000\000\000\000\000\000\000"
+ 1889      00000000 
+ 1890              	.LC12:
+ 1891 0060 6D000000 		.ascii	"m\000\000\000\000\000\000\000"
+ 1891      00000000 
+ 1892              	.LC13:
+ 1893 0068 6E000000 		.ascii	"n\000\000\000\000\000\000\000"
+ 1893      00000000 
+ 1894              	.LC14:
+ARM GAS  /tmp/cc5KtVqo.s 			page 40
+
+
+ 1895 0070 6F000000 		.ascii	"o\000\000\000\000\000\000\000"
+ 1895      00000000 
+ 1896              	.LC15:
+ 1897 0078 70000000 		.ascii	"p\000\000\000\000\000\000\000"
+ 1897      00000000 
+ 1898              	.LC16:
+ 1899 0080 71000000 		.ascii	"q\000\000\000\000\000\000\000"
+ 1899      00000000 
+ 1900              	.LC17:
+ 1901 0088 72000000 		.ascii	"r\000\000\000\000\000\000\000"
+ 1901      00000000 
+ 1902              	.LC18:
+ 1903 0090 73000000 		.ascii	"s\000\000\000\000\000\000\000"
+ 1903      00000000 
+ 1904              	.LC19:
+ 1905 0098 74000000 		.ascii	"t\000\000\000\000\000\000\000"
+ 1905      00000000 
+ 1906              	.LC20:
+ 1907 00a0 75000000 		.ascii	"u\000\000\000\000\000\000\000"
+ 1907      00000000 
+ 1908              	.LC21:
+ 1909 00a8 76000000 		.ascii	"v\000\000\000\000\000\000\000"
+ 1909      00000000 
+ 1910              	.LC22:
+ 1911 00b0 77000000 		.ascii	"w\000\000\000\000\000\000\000"
+ 1911      00000000 
+ 1912              	.LC23:
+ 1913 00b8 78000000 		.ascii	"x\000\000\000\000\000\000\000"
+ 1913      00000000 
+ 1914              	.LC24:
+ 1915 00c0 79000000 		.ascii	"y\000\000\000\000\000\000\000"
+ 1915      00000000 
+ 1916              	.LC25:
+ 1917 00c8 7A000000 		.ascii	"z\000\000\000\000\000\000\000"
+ 1917      00000000 
+ 1918              	.LC26:
+ 1919 00d0 41000000 		.ascii	"A\000\000\000\000\000\000\000"
+ 1919      00000000 
+ 1920              	.LC27:
+ 1921 00d8 42000000 		.ascii	"B\000\000\000\000\000\000\000"
+ 1921      00000000 
+ 1922              	.LC28:
+ 1923 00e0 43000000 		.ascii	"C\000\000\000\000\000\000\000"
+ 1923      00000000 
+ 1924              	.LC29:
+ 1925 00e8 44000000 		.ascii	"D\000\000\000\000\000\000\000"
+ 1925      00000000 
+ 1926              	.LC30:
+ 1927 00f0 45000000 		.ascii	"E\000\000\000\000\000\000\000"
+ 1927      00000000 
+ 1928              	.LC31:
+ 1929 00f8 46000000 		.ascii	"F\000\000\000\000\000\000\000"
+ 1929      00000000 
+ 1930              	.LC32:
+ 1931 0100 47000000 		.ascii	"G\000\000\000\000\000\000\000"
+ 1931      00000000 
+ 1932              	.LC33:
+ARM GAS  /tmp/cc5KtVqo.s 			page 41
+
+
+ 1933 0108 48000000 		.ascii	"H\000\000\000\000\000\000\000"
+ 1933      00000000 
+ 1934              	.LC34:
+ 1935 0110 49000000 		.ascii	"I\000\000\000\000\000\000\000"
+ 1935      00000000 
+ 1936              	.LC35:
+ 1937 0118 4A000000 		.ascii	"J\000\000\000\000\000\000\000"
+ 1937      00000000 
+ 1938              	.LC36:
+ 1939 0120 4B000000 		.ascii	"K\000\000\000\000\000\000\000"
+ 1939      00000000 
+ 1940              	.LC37:
+ 1941 0128 4C000000 		.ascii	"L\000\000\000\000\000\000\000"
+ 1941      00000000 
+ 1942              	.LC38:
+ 1943 0130 4D000000 		.ascii	"M\000\000\000\000\000\000\000"
+ 1943      00000000 
+ 1944              	.LC39:
+ 1945 0138 4E000000 		.ascii	"N\000\000\000\000\000\000\000"
+ 1945      00000000 
+ 1946              	.LC40:
+ 1947 0140 4F000000 		.ascii	"O\000\000\000\000\000\000\000"
+ 1947      00000000 
+ 1948              	.LC41:
+ 1949 0148 50000000 		.ascii	"P\000\000\000\000\000\000\000"
+ 1949      00000000 
+ 1950              	.LC42:
+ 1951 0150 51000000 		.ascii	"Q\000\000\000\000\000\000\000"
+ 1951      00000000 
+ 1952              	.LC43:
+ 1953 0158 52000000 		.ascii	"R\000\000\000\000\000\000\000"
+ 1953      00000000 
+ 1954              	.LC44:
+ 1955 0160 53000000 		.ascii	"S\000\000\000\000\000\000\000"
+ 1955      00000000 
+ 1956              	.LC45:
+ 1957 0168 54000000 		.ascii	"T\000\000\000\000\000\000\000"
+ 1957      00000000 
+ 1958              	.LC46:
+ 1959 0170 55000000 		.ascii	"U\000\000\000\000\000\000\000"
+ 1959      00000000 
+ 1960              	.LC47:
+ 1961 0178 56000000 		.ascii	"V\000\000\000\000\000\000\000"
+ 1961      00000000 
+ 1962              	.LC48:
+ 1963 0180 57000000 		.ascii	"W\000\000\000\000\000\000\000"
+ 1963      00000000 
+ 1964              	.LC49:
+ 1965 0188 58000000 		.ascii	"X\000\000\000\000\000\000\000"
+ 1965      00000000 
+ 1966              	.LC50:
+ 1967 0190 59000000 		.ascii	"Y\000\000\000\000\000\000\000"
+ 1967      00000000 
+ 1968              	.LC51:
+ 1969 0198 5A000000 		.ascii	"Z\000\000\000\000\000\000\000"
+ 1969      00000000 
+ 1970              	.LC52:
+ARM GAS  /tmp/cc5KtVqo.s 			page 42
+
+
+ 1971 01a0 30040000 		.ascii	"0\004\000\000\000\000\000\000"
+ 1971      00000000 
+ 1972              	.LC53:
+ 1973 01a8 31040000 		.ascii	"1\004\000\000\000\000\000\000"
+ 1973      00000000 
+ 1974              	.LC54:
+ 1975 01b0 32040000 		.ascii	"2\004\000\000\000\000\000\000"
+ 1975      00000000 
+ 1976              	.LC55:
+ 1977 01b8 33040000 		.ascii	"3\004\000\000\000\000\000\000"
+ 1977      00000000 
+ 1978              	.LC56:
+ 1979 01c0 34040000 		.ascii	"4\004\000\000\000\000\000\000"
+ 1979      00000000 
+ 1980              	.LC57:
+ 1981 01c8 35040000 		.ascii	"5\004\000\000\000\000\000\000"
+ 1981      00000000 
+ 1982              	.LC58:
+ 1983 01d0 51040000 		.ascii	"Q\004\000\000\000\000\000\000"
+ 1983      00000000 
+ 1984              	.LC59:
+ 1985 01d8 36040000 		.ascii	"6\004\000\000\000\000\000\000"
+ 1985      00000000 
+ 1986              	.LC60:
+ 1987 01e0 37040000 		.ascii	"7\004\000\000\000\000\000\000"
+ 1987      00000000 
+ 1988              	.LC61:
+ 1989 01e8 38040000 		.ascii	"8\004\000\000\000\000\000\000"
+ 1989      00000000 
+ 1990              	.LC62:
+ 1991 01f0 39040000 		.ascii	"9\004\000\000\000\000\000\000"
+ 1991      00000000 
+ 1992              	.LC63:
+ 1993 01f8 3A040000 		.ascii	":\004\000\000\000\000\000\000"
+ 1993      00000000 
+ 1994              	.LC64:
+ 1995 0200 3B040000 		.ascii	";\004\000\000\000\000\000\000"
+ 1995      00000000 
+ 1996              	.LC65:
+ 1997 0208 3C040000 		.ascii	"<\004\000\000\000\000\000\000"
+ 1997      00000000 
+ 1998              	.LC66:
+ 1999 0210 3D040000 		.ascii	"=\004\000\000\000\000\000\000"
+ 1999      00000000 
+ 2000              	.LC67:
+ 2001 0218 3E040000 		.ascii	">\004\000\000\000\000\000\000"
+ 2001      00000000 
+ 2002              	.LC68:
+ 2003 0220 3F040000 		.ascii	"?\004\000\000\000\000\000\000"
+ 2003      00000000 
+ 2004              	.LC69:
+ 2005 0228 40040000 		.ascii	"@\004\000\000\000\000\000\000"
+ 2005      00000000 
+ 2006              	.LC70:
+ 2007 0230 41040000 		.ascii	"A\004\000\000\000\000\000\000"
+ 2007      00000000 
+ 2008              	.LC71:
+ARM GAS  /tmp/cc5KtVqo.s 			page 43
+
+
+ 2009 0238 42040000 		.ascii	"B\004\000\000\000\000\000\000"
+ 2009      00000000 
+ 2010              	.LC72:
+ 2011 0240 43040000 		.ascii	"C\004\000\000\000\000\000\000"
+ 2011      00000000 
+ 2012              	.LC73:
+ 2013 0248 44040000 		.ascii	"D\004\000\000\000\000\000\000"
+ 2013      00000000 
+ 2014              	.LC74:
+ 2015 0250 45040000 		.ascii	"E\004\000\000\000\000\000\000"
+ 2015      00000000 
+ 2016              	.LC75:
+ 2017 0258 46040000 		.ascii	"F\004\000\000\000\000\000\000"
+ 2017      00000000 
+ 2018              	.LC76:
+ 2019 0260 47040000 		.ascii	"G\004\000\000\000\000\000\000"
+ 2019      00000000 
+ 2020              	.LC77:
+ 2021 0268 48040000 		.ascii	"H\004\000\000\000\000\000\000"
+ 2021      00000000 
+ 2022              	.LC78:
+ 2023 0270 49040000 		.ascii	"I\004\000\000\000\000\000\000"
+ 2023      00000000 
+ 2024              	.LC79:
+ 2025 0278 4A040000 		.ascii	"J\004\000\000\000\000\000\000"
+ 2025      00000000 
+ 2026              	.LC80:
+ 2027 0280 4B040000 		.ascii	"K\004\000\000\000\000\000\000"
+ 2027      00000000 
+ 2028              	.LC81:
+ 2029 0288 4C040000 		.ascii	"L\004\000\000\000\000\000\000"
+ 2029      00000000 
+ 2030              	.LC82:
+ 2031 0290 4D040000 		.ascii	"M\004\000\000\000\000\000\000"
+ 2031      00000000 
+ 2032              	.LC83:
+ 2033 0298 4E040000 		.ascii	"N\004\000\000\000\000\000\000"
+ 2033      00000000 
+ 2034              	.LC84:
+ 2035 02a0 4F040000 		.ascii	"O\004\000\000\000\000\000\000"
+ 2035      00000000 
+ 2036              	.LC85:
+ 2037 02a8 10040000 		.ascii	"\020\004\000\000\000\000\000\000"
+ 2037      00000000 
+ 2038              	.LC86:
+ 2039 02b0 11040000 		.ascii	"\021\004\000\000\000\000\000\000"
+ 2039      00000000 
+ 2040              	.LC87:
+ 2041 02b8 12040000 		.ascii	"\022\004\000\000\000\000\000\000"
+ 2041      00000000 
+ 2042              	.LC88:
+ 2043 02c0 13040000 		.ascii	"\023\004\000\000\000\000\000\000"
+ 2043      00000000 
+ 2044              	.LC89:
+ 2045 02c8 14040000 		.ascii	"\024\004\000\000\000\000\000\000"
+ 2045      00000000 
+ 2046              	.LC90:
+ARM GAS  /tmp/cc5KtVqo.s 			page 44
+
+
+ 2047 02d0 15040000 		.ascii	"\025\004\000\000\000\000\000\000"
+ 2047      00000000 
+ 2048              	.LC91:
+ 2049 02d8 01040000 		.ascii	"\001\004\000\000\000\000\000\000"
+ 2049      00000000 
+ 2050              	.LC92:
+ 2051 02e0 16040000 		.ascii	"\026\004\000\000\000\000\000\000"
+ 2051      00000000 
+ 2052              	.LC93:
+ 2053 02e8 17040000 		.ascii	"\027\004\000\000\000\000\000\000"
+ 2053      00000000 
+ 2054              	.LC94:
+ 2055 02f0 18040000 		.ascii	"\030\004\000\000\000\000\000\000"
+ 2055      00000000 
+ 2056              	.LC95:
+ 2057 02f8 19040000 		.ascii	"\031\004\000\000\000\000\000\000"
+ 2057      00000000 
+ 2058              	.LC96:
+ 2059 0300 1A040000 		.ascii	"\032\004\000\000\000\000\000\000"
+ 2059      00000000 
+ 2060              	.LC97:
+ 2061 0308 1B040000 		.ascii	"\033\004\000\000\000\000\000\000"
+ 2061      00000000 
+ 2062              	.LC98:
+ 2063 0310 1C040000 		.ascii	"\034\004\000\000\000\000\000\000"
+ 2063      00000000 
+ 2064              	.LC99:
+ 2065 0318 1D040000 		.ascii	"\035\004\000\000\000\000\000\000"
+ 2065      00000000 
+ 2066              	.LC100:
+ 2067 0320 1E040000 		.ascii	"\036\004\000\000\000\000\000\000"
+ 2067      00000000 
+ 2068              	.LC101:
+ 2069 0328 1F040000 		.ascii	"\037\004\000\000\000\000\000\000"
+ 2069      00000000 
+ 2070              	.LC102:
+ 2071 0330 20040000 		.ascii	" \004\000\000\000\000\000\000"
+ 2071      00000000 
+ 2072              	.LC103:
+ 2073 0338 21040000 		.ascii	"!\004\000\000\000\000\000\000"
+ 2073      00000000 
+ 2074              	.LC104:
+ 2075 0340 22040000 		.ascii	"\"\004\000\000\000\000\000\000"
+ 2075      00000000 
+ 2076              	.LC105:
+ 2077 0348 23040000 		.ascii	"#\004\000\000\000\000\000\000"
+ 2077      00000000 
+ 2078              	.LC106:
+ 2079 0350 24040000 		.ascii	"$\004\000\000\000\000\000\000"
+ 2079      00000000 
+ 2080              	.LC107:
+ 2081 0358 25040000 		.ascii	"%\004\000\000\000\000\000\000"
+ 2081      00000000 
+ 2082              	.LC108:
+ 2083 0360 26040000 		.ascii	"&\004\000\000\000\000\000\000"
+ 2083      00000000 
+ 2084              	.LC109:
+ARM GAS  /tmp/cc5KtVqo.s 			page 45
+
+
+ 2085 0368 27040000 		.ascii	"'\004\000\000\000\000\000\000"
+ 2085      00000000 
+ 2086              	.LC110:
+ 2087 0370 28040000 		.ascii	"(\004\000\000\000\000\000\000"
+ 2087      00000000 
+ 2088              	.LC111:
+ 2089 0378 29040000 		.ascii	")\004\000\000\000\000\000\000"
+ 2089      00000000 
+ 2090              	.LC112:
+ 2091 0380 2A040000 		.ascii	"*\004\000\000\000\000\000\000"
+ 2091      00000000 
+ 2092              	.LC113:
+ 2093 0388 2B040000 		.ascii	"+\004\000\000\000\000\000\000"
+ 2093      00000000 
+ 2094              	.LC114:
+ 2095 0390 2C040000 		.ascii	",\004\000\000\000\000\000\000"
+ 2095      00000000 
+ 2096              	.LC115:
+ 2097 0398 2D040000 		.ascii	"-\004\000\000\000\000\000\000"
+ 2097      00000000 
+ 2098              	.LC116:
+ 2099 03a0 2E040000 		.ascii	".\004\000\000\000\000\000\000"
+ 2099      00000000 
+ 2100              	.LC117:
+ 2101 03a8 2F040000 		.ascii	"/\004\000\000\000\000\000\000"
+ 2101      00000000 
+ 2102              	.LC118:
+ 2103 03b0 3E000000 		.ascii	">\000\000\000\000\000\000\000"
+ 2103      00000000 
+ 2104              	.LC119:
+ 2105 03b8 3C000000 		.ascii	"<\000\000\000\000\000\000\000"
+ 2105      00000000 
+ 2106              	.LC120:
+ 2107 03c0 29000000 		.ascii	")\000\000\000\000\000\000\000"
+ 2107      00000000 
+ 2108              	.LC121:
+ 2109 03c8 28000000 		.ascii	"(\000\000\000\000\000\000\000"
+ 2109      00000000 
+ 2110              	.LC122:
+ 2111 03d0 22000000 		.ascii	"\"\000\000\000\000\000\000\000"
+ 2111      00000000 
+ 2112              	.LC123:
+ 2113 03d8 21000000 		.ascii	"!\000\000\000\000\000\000\000"
+ 2113      00000000 
+ 2114              	.LC124:
+ 2115 03e0 3F000000 		.ascii	"?\000\000\000\000\000\000\000"
+ 2115      00000000 
+ 2116              	.LC125:
+ 2117 03e8 23000000 		.ascii	"#\000\000\000\000\000\000\000"
+ 2117      00000000 
+ 2118              	.LC126:
+ 2119 03f0 24000000 		.ascii	"$\000\000\000\000\000\000\000"
+ 2119      00000000 
+ 2120              	.LC127:
+ 2121 03f8 25000000 		.ascii	"%\000\000\000\000\000\000\000"
+ 2121      00000000 
+ 2122              	.LC128:
+ARM GAS  /tmp/cc5KtVqo.s 			page 46
+
+
+ 2123 0400 27000000 		.ascii	"'\000\000\000\000\000\000\000"
+ 2123      00000000 
+ 2124              	.LC129:
+ 2125 0408 2A000000 		.ascii	"*\000\000\000\000\000\000\000"
+ 2125      00000000 
+ 2126              	.LC130:
+ 2127 0410 2D000000 		.ascii	"-\000\000\000\000\000\000\000"
+ 2127      00000000 
+ 2128              	.LC131:
+ 2129 0418 2B000000 		.ascii	"+\000\000\000\000\000\000\000"
+ 2129      00000000 
+ 2130              	.LC132:
+ 2131 0420 2E000000 		.ascii	".\000\000\000\000\000\000\000"
+ 2131      00000000 
+ 2132              	.LC133:
+ 2133 0428 2C000000 		.ascii	",\000\000\000\000\000\000\000"
+ 2133      00000000 
+ 2134              	.LC134:
+ 2135 0430 5F000000 		.ascii	"_\000\000\000\000\000\000\000"
+ 2135      00000000 
+ 2136              	.LC135:
+ 2137 0438 3D000000 		.ascii	"=\000\000\000\000\000\000\000"
+ 2137      00000000 
+ 2138              	.LC136:
+ 2139 0440 5E000000 		.ascii	"^\000\000\000\000\000\000\000"
+ 2139      00000000 
+ 2140              	.LC137:
+ 2141 0448 2F000000 		.ascii	"/\000\000\000\000\000\000\000"
+ 2141      00000000 
+ 2142              	.LC138:
+ 2143 0450 3A000000 		.ascii	":\000\000\000\000\000\000\000"
+ 2143      00000000 
+ 2144              	.LC139:
+ 2145 0458 3B000000 		.ascii	";\000\000\000\000\000\000\000"
+ 2145      00000000 
+ 2146              	.LC140:
+ 2147 0460 20000000 		.ascii	" \000\000\000\000\000\000\000"
+ 2147      00000000 
+ 2148              	.LC141:
+ 2149 0468 30000000 		.ascii	"0\000\000\000\000\000\000\000"
+ 2149      00000000 
+ 2150              	.LC142:
+ 2151 0470 31000000 		.ascii	"1\000\000\000\000\000\000\000"
+ 2151      00000000 
+ 2152              	.LC143:
+ 2153 0478 32000000 		.ascii	"2\000\000\000\000\000\000\000"
+ 2153      00000000 
+ 2154              	.LC144:
+ 2155 0480 33000000 		.ascii	"3\000\000\000\000\000\000\000"
+ 2155      00000000 
+ 2156              	.LC145:
+ 2157 0488 34000000 		.ascii	"4\000\000\000\000\000\000\000"
+ 2157      00000000 
+ 2158              	.LC146:
+ 2159 0490 35000000 		.ascii	"5\000\000\000\000\000\000\000"
+ 2159      00000000 
+ 2160              	.LC147:
+ARM GAS  /tmp/cc5KtVqo.s 			page 47
+
+
+ 2161 0498 36000000 		.ascii	"6\000\000\000\000\000\000\000"
+ 2161      00000000 
+ 2162              	.LC148:
+ 2163 04a0 37000000 		.ascii	"7\000\000\000\000\000\000\000"
+ 2163      00000000 
+ 2164              	.LC149:
+ 2165 04a8 38000000 		.ascii	"8\000\000\000\000\000\000\000"
+ 2165      00000000 
+ 2166              	.LC150:
+ 2167 04b0 39000000 		.ascii	"9\000\000\000\000\000\000\000"
+ 2167      00000000 
+ 2168              		.text
+ 2169              	.Letext0:
+ 2170              		.file 2 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
+ 2171              		.file 3 "/usr/arm-none-eabi/include/sys/lock.h"
+ 2172              		.file 4 "/usr/arm-none-eabi/include/sys/_types.h"
+ 2173              		.file 5 "/usr/arm-none-eabi/include/sys/reent.h"
+ 2174              		.file 6 "/usr/arm-none-eabi/include/sys/unistd.h"
+ARM GAS  /tmp/cc5KtVqo.s 			page 48
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 CharacterConverter_LCD.c
+     /tmp/cc5KtVqo.s:16     .text.convertCharacter_LCD:0000000000000000 $t
+     /tmp/cc5KtVqo.s:23     .text.convertCharacter_LCD:0000000000000000 convertCharacter_LCD
+     /tmp/cc5KtVqo.s:399    .text.convertCharacter_LCD:00000000000002d8 $d
+     /tmp/cc5KtVqo.s:473    .text.convertCharacter_LCD:00000000000003fc $t
+     /tmp/cc5KtVqo.s:842    .text.convertCharacter_LCD:00000000000006d8 $d
+     /tmp/cc5KtVqo.s:916    .text.convertCharacter_LCD:00000000000007fc $t
+     /tmp/cc5KtVqo.s:1856   .text.convertCharacter_LCD:0000000000000a94 $d
+     /tmp/cc5KtVqo.s:1865   .rodata.convertCharacter_LCD.str4.4:0000000000000000 $d
+
+NO UNDEFINED SYMBOLS

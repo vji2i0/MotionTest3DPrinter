@@ -1,0 +1,1037 @@
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"GPIO_Motors.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.EnableX_Motors,"ax",%progbits
+  16              		.align	1
+  17              		.global	EnableX_Motors
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	EnableX_Motors:
+  24              	.LFB66:
+  25              		.file 1 "Src/Motors/GPIO_Motors.c"
+   1:Src/Motors/GPIO_Motors.c **** #include "GPIO_Motors.h"
+   2:Src/Motors/GPIO_Motors.c **** 
+   3:Src/Motors/GPIO_Motors.c **** #include "main.h"
+   4:Src/Motors/GPIO_Motors.c **** #include "tim.h"
+   5:Src/Motors/GPIO_Motors.c **** #include "gpio.h"
+   6:Src/Motors/GPIO_Motors.c **** #include "stm32f1xx_hal.h"
+   7:Src/Motors/GPIO_Motors.c **** 
+   8:Src/Motors/GPIO_Motors.c **** #include "coordinates.h"
+   9:Src/Motors/GPIO_Motors.c **** 
+  10:Src/Motors/GPIO_Motors.c **** void EnableX_Motors(void)   {HAL_GPIO_WritePin(EN_X_GPIO_Port, EN_X_Pin, GPIO_PIN_RESET);       }
+  26              		.loc 1 10 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 08B5     		push	{r3, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  35              		.loc 1 10 0
+  36 0002 0022     		movs	r2, #0
+  37 0004 4FF40041 		mov	r1, #32768
+  38 0008 0148     		ldr	r0, .L3
+  39 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  40              	.LVL0:
+  41 000e 08BD     		pop	{r3, pc}
+  42              	.L4:
+  43              		.align	2
+  44              	.L3:
+  45 0010 000C0140 		.word	1073810432
+  46              		.cfi_endproc
+  47              	.LFE66:
+  49              		.section	.text.DisableX_Motors,"ax",%progbits
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 2
+
+
+  50              		.align	1
+  51              		.global	DisableX_Motors
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  55              		.fpu softvfp
+  57              	DisableX_Motors:
+  58              	.LFB67:
+  11:Src/Motors/GPIO_Motors.c **** void DisableX_Motors(void)  {HAL_GPIO_WritePin(EN_X_GPIO_Port, EN_X_Pin, GPIO_PIN_SET);         }
+  59              		.loc 1 11 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64              	.LCFI1:
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 3, -8
+  67              		.cfi_offset 14, -4
+  68              		.loc 1 11 0
+  69 0002 0122     		movs	r2, #1
+  70 0004 4FF40041 		mov	r1, #32768
+  71 0008 0148     		ldr	r0, .L7
+  72 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  73              	.LVL1:
+  74 000e 08BD     		pop	{r3, pc}
+  75              	.L8:
+  76              		.align	2
+  77              	.L7:
+  78 0010 000C0140 		.word	1073810432
+  79              		.cfi_endproc
+  80              	.LFE67:
+  82              		.section	.text.ForwardX_Motors,"ax",%progbits
+  83              		.align	1
+  84              		.global	ForwardX_Motors
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  88              		.fpu softvfp
+  90              	ForwardX_Motors:
+  91              	.LFB68:
+  12:Src/Motors/GPIO_Motors.c **** void ForwardX_Motors(void)  {HAL_GPIO_WritePin(DIR_X_GPIO_Port, DIR_X_Pin, GPIO_PIN_SET);       inc
+  92              		.loc 1 12 0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 08B5     		push	{r3, lr}
+  97              	.LCFI2:
+  98              		.cfi_def_cfa_offset 8
+  99              		.cfi_offset 3, -8
+ 100              		.cfi_offset 14, -4
+ 101              		.loc 1 12 0
+ 102 0002 0122     		movs	r2, #1
+ 103 0004 4FF40051 		mov	r1, #8192
+ 104 0008 0248     		ldr	r0, .L11
+ 105 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 106              	.LVL2:
+ 107 000e FFF7FEFF 		bl	incX_coordinates
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 3
+
+
+ 108              	.LVL3:
+ 109 0012 08BD     		pop	{r3, pc}
+ 110              	.L12:
+ 111              		.align	2
+ 112              	.L11:
+ 113 0014 000C0140 		.word	1073810432
+ 114              		.cfi_endproc
+ 115              	.LFE68:
+ 117              		.section	.text.BackwardX_Motors,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	BackwardX_Motors
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 123              		.fpu softvfp
+ 125              	BackwardX_Motors:
+ 126              	.LFB69:
+  13:Src/Motors/GPIO_Motors.c **** void BackwardX_Motors(void) {HAL_GPIO_WritePin(DIR_X_GPIO_Port, DIR_X_Pin, GPIO_PIN_RESET);     dec
+ 127              		.loc 1 13 0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131 0000 08B5     		push	{r3, lr}
+ 132              	.LCFI3:
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 3, -8
+ 135              		.cfi_offset 14, -4
+ 136              		.loc 1 13 0
+ 137 0002 0022     		movs	r2, #0
+ 138 0004 4FF40051 		mov	r1, #8192
+ 139 0008 0248     		ldr	r0, .L15
+ 140 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 141              	.LVL4:
+ 142 000e FFF7FEFF 		bl	decX_coordinates
+ 143              	.LVL5:
+ 144 0012 08BD     		pop	{r3, pc}
+ 145              	.L16:
+ 146              		.align	2
+ 147              	.L15:
+ 148 0014 000C0140 		.word	1073810432
+ 149              		.cfi_endproc
+ 150              	.LFE69:
+ 152              		.section	.text.StepOnX_Motors,"ax",%progbits
+ 153              		.align	1
+ 154              		.global	StepOnX_Motors
+ 155              		.syntax unified
+ 156              		.thumb
+ 157              		.thumb_func
+ 158              		.fpu softvfp
+ 160              	StepOnX_Motors:
+ 161              	.LFB70:
+  14:Src/Motors/GPIO_Motors.c **** void StepOnX_Motors(void)   {HAL_GPIO_WritePin(STEP_X_GPIO_Port, STEP_X_Pin, GPIO_PIN_SET);     }
+ 162              		.loc 1 14 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 08B5     		push	{r3, lr}
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 4
+
+
+ 167              	.LCFI4:
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 3, -8
+ 170              		.cfi_offset 14, -4
+ 171              		.loc 1 14 0
+ 172 0002 0122     		movs	r2, #1
+ 173 0004 4FF48041 		mov	r1, #16384
+ 174 0008 0148     		ldr	r0, .L19
+ 175 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 176              	.LVL6:
+ 177 000e 08BD     		pop	{r3, pc}
+ 178              	.L20:
+ 179              		.align	2
+ 180              	.L19:
+ 181 0010 000C0140 		.word	1073810432
+ 182              		.cfi_endproc
+ 183              	.LFE70:
+ 185              		.section	.text.StepOffX_Motors,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	StepOffX_Motors
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu softvfp
+ 193              	StepOffX_Motors:
+ 194              	.LFB71:
+  15:Src/Motors/GPIO_Motors.c **** void StepOffX_Motors(void)  {HAL_GPIO_WritePin(STEP_X_GPIO_Port, STEP_X_Pin, GPIO_PIN_RESET);   }
+ 195              		.loc 1 15 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 08B5     		push	{r3, lr}
+ 200              	.LCFI5:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 3, -8
+ 203              		.cfi_offset 14, -4
+ 204              		.loc 1 15 0
+ 205 0002 0022     		movs	r2, #0
+ 206 0004 4FF48041 		mov	r1, #16384
+ 207 0008 0148     		ldr	r0, .L23
+ 208 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 209              	.LVL7:
+ 210 000e 08BD     		pop	{r3, pc}
+ 211              	.L24:
+ 212              		.align	2
+ 213              	.L23:
+ 214 0010 000C0140 		.word	1073810432
+ 215              		.cfi_endproc
+ 216              	.LFE71:
+ 218              		.section	.text.EnableY_Motors,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	EnableY_Motors
+ 221              		.syntax unified
+ 222              		.thumb
+ 223              		.thumb_func
+ 224              		.fpu softvfp
+ 226              	EnableY_Motors:
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 5
+
+
+ 227              	.LFB72:
+  16:Src/Motors/GPIO_Motors.c **** void EnableY_Motors(void)   {HAL_GPIO_WritePin(EN_Y_GPIO_Port, EN_Y_Pin, GPIO_PIN_RESET);       }
+ 228              		.loc 1 16 0
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232 0000 08B5     		push	{r3, lr}
+ 233              	.LCFI6:
+ 234              		.cfi_def_cfa_offset 8
+ 235              		.cfi_offset 3, -8
+ 236              		.cfi_offset 14, -4
+ 237              		.loc 1 16 0
+ 238 0002 0022     		movs	r2, #0
+ 239 0004 4FF48061 		mov	r1, #1024
+ 240 0008 0148     		ldr	r0, .L27
+ 241 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 242              	.LVL8:
+ 243 000e 08BD     		pop	{r3, pc}
+ 244              	.L28:
+ 245              		.align	2
+ 246              	.L27:
+ 247 0010 000C0140 		.word	1073810432
+ 248              		.cfi_endproc
+ 249              	.LFE72:
+ 251              		.section	.text.DisableY_Motors,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	DisableY_Motors
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 257              		.fpu softvfp
+ 259              	DisableY_Motors:
+ 260              	.LFB73:
+  17:Src/Motors/GPIO_Motors.c **** void DisableY_Motors(void)  {HAL_GPIO_WritePin(EN_Y_GPIO_Port, EN_Y_Pin, GPIO_PIN_SET);         }
+ 261              		.loc 1 17 0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265 0000 08B5     		push	{r3, lr}
+ 266              	.LCFI7:
+ 267              		.cfi_def_cfa_offset 8
+ 268              		.cfi_offset 3, -8
+ 269              		.cfi_offset 14, -4
+ 270              		.loc 1 17 0
+ 271 0002 0122     		movs	r2, #1
+ 272 0004 4FF48061 		mov	r1, #1024
+ 273 0008 0148     		ldr	r0, .L31
+ 274 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 275              	.LVL9:
+ 276 000e 08BD     		pop	{r3, pc}
+ 277              	.L32:
+ 278              		.align	2
+ 279              	.L31:
+ 280 0010 000C0140 		.word	1073810432
+ 281              		.cfi_endproc
+ 282              	.LFE73:
+ 284              		.section	.text.ForwardY_Motors,"ax",%progbits
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 6
+
+
+ 285              		.align	1
+ 286              		.global	ForwardY_Motors
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.fpu softvfp
+ 292              	ForwardY_Motors:
+ 293              	.LFB74:
+  18:Src/Motors/GPIO_Motors.c **** void ForwardY_Motors(void)  {HAL_GPIO_WritePin(DIR_Y_GPIO_Port, DIR_Y_Pin, GPIO_PIN_SET);       inc
+ 294              		.loc 1 18 0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298 0000 08B5     		push	{r3, lr}
+ 299              	.LCFI8:
+ 300              		.cfi_def_cfa_offset 8
+ 301              		.cfi_offset 3, -8
+ 302              		.cfi_offset 14, -4
+ 303              		.loc 1 18 0
+ 304 0002 0122     		movs	r2, #1
+ 305 0004 4FF48051 		mov	r1, #4096
+ 306 0008 0248     		ldr	r0, .L35
+ 307 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 308              	.LVL10:
+ 309 000e FFF7FEFF 		bl	incY_coordinates
+ 310              	.LVL11:
+ 311 0012 08BD     		pop	{r3, pc}
+ 312              	.L36:
+ 313              		.align	2
+ 314              	.L35:
+ 315 0014 000C0140 		.word	1073810432
+ 316              		.cfi_endproc
+ 317              	.LFE74:
+ 319              		.section	.text.BackwardY_Motors,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	BackwardY_Motors
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ 325              		.fpu softvfp
+ 327              	BackwardY_Motors:
+ 328              	.LFB75:
+  19:Src/Motors/GPIO_Motors.c **** void BackwardY_Motors(void) {HAL_GPIO_WritePin(DIR_Y_GPIO_Port, DIR_Y_Pin, GPIO_PIN_RESET);     dec
+ 329              		.loc 1 19 0
+ 330              		.cfi_startproc
+ 331              		@ args = 0, pretend = 0, frame = 0
+ 332              		@ frame_needed = 0, uses_anonymous_args = 0
+ 333 0000 08B5     		push	{r3, lr}
+ 334              	.LCFI9:
+ 335              		.cfi_def_cfa_offset 8
+ 336              		.cfi_offset 3, -8
+ 337              		.cfi_offset 14, -4
+ 338              		.loc 1 19 0
+ 339 0002 0022     		movs	r2, #0
+ 340 0004 4FF48051 		mov	r1, #4096
+ 341 0008 0248     		ldr	r0, .L39
+ 342 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 7
+
+
+ 343              	.LVL12:
+ 344 000e FFF7FEFF 		bl	decY_coordinates
+ 345              	.LVL13:
+ 346 0012 08BD     		pop	{r3, pc}
+ 347              	.L40:
+ 348              		.align	2
+ 349              	.L39:
+ 350 0014 000C0140 		.word	1073810432
+ 351              		.cfi_endproc
+ 352              	.LFE75:
+ 354              		.section	.text.StepOnY_Motors,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	StepOnY_Motors
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 360              		.fpu softvfp
+ 362              	StepOnY_Motors:
+ 363              	.LFB76:
+  20:Src/Motors/GPIO_Motors.c **** void StepOnY_Motors(void)   {HAL_GPIO_WritePin(STEP_Y_GPIO_Port, STEP_Y_Pin, GPIO_PIN_SET);     }
+ 364              		.loc 1 20 0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368 0000 08B5     		push	{r3, lr}
+ 369              	.LCFI10:
+ 370              		.cfi_def_cfa_offset 8
+ 371              		.cfi_offset 3, -8
+ 372              		.cfi_offset 14, -4
+ 373              		.loc 1 20 0
+ 374 0002 0122     		movs	r2, #1
+ 375 0004 4FF40061 		mov	r1, #2048
+ 376 0008 0148     		ldr	r0, .L43
+ 377 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 378              	.LVL14:
+ 379 000e 08BD     		pop	{r3, pc}
+ 380              	.L44:
+ 381              		.align	2
+ 382              	.L43:
+ 383 0010 000C0140 		.word	1073810432
+ 384              		.cfi_endproc
+ 385              	.LFE76:
+ 387              		.section	.text.StepOffY_Motors,"ax",%progbits
+ 388              		.align	1
+ 389              		.global	StepOffY_Motors
+ 390              		.syntax unified
+ 391              		.thumb
+ 392              		.thumb_func
+ 393              		.fpu softvfp
+ 395              	StepOffY_Motors:
+ 396              	.LFB77:
+  21:Src/Motors/GPIO_Motors.c **** void StepOffY_Motors(void)  {HAL_GPIO_WritePin(STEP_Y_GPIO_Port, STEP_Y_Pin, GPIO_PIN_RESET);   }
+ 397              		.loc 1 21 0
+ 398              		.cfi_startproc
+ 399              		@ args = 0, pretend = 0, frame = 0
+ 400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 401 0000 08B5     		push	{r3, lr}
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 8
+
+
+ 402              	.LCFI11:
+ 403              		.cfi_def_cfa_offset 8
+ 404              		.cfi_offset 3, -8
+ 405              		.cfi_offset 14, -4
+ 406              		.loc 1 21 0
+ 407 0002 0022     		movs	r2, #0
+ 408 0004 4FF40061 		mov	r1, #2048
+ 409 0008 0148     		ldr	r0, .L47
+ 410 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 411              	.LVL15:
+ 412 000e 08BD     		pop	{r3, pc}
+ 413              	.L48:
+ 414              		.align	2
+ 415              	.L47:
+ 416 0010 000C0140 		.word	1073810432
+ 417              		.cfi_endproc
+ 418              	.LFE77:
+ 420              		.section	.text.EnableZ_Motors,"ax",%progbits
+ 421              		.align	1
+ 422              		.global	EnableZ_Motors
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 426              		.fpu softvfp
+ 428              	EnableZ_Motors:
+ 429              	.LFB78:
+  22:Src/Motors/GPIO_Motors.c **** void EnableZ_Motors(void)   {HAL_GPIO_WritePin(EN_Z1_GPIO_Port, EN_Z1_Pin, GPIO_PIN_RESET);     HAL
+ 430              		.loc 1 22 0
+ 431              		.cfi_startproc
+ 432              		@ args = 0, pretend = 0, frame = 0
+ 433              		@ frame_needed = 0, uses_anonymous_args = 0
+ 434 0000 10B5     		push	{r4, lr}
+ 435              	.LCFI12:
+ 436              		.cfi_def_cfa_offset 8
+ 437              		.cfi_offset 4, -8
+ 438              		.cfi_offset 14, -4
+ 439              		.loc 1 22 0
+ 440 0002 074C     		ldr	r4, .L51
+ 441 0004 0022     		movs	r2, #0
+ 442 0006 4FF40051 		mov	r1, #8192
+ 443 000a 2046     		mov	r0, r4
+ 444 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 445              	.LVL16:
+ 446 0010 0022     		movs	r2, #0
+ 447 0012 4FF48061 		mov	r1, #1024
+ 448 0016 2046     		mov	r0, r4
+ 449 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 450              	.LVL17:
+ 451 001c 10BD     		pop	{r4, pc}
+ 452              	.L52:
+ 453 001e 00BF     		.align	2
+ 454              	.L51:
+ 455 0020 00180140 		.word	1073813504
+ 456              		.cfi_endproc
+ 457              	.LFE78:
+ 459              		.section	.text.DisableZ_Motors,"ax",%progbits
+ 460              		.align	1
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 9
+
+
+ 461              		.global	DisableZ_Motors
+ 462              		.syntax unified
+ 463              		.thumb
+ 464              		.thumb_func
+ 465              		.fpu softvfp
+ 467              	DisableZ_Motors:
+ 468              	.LFB79:
+  23:Src/Motors/GPIO_Motors.c **** void DisableZ_Motors(void)  {HAL_GPIO_WritePin(EN_Z1_GPIO_Port, EN_Z1_Pin, GPIO_PIN_SET);       HAL
+ 469              		.loc 1 23 0
+ 470              		.cfi_startproc
+ 471              		@ args = 0, pretend = 0, frame = 0
+ 472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 473 0000 10B5     		push	{r4, lr}
+ 474              	.LCFI13:
+ 475              		.cfi_def_cfa_offset 8
+ 476              		.cfi_offset 4, -8
+ 477              		.cfi_offset 14, -4
+ 478              		.loc 1 23 0
+ 479 0002 074C     		ldr	r4, .L55
+ 480 0004 0122     		movs	r2, #1
+ 481 0006 4FF40051 		mov	r1, #8192
+ 482 000a 2046     		mov	r0, r4
+ 483 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 484              	.LVL18:
+ 485 0010 0122     		movs	r2, #1
+ 486 0012 4FF48061 		mov	r1, #1024
+ 487 0016 2046     		mov	r0, r4
+ 488 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 489              	.LVL19:
+ 490 001c 10BD     		pop	{r4, pc}
+ 491              	.L56:
+ 492 001e 00BF     		.align	2
+ 493              	.L55:
+ 494 0020 00180140 		.word	1073813504
+ 495              		.cfi_endproc
+ 496              	.LFE79:
+ 498              		.section	.text.ForwardZ_Motors,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	ForwardZ_Motors
+ 501              		.syntax unified
+ 502              		.thumb
+ 503              		.thumb_func
+ 504              		.fpu softvfp
+ 506              	ForwardZ_Motors:
+ 507              	.LFB80:
+  24:Src/Motors/GPIO_Motors.c **** void ForwardZ_Motors(void)  {HAL_GPIO_WritePin(DIR_Z1_GPIO_Port, DIR_Z1_Pin, GPIO_PIN_SET);     HAL
+ 508              		.loc 1 24 0
+ 509              		.cfi_startproc
+ 510              		@ args = 0, pretend = 0, frame = 0
+ 511              		@ frame_needed = 0, uses_anonymous_args = 0
+ 512 0000 10B5     		push	{r4, lr}
+ 513              	.LCFI14:
+ 514              		.cfi_def_cfa_offset 8
+ 515              		.cfi_offset 4, -8
+ 516              		.cfi_offset 14, -4
+ 517              		.loc 1 24 0
+ 518 0002 084C     		ldr	r4, .L59
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 10
+
+
+ 519 0004 0122     		movs	r2, #1
+ 520 0006 4FF40041 		mov	r1, #32768
+ 521 000a 2046     		mov	r0, r4
+ 522 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 523              	.LVL20:
+ 524 0010 0122     		movs	r2, #1
+ 525 0012 4FF48051 		mov	r1, #4096
+ 526 0016 2046     		mov	r0, r4
+ 527 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 528              	.LVL21:
+ 529 001c FFF7FEFF 		bl	incZ_coordinates
+ 530              	.LVL22:
+ 531 0020 10BD     		pop	{r4, pc}
+ 532              	.L60:
+ 533 0022 00BF     		.align	2
+ 534              	.L59:
+ 535 0024 00180140 		.word	1073813504
+ 536              		.cfi_endproc
+ 537              	.LFE80:
+ 539              		.section	.text.BackwardZ_Motors,"ax",%progbits
+ 540              		.align	1
+ 541              		.global	BackwardZ_Motors
+ 542              		.syntax unified
+ 543              		.thumb
+ 544              		.thumb_func
+ 545              		.fpu softvfp
+ 547              	BackwardZ_Motors:
+ 548              	.LFB81:
+  25:Src/Motors/GPIO_Motors.c **** void BackwardZ_Motors(void) {HAL_GPIO_WritePin(DIR_Z1_GPIO_Port, DIR_Z1_Pin, GPIO_PIN_RESET);   HAL
+ 549              		.loc 1 25 0
+ 550              		.cfi_startproc
+ 551              		@ args = 0, pretend = 0, frame = 0
+ 552              		@ frame_needed = 0, uses_anonymous_args = 0
+ 553 0000 10B5     		push	{r4, lr}
+ 554              	.LCFI15:
+ 555              		.cfi_def_cfa_offset 8
+ 556              		.cfi_offset 4, -8
+ 557              		.cfi_offset 14, -4
+ 558              		.loc 1 25 0
+ 559 0002 084C     		ldr	r4, .L63
+ 560 0004 0022     		movs	r2, #0
+ 561 0006 4FF40041 		mov	r1, #32768
+ 562 000a 2046     		mov	r0, r4
+ 563 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 564              	.LVL23:
+ 565 0010 0022     		movs	r2, #0
+ 566 0012 4FF48051 		mov	r1, #4096
+ 567 0016 2046     		mov	r0, r4
+ 568 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 569              	.LVL24:
+ 570 001c FFF7FEFF 		bl	decZ_coordinates
+ 571              	.LVL25:
+ 572 0020 10BD     		pop	{r4, pc}
+ 573              	.L64:
+ 574 0022 00BF     		.align	2
+ 575              	.L63:
+ 576 0024 00180140 		.word	1073813504
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 11
+
+
+ 577              		.cfi_endproc
+ 578              	.LFE81:
+ 580              		.section	.text.StepOnZ_Motors,"ax",%progbits
+ 581              		.align	1
+ 582              		.global	StepOnZ_Motors
+ 583              		.syntax unified
+ 584              		.thumb
+ 585              		.thumb_func
+ 586              		.fpu softvfp
+ 588              	StepOnZ_Motors:
+ 589              	.LFB82:
+  26:Src/Motors/GPIO_Motors.c **** void StepOnZ_Motors(void)   {HAL_GPIO_WritePin(STEP_Z1_GPIO_Port, STEP_Z1_Pin, GPIO_PIN_SET);   HAL
+ 590              		.loc 1 26 0
+ 591              		.cfi_startproc
+ 592              		@ args = 0, pretend = 0, frame = 0
+ 593              		@ frame_needed = 0, uses_anonymous_args = 0
+ 594 0000 10B5     		push	{r4, lr}
+ 595              	.LCFI16:
+ 596              		.cfi_def_cfa_offset 8
+ 597              		.cfi_offset 4, -8
+ 598              		.cfi_offset 14, -4
+ 599              		.loc 1 26 0
+ 600 0002 074C     		ldr	r4, .L67
+ 601 0004 0122     		movs	r2, #1
+ 602 0006 4FF48041 		mov	r1, #16384
+ 603 000a 2046     		mov	r0, r4
+ 604 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 605              	.LVL26:
+ 606 0010 0122     		movs	r2, #1
+ 607 0012 4FF40061 		mov	r1, #2048
+ 608 0016 2046     		mov	r0, r4
+ 609 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 610              	.LVL27:
+ 611 001c 10BD     		pop	{r4, pc}
+ 612              	.L68:
+ 613 001e 00BF     		.align	2
+ 614              	.L67:
+ 615 0020 00180140 		.word	1073813504
+ 616              		.cfi_endproc
+ 617              	.LFE82:
+ 619              		.section	.text.StepOffZ_Motors,"ax",%progbits
+ 620              		.align	1
+ 621              		.global	StepOffZ_Motors
+ 622              		.syntax unified
+ 623              		.thumb
+ 624              		.thumb_func
+ 625              		.fpu softvfp
+ 627              	StepOffZ_Motors:
+ 628              	.LFB83:
+  27:Src/Motors/GPIO_Motors.c **** void StepOffZ_Motors(void)  {HAL_GPIO_WritePin(STEP_Z1_GPIO_Port, STEP_Z1_Pin, GPIO_PIN_RESET); HAL
+ 629              		.loc 1 27 0
+ 630              		.cfi_startproc
+ 631              		@ args = 0, pretend = 0, frame = 0
+ 632              		@ frame_needed = 0, uses_anonymous_args = 0
+ 633 0000 10B5     		push	{r4, lr}
+ 634              	.LCFI17:
+ 635              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 12
+
+
+ 636              		.cfi_offset 4, -8
+ 637              		.cfi_offset 14, -4
+ 638              		.loc 1 27 0
+ 639 0002 074C     		ldr	r4, .L71
+ 640 0004 0022     		movs	r2, #0
+ 641 0006 4FF48041 		mov	r1, #16384
+ 642 000a 2046     		mov	r0, r4
+ 643 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 644              	.LVL28:
+ 645 0010 0022     		movs	r2, #0
+ 646 0012 4FF40061 		mov	r1, #2048
+ 647 0016 2046     		mov	r0, r4
+ 648 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 649              	.LVL29:
+ 650 001c 10BD     		pop	{r4, pc}
+ 651              	.L72:
+ 652 001e 00BF     		.align	2
+ 653              	.L71:
+ 654 0020 00180140 		.word	1073813504
+ 655              		.cfi_endproc
+ 656              	.LFE83:
+ 658              		.section	.text.EnableE_Motors,"ax",%progbits
+ 659              		.align	1
+ 660              		.global	EnableE_Motors
+ 661              		.syntax unified
+ 662              		.thumb
+ 663              		.thumb_func
+ 664              		.fpu softvfp
+ 666              	EnableE_Motors:
+ 667              	.LFB84:
+  28:Src/Motors/GPIO_Motors.c **** void EnableE_Motors(void)   {HAL_GPIO_WritePin(EN_E1_GPIO_Port, EN_E1_Pin, GPIO_PIN_RESET);     HAL
+ 668              		.loc 1 28 0
+ 669              		.cfi_startproc
+ 670              		@ args = 0, pretend = 0, frame = 0
+ 671              		@ frame_needed = 0, uses_anonymous_args = 0
+ 672 0000 08B5     		push	{r3, lr}
+ 673              	.LCFI18:
+ 674              		.cfi_def_cfa_offset 8
+ 675              		.cfi_offset 3, -8
+ 676              		.cfi_offset 14, -4
+ 677              		.loc 1 28 0
+ 678 0002 0022     		movs	r2, #0
+ 679 0004 8021     		movs	r1, #128
+ 680 0006 0448     		ldr	r0, .L75
+ 681 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 682              	.LVL30:
+ 683 000c 0022     		movs	r2, #0
+ 684 000e 8021     		movs	r1, #128
+ 685 0010 0248     		ldr	r0, .L75+4
+ 686 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 687              	.LVL31:
+ 688 0016 08BD     		pop	{r3, pc}
+ 689              	.L76:
+ 690              		.align	2
+ 691              	.L75:
+ 692 0018 00180140 		.word	1073813504
+ 693 001c 00080140 		.word	1073809408
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 13
+
+
+ 694              		.cfi_endproc
+ 695              	.LFE84:
+ 697              		.section	.text.DisableE_Motors,"ax",%progbits
+ 698              		.align	1
+ 699              		.global	DisableE_Motors
+ 700              		.syntax unified
+ 701              		.thumb
+ 702              		.thumb_func
+ 703              		.fpu softvfp
+ 705              	DisableE_Motors:
+ 706              	.LFB85:
+  29:Src/Motors/GPIO_Motors.c **** void DisableE_Motors(void)  {HAL_GPIO_WritePin(EN_E1_GPIO_Port, EN_E1_Pin, GPIO_PIN_SET);       HAL
+ 707              		.loc 1 29 0
+ 708              		.cfi_startproc
+ 709              		@ args = 0, pretend = 0, frame = 0
+ 710              		@ frame_needed = 0, uses_anonymous_args = 0
+ 711 0000 08B5     		push	{r3, lr}
+ 712              	.LCFI19:
+ 713              		.cfi_def_cfa_offset 8
+ 714              		.cfi_offset 3, -8
+ 715              		.cfi_offset 14, -4
+ 716              		.loc 1 29 0
+ 717 0002 0122     		movs	r2, #1
+ 718 0004 8021     		movs	r1, #128
+ 719 0006 0448     		ldr	r0, .L79
+ 720 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 721              	.LVL32:
+ 722 000c 0122     		movs	r2, #1
+ 723 000e 8021     		movs	r1, #128
+ 724 0010 0248     		ldr	r0, .L79+4
+ 725 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 726              	.LVL33:
+ 727 0016 08BD     		pop	{r3, pc}
+ 728              	.L80:
+ 729              		.align	2
+ 730              	.L79:
+ 731 0018 00180140 		.word	1073813504
+ 732 001c 00080140 		.word	1073809408
+ 733              		.cfi_endproc
+ 734              	.LFE85:
+ 736              		.section	.text.ForwardE_Motors,"ax",%progbits
+ 737              		.align	1
+ 738              		.global	ForwardE_Motors
+ 739              		.syntax unified
+ 740              		.thumb
+ 741              		.thumb_func
+ 742              		.fpu softvfp
+ 744              	ForwardE_Motors:
+ 745              	.LFB86:
+  30:Src/Motors/GPIO_Motors.c **** void ForwardE_Motors(void)  {HAL_GPIO_WritePin(DIR_E1_GPIO_Port, DIR_E1_Pin, GPIO_PIN_SET);     HAL
+ 746              		.loc 1 30 0
+ 747              		.cfi_startproc
+ 748              		@ args = 0, pretend = 0, frame = 0
+ 749              		@ frame_needed = 0, uses_anonymous_args = 0
+ 750 0000 08B5     		push	{r3, lr}
+ 751              	.LCFI20:
+ 752              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 14
+
+
+ 753              		.cfi_offset 3, -8
+ 754              		.cfi_offset 14, -4
+ 755              		.loc 1 30 0
+ 756 0002 0122     		movs	r2, #1
+ 757 0004 4FF40071 		mov	r1, #512
+ 758 0008 0548     		ldr	r0, .L83
+ 759 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 760              	.LVL34:
+ 761 000e 0122     		movs	r2, #1
+ 762 0010 2021     		movs	r1, #32
+ 763 0012 0448     		ldr	r0, .L83+4
+ 764 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 765              	.LVL35:
+ 766 0018 FFF7FEFF 		bl	incE_coordinates
+ 767              	.LVL36:
+ 768 001c 08BD     		pop	{r3, pc}
+ 769              	.L84:
+ 770 001e 00BF     		.align	2
+ 771              	.L83:
+ 772 0020 00180140 		.word	1073813504
+ 773 0024 00100140 		.word	1073811456
+ 774              		.cfi_endproc
+ 775              	.LFE86:
+ 777              		.section	.text.BackwardE_Motors,"ax",%progbits
+ 778              		.align	1
+ 779              		.global	BackwardE_Motors
+ 780              		.syntax unified
+ 781              		.thumb
+ 782              		.thumb_func
+ 783              		.fpu softvfp
+ 785              	BackwardE_Motors:
+ 786              	.LFB87:
+  31:Src/Motors/GPIO_Motors.c **** void BackwardE_Motors(void) {HAL_GPIO_WritePin(DIR_E1_GPIO_Port, DIR_E1_Pin, GPIO_PIN_RESET);   HAL
+ 787              		.loc 1 31 0
+ 788              		.cfi_startproc
+ 789              		@ args = 0, pretend = 0, frame = 0
+ 790              		@ frame_needed = 0, uses_anonymous_args = 0
+ 791 0000 08B5     		push	{r3, lr}
+ 792              	.LCFI21:
+ 793              		.cfi_def_cfa_offset 8
+ 794              		.cfi_offset 3, -8
+ 795              		.cfi_offset 14, -4
+ 796              		.loc 1 31 0
+ 797 0002 0022     		movs	r2, #0
+ 798 0004 4FF40071 		mov	r1, #512
+ 799 0008 0548     		ldr	r0, .L87
+ 800 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 801              	.LVL37:
+ 802 000e 0022     		movs	r2, #0
+ 803 0010 2021     		movs	r1, #32
+ 804 0012 0448     		ldr	r0, .L87+4
+ 805 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 806              	.LVL38:
+ 807 0018 FFF7FEFF 		bl	decE_coordinates
+ 808              	.LVL39:
+ 809 001c 08BD     		pop	{r3, pc}
+ 810              	.L88:
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 15
+
+
+ 811 001e 00BF     		.align	2
+ 812              	.L87:
+ 813 0020 00180140 		.word	1073813504
+ 814 0024 00100140 		.word	1073811456
+ 815              		.cfi_endproc
+ 816              	.LFE87:
+ 818              		.section	.text.StepOnE_Motors,"ax",%progbits
+ 819              		.align	1
+ 820              		.global	StepOnE_Motors
+ 821              		.syntax unified
+ 822              		.thumb
+ 823              		.thumb_func
+ 824              		.fpu softvfp
+ 826              	StepOnE_Motors:
+ 827              	.LFB88:
+  32:Src/Motors/GPIO_Motors.c **** void StepOnE_Motors(void)   {HAL_GPIO_WritePin(STEP_E1_GPIO_Port, STEP_E1_Pin, GPIO_PIN_SET);   HAL
+ 828              		.loc 1 32 0
+ 829              		.cfi_startproc
+ 830              		@ args = 0, pretend = 0, frame = 0
+ 831              		@ frame_needed = 0, uses_anonymous_args = 0
+ 832 0000 08B5     		push	{r3, lr}
+ 833              	.LCFI22:
+ 834              		.cfi_def_cfa_offset 8
+ 835              		.cfi_offset 3, -8
+ 836              		.cfi_offset 14, -4
+ 837              		.loc 1 32 0
+ 838 0002 0122     		movs	r2, #1
+ 839 0004 4FF48071 		mov	r1, #256
+ 840 0008 0448     		ldr	r0, .L91
+ 841 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 842              	.LVL40:
+ 843 000e 0122     		movs	r2, #1
+ 844 0010 1021     		movs	r1, #16
+ 845 0012 0348     		ldr	r0, .L91+4
+ 846 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 847              	.LVL41:
+ 848 0018 08BD     		pop	{r3, pc}
+ 849              	.L92:
+ 850 001a 00BF     		.align	2
+ 851              	.L91:
+ 852 001c 00180140 		.word	1073813504
+ 853 0020 00100140 		.word	1073811456
+ 854              		.cfi_endproc
+ 855              	.LFE88:
+ 857              		.section	.text.StepOffE_Motors,"ax",%progbits
+ 858              		.align	1
+ 859              		.global	StepOffE_Motors
+ 860              		.syntax unified
+ 861              		.thumb
+ 862              		.thumb_func
+ 863              		.fpu softvfp
+ 865              	StepOffE_Motors:
+ 866              	.LFB89:
+  33:Src/Motors/GPIO_Motors.c **** void StepOffE_Motors(void)  {HAL_GPIO_WritePin(STEP_E1_GPIO_Port, STEP_E1_Pin, GPIO_PIN_RESET); HAL
+ 867              		.loc 1 33 0
+ 868              		.cfi_startproc
+ 869              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 16
+
+
+ 870              		@ frame_needed = 0, uses_anonymous_args = 0
+ 871 0000 08B5     		push	{r3, lr}
+ 872              	.LCFI23:
+ 873              		.cfi_def_cfa_offset 8
+ 874              		.cfi_offset 3, -8
+ 875              		.cfi_offset 14, -4
+ 876              		.loc 1 33 0
+ 877 0002 0022     		movs	r2, #0
+ 878 0004 4FF48071 		mov	r1, #256
+ 879 0008 0448     		ldr	r0, .L95
+ 880 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 881              	.LVL42:
+ 882 000e 0022     		movs	r2, #0
+ 883 0010 1021     		movs	r1, #16
+ 884 0012 0348     		ldr	r0, .L95+4
+ 885 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 886              	.LVL43:
+ 887 0018 08BD     		pop	{r3, pc}
+ 888              	.L96:
+ 889 001a 00BF     		.align	2
+ 890              	.L95:
+ 891 001c 00180140 		.word	1073813504
+ 892 0020 00100140 		.word	1073811456
+ 893              		.cfi_endproc
+ 894              	.LFE89:
+ 896              		.text
+ 897              	.Letext0:
+ 898              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 899              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 900              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 901              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 902              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f105xc.h"
+ 903              		.file 7 "/usr/arm-none-eabi/include/sys/lock.h"
+ 904              		.file 8 "/usr/arm-none-eabi/include/sys/_types.h"
+ 905              		.file 9 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
+ 906              		.file 10 "/usr/arm-none-eabi/include/sys/reent.h"
+ 907              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 908              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 909              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 910              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 911              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 912              		.file 16 "Inc/tim.h"
+ 913              		.file 17 "Inc/coordinates.h"
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 GPIO_Motors.c
+     /tmp/ccHVZ4Mv.s:16     .text.EnableX_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:23     .text.EnableX_Motors:0000000000000000 EnableX_Motors
+     /tmp/ccHVZ4Mv.s:45     .text.EnableX_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:50     .text.DisableX_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:57     .text.DisableX_Motors:0000000000000000 DisableX_Motors
+     /tmp/ccHVZ4Mv.s:78     .text.DisableX_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:83     .text.ForwardX_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:90     .text.ForwardX_Motors:0000000000000000 ForwardX_Motors
+     /tmp/ccHVZ4Mv.s:113    .text.ForwardX_Motors:0000000000000014 $d
+     /tmp/ccHVZ4Mv.s:118    .text.BackwardX_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:125    .text.BackwardX_Motors:0000000000000000 BackwardX_Motors
+     /tmp/ccHVZ4Mv.s:148    .text.BackwardX_Motors:0000000000000014 $d
+     /tmp/ccHVZ4Mv.s:153    .text.StepOnX_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:160    .text.StepOnX_Motors:0000000000000000 StepOnX_Motors
+     /tmp/ccHVZ4Mv.s:181    .text.StepOnX_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:186    .text.StepOffX_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:193    .text.StepOffX_Motors:0000000000000000 StepOffX_Motors
+     /tmp/ccHVZ4Mv.s:214    .text.StepOffX_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:219    .text.EnableY_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:226    .text.EnableY_Motors:0000000000000000 EnableY_Motors
+     /tmp/ccHVZ4Mv.s:247    .text.EnableY_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:252    .text.DisableY_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:259    .text.DisableY_Motors:0000000000000000 DisableY_Motors
+     /tmp/ccHVZ4Mv.s:280    .text.DisableY_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:285    .text.ForwardY_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:292    .text.ForwardY_Motors:0000000000000000 ForwardY_Motors
+     /tmp/ccHVZ4Mv.s:315    .text.ForwardY_Motors:0000000000000014 $d
+     /tmp/ccHVZ4Mv.s:320    .text.BackwardY_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:327    .text.BackwardY_Motors:0000000000000000 BackwardY_Motors
+     /tmp/ccHVZ4Mv.s:350    .text.BackwardY_Motors:0000000000000014 $d
+     /tmp/ccHVZ4Mv.s:355    .text.StepOnY_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:362    .text.StepOnY_Motors:0000000000000000 StepOnY_Motors
+     /tmp/ccHVZ4Mv.s:383    .text.StepOnY_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:388    .text.StepOffY_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:395    .text.StepOffY_Motors:0000000000000000 StepOffY_Motors
+     /tmp/ccHVZ4Mv.s:416    .text.StepOffY_Motors:0000000000000010 $d
+     /tmp/ccHVZ4Mv.s:421    .text.EnableZ_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:428    .text.EnableZ_Motors:0000000000000000 EnableZ_Motors
+     /tmp/ccHVZ4Mv.s:455    .text.EnableZ_Motors:0000000000000020 $d
+     /tmp/ccHVZ4Mv.s:460    .text.DisableZ_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:467    .text.DisableZ_Motors:0000000000000000 DisableZ_Motors
+     /tmp/ccHVZ4Mv.s:494    .text.DisableZ_Motors:0000000000000020 $d
+     /tmp/ccHVZ4Mv.s:499    .text.ForwardZ_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:506    .text.ForwardZ_Motors:0000000000000000 ForwardZ_Motors
+     /tmp/ccHVZ4Mv.s:535    .text.ForwardZ_Motors:0000000000000024 $d
+     /tmp/ccHVZ4Mv.s:540    .text.BackwardZ_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:547    .text.BackwardZ_Motors:0000000000000000 BackwardZ_Motors
+     /tmp/ccHVZ4Mv.s:576    .text.BackwardZ_Motors:0000000000000024 $d
+     /tmp/ccHVZ4Mv.s:581    .text.StepOnZ_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:588    .text.StepOnZ_Motors:0000000000000000 StepOnZ_Motors
+     /tmp/ccHVZ4Mv.s:615    .text.StepOnZ_Motors:0000000000000020 $d
+     /tmp/ccHVZ4Mv.s:620    .text.StepOffZ_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:627    .text.StepOffZ_Motors:0000000000000000 StepOffZ_Motors
+     /tmp/ccHVZ4Mv.s:654    .text.StepOffZ_Motors:0000000000000020 $d
+     /tmp/ccHVZ4Mv.s:659    .text.EnableE_Motors:0000000000000000 $t
+ARM GAS  /tmp/ccHVZ4Mv.s 			page 18
+
+
+     /tmp/ccHVZ4Mv.s:666    .text.EnableE_Motors:0000000000000000 EnableE_Motors
+     /tmp/ccHVZ4Mv.s:692    .text.EnableE_Motors:0000000000000018 $d
+     /tmp/ccHVZ4Mv.s:698    .text.DisableE_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:705    .text.DisableE_Motors:0000000000000000 DisableE_Motors
+     /tmp/ccHVZ4Mv.s:731    .text.DisableE_Motors:0000000000000018 $d
+     /tmp/ccHVZ4Mv.s:737    .text.ForwardE_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:744    .text.ForwardE_Motors:0000000000000000 ForwardE_Motors
+     /tmp/ccHVZ4Mv.s:772    .text.ForwardE_Motors:0000000000000020 $d
+     /tmp/ccHVZ4Mv.s:778    .text.BackwardE_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:785    .text.BackwardE_Motors:0000000000000000 BackwardE_Motors
+     /tmp/ccHVZ4Mv.s:813    .text.BackwardE_Motors:0000000000000020 $d
+     /tmp/ccHVZ4Mv.s:819    .text.StepOnE_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:826    .text.StepOnE_Motors:0000000000000000 StepOnE_Motors
+     /tmp/ccHVZ4Mv.s:852    .text.StepOnE_Motors:000000000000001c $d
+     /tmp/ccHVZ4Mv.s:858    .text.StepOffE_Motors:0000000000000000 $t
+     /tmp/ccHVZ4Mv.s:865    .text.StepOffE_Motors:0000000000000000 StepOffE_Motors
+     /tmp/ccHVZ4Mv.s:891    .text.StepOffE_Motors:000000000000001c $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+incX_coordinates
+decX_coordinates
+incY_coordinates
+decY_coordinates
+incZ_coordinates
+decZ_coordinates
+incE_coordinates
+decE_coordinates
