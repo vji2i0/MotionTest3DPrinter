@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccMAol1x.s 			page 1
+ARM GAS  /tmp/ccfXTgCz.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,13 +17,14 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
   14              		.cfi_sections	.debug_frame
   15              		.section	.text.first_line_DDRAM_address,"ax",%progbits
   16              		.align	1
-  17              		.syntax unified
-  18              		.thumb
-  19              		.thumb_func
-  20              		.fpu softvfp
-  22              	first_line_DDRAM_address:
-  23              	.LFB5:
-  24              		.file 1 "Src/LCD/Driver_LCD.c"
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	first_line_DDRAM_address:
+  24              	.LFB5:
+  25              		.file 1 "Src/LCD/Driver_LCD.c"
    1:Src/LCD/Driver_LCD.c **** #include "Driver_LCD.h"
    2:Src/LCD/Driver_LCD.c **** #include "stdbool.h"
    3:Src/LCD/Driver_LCD.c **** 
@@ -57,10 +58,10 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
   31:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
   32:Src/LCD/Driver_LCD.c **** }
   33:Src/LCD/Driver_LCD.c **** 
+ARM GAS  /tmp/ccfXTgCz.s 			page 2
+
+
   34:Src/LCD/Driver_LCD.c **** void return_home_LCD(void)
-ARM GAS  /tmp/ccMAol1x.s 			page 2
-
-
   35:Src/LCD/Driver_LCD.c **** {
   36:Src/LCD/Driver_LCD.c ****     int status_LCD;
   37:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
@@ -117,10 +118,10 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
   88:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
   89:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
   90:Src/LCD/Driver_LCD.c ****     DB2_high_LCD();
+ARM GAS  /tmp/ccfXTgCz.s 			page 3
+
+
   91:Src/LCD/Driver_LCD.c ****     DB3_high_LCD();
-ARM GAS  /tmp/ccMAol1x.s 			page 3
-
-
   92:Src/LCD/Driver_LCD.c ****     DB4_low_LCD();
   93:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
   94:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
@@ -157,63 +158,63 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
  125:Src/LCD/Driver_LCD.c **** 
  126:Src/LCD/Driver_LCD.c **** static void first_line_DDRAM_address(void)
  127:Src/LCD/Driver_LCD.c **** {
-  25              		.loc 1 127 0
-  26              		.cfi_startproc
-  27              		@ args = 0, pretend = 0, frame = 0
-  28              		@ frame_needed = 0, uses_anonymous_args = 0
-  29 0000 08B5     		push	{r3, lr}
-  30              	.LCFI0:
-  31              		.cfi_def_cfa_offset 8
-  32              		.cfi_offset 3, -8
-  33              		.cfi_offset 14, -4
+  26              		.loc 1 127 1 view -0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 08B5     		push	{r3, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
  128:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
-  34              		.loc 1 128 0
-  35 0002 FFF7FEFF 		bl	DB0_low_LCD
-  36              	.LVL0:
+  35              		.loc 1 128 5 view .LVU1
+  36 0002 FFF7FEFF 		bl	DB0_low_LCD
+  37              	.LVL0:
  129:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
-  37              		.loc 1 129 0
-  38 0006 FFF7FEFF 		bl	DB1_low_LCD
-  39              	.LVL1:
+  38              		.loc 1 129 5 view .LVU2
+  39 0006 FFF7FEFF 		bl	DB1_low_LCD
+  40              	.LVL1:
  130:Src/LCD/Driver_LCD.c ****     DB2_low_LCD();
-  40              		.loc 1 130 0
-  41 000a FFF7FEFF 		bl	DB2_low_LCD
-  42              	.LVL2:
-ARM GAS  /tmp/ccMAol1x.s 			page 4
+  41              		.loc 1 130 5 view .LVU3
+  42 000a FFF7FEFF 		bl	DB2_low_LCD
+ARM GAS  /tmp/ccfXTgCz.s 			page 4
 
 
+  43              	.LVL2:
  131:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
-  43              		.loc 1 131 0
-  44 000e FFF7FEFF 		bl	DB3_low_LCD
-  45              	.LVL3:
+  44              		.loc 1 131 5 view .LVU4
+  45 000e FFF7FEFF 		bl	DB3_low_LCD
+  46              	.LVL3:
  132:Src/LCD/Driver_LCD.c ****     DB4_low_LCD();
-  46              		.loc 1 132 0
-  47 0012 FFF7FEFF 		bl	DB4_low_LCD
-  48              	.LVL4:
+  47              		.loc 1 132 5 view .LVU5
+  48 0012 FFF7FEFF 		bl	DB4_low_LCD
+  49              	.LVL4:
  133:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
-  49              		.loc 1 133 0
-  50 0016 FFF7FEFF 		bl	DB5_low_LCD
-  51              	.LVL5:
+  50              		.loc 1 133 5 view .LVU6
+  51 0016 FFF7FEFF 		bl	DB5_low_LCD
+  52              	.LVL5:
  134:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
-  52              		.loc 1 134 0
-  53 001a FFF7FEFF 		bl	DB6_low_LCD
-  54              	.LVL6:
+  53              		.loc 1 134 5 view .LVU7
+  54 001a FFF7FEFF 		bl	DB6_low_LCD
+  55              	.LVL6:
  135:Src/LCD/Driver_LCD.c ****     DB7_high_LCD();
-  55              		.loc 1 135 0
-  56 001e FFF7FEFF 		bl	DB7_high_LCD
-  57              	.LVL7:
+  56              		.loc 1 135 5 view .LVU8
+  57 001e FFF7FEFF 		bl	DB7_high_LCD
+  58              	.LVL7:
  136:Src/LCD/Driver_LCD.c **** }
-  58              		.loc 1 136 0
-  59 0022 08BD     		pop	{r3, pc}
-  60              		.cfi_endproc
-  61              	.LFE5:
-  63              		.section	.text.third_line_DDRAM_address,"ax",%progbits
-  64              		.align	1
-  65              		.syntax unified
-  66              		.thumb
-  67              		.thumb_func
-  68              		.fpu softvfp
-  70              	third_line_DDRAM_address:
-  71              	.LFB7:
+  59              		.loc 1 136 1 is_stmt 0 view .LVU9
+  60 0022 08BD     		pop	{r3, pc}
+  61              		.cfi_endproc
+  62              	.LFE5:
+  64              		.section	.text.third_line_DDRAM_address,"ax",%progbits
+  65              		.align	1
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  69              		.fpu softvfp
+  71              	third_line_DDRAM_address:
+  72              	.LFB7:
  137:Src/LCD/Driver_LCD.c **** 
  138:Src/LCD/Driver_LCD.c **** static void second_line_DDRAM_address(void)
  139:Src/LCD/Driver_LCD.c **** {
@@ -229,181 +230,182 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
  149:Src/LCD/Driver_LCD.c **** 
  150:Src/LCD/Driver_LCD.c **** static void third_line_DDRAM_address(void)
  151:Src/LCD/Driver_LCD.c **** {
-  72              		.loc 1 151 0
-  73              		.cfi_startproc
-  74              		@ args = 0, pretend = 0, frame = 0
-  75              		@ frame_needed = 0, uses_anonymous_args = 0
-  76 0000 08B5     		push	{r3, lr}
-  77              	.LCFI1:
-  78              		.cfi_def_cfa_offset 8
-  79              		.cfi_offset 3, -8
-  80              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccMAol1x.s 			page 5
+  73              		.loc 1 151 1 is_stmt 1 view -0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 0000 08B5     		push	{r3, lr}
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 3, -8
+ARM GAS  /tmp/ccfXTgCz.s 			page 5
 
 
+  81              		.cfi_offset 14, -4
  152:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
-  81              		.loc 1 152 0
-  82 0002 FFF7FEFF 		bl	DB0_low_LCD
-  83              	.LVL8:
+  82              		.loc 1 152 5 view .LVU11
+  83 0002 FFF7FEFF 		bl	DB0_low_LCD
+  84              	.LVL8:
  153:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
-  84              		.loc 1 153 0
-  85 0006 FFF7FEFF 		bl	DB1_low_LCD
-  86              	.LVL9:
+  85              		.loc 1 153 5 view .LVU12
+  86 0006 FFF7FEFF 		bl	DB1_low_LCD
+  87              	.LVL9:
  154:Src/LCD/Driver_LCD.c ****     DB2_high_LCD();
-  87              		.loc 1 154 0
-  88 000a FFF7FEFF 		bl	DB2_high_LCD
-  89              	.LVL10:
+  88              		.loc 1 154 5 view .LVU13
+  89 000a FFF7FEFF 		bl	DB2_high_LCD
+  90              	.LVL10:
  155:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
-  90              		.loc 1 155 0
-  91 000e FFF7FEFF 		bl	DB3_low_LCD
-  92              	.LVL11:
+  91              		.loc 1 155 5 view .LVU14
+  92 000e FFF7FEFF 		bl	DB3_low_LCD
+  93              	.LVL11:
  156:Src/LCD/Driver_LCD.c ****     DB4_high_LCD();
-  93              		.loc 1 156 0
-  94 0012 FFF7FEFF 		bl	DB4_high_LCD
-  95              	.LVL12:
+  94              		.loc 1 156 5 view .LVU15
+  95 0012 FFF7FEFF 		bl	DB4_high_LCD
+  96              	.LVL12:
  157:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
-  96              		.loc 1 157 0
-  97 0016 FFF7FEFF 		bl	DB5_low_LCD
-  98              	.LVL13:
+  97              		.loc 1 157 5 view .LVU16
+  98 0016 FFF7FEFF 		bl	DB5_low_LCD
+  99              	.LVL13:
  158:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
-  99              		.loc 1 158 0
- 100 001a FFF7FEFF 		bl	DB6_low_LCD
- 101              	.LVL14:
+ 100              		.loc 1 158 5 view .LVU17
+ 101 001a FFF7FEFF 		bl	DB6_low_LCD
+ 102              	.LVL14:
  159:Src/LCD/Driver_LCD.c ****     DB7_high_LCD();
- 102              		.loc 1 159 0
- 103 001e FFF7FEFF 		bl	DB7_high_LCD
- 104              	.LVL15:
+ 103              		.loc 1 159 5 view .LVU18
+ 104 001e FFF7FEFF 		bl	DB7_high_LCD
+ 105              	.LVL15:
  160:Src/LCD/Driver_LCD.c **** }
- 105              		.loc 1 160 0
- 106 0022 08BD     		pop	{r3, pc}
- 107              		.cfi_endproc
- 108              	.LFE7:
- 110              		.section	.text.second_line_DDRAM_address,"ax",%progbits
- 111              		.align	1
- 112              		.syntax unified
- 113              		.thumb
- 114              		.thumb_func
- 115              		.fpu softvfp
- 117              	second_line_DDRAM_address:
- 118              	.LFB6:
+ 106              		.loc 1 160 1 is_stmt 0 view .LVU19
+ 107 0022 08BD     		pop	{r3, pc}
+ 108              		.cfi_endproc
+ 109              	.LFE7:
+ 111              		.section	.text.second_line_DDRAM_address,"ax",%progbits
+ 112              		.align	1
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.fpu softvfp
+ 118              	second_line_DDRAM_address:
+ 119              	.LFB6:
  139:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
- 119              		.loc 1 139 0
- 120              		.cfi_startproc
- 121              		@ args = 0, pretend = 0, frame = 0
- 122              		@ frame_needed = 0, uses_anonymous_args = 0
- 123 0000 08B5     		push	{r3, lr}
- 124              	.LCFI2:
- 125              		.cfi_def_cfa_offset 8
- 126              		.cfi_offset 3, -8
- 127              		.cfi_offset 14, -4
+ 120              		.loc 1 139 1 is_stmt 1 view -0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124 0000 08B5     		push	{r3, lr}
+ 125              	.LCFI2:
+ 126              		.cfi_def_cfa_offset 8
+ 127              		.cfi_offset 3, -8
+ 128              		.cfi_offset 14, -4
  140:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
- 128              		.loc 1 140 0
-ARM GAS  /tmp/ccMAol1x.s 			page 6
+ARM GAS  /tmp/ccfXTgCz.s 			page 6
 
 
- 129 0002 FFF7FEFF 		bl	DB0_low_LCD
- 130              	.LVL16:
+ 129              		.loc 1 140 5 view .LVU21
+ 130 0002 FFF7FEFF 		bl	DB0_low_LCD
+ 131              	.LVL16:
  141:Src/LCD/Driver_LCD.c ****     DB2_low_LCD();
- 131              		.loc 1 141 0
- 132 0006 FFF7FEFF 		bl	DB1_low_LCD
- 133              	.LVL17:
+ 132              		.loc 1 141 5 view .LVU22
+ 133 0006 FFF7FEFF 		bl	DB1_low_LCD
+ 134              	.LVL17:
  142:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
- 134              		.loc 1 142 0
- 135 000a FFF7FEFF 		bl	DB2_low_LCD
- 136              	.LVL18:
+ 135              		.loc 1 142 5 view .LVU23
+ 136 000a FFF7FEFF 		bl	DB2_low_LCD
+ 137              	.LVL18:
  143:Src/LCD/Driver_LCD.c ****     DB4_low_LCD();
- 137              		.loc 1 143 0
- 138 000e FFF7FEFF 		bl	DB3_low_LCD
- 139              	.LVL19:
+ 138              		.loc 1 143 5 view .LVU24
+ 139 000e FFF7FEFF 		bl	DB3_low_LCD
+ 140              	.LVL19:
  144:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
- 140              		.loc 1 144 0
- 141 0012 FFF7FEFF 		bl	DB4_low_LCD
- 142              	.LVL20:
+ 141              		.loc 1 144 5 view .LVU25
+ 142 0012 FFF7FEFF 		bl	DB4_low_LCD
+ 143              	.LVL20:
  145:Src/LCD/Driver_LCD.c ****     DB6_high_LCD();
- 143              		.loc 1 145 0
- 144 0016 FFF7FEFF 		bl	DB5_low_LCD
- 145              	.LVL21:
+ 144              		.loc 1 145 5 view .LVU26
+ 145 0016 FFF7FEFF 		bl	DB5_low_LCD
+ 146              	.LVL21:
  146:Src/LCD/Driver_LCD.c ****     DB7_high_LCD();
- 146              		.loc 1 146 0
- 147 001a FFF7FEFF 		bl	DB6_high_LCD
- 148              	.LVL22:
+ 147              		.loc 1 146 5 view .LVU27
+ 148 001a FFF7FEFF 		bl	DB6_high_LCD
+ 149              	.LVL22:
  147:Src/LCD/Driver_LCD.c **** }
- 149              		.loc 1 147 0
- 150 001e FFF7FEFF 		bl	DB7_high_LCD
- 151              	.LVL23:
+ 150              		.loc 1 147 5 view .LVU28
+ 151 001e FFF7FEFF 		bl	DB7_high_LCD
+ 152              	.LVL23:
  148:Src/LCD/Driver_LCD.c **** 
- 152              		.loc 1 148 0
- 153 0022 08BD     		pop	{r3, pc}
- 154              		.cfi_endproc
- 155              	.LFE6:
- 157              		.section	.text.fourth_line_DDRAM_address,"ax",%progbits
- 158              		.align	1
- 159              		.syntax unified
- 160              		.thumb
- 161              		.thumb_func
- 162              		.fpu softvfp
- 164              	fourth_line_DDRAM_address:
- 165              	.LFB8:
+ 153              		.loc 1 148 1 is_stmt 0 view .LVU29
+ 154 0022 08BD     		pop	{r3, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE6:
+ 158              		.section	.text.fourth_line_DDRAM_address,"ax",%progbits
+ 159              		.align	1
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 163              		.fpu softvfp
+ 165              	fourth_line_DDRAM_address:
+ 166              	.LFB8:
  161:Src/LCD/Driver_LCD.c **** 
  162:Src/LCD/Driver_LCD.c **** static void fourth_line_DDRAM_address(void)
  163:Src/LCD/Driver_LCD.c **** {
- 166              		.loc 1 163 0
- 167              		.cfi_startproc
- 168              		@ args = 0, pretend = 0, frame = 0
- 169              		@ frame_needed = 0, uses_anonymous_args = 0
- 170 0000 08B5     		push	{r3, lr}
- 171              	.LCFI3:
- 172              		.cfi_def_cfa_offset 8
- 173              		.cfi_offset 3, -8
- 174              		.cfi_offset 14, -4
+ 167              		.loc 1 163 1 is_stmt 1 view -0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 08B5     		push	{r3, lr}
+ 172              	.LCFI3:
+ 173              		.cfi_def_cfa_offset 8
+ 174              		.cfi_offset 3, -8
+ 175              		.cfi_offset 14, -4
  164:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
- 175              		.loc 1 164 0
-ARM GAS  /tmp/ccMAol1x.s 			page 7
+ARM GAS  /tmp/ccfXTgCz.s 			page 7
 
 
- 176 0002 FFF7FEFF 		bl	DB0_low_LCD
- 177              	.LVL24:
+ 176              		.loc 1 164 5 view .LVU31
+ 177 0002 FFF7FEFF 		bl	DB0_low_LCD
+ 178              	.LVL24:
  165:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
- 178              		.loc 1 165 0
- 179 0006 FFF7FEFF 		bl	DB1_low_LCD
- 180              	.LVL25:
+ 179              		.loc 1 165 5 view .LVU32
+ 180 0006 FFF7FEFF 		bl	DB1_low_LCD
+ 181              	.LVL25:
  166:Src/LCD/Driver_LCD.c ****     DB2_high_LCD();
- 181              		.loc 1 166 0
- 182 000a FFF7FEFF 		bl	DB2_high_LCD
- 183              	.LVL26:
+ 182              		.loc 1 166 5 view .LVU33
+ 183 000a FFF7FEFF 		bl	DB2_high_LCD
+ 184              	.LVL26:
  167:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
- 184              		.loc 1 167 0
- 185 000e FFF7FEFF 		bl	DB3_low_LCD
- 186              	.LVL27:
+ 185              		.loc 1 167 5 view .LVU34
+ 186 000e FFF7FEFF 		bl	DB3_low_LCD
+ 187              	.LVL27:
  168:Src/LCD/Driver_LCD.c ****     DB4_high_LCD();
- 187              		.loc 1 168 0
- 188 0012 FFF7FEFF 		bl	DB4_high_LCD
- 189              	.LVL28:
+ 188              		.loc 1 168 5 view .LVU35
+ 189 0012 FFF7FEFF 		bl	DB4_high_LCD
+ 190              	.LVL28:
  169:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
- 190              		.loc 1 169 0
- 191 0016 FFF7FEFF 		bl	DB5_low_LCD
- 192              	.LVL29:
+ 191              		.loc 1 169 5 view .LVU36
+ 192 0016 FFF7FEFF 		bl	DB5_low_LCD
+ 193              	.LVL29:
  170:Src/LCD/Driver_LCD.c ****     DB6_high_LCD();
- 193              		.loc 1 170 0
- 194 001a FFF7FEFF 		bl	DB6_high_LCD
- 195              	.LVL30:
+ 194              		.loc 1 170 5 view .LVU37
+ 195 001a FFF7FEFF 		bl	DB6_high_LCD
+ 196              	.LVL30:
  171:Src/LCD/Driver_LCD.c ****     DB7_high_LCD();
- 196              		.loc 1 171 0
- 197 001e FFF7FEFF 		bl	DB7_high_LCD
- 198              	.LVL31:
+ 197              		.loc 1 171 5 view .LVU38
+ 198 001e FFF7FEFF 		bl	DB7_high_LCD
+ 199              	.LVL31:
  172:Src/LCD/Driver_LCD.c **** }
- 199              		.loc 1 172 0
- 200 0022 08BD     		pop	{r3, pc}
- 201              		.cfi_endproc
- 202              	.LFE8:
- 204              		.section	.text.char_2_data_LCD,"ax",%progbits
- 205              		.align	1
- 206              		.syntax unified
- 207              		.thumb
- 208              		.thumb_func
- 209              		.fpu softvfp
- 211              	char_2_data_LCD:
- 212              	.LFB10:
+ 200              		.loc 1 172 1 is_stmt 0 view .LVU39
+ 201 0022 08BD     		pop	{r3, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE8:
+ 205              		.section	.text.char_2_data_LCD,"ax",%progbits
+ 206              		.align	1
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.fpu softvfp
+ 212              	char_2_data_LCD:
+ 213              	.LVL32:
+ 214              	.LFB10:
  173:Src/LCD/Driver_LCD.c **** 
  174:Src/LCD/Driver_LCD.c **** void move_to_line_LCD(int line)
  175:Src/LCD/Driver_LCD.c **** {
@@ -416,11 +418,11 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
  182:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
  183:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
  184:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
+ARM GAS  /tmp/ccfXTgCz.s 			page 8
+
+
  185:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
  186:Src/LCD/Driver_LCD.c ****     E_high_LCD();
-ARM GAS  /tmp/ccMAol1x.s 			page 8
-
-
  187:Src/LCD/Driver_LCD.c ****     if (line == 1) first_line_DDRAM_address();
  188:Src/LCD/Driver_LCD.c ****     if (line == 2) second_line_DDRAM_address();
  189:Src/LCD/Driver_LCD.c ****     if (line == 3) third_line_DDRAM_address();
@@ -435,1075 +437,1243 @@ ARM GAS  /tmp/ccMAol1x.s 			page 1
  198:Src/LCD/Driver_LCD.c **** 
  199:Src/LCD/Driver_LCD.c **** static void char_2_data_LCD(const char c)
  200:Src/LCD/Driver_LCD.c **** {
- 213              		.loc 1 200 0
- 214              		.cfi_startproc
- 215              		@ args = 0, pretend = 0, frame = 0
- 216              		@ frame_needed = 0, uses_anonymous_args = 0
- 217              	.LVL32:
- 218 0000 10B5     		push	{r4, lr}
- 219              	.LCFI4:
- 220              		.cfi_def_cfa_offset 8
- 221              		.cfi_offset 4, -8
- 222              		.cfi_offset 14, -4
- 223 0002 0446     		mov	r4, r0
+ 215              		.loc 1 200 1 is_stmt 1 view -0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219              		.loc 1 200 1 is_stmt 0 view .LVU41
+ 220 0000 10B5     		push	{r4, lr}
+ 221              	.LCFI4:
+ 222              		.cfi_def_cfa_offset 8
+ 223              		.cfi_offset 4, -8
+ 224              		.cfi_offset 14, -4
+ 225 0002 0446     		mov	r4, r0
  201:Src/LCD/Driver_LCD.c ****     if (c>>0 & 1) DB0_high_LCD(); else DB0_low_LCD();
- 224              		.loc 1 201 0
- 225 0004 10F0010F 		tst	r0, #1
- 226 0008 24D0     		beq	.L10
- 227              		.loc 1 201 0 is_stmt 0 discriminator 1
- 228 000a FFF7FEFF 		bl	DB0_high_LCD
- 229              	.LVL33:
- 230              	.L11:
+ 226              		.loc 1 201 5 is_stmt 1 view .LVU42
+ 227              		.loc 1 201 8 is_stmt 0 view .LVU43
+ 228 0004 10F0010F 		tst	r0, #1
+ 229 0008 24D0     		beq	.L10
+ 230              		.loc 1 201 19 is_stmt 1 discriminator 1 view .LVU44
+ 231 000a FFF7FEFF 		bl	DB0_high_LCD
+ 232              	.LVL33:
+ 233              	.L11:
  202:Src/LCD/Driver_LCD.c ****     if (c>>1 & 1) DB1_high_LCD(); else DB1_low_LCD();
- 231              		.loc 1 202 0 is_stmt 1
- 232 000e 14F0020F 		tst	r4, #2
- 233 0012 22D0     		beq	.L12
- 234              		.loc 1 202 0 is_stmt 0 discriminator 1
- 235 0014 FFF7FEFF 		bl	DB1_high_LCD
- 236              	.LVL34:
- 237              	.L13:
+ 234              		.loc 1 202 5 view .LVU45
+ 235              		.loc 1 202 8 is_stmt 0 view .LVU46
+ 236 000e 14F0020F 		tst	r4, #2
+ 237 0012 22D0     		beq	.L12
+ 238              		.loc 1 202 19 is_stmt 1 discriminator 1 view .LVU47
+ 239 0014 FFF7FEFF 		bl	DB1_high_LCD
+ 240              	.LVL34:
+ 241              	.L13:
  203:Src/LCD/Driver_LCD.c ****     if (c>>2 & 1) DB2_high_LCD(); else DB2_low_LCD();
- 238              		.loc 1 203 0 is_stmt 1
- 239 0018 14F0040F 		tst	r4, #4
- 240 001c 20D0     		beq	.L14
- 241              		.loc 1 203 0 is_stmt 0 discriminator 1
- 242 001e FFF7FEFF 		bl	DB2_high_LCD
- 243              	.LVL35:
- 244              	.L15:
+ 242              		.loc 1 203 5 view .LVU48
+ 243              		.loc 1 203 8 is_stmt 0 view .LVU49
+ 244 0018 14F0040F 		tst	r4, #4
+ 245 001c 20D0     		beq	.L14
+ 246              		.loc 1 203 19 is_stmt 1 discriminator 1 view .LVU50
+ 247 001e FFF7FEFF 		bl	DB2_high_LCD
+ 248              	.LVL35:
+ 249              	.L15:
  204:Src/LCD/Driver_LCD.c ****     if (c>>3 & 1) DB3_high_LCD(); else DB3_low_LCD();
- 245              		.loc 1 204 0 is_stmt 1
- 246 0022 14F0080F 		tst	r4, #8
- 247 0026 1ED0     		beq	.L16
- 248              		.loc 1 204 0 is_stmt 0 discriminator 1
- 249 0028 FFF7FEFF 		bl	DB3_high_LCD
- 250              	.LVL36:
- 251              	.L17:
-ARM GAS  /tmp/ccMAol1x.s 			page 9
+ 250              		.loc 1 204 5 view .LVU51
+ 251              		.loc 1 204 8 is_stmt 0 view .LVU52
+ARM GAS  /tmp/ccfXTgCz.s 			page 9
 
 
+ 252 0022 14F0080F 		tst	r4, #8
+ 253 0026 1ED0     		beq	.L16
+ 254              		.loc 1 204 19 is_stmt 1 discriminator 1 view .LVU53
+ 255 0028 FFF7FEFF 		bl	DB3_high_LCD
+ 256              	.LVL36:
+ 257              	.L17:
  205:Src/LCD/Driver_LCD.c ****     if (c>>4 & 1) DB4_high_LCD(); else DB4_low_LCD();
- 252              		.loc 1 205 0 is_stmt 1
- 253 002c 14F0100F 		tst	r4, #16
- 254 0030 1CD0     		beq	.L18
- 255              		.loc 1 205 0 is_stmt 0 discriminator 1
- 256 0032 FFF7FEFF 		bl	DB4_high_LCD
- 257              	.LVL37:
- 258              	.L19:
+ 258              		.loc 1 205 5 view .LVU54
+ 259              		.loc 1 205 8 is_stmt 0 view .LVU55
+ 260 002c 14F0100F 		tst	r4, #16
+ 261 0030 1CD0     		beq	.L18
+ 262              		.loc 1 205 19 is_stmt 1 discriminator 1 view .LVU56
+ 263 0032 FFF7FEFF 		bl	DB4_high_LCD
+ 264              	.LVL37:
+ 265              	.L19:
  206:Src/LCD/Driver_LCD.c ****     if (c>>5 & 1) DB5_high_LCD(); else DB5_low_LCD();
- 259              		.loc 1 206 0 is_stmt 1
- 260 0036 14F0200F 		tst	r4, #32
- 261 003a 1AD0     		beq	.L20
- 262              		.loc 1 206 0 is_stmt 0 discriminator 1
- 263 003c FFF7FEFF 		bl	DB5_high_LCD
- 264              	.LVL38:
- 265              	.L21:
+ 266              		.loc 1 206 5 view .LVU57
+ 267              		.loc 1 206 8 is_stmt 0 view .LVU58
+ 268 0036 14F0200F 		tst	r4, #32
+ 269 003a 1AD0     		beq	.L20
+ 270              		.loc 1 206 19 is_stmt 1 discriminator 1 view .LVU59
+ 271 003c FFF7FEFF 		bl	DB5_high_LCD
+ 272              	.LVL38:
+ 273              	.L21:
  207:Src/LCD/Driver_LCD.c ****     if (c>>6 & 1) DB6_high_LCD(); else DB6_low_LCD();
- 266              		.loc 1 207 0 is_stmt 1
- 267 0040 14F0400F 		tst	r4, #64
- 268 0044 18D0     		beq	.L22
- 269              		.loc 1 207 0 is_stmt 0 discriminator 1
- 270 0046 FFF7FEFF 		bl	DB6_high_LCD
- 271              	.LVL39:
- 272              	.L23:
+ 274              		.loc 1 207 5 view .LVU60
+ 275              		.loc 1 207 8 is_stmt 0 view .LVU61
+ 276 0040 14F0400F 		tst	r4, #64
+ 277 0044 18D0     		beq	.L22
+ 278              		.loc 1 207 19 is_stmt 1 discriminator 1 view .LVU62
+ 279 0046 FFF7FEFF 		bl	DB6_high_LCD
+ 280              	.LVL39:
+ 281              	.L23:
  208:Src/LCD/Driver_LCD.c ****     if (c>>7 & 1) DB7_high_LCD(); else DB7_low_LCD();
- 273              		.loc 1 208 0 is_stmt 1
- 274 004a E309     		lsrs	r3, r4, #7
- 275 004c 17D1     		bne	.L27
- 276              		.loc 1 208 0 is_stmt 0 discriminator 2
- 277 004e FFF7FEFF 		bl	DB7_low_LCD
- 278              	.LVL40:
- 279              	.L9:
+ 282              		.loc 1 208 5 view .LVU63
+ 283              		.loc 1 208 8 is_stmt 0 view .LVU64
+ 284 004a E309     		lsrs	r3, r4, #7
+ 285 004c 17D0     		beq	.L24
+ 286              		.loc 1 208 19 is_stmt 1 discriminator 1 view .LVU65
+ 287 004e FFF7FEFF 		bl	DB7_high_LCD
+ 288              	.LVL40:
+ 289              	.L9:
  209:Src/LCD/Driver_LCD.c **** }
- 280              		.loc 1 209 0 is_stmt 1
- 281 0052 10BD     		pop	{r4, pc}
- 282              	.LVL41:
- 283              	.L10:
+ 290              		.loc 1 209 1 is_stmt 0 view .LVU66
+ 291 0052 10BD     		pop	{r4, pc}
+ 292              	.LVL41:
+ 293              	.L10:
  201:Src/LCD/Driver_LCD.c ****     if (c>>1 & 1) DB1_high_LCD(); else DB1_low_LCD();
- 284              		.loc 1 201 0 discriminator 2
- 285 0054 FFF7FEFF 		bl	DB0_low_LCD
- 286              	.LVL42:
- 287 0058 D9E7     		b	.L11
- 288              	.L12:
+ 294              		.loc 1 201 40 is_stmt 1 discriminator 2 view .LVU67
+ 295 0054 FFF7FEFF 		bl	DB0_low_LCD
+ 296              	.LVL42:
+ 201:Src/LCD/Driver_LCD.c ****     if (c>>1 & 1) DB1_high_LCD(); else DB1_low_LCD();
+ 297              		.loc 1 201 40 is_stmt 0 discriminator 2 view .LVU68
+ 298 0058 D9E7     		b	.L11
+ 299              	.L12:
  202:Src/LCD/Driver_LCD.c ****     if (c>>2 & 1) DB2_high_LCD(); else DB2_low_LCD();
- 289              		.loc 1 202 0 discriminator 2
- 290 005a FFF7FEFF 		bl	DB1_low_LCD
- 291              	.LVL43:
- 292 005e DBE7     		b	.L13
- 293              	.L14:
+ 300              		.loc 1 202 40 is_stmt 1 discriminator 2 view .LVU69
+ARM GAS  /tmp/ccfXTgCz.s 			page 10
+
+
+ 301 005a FFF7FEFF 		bl	DB1_low_LCD
+ 302              	.LVL43:
+ 303 005e DBE7     		b	.L13
+ 304              	.L14:
  203:Src/LCD/Driver_LCD.c ****     if (c>>3 & 1) DB3_high_LCD(); else DB3_low_LCD();
- 294              		.loc 1 203 0 discriminator 2
- 295 0060 FFF7FEFF 		bl	DB2_low_LCD
- 296              	.LVL44:
- 297 0064 DDE7     		b	.L15
- 298              	.L16:
+ 305              		.loc 1 203 40 discriminator 2 view .LVU70
+ 306 0060 FFF7FEFF 		bl	DB2_low_LCD
+ 307              	.LVL44:
+ 308 0064 DDE7     		b	.L15
+ 309              	.L16:
  204:Src/LCD/Driver_LCD.c ****     if (c>>4 & 1) DB4_high_LCD(); else DB4_low_LCD();
- 299              		.loc 1 204 0 discriminator 2
-ARM GAS  /tmp/ccMAol1x.s 			page 10
-
-
- 300 0066 FFF7FEFF 		bl	DB3_low_LCD
- 301              	.LVL45:
- 302 006a DFE7     		b	.L17
- 303              	.L18:
+ 310              		.loc 1 204 40 discriminator 2 view .LVU71
+ 311 0066 FFF7FEFF 		bl	DB3_low_LCD
+ 312              	.LVL45:
+ 313 006a DFE7     		b	.L17
+ 314              	.L18:
  205:Src/LCD/Driver_LCD.c ****     if (c>>5 & 1) DB5_high_LCD(); else DB5_low_LCD();
- 304              		.loc 1 205 0 discriminator 2
- 305 006c FFF7FEFF 		bl	DB4_low_LCD
- 306              	.LVL46:
- 307 0070 E1E7     		b	.L19
- 308              	.L20:
+ 315              		.loc 1 205 40 discriminator 2 view .LVU72
+ 316 006c FFF7FEFF 		bl	DB4_low_LCD
+ 317              	.LVL46:
+ 318 0070 E1E7     		b	.L19
+ 319              	.L20:
  206:Src/LCD/Driver_LCD.c ****     if (c>>6 & 1) DB6_high_LCD(); else DB6_low_LCD();
- 309              		.loc 1 206 0 discriminator 2
- 310 0072 FFF7FEFF 		bl	DB5_low_LCD
- 311              	.LVL47:
- 312 0076 E3E7     		b	.L21
- 313              	.L22:
+ 320              		.loc 1 206 40 discriminator 2 view .LVU73
+ 321 0072 FFF7FEFF 		bl	DB5_low_LCD
+ 322              	.LVL47:
+ 323 0076 E3E7     		b	.L21
+ 324              	.L22:
  207:Src/LCD/Driver_LCD.c ****     if (c>>7 & 1) DB7_high_LCD(); else DB7_low_LCD();
- 314              		.loc 1 207 0 discriminator 2
- 315 0078 FFF7FEFF 		bl	DB6_low_LCD
- 316              	.LVL48:
- 317 007c E5E7     		b	.L23
- 318              	.L27:
+ 325              		.loc 1 207 40 discriminator 2 view .LVU74
+ 326 0078 FFF7FEFF 		bl	DB6_low_LCD
+ 327              	.LVL48:
+ 328 007c E5E7     		b	.L23
+ 329              	.L24:
  208:Src/LCD/Driver_LCD.c **** }
- 319              		.loc 1 208 0 discriminator 1
- 320 007e FFF7FEFF 		bl	DB7_high_LCD
- 321              	.LVL49:
- 322 0082 E6E7     		b	.L9
- 323              		.cfi_endproc
- 324              	.LFE10:
- 326              		.section	.text.clear_display_LCD,"ax",%progbits
- 327              		.align	1
- 328              		.global	clear_display_LCD
- 329              		.syntax unified
- 330              		.thumb
- 331              		.thumb_func
- 332              		.fpu softvfp
- 334              	clear_display_LCD:
- 335              	.LFB0:
+ 330              		.loc 1 208 40 discriminator 2 view .LVU75
+ 331 007e FFF7FEFF 		bl	DB7_low_LCD
+ 332              	.LVL49:
+ 333              		.loc 1 209 1 is_stmt 0 discriminator 2 view .LVU76
+ 334 0082 E6E7     		b	.L9
+ 335              		.cfi_endproc
+ 336              	.LFE10:
+ 338              		.section	.text.clear_display_LCD,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	clear_display_LCD
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 344              		.fpu softvfp
+ 346              	clear_display_LCD:
+ 347              	.LFB0:
   12:Src/LCD/Driver_LCD.c ****     int status_LCD;
- 336              		.loc 1 12 0
- 337              		.cfi_startproc
- 338              		@ args = 0, pretend = 0, frame = 0
- 339              		@ frame_needed = 0, uses_anonymous_args = 0
- 340 0000 08B5     		push	{r3, lr}
- 341              	.LCFI5:
- 342              		.cfi_def_cfa_offset 8
- 343              		.cfi_offset 3, -8
- 344              		.cfi_offset 14, -4
+ 348              		.loc 1 12 1 is_stmt 1 view -0
+ 349              		.cfi_startproc
+ 350              		@ args = 0, pretend = 0, frame = 0
+ 351              		@ frame_needed = 0, uses_anonymous_args = 0
+ 352 0000 08B5     		push	{r3, lr}
+ARM GAS  /tmp/ccfXTgCz.s 			page 11
+
+
+ 353              	.LCFI5:
+ 354              		.cfi_def_cfa_offset 8
+ 355              		.cfi_offset 3, -8
+ 356              		.cfi_offset 14, -4
+  13:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
+ 357              		.loc 1 13 5 view .LVU78
   14:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 345              		.loc 1 14 0
- 346 0002 FFF7FEFF 		bl	RS_low_LCD
- 347              	.LVL50:
+ 358              		.loc 1 14 5 view .LVU79
+ 359 0002 FFF7FEFF 		bl	RS_low_LCD
+ 360              	.LVL50:
   15:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 348              		.loc 1 15 0
- 349 0006 FFF7FEFF 		bl	RW_low_LCD
- 350              	.LVL51:
+ 361              		.loc 1 15 5 view .LVU80
+ 362 0006 FFF7FEFF 		bl	RW_low_LCD
+ 363              	.LVL51:
   16:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
-ARM GAS  /tmp/ccMAol1x.s 			page 11
-
-
- 351              		.loc 1 16 0
- 352 000a 0020     		movs	r0, #0
+ 364              		.loc 1 16 5 view .LVU81
   17:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 353              		.loc 1 17 0
- 354 000c 01E0     		b	.L29
- 355              	.LVL52:
- 356              	.L30:
+ 365              		.loc 1 17 5 view .LVU82
+  16:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 366              		.loc 1 16 16 is_stmt 0 view .LVU83
+ 367 000a 0020     		movs	r0, #0
+ 368              	.LVL52:
+ 369              	.L28:
   17:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 357              		.loc 1 17 0 is_stmt 0 discriminator 2
- 358 000e FFF7FEFF 		bl	Ready_LCD
- 359              	.LVL53:
- 360              	.L29:
+ 370              		.loc 1 17 11 is_stmt 1 discriminator 1 view .LVU84
+ 371 000c 0128     		cmp	r0, #1
+ 372 000e 02D0     		beq	.L35
   17:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 361              		.loc 1 17 0 discriminator 1
- 362 0012 0128     		cmp	r0, #1
- 363 0014 FBD1     		bne	.L30
+ 373              		.loc 1 17 39 discriminator 2 view .LVU85
+  17:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 374              		.loc 1 17 52 is_stmt 0 discriminator 2 view .LVU86
+ 375 0010 FFF7FEFF 		bl	Ready_LCD
+ 376              	.LVL53:
+  17:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 377              		.loc 1 17 52 discriminator 2 view .LVU87
+ 378 0014 FAE7     		b	.L28
+ 379              	.L35:
   18:Src/LCD/Driver_LCD.c ****     DB0_high_LCD();
- 364              		.loc 1 18 0 is_stmt 1
- 365 0016 FFF7FEFF 		bl	E_high_LCD
- 366              	.LVL54:
+ 380              		.loc 1 18 5 is_stmt 1 view .LVU88
+ 381 0016 FFF7FEFF 		bl	E_high_LCD
+ 382              	.LVL54:
   19:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
- 367              		.loc 1 19 0
- 368 001a FFF7FEFF 		bl	DB0_high_LCD
- 369              	.LVL55:
+ 383              		.loc 1 19 5 view .LVU89
+ 384 001a FFF7FEFF 		bl	DB0_high_LCD
+ 385              	.LVL55:
   20:Src/LCD/Driver_LCD.c ****     DB2_low_LCD();
- 370              		.loc 1 20 0
- 371 001e FFF7FEFF 		bl	DB1_low_LCD
- 372              	.LVL56:
+ 386              		.loc 1 20 5 view .LVU90
+ 387 001e FFF7FEFF 		bl	DB1_low_LCD
+ 388              	.LVL56:
   21:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
- 373              		.loc 1 21 0
- 374 0022 FFF7FEFF 		bl	DB2_low_LCD
- 375              	.LVL57:
+ 389              		.loc 1 21 5 view .LVU91
+ 390 0022 FFF7FEFF 		bl	DB2_low_LCD
+ 391              	.LVL57:
   22:Src/LCD/Driver_LCD.c ****     DB4_low_LCD();
- 376              		.loc 1 22 0
- 377 0026 FFF7FEFF 		bl	DB3_low_LCD
- 378              	.LVL58:
+ 392              		.loc 1 22 5 view .LVU92
+ 393 0026 FFF7FEFF 		bl	DB3_low_LCD
+ 394              	.LVL58:
+ARM GAS  /tmp/ccfXTgCz.s 			page 12
+
+
   23:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
- 379              		.loc 1 23 0
- 380 002a FFF7FEFF 		bl	DB4_low_LCD
- 381              	.LVL59:
+ 395              		.loc 1 23 5 view .LVU93
+ 396 002a FFF7FEFF 		bl	DB4_low_LCD
+ 397              	.LVL59:
   24:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
- 382              		.loc 1 24 0
- 383 002e FFF7FEFF 		bl	DB5_low_LCD
- 384              	.LVL60:
+ 398              		.loc 1 24 5 view .LVU94
+ 399 002e FFF7FEFF 		bl	DB5_low_LCD
+ 400              	.LVL60:
   25:Src/LCD/Driver_LCD.c ****     DB7_low_LCD();
- 385              		.loc 1 25 0
- 386 0032 FFF7FEFF 		bl	DB6_low_LCD
- 387              	.LVL61:
+ 401              		.loc 1 25 5 view .LVU95
+ 402 0032 FFF7FEFF 		bl	DB6_low_LCD
+ 403              	.LVL61:
   26:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 388              		.loc 1 26 0
- 389 0036 FFF7FEFF 		bl	DB7_low_LCD
- 390              	.LVL62:
+ 404              		.loc 1 26 5 view .LVU96
+ 405 0036 FFF7FEFF 		bl	DB7_low_LCD
+ 406              	.LVL62:
   27:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 391              		.loc 1 27 0
- 392 003a 0020     		movs	r0, #0
+ 407              		.loc 1 27 5 view .LVU97
   28:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 393              		.loc 1 28 0
-ARM GAS  /tmp/ccMAol1x.s 			page 12
-
-
- 394 003c 01E0     		b	.L31
- 395              	.LVL63:
- 396              	.L32:
+ 408              		.loc 1 28 5 view .LVU98
+  27:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 409              		.loc 1 27 16 is_stmt 0 view .LVU99
+ 410 003a 0020     		movs	r0, #0
+ 411              	.LVL63:
+ 412              	.L30:
   28:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 397              		.loc 1 28 0 is_stmt 0 discriminator 2
- 398 003e FFF7FEFF 		bl	Ready_LCD
- 399              	.LVL64:
- 400              	.L31:
+ 413              		.loc 1 28 11 is_stmt 1 discriminator 1 view .LVU100
+ 414 003c 0128     		cmp	r0, #1
+ 415 003e 02D0     		beq	.L36
   28:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 401              		.loc 1 28 0 discriminator 1
- 402 0042 0128     		cmp	r0, #1
- 403 0044 FBD1     		bne	.L32
+ 416              		.loc 1 28 39 discriminator 2 view .LVU101
+  28:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 417              		.loc 1 28 52 is_stmt 0 discriminator 2 view .LVU102
+ 418 0040 FFF7FEFF 		bl	Ready_LCD
+ 419              	.LVL64:
+  28:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 420              		.loc 1 28 52 discriminator 2 view .LVU103
+ 421 0044 FAE7     		b	.L30
+ 422              	.L36:
   29:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 404              		.loc 1 29 0 is_stmt 1
- 405 0046 FFF7FEFF 		bl	E_low_LCD
- 406              	.LVL65:
+ 423              		.loc 1 29 5 is_stmt 1 view .LVU104
+ 424 0046 FFF7FEFF 		bl	E_low_LCD
+ 425              	.LVL65:
   30:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 407              		.loc 1 30 0
- 408 004a 0020     		movs	r0, #0
+ 426              		.loc 1 30 5 view .LVU105
   31:Src/LCD/Driver_LCD.c **** }
- 409              		.loc 1 31 0
- 410 004c 01E0     		b	.L33
- 411              	.LVL66:
- 412              	.L34:
+ 427              		.loc 1 31 5 view .LVU106
+  30:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 428              		.loc 1 30 16 is_stmt 0 view .LVU107
+ 429 004a 0020     		movs	r0, #0
   31:Src/LCD/Driver_LCD.c **** }
- 413              		.loc 1 31 0 is_stmt 0 discriminator 2
- 414 004e FFF7FEFF 		bl	Ready_LCD
- 415              	.LVL67:
- 416              	.L33:
+ 430              		.loc 1 31 11 view .LVU108
+ 431 004c 01E0     		b	.L32
+ 432              	.LVL66:
+ 433              	.L33:
   31:Src/LCD/Driver_LCD.c **** }
- 417              		.loc 1 31 0 discriminator 1
- 418 0052 0128     		cmp	r0, #1
- 419 0054 FBD1     		bne	.L34
+ 434              		.loc 1 31 39 is_stmt 1 discriminator 2 view .LVU109
+ARM GAS  /tmp/ccfXTgCz.s 			page 13
+
+
+  31:Src/LCD/Driver_LCD.c **** }
+ 435              		.loc 1 31 52 is_stmt 0 discriminator 2 view .LVU110
+ 436 004e FFF7FEFF 		bl	Ready_LCD
+ 437              	.LVL67:
+ 438              	.L32:
+  31:Src/LCD/Driver_LCD.c **** }
+ 439              		.loc 1 31 11 is_stmt 1 discriminator 1 view .LVU111
+ 440 0052 0128     		cmp	r0, #1
+ 441 0054 FBD1     		bne	.L33
   32:Src/LCD/Driver_LCD.c **** 
- 420              		.loc 1 32 0 is_stmt 1
- 421 0056 08BD     		pop	{r3, pc}
- 422              		.cfi_endproc
- 423              	.LFE0:
- 425              		.section	.text.return_home_LCD,"ax",%progbits
- 426              		.align	1
- 427              		.global	return_home_LCD
- 428              		.syntax unified
- 429              		.thumb
- 430              		.thumb_func
- 431              		.fpu softvfp
- 433              	return_home_LCD:
- 434              	.LFB1:
+ 442              		.loc 1 32 1 is_stmt 0 view .LVU112
+ 443 0056 08BD     		pop	{r3, pc}
+ 444              		.cfi_endproc
+ 445              	.LFE0:
+ 447              		.section	.text.return_home_LCD,"ax",%progbits
+ 448              		.align	1
+ 449              		.global	return_home_LCD
+ 450              		.syntax unified
+ 451              		.thumb
+ 452              		.thumb_func
+ 453              		.fpu softvfp
+ 455              	return_home_LCD:
+ 456              	.LFB1:
   35:Src/LCD/Driver_LCD.c ****     int status_LCD;
- 435              		.loc 1 35 0
- 436              		.cfi_startproc
- 437              		@ args = 0, pretend = 0, frame = 0
- 438              		@ frame_needed = 0, uses_anonymous_args = 0
- 439 0000 08B5     		push	{r3, lr}
- 440              	.LCFI6:
- 441              		.cfi_def_cfa_offset 8
- 442              		.cfi_offset 3, -8
- 443              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccMAol1x.s 			page 13
-
-
+ 457              		.loc 1 35 1 is_stmt 1 view -0
+ 458              		.cfi_startproc
+ 459              		@ args = 0, pretend = 0, frame = 0
+ 460              		@ frame_needed = 0, uses_anonymous_args = 0
+ 461 0000 08B5     		push	{r3, lr}
+ 462              	.LCFI6:
+ 463              		.cfi_def_cfa_offset 8
+ 464              		.cfi_offset 3, -8
+ 465              		.cfi_offset 14, -4
+  36:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
+ 466              		.loc 1 36 5 view .LVU114
   37:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 444              		.loc 1 37 0
- 445 0002 FFF7FEFF 		bl	RS_low_LCD
- 446              	.LVL68:
+ 467              		.loc 1 37 5 view .LVU115
+ 468 0002 FFF7FEFF 		bl	RS_low_LCD
+ 469              	.LVL68:
   38:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 447              		.loc 1 38 0
- 448 0006 FFF7FEFF 		bl	RW_low_LCD
- 449              	.LVL69:
+ 470              		.loc 1 38 5 view .LVU116
+ 471 0006 FFF7FEFF 		bl	RW_low_LCD
+ 472              	.LVL69:
   39:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 450              		.loc 1 39 0
- 451 000a 0020     		movs	r0, #0
+ 473              		.loc 1 39 5 view .LVU117
   40:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 452              		.loc 1 40 0
- 453 000c 01E0     		b	.L37
- 454              	.LVL70:
- 455              	.L38:
+ 474              		.loc 1 40 5 view .LVU118
+  39:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 475              		.loc 1 39 16 is_stmt 0 view .LVU119
+ 476 000a 0020     		movs	r0, #0
+ 477              	.LVL70:
+ 478              	.L38:
   40:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 456              		.loc 1 40 0 is_stmt 0 discriminator 2
- 457 000e FFF7FEFF 		bl	Ready_LCD
- 458              	.LVL71:
- 459              	.L37:
+ 479              		.loc 1 40 11 is_stmt 1 discriminator 1 view .LVU120
+ 480 000c 0128     		cmp	r0, #1
+ 481 000e 02D0     		beq	.L45
   40:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 460              		.loc 1 40 0 discriminator 1
- 461 0012 0128     		cmp	r0, #1
- 462 0014 FBD1     		bne	.L38
+ARM GAS  /tmp/ccfXTgCz.s 			page 14
+
+
+ 482              		.loc 1 40 39 discriminator 2 view .LVU121
+  40:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 483              		.loc 1 40 52 is_stmt 0 discriminator 2 view .LVU122
+ 484 0010 FFF7FEFF 		bl	Ready_LCD
+ 485              	.LVL71:
+  40:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 486              		.loc 1 40 52 discriminator 2 view .LVU123
+ 487 0014 FAE7     		b	.L38
+ 488              	.L45:
   41:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
- 463              		.loc 1 41 0 is_stmt 1
- 464 0016 FFF7FEFF 		bl	E_high_LCD
- 465              	.LVL72:
+ 489              		.loc 1 41 5 is_stmt 1 view .LVU124
+ 490 0016 FFF7FEFF 		bl	E_high_LCD
+ 491              	.LVL72:
   42:Src/LCD/Driver_LCD.c ****     DB1_high_LCD();
- 466              		.loc 1 42 0
- 467 001a FFF7FEFF 		bl	DB0_low_LCD
- 468              	.LVL73:
+ 492              		.loc 1 42 5 view .LVU125
+ 493 001a FFF7FEFF 		bl	DB0_low_LCD
+ 494              	.LVL73:
   43:Src/LCD/Driver_LCD.c ****     DB2_low_LCD();
- 469              		.loc 1 43 0
- 470 001e FFF7FEFF 		bl	DB1_high_LCD
- 471              	.LVL74:
+ 495              		.loc 1 43 5 view .LVU126
+ 496 001e FFF7FEFF 		bl	DB1_high_LCD
+ 497              	.LVL74:
   44:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
- 472              		.loc 1 44 0
- 473 0022 FFF7FEFF 		bl	DB2_low_LCD
- 474              	.LVL75:
+ 498              		.loc 1 44 5 view .LVU127
+ 499 0022 FFF7FEFF 		bl	DB2_low_LCD
+ 500              	.LVL75:
   45:Src/LCD/Driver_LCD.c ****     DB4_low_LCD();
- 475              		.loc 1 45 0
- 476 0026 FFF7FEFF 		bl	DB3_low_LCD
- 477              	.LVL76:
+ 501              		.loc 1 45 5 view .LVU128
+ 502 0026 FFF7FEFF 		bl	DB3_low_LCD
+ 503              	.LVL76:
   46:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
- 478              		.loc 1 46 0
- 479 002a FFF7FEFF 		bl	DB4_low_LCD
- 480              	.LVL77:
+ 504              		.loc 1 46 5 view .LVU129
+ 505 002a FFF7FEFF 		bl	DB4_low_LCD
+ 506              	.LVL77:
   47:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
- 481              		.loc 1 47 0
- 482 002e FFF7FEFF 		bl	DB5_low_LCD
- 483              	.LVL78:
+ 507              		.loc 1 47 5 view .LVU130
+ 508 002e FFF7FEFF 		bl	DB5_low_LCD
+ 509              	.LVL78:
   48:Src/LCD/Driver_LCD.c ****     DB7_low_LCD();
- 484              		.loc 1 48 0
- 485 0032 FFF7FEFF 		bl	DB6_low_LCD
- 486              	.LVL79:
-ARM GAS  /tmp/ccMAol1x.s 			page 14
-
-
+ 510              		.loc 1 48 5 view .LVU131
+ 511 0032 FFF7FEFF 		bl	DB6_low_LCD
+ 512              	.LVL79:
   49:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 487              		.loc 1 49 0
- 488 0036 FFF7FEFF 		bl	DB7_low_LCD
- 489              	.LVL80:
+ 513              		.loc 1 49 5 view .LVU132
+ 514 0036 FFF7FEFF 		bl	DB7_low_LCD
+ 515              	.LVL80:
   50:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 490              		.loc 1 50 0
- 491 003a 0020     		movs	r0, #0
+ 516              		.loc 1 50 5 view .LVU133
   51:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 492              		.loc 1 51 0
- 493 003c 01E0     		b	.L39
- 494              	.LVL81:
- 495              	.L40:
+ 517              		.loc 1 51 5 view .LVU134
+  50:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 518              		.loc 1 50 16 is_stmt 0 view .LVU135
+ 519 003a 0020     		movs	r0, #0
+ 520              	.LVL81:
+ 521              	.L40:
   51:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 496              		.loc 1 51 0 is_stmt 0 discriminator 2
- 497 003e FFF7FEFF 		bl	Ready_LCD
- 498              	.LVL82:
- 499              	.L39:
+ 522              		.loc 1 51 11 is_stmt 1 discriminator 1 view .LVU136
+ 523 003c 0128     		cmp	r0, #1
+ARM GAS  /tmp/ccfXTgCz.s 			page 15
+
+
+ 524 003e 02D0     		beq	.L46
   51:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 500              		.loc 1 51 0 discriminator 1
- 501 0042 0128     		cmp	r0, #1
- 502 0044 FBD1     		bne	.L40
+ 525              		.loc 1 51 39 discriminator 2 view .LVU137
+  51:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 526              		.loc 1 51 52 is_stmt 0 discriminator 2 view .LVU138
+ 527 0040 FFF7FEFF 		bl	Ready_LCD
+ 528              	.LVL82:
+  51:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 529              		.loc 1 51 52 discriminator 2 view .LVU139
+ 530 0044 FAE7     		b	.L40
+ 531              	.L46:
   52:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 503              		.loc 1 52 0 is_stmt 1
- 504 0046 FFF7FEFF 		bl	E_low_LCD
- 505              	.LVL83:
+ 532              		.loc 1 52 5 is_stmt 1 view .LVU140
+ 533 0046 FFF7FEFF 		bl	E_low_LCD
+ 534              	.LVL83:
   53:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 506              		.loc 1 53 0
- 507 004a 0020     		movs	r0, #0
+ 535              		.loc 1 53 5 view .LVU141
   54:Src/LCD/Driver_LCD.c **** }
- 508              		.loc 1 54 0
- 509 004c 01E0     		b	.L41
- 510              	.LVL84:
- 511              	.L42:
+ 536              		.loc 1 54 5 view .LVU142
+  53:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 537              		.loc 1 53 16 is_stmt 0 view .LVU143
+ 538 004a 0020     		movs	r0, #0
   54:Src/LCD/Driver_LCD.c **** }
- 512              		.loc 1 54 0 is_stmt 0 discriminator 2
- 513 004e FFF7FEFF 		bl	Ready_LCD
- 514              	.LVL85:
- 515              	.L41:
+ 539              		.loc 1 54 11 view .LVU144
+ 540 004c 01E0     		b	.L42
+ 541              	.LVL84:
+ 542              	.L43:
   54:Src/LCD/Driver_LCD.c **** }
- 516              		.loc 1 54 0 discriminator 1
- 517 0052 0128     		cmp	r0, #1
- 518 0054 FBD1     		bne	.L42
+ 543              		.loc 1 54 39 is_stmt 1 discriminator 2 view .LVU145
+  54:Src/LCD/Driver_LCD.c **** }
+ 544              		.loc 1 54 52 is_stmt 0 discriminator 2 view .LVU146
+ 545 004e FFF7FEFF 		bl	Ready_LCD
+ 546              	.LVL85:
+ 547              	.L42:
+  54:Src/LCD/Driver_LCD.c **** }
+ 548              		.loc 1 54 11 is_stmt 1 discriminator 1 view .LVU147
+ 549 0052 0128     		cmp	r0, #1
+ 550 0054 FBD1     		bne	.L43
   55:Src/LCD/Driver_LCD.c **** 
- 519              		.loc 1 55 0 is_stmt 1
- 520 0056 08BD     		pop	{r3, pc}
- 521              		.cfi_endproc
- 522              	.LFE1:
- 524              		.section	.text.set_dataLenght_numberOfLines_fontType_LCD,"ax",%progbits
- 525              		.align	1
- 526              		.global	set_dataLenght_numberOfLines_fontType_LCD
- 527              		.syntax unified
- 528              		.thumb
- 529              		.thumb_func
- 530              		.fpu softvfp
- 532              	set_dataLenght_numberOfLines_fontType_LCD:
- 533              	.LFB2:
+ 551              		.loc 1 55 1 is_stmt 0 view .LVU148
+ 552 0056 08BD     		pop	{r3, pc}
+ 553              		.cfi_endproc
+ 554              	.LFE1:
+ 556              		.section	.text.set_dataLenght_numberOfLines_fontType_LCD,"ax",%progbits
+ 557              		.align	1
+ 558              		.global	set_dataLenght_numberOfLines_fontType_LCD
+ 559              		.syntax unified
+ 560              		.thumb
+ 561              		.thumb_func
+ 562              		.fpu softvfp
+ 564              	set_dataLenght_numberOfLines_fontType_LCD:
+ 565              	.LFB2:
   58:Src/LCD/Driver_LCD.c ****     int status_LCD;
-ARM GAS  /tmp/ccMAol1x.s 			page 15
+ 566              		.loc 1 58 1 is_stmt 1 view -0
+ 567              		.cfi_startproc
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccfXTgCz.s 			page 16
 
 
- 534              		.loc 1 58 0
- 535              		.cfi_startproc
- 536              		@ args = 0, pretend = 0, frame = 0
- 537              		@ frame_needed = 0, uses_anonymous_args = 0
- 538 0000 08B5     		push	{r3, lr}
- 539              	.LCFI7:
- 540              		.cfi_def_cfa_offset 8
- 541              		.cfi_offset 3, -8
- 542              		.cfi_offset 14, -4
+ 570 0000 08B5     		push	{r3, lr}
+ 571              	.LCFI7:
+ 572              		.cfi_def_cfa_offset 8
+ 573              		.cfi_offset 3, -8
+ 574              		.cfi_offset 14, -4
+  59:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
+ 575              		.loc 1 59 5 view .LVU150
   60:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 543              		.loc 1 60 0
- 544 0002 FFF7FEFF 		bl	RS_low_LCD
- 545              	.LVL86:
+ 576              		.loc 1 60 5 view .LVU151
+ 577 0002 FFF7FEFF 		bl	RS_low_LCD
+ 578              	.LVL86:
   61:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 546              		.loc 1 61 0
- 547 0006 FFF7FEFF 		bl	RW_low_LCD
- 548              	.LVL87:
+ 579              		.loc 1 61 5 view .LVU152
+ 580 0006 FFF7FEFF 		bl	RW_low_LCD
+ 581              	.LVL87:
   62:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 549              		.loc 1 62 0
- 550 000a 0020     		movs	r0, #0
+ 582              		.loc 1 62 5 view .LVU153
   63:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 551              		.loc 1 63 0
- 552 000c 01E0     		b	.L45
- 553              	.LVL88:
- 554              	.L46:
+ 583              		.loc 1 63 5 view .LVU154
+  62:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 584              		.loc 1 62 16 is_stmt 0 view .LVU155
+ 585 000a 0020     		movs	r0, #0
+ 586              	.LVL88:
+ 587              	.L48:
   63:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 555              		.loc 1 63 0 is_stmt 0 discriminator 2
- 556 000e FFF7FEFF 		bl	Ready_LCD
- 557              	.LVL89:
- 558              	.L45:
+ 588              		.loc 1 63 11 is_stmt 1 discriminator 1 view .LVU156
+ 589 000c 0128     		cmp	r0, #1
+ 590 000e 02D0     		beq	.L55
   63:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 559              		.loc 1 63 0 discriminator 1
- 560 0012 0128     		cmp	r0, #1
- 561 0014 FBD1     		bne	.L46
+ 591              		.loc 1 63 39 discriminator 2 view .LVU157
+  63:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 592              		.loc 1 63 52 is_stmt 0 discriminator 2 view .LVU158
+ 593 0010 FFF7FEFF 		bl	Ready_LCD
+ 594              	.LVL89:
+  63:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 595              		.loc 1 63 52 discriminator 2 view .LVU159
+ 596 0014 FAE7     		b	.L48
+ 597              	.L55:
   64:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
- 562              		.loc 1 64 0 is_stmt 1
- 563 0016 FFF7FEFF 		bl	E_high_LCD
- 564              	.LVL90:
+ 598              		.loc 1 64 5 is_stmt 1 view .LVU160
+ 599 0016 FFF7FEFF 		bl	E_high_LCD
+ 600              	.LVL90:
   65:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
- 565              		.loc 1 65 0
- 566 001a FFF7FEFF 		bl	DB0_low_LCD
- 567              	.LVL91:
+ 601              		.loc 1 65 5 view .LVU161
+ 602 001a FFF7FEFF 		bl	DB0_low_LCD
+ 603              	.LVL91:
   66:Src/LCD/Driver_LCD.c ****     DB2_low_LCD();
- 568              		.loc 1 66 0
- 569 001e FFF7FEFF 		bl	DB1_low_LCD
- 570              	.LVL92:
+ 604              		.loc 1 66 5 view .LVU162
+ 605 001e FFF7FEFF 		bl	DB1_low_LCD
+ 606              	.LVL92:
   67:Src/LCD/Driver_LCD.c ****     DB3_high_LCD();
- 571              		.loc 1 67 0
- 572 0022 FFF7FEFF 		bl	DB2_low_LCD
- 573              	.LVL93:
+ 607              		.loc 1 67 5 view .LVU163
+ 608 0022 FFF7FEFF 		bl	DB2_low_LCD
+ 609              	.LVL93:
   68:Src/LCD/Driver_LCD.c ****     DB4_high_LCD();
- 574              		.loc 1 68 0
- 575 0026 FFF7FEFF 		bl	DB3_high_LCD
- 576              	.LVL94:
+ 610              		.loc 1 68 5 view .LVU164
+ 611 0026 FFF7FEFF 		bl	DB3_high_LCD
+ARM GAS  /tmp/ccfXTgCz.s 			page 17
+
+
+ 612              	.LVL94:
   69:Src/LCD/Driver_LCD.c ****     DB5_high_LCD();
- 577              		.loc 1 69 0
- 578 002a FFF7FEFF 		bl	DB4_high_LCD
-ARM GAS  /tmp/ccMAol1x.s 			page 16
-
-
- 579              	.LVL95:
+ 613              		.loc 1 69 5 view .LVU165
+ 614 002a FFF7FEFF 		bl	DB4_high_LCD
+ 615              	.LVL95:
   70:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
- 580              		.loc 1 70 0
- 581 002e FFF7FEFF 		bl	DB5_high_LCD
- 582              	.LVL96:
+ 616              		.loc 1 70 5 view .LVU166
+ 617 002e FFF7FEFF 		bl	DB5_high_LCD
+ 618              	.LVL96:
   71:Src/LCD/Driver_LCD.c ****     DB7_low_LCD();
- 583              		.loc 1 71 0
- 584 0032 FFF7FEFF 		bl	DB6_low_LCD
- 585              	.LVL97:
+ 619              		.loc 1 71 5 view .LVU167
+ 620 0032 FFF7FEFF 		bl	DB6_low_LCD
+ 621              	.LVL97:
   72:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 586              		.loc 1 72 0
- 587 0036 FFF7FEFF 		bl	DB7_low_LCD
- 588              	.LVL98:
+ 622              		.loc 1 72 5 view .LVU168
+ 623 0036 FFF7FEFF 		bl	DB7_low_LCD
+ 624              	.LVL98:
   73:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 589              		.loc 1 73 0
- 590 003a 0020     		movs	r0, #0
+ 625              		.loc 1 73 5 view .LVU169
   74:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 591              		.loc 1 74 0
- 592 003c 01E0     		b	.L47
- 593              	.LVL99:
- 594              	.L48:
+ 626              		.loc 1 74 5 view .LVU170
+  73:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 627              		.loc 1 73 16 is_stmt 0 view .LVU171
+ 628 003a 0020     		movs	r0, #0
+ 629              	.LVL99:
+ 630              	.L50:
   74:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 595              		.loc 1 74 0 is_stmt 0 discriminator 2
- 596 003e FFF7FEFF 		bl	Ready_LCD
- 597              	.LVL100:
- 598              	.L47:
+ 631              		.loc 1 74 11 is_stmt 1 discriminator 1 view .LVU172
+ 632 003c 0128     		cmp	r0, #1
+ 633 003e 02D0     		beq	.L56
   74:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 599              		.loc 1 74 0 discriminator 1
- 600 0042 0128     		cmp	r0, #1
- 601 0044 FBD1     		bne	.L48
+ 634              		.loc 1 74 39 discriminator 2 view .LVU173
+  74:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 635              		.loc 1 74 52 is_stmt 0 discriminator 2 view .LVU174
+ 636 0040 FFF7FEFF 		bl	Ready_LCD
+ 637              	.LVL100:
+  74:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 638              		.loc 1 74 52 discriminator 2 view .LVU175
+ 639 0044 FAE7     		b	.L50
+ 640              	.L56:
   75:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 602              		.loc 1 75 0 is_stmt 1
- 603 0046 FFF7FEFF 		bl	E_low_LCD
- 604              	.LVL101:
+ 641              		.loc 1 75 5 is_stmt 1 view .LVU176
+ 642 0046 FFF7FEFF 		bl	E_low_LCD
+ 643              	.LVL101:
   76:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 605              		.loc 1 76 0
- 606 004a 0020     		movs	r0, #0
+ 644              		.loc 1 76 5 view .LVU177
   77:Src/LCD/Driver_LCD.c **** }
- 607              		.loc 1 77 0
- 608 004c 01E0     		b	.L49
- 609              	.LVL102:
- 610              	.L50:
+ 645              		.loc 1 77 5 view .LVU178
+  76:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 646              		.loc 1 76 16 is_stmt 0 view .LVU179
+ 647 004a 0020     		movs	r0, #0
   77:Src/LCD/Driver_LCD.c **** }
- 611              		.loc 1 77 0 is_stmt 0 discriminator 2
- 612 004e FFF7FEFF 		bl	Ready_LCD
- 613              	.LVL103:
- 614              	.L49:
+ 648              		.loc 1 77 11 view .LVU180
+ 649 004c 01E0     		b	.L52
+ 650              	.LVL102:
+ 651              	.L53:
   77:Src/LCD/Driver_LCD.c **** }
- 615              		.loc 1 77 0 discriminator 1
- 616 0052 0128     		cmp	r0, #1
- 617 0054 FBD1     		bne	.L50
+ARM GAS  /tmp/ccfXTgCz.s 			page 18
+
+
+ 652              		.loc 1 77 39 is_stmt 1 discriminator 2 view .LVU181
+  77:Src/LCD/Driver_LCD.c **** }
+ 653              		.loc 1 77 52 is_stmt 0 discriminator 2 view .LVU182
+ 654 004e FFF7FEFF 		bl	Ready_LCD
+ 655              	.LVL103:
+ 656              	.L52:
+  77:Src/LCD/Driver_LCD.c **** }
+ 657              		.loc 1 77 11 is_stmt 1 discriminator 1 view .LVU183
+ 658 0052 0128     		cmp	r0, #1
+ 659 0054 FBD1     		bne	.L53
   78:Src/LCD/Driver_LCD.c **** 
- 618              		.loc 1 78 0 is_stmt 1
- 619 0056 08BD     		pop	{r3, pc}
- 620              		.cfi_endproc
- 621              	.LFE2:
- 623              		.section	.text.set_do_not_display_cursor_LCD,"ax",%progbits
-ARM GAS  /tmp/ccMAol1x.s 			page 17
-
-
- 624              		.align	1
- 625              		.global	set_do_not_display_cursor_LCD
- 626              		.syntax unified
- 627              		.thumb
- 628              		.thumb_func
- 629              		.fpu softvfp
- 631              	set_do_not_display_cursor_LCD:
- 632              	.LFB3:
+ 660              		.loc 1 78 1 is_stmt 0 view .LVU184
+ 661 0056 08BD     		pop	{r3, pc}
+ 662              		.cfi_endproc
+ 663              	.LFE2:
+ 665              		.section	.text.set_do_not_display_cursor_LCD,"ax",%progbits
+ 666              		.align	1
+ 667              		.global	set_do_not_display_cursor_LCD
+ 668              		.syntax unified
+ 669              		.thumb
+ 670              		.thumb_func
+ 671              		.fpu softvfp
+ 673              	set_do_not_display_cursor_LCD:
+ 674              	.LFB3:
   81:Src/LCD/Driver_LCD.c ****     int status_LCD;
- 633              		.loc 1 81 0
- 634              		.cfi_startproc
- 635              		@ args = 0, pretend = 0, frame = 0
- 636              		@ frame_needed = 0, uses_anonymous_args = 0
- 637 0000 08B5     		push	{r3, lr}
- 638              	.LCFI8:
- 639              		.cfi_def_cfa_offset 8
- 640              		.cfi_offset 3, -8
- 641              		.cfi_offset 14, -4
+ 675              		.loc 1 81 1 is_stmt 1 view -0
+ 676              		.cfi_startproc
+ 677              		@ args = 0, pretend = 0, frame = 0
+ 678              		@ frame_needed = 0, uses_anonymous_args = 0
+ 679 0000 08B5     		push	{r3, lr}
+ 680              	.LCFI8:
+ 681              		.cfi_def_cfa_offset 8
+ 682              		.cfi_offset 3, -8
+ 683              		.cfi_offset 14, -4
+  82:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
+ 684              		.loc 1 82 5 view .LVU186
   83:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 642              		.loc 1 83 0
- 643 0002 FFF7FEFF 		bl	RS_low_LCD
- 644              	.LVL104:
+ 685              		.loc 1 83 5 view .LVU187
+ 686 0002 FFF7FEFF 		bl	RS_low_LCD
+ 687              	.LVL104:
   84:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 645              		.loc 1 84 0
- 646 0006 FFF7FEFF 		bl	RW_low_LCD
- 647              	.LVL105:
+ 688              		.loc 1 84 5 view .LVU188
+ 689 0006 FFF7FEFF 		bl	RW_low_LCD
+ 690              	.LVL105:
   85:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 648              		.loc 1 85 0
- 649 000a 0020     		movs	r0, #0
+ 691              		.loc 1 85 5 view .LVU189
   86:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 650              		.loc 1 86 0
- 651 000c 01E0     		b	.L53
- 652              	.LVL106:
- 653              	.L54:
+ 692              		.loc 1 86 5 view .LVU190
+  85:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 693              		.loc 1 85 16 is_stmt 0 view .LVU191
+ 694 000a 0020     		movs	r0, #0
+ 695              	.LVL106:
+ 696              	.L58:
   86:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 654              		.loc 1 86 0 is_stmt 0 discriminator 2
- 655 000e FFF7FEFF 		bl	Ready_LCD
- 656              	.LVL107:
- 657              	.L53:
+ 697              		.loc 1 86 11 is_stmt 1 discriminator 1 view .LVU192
+ 698 000c 0128     		cmp	r0, #1
+ 699 000e 02D0     		beq	.L65
+ARM GAS  /tmp/ccfXTgCz.s 			page 19
+
+
   86:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 658              		.loc 1 86 0 discriminator 1
- 659 0012 0128     		cmp	r0, #1
- 660 0014 FBD1     		bne	.L54
+ 700              		.loc 1 86 39 discriminator 2 view .LVU193
+  86:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 701              		.loc 1 86 52 is_stmt 0 discriminator 2 view .LVU194
+ 702 0010 FFF7FEFF 		bl	Ready_LCD
+ 703              	.LVL107:
+  86:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 704              		.loc 1 86 52 discriminator 2 view .LVU195
+ 705 0014 FAE7     		b	.L58
+ 706              	.L65:
   87:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
- 661              		.loc 1 87 0 is_stmt 1
- 662 0016 FFF7FEFF 		bl	E_high_LCD
- 663              	.LVL108:
+ 707              		.loc 1 87 5 is_stmt 1 view .LVU196
+ 708 0016 FFF7FEFF 		bl	E_high_LCD
+ 709              	.LVL108:
   88:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
- 664              		.loc 1 88 0
- 665 001a FFF7FEFF 		bl	DB0_low_LCD
- 666              	.LVL109:
+ 710              		.loc 1 88 5 view .LVU197
+ 711 001a FFF7FEFF 		bl	DB0_low_LCD
+ 712              	.LVL109:
   89:Src/LCD/Driver_LCD.c ****     DB2_high_LCD();
- 667              		.loc 1 89 0
- 668 001e FFF7FEFF 		bl	DB1_low_LCD
- 669              	.LVL110:
+ 713              		.loc 1 89 5 view .LVU198
+ 714 001e FFF7FEFF 		bl	DB1_low_LCD
+ 715              	.LVL110:
   90:Src/LCD/Driver_LCD.c ****     DB3_high_LCD();
- 670              		.loc 1 90 0
-ARM GAS  /tmp/ccMAol1x.s 			page 18
-
-
- 671 0022 FFF7FEFF 		bl	DB2_high_LCD
- 672              	.LVL111:
+ 716              		.loc 1 90 5 view .LVU199
+ 717 0022 FFF7FEFF 		bl	DB2_high_LCD
+ 718              	.LVL111:
   91:Src/LCD/Driver_LCD.c ****     DB4_low_LCD();
- 673              		.loc 1 91 0
- 674 0026 FFF7FEFF 		bl	DB3_high_LCD
- 675              	.LVL112:
+ 719              		.loc 1 91 5 view .LVU200
+ 720 0026 FFF7FEFF 		bl	DB3_high_LCD
+ 721              	.LVL112:
   92:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
- 676              		.loc 1 92 0
- 677 002a FFF7FEFF 		bl	DB4_low_LCD
- 678              	.LVL113:
+ 722              		.loc 1 92 5 view .LVU201
+ 723 002a FFF7FEFF 		bl	DB4_low_LCD
+ 724              	.LVL113:
   93:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
- 679              		.loc 1 93 0
- 680 002e FFF7FEFF 		bl	DB5_low_LCD
- 681              	.LVL114:
+ 725              		.loc 1 93 5 view .LVU202
+ 726 002e FFF7FEFF 		bl	DB5_low_LCD
+ 727              	.LVL114:
   94:Src/LCD/Driver_LCD.c ****     DB7_low_LCD();
- 682              		.loc 1 94 0
- 683 0032 FFF7FEFF 		bl	DB6_low_LCD
- 684              	.LVL115:
+ 728              		.loc 1 94 5 view .LVU203
+ 729 0032 FFF7FEFF 		bl	DB6_low_LCD
+ 730              	.LVL115:
   95:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 685              		.loc 1 95 0
- 686 0036 FFF7FEFF 		bl	DB7_low_LCD
- 687              	.LVL116:
+ 731              		.loc 1 95 5 view .LVU204
+ 732 0036 FFF7FEFF 		bl	DB7_low_LCD
+ 733              	.LVL116:
   96:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 688              		.loc 1 96 0
- 689 003a 0020     		movs	r0, #0
+ 734              		.loc 1 96 5 view .LVU205
   97:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 690              		.loc 1 97 0
- 691 003c 01E0     		b	.L55
- 692              	.LVL117:
- 693              	.L56:
+ 735              		.loc 1 97 5 view .LVU206
+  96:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 736              		.loc 1 96 16 is_stmt 0 view .LVU207
+ 737 003a 0020     		movs	r0, #0
+ 738              	.LVL117:
+ 739              	.L60:
   97:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 694              		.loc 1 97 0 is_stmt 0 discriminator 2
- 695 003e FFF7FEFF 		bl	Ready_LCD
- 696              	.LVL118:
- 697              	.L55:
+ 740              		.loc 1 97 11 is_stmt 1 discriminator 1 view .LVU208
+ARM GAS  /tmp/ccfXTgCz.s 			page 20
+
+
+ 741 003c 0128     		cmp	r0, #1
+ 742 003e 02D0     		beq	.L66
   97:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 698              		.loc 1 97 0 discriminator 1
- 699 0042 0128     		cmp	r0, #1
- 700 0044 FBD1     		bne	.L56
+ 743              		.loc 1 97 39 discriminator 2 view .LVU209
+  97:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 744              		.loc 1 97 52 is_stmt 0 discriminator 2 view .LVU210
+ 745 0040 FFF7FEFF 		bl	Ready_LCD
+ 746              	.LVL118:
+  97:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 747              		.loc 1 97 52 discriminator 2 view .LVU211
+ 748 0044 FAE7     		b	.L60
+ 749              	.L66:
   98:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 701              		.loc 1 98 0 is_stmt 1
- 702 0046 FFF7FEFF 		bl	E_low_LCD
- 703              	.LVL119:
+ 750              		.loc 1 98 5 is_stmt 1 view .LVU212
+ 751 0046 FFF7FEFF 		bl	E_low_LCD
+ 752              	.LVL119:
   99:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 704              		.loc 1 99 0
- 705 004a 0020     		movs	r0, #0
+ 753              		.loc 1 99 5 view .LVU213
  100:Src/LCD/Driver_LCD.c **** }
- 706              		.loc 1 100 0
- 707 004c 01E0     		b	.L57
- 708              	.LVL120:
- 709              	.L58:
+ 754              		.loc 1 100 5 view .LVU214
+  99:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 755              		.loc 1 99 16 is_stmt 0 view .LVU215
+ 756 004a 0020     		movs	r0, #0
  100:Src/LCD/Driver_LCD.c **** }
- 710              		.loc 1 100 0 is_stmt 0 discriminator 2
- 711 004e FFF7FEFF 		bl	Ready_LCD
- 712              	.LVL121:
- 713              	.L57:
+ 757              		.loc 1 100 11 view .LVU216
+ 758 004c 01E0     		b	.L62
+ 759              	.LVL120:
+ 760              	.L63:
  100:Src/LCD/Driver_LCD.c **** }
-ARM GAS  /tmp/ccMAol1x.s 			page 19
-
-
- 714              		.loc 1 100 0 discriminator 1
- 715 0052 0128     		cmp	r0, #1
- 716 0054 FBD1     		bne	.L58
+ 761              		.loc 1 100 39 is_stmt 1 discriminator 2 view .LVU217
+ 100:Src/LCD/Driver_LCD.c **** }
+ 762              		.loc 1 100 52 is_stmt 0 discriminator 2 view .LVU218
+ 763 004e FFF7FEFF 		bl	Ready_LCD
+ 764              	.LVL121:
+ 765              	.L62:
+ 100:Src/LCD/Driver_LCD.c **** }
+ 766              		.loc 1 100 11 is_stmt 1 discriminator 1 view .LVU219
+ 767 0052 0128     		cmp	r0, #1
+ 768 0054 FBD1     		bne	.L63
  101:Src/LCD/Driver_LCD.c **** 
- 717              		.loc 1 101 0 is_stmt 1
- 718 0056 08BD     		pop	{r3, pc}
- 719              		.cfi_endproc
- 720              	.LFE3:
- 722              		.section	.text.set_cursor_moving_to_the_right_LCD,"ax",%progbits
- 723              		.align	1
- 724              		.global	set_cursor_moving_to_the_right_LCD
- 725              		.syntax unified
- 726              		.thumb
- 727              		.thumb_func
- 728              		.fpu softvfp
- 730              	set_cursor_moving_to_the_right_LCD:
- 731              	.LFB4:
+ 769              		.loc 1 101 1 is_stmt 0 view .LVU220
+ 770 0056 08BD     		pop	{r3, pc}
+ 771              		.cfi_endproc
+ 772              	.LFE3:
+ 774              		.section	.text.set_cursor_moving_to_the_right_LCD,"ax",%progbits
+ 775              		.align	1
+ 776              		.global	set_cursor_moving_to_the_right_LCD
+ 777              		.syntax unified
+ 778              		.thumb
+ 779              		.thumb_func
+ 780              		.fpu softvfp
+ 782              	set_cursor_moving_to_the_right_LCD:
+ 783              	.LFB4:
  104:Src/LCD/Driver_LCD.c ****     int status_LCD;
- 732              		.loc 1 104 0
- 733              		.cfi_startproc
- 734              		@ args = 0, pretend = 0, frame = 0
- 735              		@ frame_needed = 0, uses_anonymous_args = 0
- 736 0000 08B5     		push	{r3, lr}
- 737              	.LCFI9:
- 738              		.cfi_def_cfa_offset 8
- 739              		.cfi_offset 3, -8
- 740              		.cfi_offset 14, -4
+ 784              		.loc 1 104 1 is_stmt 1 view -0
+ 785              		.cfi_startproc
+ 786              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccfXTgCz.s 			page 21
+
+
+ 787              		@ frame_needed = 0, uses_anonymous_args = 0
+ 788 0000 08B5     		push	{r3, lr}
+ 789              	.LCFI9:
+ 790              		.cfi_def_cfa_offset 8
+ 791              		.cfi_offset 3, -8
+ 792              		.cfi_offset 14, -4
+ 105:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
+ 793              		.loc 1 105 5 view .LVU222
  106:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 741              		.loc 1 106 0
- 742 0002 FFF7FEFF 		bl	RS_low_LCD
- 743              	.LVL122:
+ 794              		.loc 1 106 5 view .LVU223
+ 795 0002 FFF7FEFF 		bl	RS_low_LCD
+ 796              	.LVL122:
  107:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 744              		.loc 1 107 0
- 745 0006 FFF7FEFF 		bl	RW_low_LCD
- 746              	.LVL123:
+ 797              		.loc 1 107 5 view .LVU224
+ 798 0006 FFF7FEFF 		bl	RW_low_LCD
+ 799              	.LVL123:
  108:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 747              		.loc 1 108 0
- 748 000a 0020     		movs	r0, #0
+ 800              		.loc 1 108 5 view .LVU225
  109:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 749              		.loc 1 109 0
- 750 000c 01E0     		b	.L61
- 751              	.LVL124:
- 752              	.L62:
+ 801              		.loc 1 109 5 view .LVU226
+ 108:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 802              		.loc 1 108 16 is_stmt 0 view .LVU227
+ 803 000a 0020     		movs	r0, #0
+ 804              	.LVL124:
+ 805              	.L68:
  109:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 753              		.loc 1 109 0 is_stmt 0 discriminator 2
- 754 000e FFF7FEFF 		bl	Ready_LCD
- 755              	.LVL125:
- 756              	.L61:
+ 806              		.loc 1 109 11 is_stmt 1 discriminator 1 view .LVU228
+ 807 000c 0128     		cmp	r0, #1
+ 808 000e 02D0     		beq	.L75
  109:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 757              		.loc 1 109 0 discriminator 1
- 758 0012 0128     		cmp	r0, #1
- 759 0014 FBD1     		bne	.L62
+ 809              		.loc 1 109 39 discriminator 2 view .LVU229
+ 109:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 810              		.loc 1 109 52 is_stmt 0 discriminator 2 view .LVU230
+ 811 0010 FFF7FEFF 		bl	Ready_LCD
+ 812              	.LVL125:
+ 109:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 813              		.loc 1 109 52 discriminator 2 view .LVU231
+ 814 0014 FAE7     		b	.L68
+ 815              	.L75:
  110:Src/LCD/Driver_LCD.c ****     DB0_low_LCD();
- 760              		.loc 1 110 0 is_stmt 1
- 761 0016 FFF7FEFF 		bl	E_high_LCD
- 762              	.LVL126:
+ 816              		.loc 1 110 5 is_stmt 1 view .LVU232
+ 817 0016 FFF7FEFF 		bl	E_high_LCD
+ 818              	.LVL126:
  111:Src/LCD/Driver_LCD.c ****     DB1_low_LCD();
-ARM GAS  /tmp/ccMAol1x.s 			page 20
-
-
- 763              		.loc 1 111 0
- 764 001a FFF7FEFF 		bl	DB0_low_LCD
- 765              	.LVL127:
+ 819              		.loc 1 111 5 view .LVU233
+ 820 001a FFF7FEFF 		bl	DB0_low_LCD
+ 821              	.LVL127:
  112:Src/LCD/Driver_LCD.c ****     DB2_high_LCD();
- 766              		.loc 1 112 0
- 767 001e FFF7FEFF 		bl	DB1_low_LCD
- 768              	.LVL128:
+ 822              		.loc 1 112 5 view .LVU234
+ 823 001e FFF7FEFF 		bl	DB1_low_LCD
+ 824              	.LVL128:
  113:Src/LCD/Driver_LCD.c ****     DB3_low_LCD();
- 769              		.loc 1 113 0
- 770 0022 FFF7FEFF 		bl	DB2_high_LCD
- 771              	.LVL129:
+ 825              		.loc 1 113 5 view .LVU235
+ 826 0022 FFF7FEFF 		bl	DB2_high_LCD
+ 827              	.LVL129:
  114:Src/LCD/Driver_LCD.c ****     DB4_high_LCD();
- 772              		.loc 1 114 0
- 773 0026 FFF7FEFF 		bl	DB3_low_LCD
- 774              	.LVL130:
+ 828              		.loc 1 114 5 view .LVU236
+ARM GAS  /tmp/ccfXTgCz.s 			page 22
+
+
+ 829 0026 FFF7FEFF 		bl	DB3_low_LCD
+ 830              	.LVL130:
  115:Src/LCD/Driver_LCD.c ****     DB5_low_LCD();
- 775              		.loc 1 115 0
- 776 002a FFF7FEFF 		bl	DB4_high_LCD
- 777              	.LVL131:
+ 831              		.loc 1 115 5 view .LVU237
+ 832 002a FFF7FEFF 		bl	DB4_high_LCD
+ 833              	.LVL131:
  116:Src/LCD/Driver_LCD.c ****     DB6_low_LCD();
- 778              		.loc 1 116 0
- 779 002e FFF7FEFF 		bl	DB5_low_LCD
- 780              	.LVL132:
+ 834              		.loc 1 116 5 view .LVU238
+ 835 002e FFF7FEFF 		bl	DB5_low_LCD
+ 836              	.LVL132:
  117:Src/LCD/Driver_LCD.c ****     DB7_low_LCD();
- 781              		.loc 1 117 0
- 782 0032 FFF7FEFF 		bl	DB6_low_LCD
- 783              	.LVL133:
+ 837              		.loc 1 117 5 view .LVU239
+ 838 0032 FFF7FEFF 		bl	DB6_low_LCD
+ 839              	.LVL133:
  118:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 784              		.loc 1 118 0
- 785 0036 FFF7FEFF 		bl	DB7_low_LCD
- 786              	.LVL134:
+ 840              		.loc 1 118 5 view .LVU240
+ 841 0036 FFF7FEFF 		bl	DB7_low_LCD
+ 842              	.LVL134:
  119:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 787              		.loc 1 119 0
- 788 003a 0020     		movs	r0, #0
+ 843              		.loc 1 119 5 view .LVU241
  120:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 789              		.loc 1 120 0
- 790 003c 01E0     		b	.L63
- 791              	.LVL135:
- 792              	.L64:
+ 844              		.loc 1 120 5 view .LVU242
+ 119:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 845              		.loc 1 119 16 is_stmt 0 view .LVU243
+ 846 003a 0020     		movs	r0, #0
+ 847              	.LVL135:
+ 848              	.L70:
  120:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 793              		.loc 1 120 0 is_stmt 0 discriminator 2
- 794 003e FFF7FEFF 		bl	Ready_LCD
- 795              	.LVL136:
- 796              	.L63:
+ 849              		.loc 1 120 11 is_stmt 1 discriminator 1 view .LVU244
+ 850 003c 0128     		cmp	r0, #1
+ 851 003e 02D0     		beq	.L76
  120:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 797              		.loc 1 120 0 discriminator 1
- 798 0042 0128     		cmp	r0, #1
- 799 0044 FBD1     		bne	.L64
+ 852              		.loc 1 120 39 discriminator 2 view .LVU245
+ 120:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 853              		.loc 1 120 52 is_stmt 0 discriminator 2 view .LVU246
+ 854 0040 FFF7FEFF 		bl	Ready_LCD
+ 855              	.LVL136:
+ 120:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 856              		.loc 1 120 52 discriminator 2 view .LVU247
+ 857 0044 FAE7     		b	.L70
+ 858              	.L76:
  121:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 800              		.loc 1 121 0 is_stmt 1
- 801 0046 FFF7FEFF 		bl	E_low_LCD
- 802              	.LVL137:
+ 859              		.loc 1 121 5 is_stmt 1 view .LVU248
+ 860 0046 FFF7FEFF 		bl	E_low_LCD
+ 861              	.LVL137:
  122:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 803              		.loc 1 122 0
- 804 004a 0020     		movs	r0, #0
+ 862              		.loc 1 122 5 view .LVU249
  123:Src/LCD/Driver_LCD.c **** }
- 805              		.loc 1 123 0
-ARM GAS  /tmp/ccMAol1x.s 			page 21
+ 863              		.loc 1 123 5 view .LVU250
+ 122:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 864              		.loc 1 122 16 is_stmt 0 view .LVU251
+ 865 004a 0020     		movs	r0, #0
+ 123:Src/LCD/Driver_LCD.c **** }
+ 866              		.loc 1 123 11 view .LVU252
+ 867 004c 01E0     		b	.L72
+ 868              	.LVL138:
+ 869              	.L73:
+ARM GAS  /tmp/ccfXTgCz.s 			page 23
 
 
- 806 004c 01E0     		b	.L65
- 807              	.LVL138:
- 808              	.L66:
  123:Src/LCD/Driver_LCD.c **** }
- 809              		.loc 1 123 0 is_stmt 0 discriminator 2
- 810 004e FFF7FEFF 		bl	Ready_LCD
- 811              	.LVL139:
- 812              	.L65:
+ 870              		.loc 1 123 39 is_stmt 1 discriminator 2 view .LVU253
  123:Src/LCD/Driver_LCD.c **** }
- 813              		.loc 1 123 0 discriminator 1
- 814 0052 0128     		cmp	r0, #1
- 815 0054 FBD1     		bne	.L66
+ 871              		.loc 1 123 52 is_stmt 0 discriminator 2 view .LVU254
+ 872 004e FFF7FEFF 		bl	Ready_LCD
+ 873              	.LVL139:
+ 874              	.L72:
+ 123:Src/LCD/Driver_LCD.c **** }
+ 875              		.loc 1 123 11 is_stmt 1 discriminator 1 view .LVU255
+ 876 0052 0128     		cmp	r0, #1
+ 877 0054 FBD1     		bne	.L73
  124:Src/LCD/Driver_LCD.c **** 
- 816              		.loc 1 124 0 is_stmt 1
- 817 0056 08BD     		pop	{r3, pc}
- 818              		.cfi_endproc
- 819              	.LFE4:
- 821              		.section	.text.move_to_line_LCD,"ax",%progbits
- 822              		.align	1
- 823              		.global	move_to_line_LCD
- 824              		.syntax unified
- 825              		.thumb
- 826              		.thumb_func
- 827              		.fpu softvfp
- 829              	move_to_line_LCD:
- 830              	.LFB9:
+ 878              		.loc 1 124 1 is_stmt 0 view .LVU256
+ 879 0056 08BD     		pop	{r3, pc}
+ 880              		.cfi_endproc
+ 881              	.LFE4:
+ 883              		.section	.text.move_to_line_LCD,"ax",%progbits
+ 884              		.align	1
+ 885              		.global	move_to_line_LCD
+ 886              		.syntax unified
+ 887              		.thumb
+ 888              		.thumb_func
+ 889              		.fpu softvfp
+ 891              	move_to_line_LCD:
+ 892              	.LVL140:
+ 893              	.LFB9:
  175:Src/LCD/Driver_LCD.c ****     if (line < 1)
- 831              		.loc 1 175 0
- 832              		.cfi_startproc
- 833              		@ args = 0, pretend = 0, frame = 0
- 834              		@ frame_needed = 0, uses_anonymous_args = 0
- 835              	.LVL140:
- 836 0000 10B5     		push	{r4, lr}
- 837              	.LCFI10:
- 838              		.cfi_def_cfa_offset 8
- 839              		.cfi_offset 4, -8
- 840              		.cfi_offset 14, -4
+ 894              		.loc 1 175 1 is_stmt 1 view -0
+ 895              		.cfi_startproc
+ 896              		@ args = 0, pretend = 0, frame = 0
+ 897              		@ frame_needed = 0, uses_anonymous_args = 0
+ 175:Src/LCD/Driver_LCD.c ****     if (line < 1)
+ 898              		.loc 1 175 1 is_stmt 0 view .LVU258
+ 899 0000 10B5     		push	{r4, lr}
+ 900              	.LCFI10:
+ 901              		.cfi_def_cfa_offset 8
+ 902              		.cfi_offset 4, -8
+ 903              		.cfi_offset 14, -4
  176:Src/LCD/Driver_LCD.c ****         return;
- 841              		.loc 1 176 0
- 842 0002 041E     		subs	r4, r0, #0
- 843 0004 01DD     		ble	.L68
+ 904              		.loc 1 176 5 is_stmt 1 view .LVU259
+ 176:Src/LCD/Driver_LCD.c ****         return;
+ 905              		.loc 1 176 8 is_stmt 0 view .LVU260
+ 906 0002 041E     		subs	r4, r0, #0
+ 907 0004 01DD     		ble	.L77
  178:Src/LCD/Driver_LCD.c ****         return;
- 844              		.loc 1 178 0
- 845 0006 042C     		cmp	r4, #4
- 846 0008 00DD     		ble	.L81
- 847              	.LVL141:
- 848              	.L68:
+ 908              		.loc 1 178 5 is_stmt 1 view .LVU261
+ 178:Src/LCD/Driver_LCD.c ****         return;
+ 909              		.loc 1 178 8 is_stmt 0 view .LVU262
+ 910 0006 042C     		cmp	r4, #4
+ 911 0008 00DD     		ble	.L90
+ 912              	.LVL141:
+ 913              	.L77:
  196:Src/LCD/Driver_LCD.c **** 
- 849              		.loc 1 196 0
- 850 000a 10BD     		pop	{r4, pc}
- 851              	.LVL142:
- 852              	.L81:
+ 914              		.loc 1 196 1 view .LVU263
+ 915 000a 10BD     		pop	{r4, pc}
+ 916              	.LVL142:
+ 917              	.L90:
+ARM GAS  /tmp/ccfXTgCz.s 			page 24
+
+
+ 181:Src/LCD/Driver_LCD.c ****     RS_low_LCD();
+ 918              		.loc 1 181 5 is_stmt 1 view .LVU264
  182:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 853              		.loc 1 182 0
- 854 000c FFF7FEFF 		bl	RS_low_LCD
- 855              	.LVL143:
+ 919              		.loc 1 182 5 view .LVU265
+ 920 000c FFF7FEFF 		bl	RS_low_LCD
+ 921              	.LVL143:
  183:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
-ARM GAS  /tmp/ccMAol1x.s 			page 22
-
-
- 856              		.loc 1 183 0
- 857 0010 FFF7FEFF 		bl	RW_low_LCD
- 858              	.LVL144:
+ 922              		.loc 1 183 5 view .LVU266
+ 923 0010 FFF7FEFF 		bl	RW_low_LCD
+ 924              	.LVL144:
  184:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 859              		.loc 1 184 0
- 860 0014 0020     		movs	r0, #0
+ 925              		.loc 1 184 5 view .LVU267
  185:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 861              		.loc 1 185 0
- 862 0016 01E0     		b	.L70
- 863              	.LVL145:
- 864              	.L71:
+ 926              		.loc 1 185 5 view .LVU268
+ 184:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 927              		.loc 1 184 16 is_stmt 0 view .LVU269
+ 928 0014 0020     		movs	r0, #0
+ 929              	.LVL145:
+ 930              	.L79:
  185:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 865              		.loc 1 185 0 is_stmt 0 discriminator 2
- 866 0018 FFF7FEFF 		bl	Ready_LCD
- 867              	.LVL146:
- 868              	.L70:
+ 931              		.loc 1 185 11 is_stmt 1 discriminator 1 view .LVU270
+ 932 0016 0128     		cmp	r0, #1
+ 933 0018 02D0     		beq	.L91
  185:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 869              		.loc 1 185 0 discriminator 1
- 870 001c 0128     		cmp	r0, #1
- 871 001e FBD1     		bne	.L71
+ 934              		.loc 1 185 39 discriminator 2 view .LVU271
+ 185:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 935              		.loc 1 185 52 is_stmt 0 discriminator 2 view .LVU272
+ 936 001a FFF7FEFF 		bl	Ready_LCD
+ 937              	.LVL146:
+ 185:Src/LCD/Driver_LCD.c ****     E_high_LCD();
+ 938              		.loc 1 185 52 discriminator 2 view .LVU273
+ 939 001e FAE7     		b	.L79
+ 940              	.L91:
  186:Src/LCD/Driver_LCD.c ****     if (line == 1) first_line_DDRAM_address();
- 872              		.loc 1 186 0 is_stmt 1
- 873 0020 FFF7FEFF 		bl	E_high_LCD
- 874              	.LVL147:
+ 941              		.loc 1 186 5 is_stmt 1 view .LVU274
+ 942 0020 FFF7FEFF 		bl	E_high_LCD
+ 943              	.LVL147:
  187:Src/LCD/Driver_LCD.c ****     if (line == 2) second_line_DDRAM_address();
- 875              		.loc 1 187 0
- 876 0024 012C     		cmp	r4, #1
- 877 0026 07D0     		beq	.L82
- 878              	.L72:
+ 944              		.loc 1 187 5 view .LVU275
+ 187:Src/LCD/Driver_LCD.c ****     if (line == 2) second_line_DDRAM_address();
+ 945              		.loc 1 187 8 is_stmt 0 view .LVU276
+ 946 0024 012C     		cmp	r4, #1
+ 947 0026 0BD0     		beq	.L92
+ 948              	.L81:
  188:Src/LCD/Driver_LCD.c ****     if (line == 3) third_line_DDRAM_address();
- 879              		.loc 1 188 0
- 880 0028 022C     		cmp	r4, #2
- 881 002a 08D0     		beq	.L83
- 882              	.L73:
+ 949              		.loc 1 188 5 is_stmt 1 view .LVU277
+ 188:Src/LCD/Driver_LCD.c ****     if (line == 3) third_line_DDRAM_address();
+ 950              		.loc 1 188 8 is_stmt 0 view .LVU278
+ 951 0028 022C     		cmp	r4, #2
+ 952 002a 0CD0     		beq	.L93
+ 953              	.L82:
  189:Src/LCD/Driver_LCD.c ****     if (line == 4) fourth_line_DDRAM_address();
- 883              		.loc 1 189 0
- 884 002c 032C     		cmp	r4, #3
- 885 002e 09D0     		beq	.L84
- 886              	.L74:
+ 954              		.loc 1 189 5 is_stmt 1 view .LVU279
+ 189:Src/LCD/Driver_LCD.c ****     if (line == 4) fourth_line_DDRAM_address();
+ 955              		.loc 1 189 8 is_stmt 0 view .LVU280
+ 956 002c 032C     		cmp	r4, #3
+ 957 002e 0DD0     		beq	.L94
+ARM GAS  /tmp/ccfXTgCz.s 			page 25
+
+
+ 958              	.L83:
  190:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 887              		.loc 1 190 0
- 888 0030 042C     		cmp	r4, #4
- 889 0032 0AD0     		beq	.L85
- 890              	.L75:
+ 959              		.loc 1 190 5 is_stmt 1 view .LVU281
+ 190:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
+ 960              		.loc 1 190 8 is_stmt 0 view .LVU282
+ 961 0030 042C     		cmp	r4, #4
+ 962 0032 0ED0     		beq	.L95
+ 963              	.L84:
  184:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 891              		.loc 1 184 0 discriminator 1
- 892 0034 0020     		movs	r0, #0
- 893 0036 0DE0     		b	.L76
- 894              	.L82:
+ 964              		.loc 1 184 16 discriminator 1 view .LVU283
+ 965 0034 0020     		movs	r0, #0
+ 966              	.L85:
+ 967              	.LVL148:
+ 192:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 968              		.loc 1 192 11 is_stmt 1 discriminator 1 view .LVU284
+ 969 0036 0128     		cmp	r0, #1
+ 970 0038 0ED0     		beq	.L96
+ 192:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 971              		.loc 1 192 39 discriminator 2 view .LVU285
+ 192:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 972              		.loc 1 192 52 is_stmt 0 discriminator 2 view .LVU286
+ 973 003a FFF7FEFF 		bl	Ready_LCD
+ 974              	.LVL149:
+ 192:Src/LCD/Driver_LCD.c ****     E_low_LCD();
+ 975              		.loc 1 192 52 discriminator 2 view .LVU287
+ 976 003e FAE7     		b	.L85
+ 977              	.LVL150:
+ 978              	.L92:
  187:Src/LCD/Driver_LCD.c ****     if (line == 2) second_line_DDRAM_address();
- 895              		.loc 1 187 0 discriminator 1
- 896 0038 FFF7FEFF 		bl	first_line_DDRAM_address
- 897              	.LVL148:
- 898 003c F4E7     		b	.L72
- 899              	.L83:
+ 979              		.loc 1 187 20 is_stmt 1 discriminator 1 view .LVU288
+ 980 0040 FFF7FEFF 		bl	first_line_DDRAM_address
+ 981              	.LVL151:
+ 982 0044 F0E7     		b	.L81
+ 983              	.L93:
  188:Src/LCD/Driver_LCD.c ****     if (line == 3) third_line_DDRAM_address();
- 900              		.loc 1 188 0 discriminator 1
-ARM GAS  /tmp/ccMAol1x.s 			page 23
-
-
- 901 003e FFF7FEFF 		bl	second_line_DDRAM_address
- 902              	.LVL149:
- 903 0042 F3E7     		b	.L73
- 904              	.L84:
+ 984              		.loc 1 188 20 discriminator 1 view .LVU289
+ 985 0046 FFF7FEFF 		bl	second_line_DDRAM_address
+ 986              	.LVL152:
+ 987 004a EFE7     		b	.L82
+ 988              	.L94:
  189:Src/LCD/Driver_LCD.c ****     if (line == 4) fourth_line_DDRAM_address();
- 905              		.loc 1 189 0 discriminator 1
- 906 0044 FFF7FEFF 		bl	third_line_DDRAM_address
- 907              	.LVL150:
- 908 0048 F2E7     		b	.L74
- 909              	.L85:
+ 989              		.loc 1 189 20 discriminator 1 view .LVU290
+ 990 004c FFF7FEFF 		bl	third_line_DDRAM_address
+ 991              	.LVL153:
+ 992 0050 EEE7     		b	.L83
+ 993              	.L95:
  190:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 910              		.loc 1 190 0 discriminator 1
- 911 004a FFF7FEFF 		bl	fourth_line_DDRAM_address
- 912              	.LVL151:
- 913 004e F1E7     		b	.L75
- 914              	.LVL152:
- 915              	.L77:
- 192:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 916              		.loc 1 192 0 discriminator 2
- 917 0050 FFF7FEFF 		bl	Ready_LCD
- 918              	.LVL153:
- 919              	.L76:
- 192:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 920              		.loc 1 192 0 is_stmt 0 discriminator 1
- 921 0054 0128     		cmp	r0, #1
- 922 0056 FBD1     		bne	.L77
+ 994              		.loc 1 190 20 discriminator 1 view .LVU291
+ 995 0052 FFF7FEFF 		bl	fourth_line_DDRAM_address
+ 996              	.LVL154:
+ 997 0056 EDE7     		b	.L84
+ 998              	.LVL155:
+ 999              	.L96:
  193:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 923              		.loc 1 193 0 is_stmt 1
- 924 0058 FFF7FEFF 		bl	E_low_LCD
- 925              	.LVL154:
+ 1000              		.loc 1 193 5 view .LVU292
+ 1001 0058 FFF7FEFF 		bl	E_low_LCD
+ 1002              	.LVL156:
+ARM GAS  /tmp/ccfXTgCz.s 			page 26
+
+
  194:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 926              		.loc 1 194 0
- 927 005c 0020     		movs	r0, #0
+ 1003              		.loc 1 194 5 view .LVU293
  195:Src/LCD/Driver_LCD.c **** }
- 928              		.loc 1 195 0
- 929 005e 01E0     		b	.L78
- 930              	.LVL155:
- 931              	.L79:
+ 1004              		.loc 1 195 5 view .LVU294
+ 194:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
+ 1005              		.loc 1 194 16 is_stmt 0 view .LVU295
+ 1006 005c 0020     		movs	r0, #0
  195:Src/LCD/Driver_LCD.c **** }
- 932              		.loc 1 195 0 is_stmt 0 discriminator 2
- 933 0060 FFF7FEFF 		bl	Ready_LCD
- 934              	.LVL156:
- 935              	.L78:
+ 1007              		.loc 1 195 11 view .LVU296
+ 1008 005e 01E0     		b	.L87
+ 1009              	.LVL157:
+ 1010              	.L88:
  195:Src/LCD/Driver_LCD.c **** }
- 936              		.loc 1 195 0 discriminator 1
- 937 0064 0128     		cmp	r0, #1
- 938 0066 FBD1     		bne	.L79
- 939 0068 CFE7     		b	.L68
- 940              		.cfi_endproc
- 941              	.LFE9:
- 943              		.section	.text.write_character,"ax",%progbits
- 944              		.align	1
- 945              		.global	write_character
- 946              		.syntax unified
- 947              		.thumb
- 948              		.thumb_func
- 949              		.fpu softvfp
-ARM GAS  /tmp/ccMAol1x.s 			page 24
-
-
- 951              	write_character:
- 952              	.LFB11:
+ 1011              		.loc 1 195 39 is_stmt 1 discriminator 2 view .LVU297
+ 195:Src/LCD/Driver_LCD.c **** }
+ 1012              		.loc 1 195 52 is_stmt 0 discriminator 2 view .LVU298
+ 1013 0060 FFF7FEFF 		bl	Ready_LCD
+ 1014              	.LVL158:
+ 1015              	.L87:
+ 195:Src/LCD/Driver_LCD.c **** }
+ 1016              		.loc 1 195 11 is_stmt 1 discriminator 1 view .LVU299
+ 1017 0064 0128     		cmp	r0, #1
+ 1018 0066 FBD1     		bne	.L88
+ 1019 0068 CFE7     		b	.L77
+ 1020              		.cfi_endproc
+ 1021              	.LFE9:
+ 1023              		.section	.text.write_character,"ax",%progbits
+ 1024              		.align	1
+ 1025              		.global	write_character
+ 1026              		.syntax unified
+ 1027              		.thumb
+ 1028              		.thumb_func
+ 1029              		.fpu softvfp
+ 1031              	write_character:
+ 1032              	.LVL159:
+ 1033              	.LFB11:
  210:Src/LCD/Driver_LCD.c **** 
  211:Src/LCD/Driver_LCD.c **** void write_character(const char c)
  212:Src/LCD/Driver_LCD.c **** {
- 953              		.loc 1 212 0 is_stmt 1
- 954              		.cfi_startproc
- 955              		@ args = 0, pretend = 0, frame = 0
- 956              		@ frame_needed = 0, uses_anonymous_args = 0
- 957              	.LVL157:
- 958 0000 10B5     		push	{r4, lr}
- 959              	.LCFI11:
- 960              		.cfi_def_cfa_offset 8
- 961              		.cfi_offset 4, -8
- 962              		.cfi_offset 14, -4
- 963 0002 0446     		mov	r4, r0
+ 1034              		.loc 1 212 1 view -0
+ 1035              		.cfi_startproc
+ 1036              		@ args = 0, pretend = 0, frame = 0
+ 1037              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1038              		.loc 1 212 1 is_stmt 0 view .LVU301
+ 1039 0000 10B5     		push	{r4, lr}
+ 1040              	.LCFI11:
+ 1041              		.cfi_def_cfa_offset 8
+ 1042              		.cfi_offset 4, -8
+ 1043              		.cfi_offset 14, -4
+ 1044 0002 0446     		mov	r4, r0
  213:Src/LCD/Driver_LCD.c ****     int status_LCD;
+ 1045              		.loc 1 213 5 is_stmt 1 view .LVU302
  214:Src/LCD/Driver_LCD.c ****     RS_high_LCD();
- 964              		.loc 1 214 0
- 965 0004 FFF7FEFF 		bl	RS_high_LCD
- 966              	.LVL158:
+ 1046              		.loc 1 214 5 view .LVU303
+ 1047 0004 FFF7FEFF 		bl	RS_high_LCD
+ 1048              	.LVL160:
  215:Src/LCD/Driver_LCD.c ****     RW_low_LCD();
- 967              		.loc 1 215 0
- 968 0008 FFF7FEFF 		bl	RW_low_LCD
- 969              	.LVL159:
+ARM GAS  /tmp/ccfXTgCz.s 			page 27
+
+
+ 1049              		.loc 1 215 5 view .LVU304
+ 1050 0008 FFF7FEFF 		bl	RW_low_LCD
+ 1051              	.LVL161:
  216:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 970              		.loc 1 216 0
- 971 000c 0020     		movs	r0, #0
+ 1052              		.loc 1 216 5 view .LVU305
  217:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 972              		.loc 1 217 0
- 973 000e 01E0     		b	.L87
- 974              	.LVL160:
- 975              	.L88:
- 976              		.loc 1 217 0 is_stmt 0 discriminator 2
- 977 0010 FFF7FEFF 		bl	Ready_LCD
- 978              	.LVL161:
- 979              	.L87:
- 980              		.loc 1 217 0 discriminator 1
- 981 0014 0128     		cmp	r0, #1
- 982 0016 FBD1     		bne	.L88
+ 1053              		.loc 1 217 5 view .LVU306
+ 216:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
+ 1054              		.loc 1 216 16 is_stmt 0 view .LVU307
+ 1055 000c 0020     		movs	r0, #0
+ 1056              	.LVL162:
+ 1057              	.L98:
+ 1058              		.loc 1 217 11 is_stmt 1 discriminator 1 view .LVU308
+ 1059 000e 0128     		cmp	r0, #1
+ 1060 0010 02D0     		beq	.L105
+ 1061              		.loc 1 217 39 discriminator 2 view .LVU309
+ 1062              		.loc 1 217 52 is_stmt 0 discriminator 2 view .LVU310
+ 1063 0012 FFF7FEFF 		bl	Ready_LCD
+ 1064              	.LVL163:
+ 1065              		.loc 1 217 52 discriminator 2 view .LVU311
+ 1066 0016 FAE7     		b	.L98
+ 1067              	.L105:
  218:Src/LCD/Driver_LCD.c ****     E_high_LCD();
- 983              		.loc 1 218 0 is_stmt 1
- 984 0018 FFF7FEFF 		bl	E_high_LCD
- 985              	.LVL162:
+ 1068              		.loc 1 218 5 is_stmt 1 view .LVU312
+ 1069 0018 FFF7FEFF 		bl	E_high_LCD
+ 1070              	.LVL164:
  219:Src/LCD/Driver_LCD.c ****     char_2_data_LCD(c);
- 986              		.loc 1 219 0
- 987 001c 2046     		mov	r0, r4
- 988 001e FFF7FEFF 		bl	char_2_data_LCD
- 989              	.LVL163:
+ 1071              		.loc 1 219 5 view .LVU313
+ 1072 001c 2046     		mov	r0, r4
+ 1073 001e FFF7FEFF 		bl	char_2_data_LCD
+ 1074              	.LVL165:
  220:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 990              		.loc 1 220 0
- 991 0022 0020     		movs	r0, #0
+ 1075              		.loc 1 220 5 view .LVU314
  221:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 992              		.loc 1 221 0
- 993 0024 01E0     		b	.L89
- 994              	.LVL164:
- 995              	.L90:
-ARM GAS  /tmp/ccMAol1x.s 			page 25
-
-
- 996              		.loc 1 221 0 is_stmt 0 discriminator 2
- 997 0026 FFF7FEFF 		bl	Ready_LCD
- 998              	.LVL165:
- 999              	.L89:
- 1000              		.loc 1 221 0 discriminator 1
- 1001 002a 0128     		cmp	r0, #1
- 1002 002c FBD1     		bne	.L90
+ 1076              		.loc 1 221 5 view .LVU315
+ 220:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
+ 1077              		.loc 1 220 16 is_stmt 0 view .LVU316
+ 1078 0022 0020     		movs	r0, #0
+ 1079              	.LVL166:
+ 1080              	.L100:
+ 1081              		.loc 1 221 11 is_stmt 1 discriminator 1 view .LVU317
+ 1082 0024 0128     		cmp	r0, #1
+ 1083 0026 02D0     		beq	.L106
+ 1084              		.loc 1 221 39 discriminator 2 view .LVU318
+ 1085              		.loc 1 221 52 is_stmt 0 discriminator 2 view .LVU319
+ 1086 0028 FFF7FEFF 		bl	Ready_LCD
+ 1087              	.LVL167:
+ 1088              		.loc 1 221 52 discriminator 2 view .LVU320
+ 1089 002c FAE7     		b	.L100
+ 1090              	.L106:
  222:Src/LCD/Driver_LCD.c ****     E_low_LCD();
- 1003              		.loc 1 222 0 is_stmt 1
- 1004 002e FFF7FEFF 		bl	E_low_LCD
- 1005              	.LVL166:
+ 1091              		.loc 1 222 5 is_stmt 1 view .LVU321
+ 1092 002e FFF7FEFF 		bl	E_low_LCD
+ 1093              	.LVL168:
  223:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
- 1006              		.loc 1 223 0
- 1007 0032 0020     		movs	r0, #0
+ 1094              		.loc 1 223 5 view .LVU322
  224:Src/LCD/Driver_LCD.c ****     while (status_LCD != READY_LCD) { status_LCD = Ready_LCD();}
- 1008              		.loc 1 224 0
- 1009 0034 01E0     		b	.L91
- 1010              	.LVL167:
- 1011              	.L92:
- 1012              		.loc 1 224 0 is_stmt 0 discriminator 2
- 1013 0036 FFF7FEFF 		bl	Ready_LCD
- 1014              	.LVL168:
- 1015              	.L91:
- 1016              		.loc 1 224 0 discriminator 1
- 1017 003a 0128     		cmp	r0, #1
- 1018 003c FBD1     		bne	.L92
+ARM GAS  /tmp/ccfXTgCz.s 			page 28
+
+
+ 1095              		.loc 1 224 5 view .LVU323
+ 223:Src/LCD/Driver_LCD.c ****     status_LCD = NOT_READY_LCD;
+ 1096              		.loc 1 223 16 is_stmt 0 view .LVU324
+ 1097 0032 0020     		movs	r0, #0
+ 1098              		.loc 1 224 11 view .LVU325
+ 1099 0034 01E0     		b	.L102
+ 1100              	.LVL169:
+ 1101              	.L103:
+ 1102              		.loc 1 224 39 is_stmt 1 discriminator 2 view .LVU326
+ 1103              		.loc 1 224 52 is_stmt 0 discriminator 2 view .LVU327
+ 1104 0036 FFF7FEFF 		bl	Ready_LCD
+ 1105              	.LVL170:
+ 1106              	.L102:
+ 1107              		.loc 1 224 11 is_stmt 1 discriminator 1 view .LVU328
+ 1108 003a 0128     		cmp	r0, #1
+ 1109 003c FBD1     		bne	.L103
  225:Src/LCD/Driver_LCD.c **** }
- 1019              		.loc 1 225 0 is_stmt 1
- 1020 003e 10BD     		pop	{r4, pc}
- 1021              		.cfi_endproc
- 1022              	.LFE11:
- 1024              		.text
- 1025              	.Letext0:
- 1026              		.file 2 "Inc/LCD/Driver_LCD.h"
-ARM GAS  /tmp/ccMAol1x.s 			page 26
+ 1110              		.loc 1 225 1 is_stmt 0 view .LVU329
+ 1111 003e 10BD     		pop	{r4, pc}
+ 1112              		.cfi_endproc
+ 1113              	.LFE11:
+ 1115              		.text
+ 1116              	.Letext0:
+ 1117              		.file 2 "Inc/LCD/Driver_LCD.h"
+ARM GAS  /tmp/ccfXTgCz.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Driver_LCD.c
-     /tmp/ccMAol1x.s:16     .text.first_line_DDRAM_address:0000000000000000 $t
-     /tmp/ccMAol1x.s:22     .text.first_line_DDRAM_address:0000000000000000 first_line_DDRAM_address
-     /tmp/ccMAol1x.s:64     .text.third_line_DDRAM_address:0000000000000000 $t
-     /tmp/ccMAol1x.s:70     .text.third_line_DDRAM_address:0000000000000000 third_line_DDRAM_address
-     /tmp/ccMAol1x.s:111    .text.second_line_DDRAM_address:0000000000000000 $t
-     /tmp/ccMAol1x.s:117    .text.second_line_DDRAM_address:0000000000000000 second_line_DDRAM_address
-     /tmp/ccMAol1x.s:158    .text.fourth_line_DDRAM_address:0000000000000000 $t
-     /tmp/ccMAol1x.s:164    .text.fourth_line_DDRAM_address:0000000000000000 fourth_line_DDRAM_address
-     /tmp/ccMAol1x.s:205    .text.char_2_data_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:211    .text.char_2_data_LCD:0000000000000000 char_2_data_LCD
-     /tmp/ccMAol1x.s:327    .text.clear_display_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:334    .text.clear_display_LCD:0000000000000000 clear_display_LCD
-     /tmp/ccMAol1x.s:426    .text.return_home_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:433    .text.return_home_LCD:0000000000000000 return_home_LCD
-     /tmp/ccMAol1x.s:525    .text.set_dataLenght_numberOfLines_fontType_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:532    .text.set_dataLenght_numberOfLines_fontType_LCD:0000000000000000 set_dataLenght_numberOfLines_fontType_LCD
-     /tmp/ccMAol1x.s:624    .text.set_do_not_display_cursor_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:631    .text.set_do_not_display_cursor_LCD:0000000000000000 set_do_not_display_cursor_LCD
-     /tmp/ccMAol1x.s:723    .text.set_cursor_moving_to_the_right_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:730    .text.set_cursor_moving_to_the_right_LCD:0000000000000000 set_cursor_moving_to_the_right_LCD
-     /tmp/ccMAol1x.s:822    .text.move_to_line_LCD:0000000000000000 $t
-     /tmp/ccMAol1x.s:829    .text.move_to_line_LCD:0000000000000000 move_to_line_LCD
-     /tmp/ccMAol1x.s:944    .text.write_character:0000000000000000 $t
-     /tmp/ccMAol1x.s:951    .text.write_character:0000000000000000 write_character
+     /tmp/ccfXTgCz.s:16     .text.first_line_DDRAM_address:0000000000000000 $t
+     /tmp/ccfXTgCz.s:23     .text.first_line_DDRAM_address:0000000000000000 first_line_DDRAM_address
+     /tmp/ccfXTgCz.s:65     .text.third_line_DDRAM_address:0000000000000000 $t
+     /tmp/ccfXTgCz.s:71     .text.third_line_DDRAM_address:0000000000000000 third_line_DDRAM_address
+     /tmp/ccfXTgCz.s:112    .text.second_line_DDRAM_address:0000000000000000 $t
+     /tmp/ccfXTgCz.s:118    .text.second_line_DDRAM_address:0000000000000000 second_line_DDRAM_address
+     /tmp/ccfXTgCz.s:159    .text.fourth_line_DDRAM_address:0000000000000000 $t
+     /tmp/ccfXTgCz.s:165    .text.fourth_line_DDRAM_address:0000000000000000 fourth_line_DDRAM_address
+     /tmp/ccfXTgCz.s:206    .text.char_2_data_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:212    .text.char_2_data_LCD:0000000000000000 char_2_data_LCD
+     /tmp/ccfXTgCz.s:339    .text.clear_display_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:346    .text.clear_display_LCD:0000000000000000 clear_display_LCD
+     /tmp/ccfXTgCz.s:448    .text.return_home_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:455    .text.return_home_LCD:0000000000000000 return_home_LCD
+     /tmp/ccfXTgCz.s:557    .text.set_dataLenght_numberOfLines_fontType_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:564    .text.set_dataLenght_numberOfLines_fontType_LCD:0000000000000000 set_dataLenght_numberOfLines_fontType_LCD
+     /tmp/ccfXTgCz.s:666    .text.set_do_not_display_cursor_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:673    .text.set_do_not_display_cursor_LCD:0000000000000000 set_do_not_display_cursor_LCD
+     /tmp/ccfXTgCz.s:775    .text.set_cursor_moving_to_the_right_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:782    .text.set_cursor_moving_to_the_right_LCD:0000000000000000 set_cursor_moving_to_the_right_LCD
+     /tmp/ccfXTgCz.s:884    .text.move_to_line_LCD:0000000000000000 $t
+     /tmp/ccfXTgCz.s:891    .text.move_to_line_LCD:0000000000000000 move_to_line_LCD
+     /tmp/ccfXTgCz.s:1024   .text.write_character:0000000000000000 $t
+     /tmp/ccfXTgCz.s:1031   .text.write_character:0000000000000000 write_character
 
 UNDEFINED SYMBOLS
 DB0_low_LCD

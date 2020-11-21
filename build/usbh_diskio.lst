@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccqNjXFP.s 			page 1
+ARM GAS  /tmp/cck0gfKE.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -18,13 +18,15 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
   15              		.section	.text.USBH_initialize,"ax",%progbits
   16              		.align	1
   17              		.global	USBH_initialize
-  18              		.syntax unified
-  19              		.thumb
-  20              		.thumb_func
-  21              		.fpu softvfp
-  23              	USBH_initialize:
-  24              	.LFB66:
-  25              		.file 1 "Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c"
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	USBH_initialize:
+  25              	.LVL0:
+  26              	.LFB68:
+  27              		.file 1 "Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c"
    1:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** /**
    2:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   ******************************************************************************
    3:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @file    usbh_diskio.c 
@@ -56,11 +58,11 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
   29:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   *    this license. 
   30:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   *
   31:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+ARM GAS  /tmp/cck0gfKE.s 			page 2
+
+
   32:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
   33:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-ARM GAS  /tmp/ccqNjXFP.s 			page 2
-
-
   34:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
   35:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
   36:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
@@ -116,38 +118,40 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
   86:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** /* Private functions ---------------------------------------------------------*/
   87:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** 
   88:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** /**
+ARM GAS  /tmp/cck0gfKE.s 			page 3
+
+
   89:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @brief  Initializes a Drive
   90:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @param  lun : lun id
-ARM GAS  /tmp/ccqNjXFP.s 			page 3
-
-
   91:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @retval DSTATUS: Operation status
   92:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   */
   93:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** DSTATUS USBH_initialize(BYTE lun)
   94:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** {
-  26              		.loc 1 94 0
-  27              		.cfi_startproc
-  28              		@ args = 0, pretend = 0, frame = 0
-  29              		@ frame_needed = 0, uses_anonymous_args = 0
-  30              		@ link register save eliminated.
-  31              	.LVL0:
+  28              		.loc 1 94 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
   95:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   return RES_OK;
+  33              		.loc 1 95 3 view .LVU1
   96:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** }
-  32              		.loc 1 96 0
-  33 0000 0020     		movs	r0, #0
-  34              	.LVL1:
-  35 0002 7047     		bx	lr
-  36              		.cfi_endproc
-  37              	.LFE66:
-  39              		.section	.text.USBH_status,"ax",%progbits
-  40              		.align	1
-  41              		.global	USBH_status
-  42              		.syntax unified
-  43              		.thumb
-  44              		.thumb_func
-  45              		.fpu softvfp
-  47              	USBH_status:
-  48              	.LFB67:
+  34              		.loc 1 96 1 is_stmt 0 view .LVU2
+  35 0000 0020     		movs	r0, #0
+  36              	.LVL1:
+  37              		.loc 1 96 1 view .LVU3
+  38 0002 7047     		bx	lr
+  39              		.cfi_endproc
+  40              	.LFE68:
+  42              		.section	.text.USBH_status,"ax",%progbits
+  43              		.align	1
+  44              		.global	USBH_status
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  48              		.fpu softvfp
+  50              	USBH_status:
+  51              	.LVL2:
+  52              	.LFB69:
   97:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** 
   98:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** /**
   99:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @brief  Gets Disk Status
@@ -156,67 +160,73 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  102:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   */
  103:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** DSTATUS USBH_status(BYTE lun)
  104:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** {
-  49              		.loc 1 104 0
-  50              		.cfi_startproc
-  51              		@ args = 0, pretend = 0, frame = 0
-  52              		@ frame_needed = 0, uses_anonymous_args = 0
-  53              	.LVL2:
-  54 0000 08B5     		push	{r3, lr}
-  55              	.LCFI0:
-  56              		.cfi_def_cfa_offset 8
-  57              		.cfi_offset 3, -8
-  58              		.cfi_offset 14, -4
-  59              	.LVL3:
+  53              		.loc 1 104 1 is_stmt 1 view -0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		.loc 1 104 1 is_stmt 0 view .LVU5
+  58 0000 08B5     		push	{r3, lr}
+  59              	.LCFI0:
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 3, -8
+  62              		.cfi_offset 14, -4
+  63 0002 0146     		mov	r1, r0
  105:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR;
+  64              		.loc 1 105 3 is_stmt 1 view .LVU6
+  65              	.LVL3:
  106:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   
  107:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   if(USBH_MSC_UnitIsReady(&HOST_HANDLE, lun))
-  60              		.loc 1 107 0
-  61 0002 0146     		mov	r1, r0
-  62 0004 0348     		ldr	r0, .L7
-  63              	.LVL4:
-  64 0006 FFF7FEFF 		bl	USBH_MSC_UnitIsReady
-  65              	.LVL5:
-  66 000a 08B9     		cbnz	r0, .L6
+  66              		.loc 1 107 3 view .LVU7
+  67              		.loc 1 107 6 is_stmt 0 view .LVU8
+ARM GAS  /tmp/cck0gfKE.s 			page 4
+
+
+  68 0004 0348     		ldr	r0, .L6
+  69              	.LVL4:
+  70              		.loc 1 107 6 view .LVU9
+  71 0006 FFF7FEFF 		bl	USBH_MSC_UnitIsReady
+  72              	.LVL5:
+  73              		.loc 1 107 5 view .LVU10
+  74 000a 08B1     		cbz	r0, .L4
  108:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
-ARM GAS  /tmp/ccqNjXFP.s 			page 4
-
-
  109:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     res = RES_OK;
+  75              		.loc 1 109 9 view .LVU11
+  76 000c 0020     		movs	r0, #0
+  77              	.L3:
+  78              	.LVL6:
  110:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
  111:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   else
  112:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
  113:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     res = RES_ERROR;
-  67              		.loc 1 113 0
-  68 000c 0120     		movs	r0, #1
-  69              	.L3:
-  70              	.LVL6:
  114:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
  115:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   
  116:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   return res;
+  79              		.loc 1 116 3 is_stmt 1 view .LVU12
  117:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** }
-  71              		.loc 1 117 0
-  72 000e 08BD     		pop	{r3, pc}
-  73              	.LVL7:
-  74              	.L6:
- 109:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
-  75              		.loc 1 109 0
-  76 0010 0020     		movs	r0, #0
-  77 0012 FCE7     		b	.L3
-  78              	.L8:
-  79              		.align	2
-  80              	.L7:
-  81 0014 00000000 		.word	hUsbHostFS
-  82              		.cfi_endproc
-  83              	.LFE67:
-  85              		.section	.text.USBH_read,"ax",%progbits
-  86              		.align	1
-  87              		.global	USBH_read
-  88              		.syntax unified
-  89              		.thumb
-  90              		.thumb_func
-  91              		.fpu softvfp
-  93              	USBH_read:
-  94              	.LFB68:
+  80              		.loc 1 117 1 is_stmt 0 view .LVU13
+  81 000e 08BD     		pop	{r3, pc}
+  82              	.LVL7:
+  83              	.L4:
+ 113:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+  84              		.loc 1 113 9 view .LVU14
+  85 0010 0120     		movs	r0, #1
+  86 0012 FCE7     		b	.L3
+  87              	.L7:
+  88              		.align	2
+  89              	.L6:
+  90 0014 00000000 		.word	hUsbHostFS
+  91              		.cfi_endproc
+  92              	.LFE69:
+  94              		.section	.text.USBH_read,"ax",%progbits
+  95              		.align	1
+  96              		.global	USBH_read
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.fpu softvfp
+ 102              	USBH_read:
+ 103              	.LVL8:
+ 104              	.LFB70:
  118:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** 
  119:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** /**
  120:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @brief  Reads Sector(s) 
@@ -228,22 +238,25 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  126:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   */
  127:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
  128:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** {
-  95              		.loc 1 128 0
-  96              		.cfi_startproc
-  97              		@ args = 0, pretend = 0, frame = 56
-  98              		@ frame_needed = 0, uses_anonymous_args = 0
-  99              	.LVL8:
+ARM GAS  /tmp/cck0gfKE.s 			page 5
+
+
+ 105              		.loc 1 128 1 is_stmt 1 view -0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 56
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
  129:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR;
+ 109              		.loc 1 129 3 view .LVU16
  130:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   MSC_LUNTypeDef info;
+ 110              		.loc 1 130 3 view .LVU17
  131:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   USBH_StatusTypeDef  status = USBH_OK;
+ 111              		.loc 1 131 3 view .LVU18
  132:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** 
  133:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   if ((DWORD)buff & 3) /* DMA Alignment issue, do single up to aligned buffer */
-ARM GAS  /tmp/ccqNjXFP.s 			page 5
-
-
- 100              		.loc 1 133 0
- 101 0000 11F0030F 		tst	r1, #3
- 102 0004 01D0     		beq	.L20
+ 112              		.loc 1 133 3 view .LVU19
+ 113              		.loc 1 133 6 is_stmt 0 view .LVU20
+ 114 0000 11F0030F 		tst	r1, #3
+ 115 0004 01D0     		beq	.L18
  134:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
  135:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #if _USE_BUFF_WO_ALIGNMENT == 0
  136:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     while ((count--)&&(status == USBH_OK))
@@ -260,9 +273,9 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  147:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
  148:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #else
  149:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     return res;
- 103              		.loc 1 149 0
- 104 0006 0120     		movs	r0, #1
- 105              	.LVL9:
+ 116              		.loc 1 149 12 view .LVU21
+ 117 0006 0120     		movs	r0, #1
+ 118              	.LVL9:
  150:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #endif
  151:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
  152:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   else
@@ -285,6 +298,9 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  169:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     case SCSI_ASC_NOT_READY_TO_READY_CHANGE: 
  170:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       USBH_ErrLog ("USB Disk is not ready!");  
  171:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_NOTRDY;
+ARM GAS  /tmp/cck0gfKE.s 			page 6
+
+
  172:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break; 
  173:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       
  174:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     default:
@@ -295,100 +311,118 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  179:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   
  180:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   return res;
  181:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** }
- 106              		.loc 1 181 0
- 107 0008 7047     		bx	lr
- 108              	.LVL10:
-ARM GAS  /tmp/ccqNjXFP.s 			page 6
-
-
- 109              	.L20:
+ 119              		.loc 1 181 1 view .LVU22
+ 120 0008 7047     		bx	lr
+ 121              	.LVL10:
+ 122              	.L18:
  128:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR;
- 110              		.loc 1 128 0
- 111 000a 30B5     		push	{r4, r5, lr}
- 112              	.LCFI1:
- 113              		.cfi_def_cfa_offset 12
- 114              		.cfi_offset 4, -12
- 115              		.cfi_offset 5, -8
- 116              		.cfi_offset 14, -4
- 117 000c 91B0     		sub	sp, sp, #68
- 118              	.LCFI2:
- 119              		.cfi_def_cfa_offset 80
- 120 000e 1D46     		mov	r5, r3
- 121 0010 0B46     		mov	r3, r1
- 122              	.LVL11:
- 123 0012 0446     		mov	r4, r0
+ 123              		.loc 1 128 1 view .LVU23
+ 124 000a 10B5     		push	{r4, lr}
+ 125              	.LCFI1:
+ 126              		.cfi_def_cfa_offset 8
+ 127              		.cfi_offset 4, -8
+ 128              		.cfi_offset 14, -4
+ 129 000c 90B0     		sub	sp, sp, #64
+ 130              	.LCFI2:
+ 131              		.cfi_def_cfa_offset 72
+ 132 000e 0446     		mov	r4, r0
  154:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
- 124              		.loc 1 154 0
- 125 0014 0095     		str	r5, [sp]
- 126 0016 0146     		mov	r1, r0
- 127              	.LVL12:
- 128 0018 0B48     		ldr	r0, .L22
- 129              	.LVL13:
- 130 001a FFF7FEFF 		bl	USBH_MSC_Read
- 131              	.LVL14:
+ 133              		.loc 1 154 5 is_stmt 1 view .LVU24
+ 154:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 134              		.loc 1 154 14 is_stmt 0 view .LVU25
+ 135 0010 0093     		str	r3, [sp]
+ 136 0012 0B46     		mov	r3, r1
+ 137              	.LVL11:
+ 154:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 138              		.loc 1 154 14 view .LVU26
+ 139 0014 0146     		mov	r1, r0
+ 140              	.LVL12:
+ 154:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 141              		.loc 1 154 14 view .LVU27
+ 142 0016 0D48     		ldr	r0, .L21
+ 143              	.LVL13:
+ 154:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 144              		.loc 1 154 14 view .LVU28
+ 145 0018 FFF7FEFF 		bl	USBH_MSC_Read
+ 146              	.LVL14:
  157:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
- 132              		.loc 1 157 0
- 133 001e 10B9     		cbnz	r0, .L21
- 159:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
- 134              		.loc 1 159 0
- 135 0020 0020     		movs	r0, #0
- 136              	.LVL15:
- 137              	.L10:
- 138              		.loc 1 181 0
- 139 0022 11B0     		add	sp, sp, #68
- 140              	.LCFI3:
- 141              		.cfi_remember_state
- 142              		.cfi_def_cfa_offset 12
- 143              		@ sp needed
- 144 0024 30BD     		pop	{r4, r5, pc}
- 145              	.LVL16:
- 146              	.L21:
- 147              	.LCFI4:
- 148              		.cfi_restore_state
+ 147              		.loc 1 157 3 is_stmt 1 view .LVU29
+ 157:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
+ 148              		.loc 1 157 5 is_stmt 0 view .LVU30
+ 149 001c 08B9     		cbnz	r0, .L19
+ 150              	.LVL15:
+ 151              	.L9:
+ 152              		.loc 1 181 1 view .LVU31
+ 153 001e 10B0     		add	sp, sp, #64
+ 154              	.LCFI3:
+ 155              		.cfi_remember_state
+ 156              		.cfi_def_cfa_offset 8
+ 157              		@ sp needed
+ARM GAS  /tmp/cck0gfKE.s 			page 7
+
+
+ 158 0020 10BD     		pop	{r4, pc}
+ 159              	.LVL16:
+ 160              	.L19:
+ 161              	.LCFI4:
+ 162              		.cfi_restore_state
  163:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     
- 149              		.loc 1 163 0
- 150 0026 03AA     		add	r2, sp, #12
- 151 0028 2146     		mov	r1, r4
- 152 002a 0748     		ldr	r0, .L22
- 153              	.LVL17:
- 154 002c FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
- 155              	.LVL18:
+ 163              		.loc 1 163 5 is_stmt 1 view .LVU32
+ 164 0022 03AA     		add	r2, sp, #12
+ 165 0024 2146     		mov	r1, r4
+ 166 0026 0948     		ldr	r0, .L21
+ 167              	.LVL17:
+ 163:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     
+ 168              		.loc 1 163 5 is_stmt 0 view .LVU33
+ 169 0028 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
+ 170              	.LVL18:
  165:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
- 156              		.loc 1 165 0
- 157 0030 9DF81930 		ldrb	r3, [sp, #25]	@ zero_extendqisi2
- 158 0034 282B     		cmp	r3, #40
- 159 0036 05D0     		beq	.L11
-ARM GAS  /tmp/ccqNjXFP.s 			page 7
-
-
- 160 0038 3A2B     		cmp	r3, #58
- 161 003a 03D0     		beq	.L11
- 162 003c 042B     		cmp	r3, #4
- 163 003e 01D0     		beq	.L11
+ 171              		.loc 1 165 5 is_stmt 1 view .LVU34
+ 165:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 172              		.loc 1 165 23 is_stmt 0 view .LVU35
+ 173 002c 9DF81930 		ldrb	r3, [sp, #25]	@ zero_extendqisi2
+ 165:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 174              		.loc 1 165 5 view .LVU36
+ 175 0030 282B     		cmp	r3, #40
+ 176 0032 07D0     		beq	.L11
+ 177 0034 3A2B     		cmp	r3, #58
+ 178 0036 07D0     		beq	.L12
+ 179 0038 042B     		cmp	r3, #4
+ 180 003a 01D0     		beq	.L20
  175:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break;
- 164              		.loc 1 175 0
- 165 0040 0120     		movs	r0, #1
- 166 0042 EEE7     		b	.L10
- 167              	.L11:
- 171:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break; 
- 168              		.loc 1 171 0
- 169 0044 0320     		movs	r0, #3
- 170 0046 ECE7     		b	.L10
- 171              	.L23:
- 172              		.align	2
- 173              	.L22:
- 174 0048 00000000 		.word	hUsbHostFS
- 175              		.cfi_endproc
- 176              	.LFE68:
- 178              		.section	.text.USBH_ioctl,"ax",%progbits
- 179              		.align	1
- 180              		.global	USBH_ioctl
- 181              		.syntax unified
- 182              		.thumb
- 183              		.thumb_func
- 184              		.fpu softvfp
- 186              	USBH_ioctl:
- 187              	.LFB70:
+ 181              		.loc 1 175 11 view .LVU37
+ 182 003c 0120     		movs	r0, #1
+ 183 003e EEE7     		b	.L9
+ 184              	.L20:
+ 165:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 185              		.loc 1 165 5 view .LVU38
+ 186 0040 0320     		movs	r0, #3
+ 187 0042 ECE7     		b	.L9
+ 188              	.L11:
+ 189 0044 0320     		movs	r0, #3
+ 190 0046 EAE7     		b	.L9
+ 191              	.L12:
+ 192 0048 0320     		movs	r0, #3
+ 193 004a E8E7     		b	.L9
+ 194              	.L22:
+ 195              		.align	2
+ 196              	.L21:
+ 197 004c 00000000 		.word	hUsbHostFS
+ 198              		.cfi_endproc
+ 199              	.LFE70:
+ 201              		.section	.text.USBH_ioctl,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	USBH_ioctl
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 207              		.fpu softvfp
+ 209              	USBH_ioctl:
+ARM GAS  /tmp/cck0gfKE.s 			page 8
+
+
+ 210              	.LVL19:
+ 211              	.LFB72:
  182:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** 
  183:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** /**
  184:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   * @brief  Writes Sector(s)
@@ -418,9 +452,6 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  208:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****         break;
  209:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       }
  210:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
-ARM GAS  /tmp/ccqNjXFP.s 			page 8
-
-
  211:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #else
  212:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     return res;
  213:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #endif
@@ -447,6 +478,9 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  234:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       
  235:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     case SCSI_ASC_LOGICAL_UNIT_NOT_READY:
  236:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     case SCSI_ASC_MEDIUM_NOT_PRESENT:
+ARM GAS  /tmp/cck0gfKE.s 			page 9
+
+
  237:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     case SCSI_ASC_NOT_READY_TO_READY_CHANGE:
  238:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       USBH_ErrLog("USB Disk is not ready!");      
  239:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_NOTRDY;
@@ -472,47 +506,52 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  259:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #if _USE_IOCTL == 1
  260:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
  261:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** {
- 188              		.loc 1 261 0
- 189              		.cfi_startproc
- 190              		@ args = 0, pretend = 0, frame = 56
- 191              		@ frame_needed = 0, uses_anonymous_args = 0
- 192              	.LVL19:
- 193 0000 10B5     		push	{r4, lr}
-ARM GAS  /tmp/ccqNjXFP.s 			page 9
-
-
- 194              	.LCFI5:
- 195              		.cfi_def_cfa_offset 8
- 196              		.cfi_offset 4, -8
- 197              		.cfi_offset 14, -4
- 198 0002 8EB0     		sub	sp, sp, #56
- 199              	.LCFI6:
- 200              		.cfi_def_cfa_offset 64
- 201 0004 1446     		mov	r4, r2
- 202              	.LVL20:
+ 212              		.loc 1 261 1 is_stmt 1 view -0
+ 213              		.cfi_startproc
+ 214              		@ args = 0, pretend = 0, frame = 56
+ 215              		@ frame_needed = 0, uses_anonymous_args = 0
+ 216              		.loc 1 261 1 is_stmt 0 view .LVU40
+ 217 0000 30B5     		push	{r4, r5, lr}
+ 218              	.LCFI5:
+ 219              		.cfi_def_cfa_offset 12
+ 220              		.cfi_offset 4, -12
+ 221              		.cfi_offset 5, -8
+ 222              		.cfi_offset 14, -4
+ 223 0002 8FB0     		sub	sp, sp, #60
+ 224              	.LCFI6:
+ 225              		.cfi_def_cfa_offset 72
+ 226 0004 0C46     		mov	r4, r1
+ 227 0006 1546     		mov	r5, r2
  262:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR;
+ 228              		.loc 1 262 3 is_stmt 1 view .LVU41
+ 229              	.LVL20:
  263:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   MSC_LUNTypeDef info;
+ 230              		.loc 1 263 3 view .LVU42
  264:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   
  265:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   switch (cmd)
- 203              		.loc 1 265 0
- 204 0006 0329     		cmp	r1, #3
- 205 0008 23D8     		bhi	.L31
- 206 000a DFE801F0 		tbb	[pc, r1]
- 207              	.L27:
- 208 000e 02       		.byte	(.L26-.L27)/2
- 209 000f 05       		.byte	(.L28-.L27)/2
- 210 0010 0E       		.byte	(.L29-.L27)/2
- 211 0011 18       		.byte	(.L30-.L27)/2
- 212              		.p2align 1
- 213              	.L26:
+ 231              		.loc 1 265 3 view .LVU43
+ 232 0008 0329     		cmp	r1, #3
+ 233 000a 23D8     		bhi	.L30
+ 234 000c DFE801F0 		tbb	[pc, r1]
+ 235              	.L26:
+ 236 0010 02       		.byte	(.L29-.L26)/2
+ 237 0011 05       		.byte	(.L28-.L26)/2
+ 238 0012 0E       		.byte	(.L27-.L26)/2
+ 239 0013 18       		.byte	(.L25-.L26)/2
+ARM GAS  /tmp/cck0gfKE.s 			page 10
+
+
+ 240              		.p2align 1
+ 241              	.L29:
+ 261:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR;
+ 242              		.loc 1 261 1 is_stmt 0 view .LVU44
+ 243 0014 0846     		mov	r0, r1
+ 244              	.LVL21:
+ 245              	.L24:
  266:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
  267:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   /* Make sure that no pending write process */
  268:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   case CTRL_SYNC: 
  269:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     res = RES_OK;
- 214              		.loc 1 269 0
- 215 0012 0020     		movs	r0, #0
- 216              	.LVL21:
- 217              	.L25:
  270:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     break;
  271:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     
  272:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   /* Get number of sectors on the disk (DWORD) */  
@@ -538,9 +577,6 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  292:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     else
  293:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
  294:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_ERROR;
-ARM GAS  /tmp/ccqNjXFP.s 			page 10
-
-
  295:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
  296:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     break;
  297:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     
@@ -562,284 +598,376 @@ ARM GAS  /tmp/ccqNjXFP.s 			page 1
  313:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     res = RES_PARERR;
  314:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
  315:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   
+ARM GAS  /tmp/cck0gfKE.s 			page 11
+
+
  316:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   return res;
+ 246              		.loc 1 316 3 is_stmt 1 view .LVU45
  317:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** }
- 218              		.loc 1 317 0
- 219 0014 0EB0     		add	sp, sp, #56
- 220              	.LCFI7:
- 221              		.cfi_remember_state
- 222              		.cfi_def_cfa_offset 8
- 223              		@ sp needed
- 224 0016 10BD     		pop	{r4, pc}
- 225              	.LVL22:
- 226              	.L28:
- 227              	.LCFI8:
- 228              		.cfi_restore_state
+ 247              		.loc 1 317 1 is_stmt 0 view .LVU46
+ 248 0016 0FB0     		add	sp, sp, #60
+ 249              	.LCFI7:
+ 250              		.cfi_remember_state
+ 251              		.cfi_def_cfa_offset 12
+ 252              		@ sp needed
+ 253 0018 30BD     		pop	{r4, r5, pc}
+ 254              	.LVL22:
+ 255              	.L28:
+ 256              	.LCFI8:
+ 257              		.cfi_restore_state
  274:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
- 229              		.loc 1 274 0
- 230 0018 01AA     		add	r2, sp, #4
- 231              	.LVL23:
- 232 001a 0146     		mov	r1, r0
- 233              	.LVL24:
- 234 001c 1148     		ldr	r0, .L36
- 235              	.LVL25:
- 236 001e FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
- 237              	.LVL26:
- 238 0022 C0B9     		cbnz	r0, .L32
+ 258              		.loc 1 274 5 is_stmt 1 view .LVU47
+ 274:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 259              		.loc 1 274 8 is_stmt 0 view .LVU48
+ 260 001a 01AA     		add	r2, sp, #4
+ 261              	.LVL23:
+ 274:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 262              		.loc 1 274 8 view .LVU49
+ 263 001c 0146     		mov	r1, r0
+ 264              	.LVL24:
+ 274:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 265              		.loc 1 274 8 view .LVU50
+ 266 001e 1148     		ldr	r0, .L35
+ 267              	.LVL25:
+ 274:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 268              		.loc 1 274 8 view .LVU51
+ 269 0020 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
+ 270              	.LVL26:
+ 274:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 271              		.loc 1 274 7 view .LVU52
+ 272 0024 C0B9     		cbnz	r0, .L31
  276:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
- 239              		.loc 1 276 0
- 240 0024 029B     		ldr	r3, [sp, #8]
- 241 0026 2360     		str	r3, [r4]
- 242              	.LVL27:
- 243 0028 F4E7     		b	.L25
- 244              	.LVL28:
- 245              	.L29:
+ 273              		.loc 1 276 7 is_stmt 1 view .LVU53
+ 276:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
+ 274              		.loc 1 276 36 is_stmt 0 view .LVU54
+ 275 0026 029B     		ldr	r3, [sp, #8]
+ 276:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
+ 276              		.loc 1 276 21 view .LVU55
+ 277 0028 2B60     		str	r3, [r5]
+ 277:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
+ 278              		.loc 1 277 7 is_stmt 1 view .LVU56
+ 279              	.LVL27:
+ 277:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
+ 280              		.loc 1 277 7 is_stmt 0 view .LVU57
+ 281 002a F4E7     		b	.L24
+ 282              	.LVL28:
+ 283              	.L27:
  287:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
- 246              		.loc 1 287 0
- 247 002a 01AA     		add	r2, sp, #4
- 248              	.LVL29:
-ARM GAS  /tmp/ccqNjXFP.s 			page 11
+ 284              		.loc 1 287 5 is_stmt 1 view .LVU58
+ 287:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 285              		.loc 1 287 8 is_stmt 0 view .LVU59
+ 286 002c 01AA     		add	r2, sp, #4
+ 287              	.LVL29:
+ARM GAS  /tmp/cck0gfKE.s 			page 12
 
 
- 249 002c 0146     		mov	r1, r0
- 250              	.LVL30:
- 251 002e 0D48     		ldr	r0, .L36
- 252              	.LVL31:
- 253 0030 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
- 254              	.LVL32:
- 255 0034 88B9     		cbnz	r0, .L33
+ 287:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 288              		.loc 1 287 8 view .LVU60
+ 289 002e 0146     		mov	r1, r0
+ 290              	.LVL30:
+ 287:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 291              		.loc 1 287 8 view .LVU61
+ 292 0030 0C48     		ldr	r0, .L35
+ 293              	.LVL31:
+ 287:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 294              		.loc 1 287 8 view .LVU62
+ 295 0032 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
+ 296              	.LVL32:
+ 287:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 297              		.loc 1 287 7 view .LVU63
+ 298 0036 88B9     		cbnz	r0, .L32
  289:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
- 256              		.loc 1 289 0
- 257 0036 BDF80C30 		ldrh	r3, [sp, #12]
- 258 003a 2360     		str	r3, [r4]
- 259              	.LVL33:
- 260 003c EAE7     		b	.L25
- 261              	.LVL34:
- 262              	.L30:
+ 299              		.loc 1 289 7 is_stmt 1 view .LVU64
+ 289:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
+ 300              		.loc 1 289 36 is_stmt 0 view .LVU65
+ 301 0038 BDF80C30 		ldrh	r3, [sp, #12]
+ 289:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
+ 302              		.loc 1 289 21 view .LVU66
+ 303 003c 2B60     		str	r3, [r5]
+ 290:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
+ 304              		.loc 1 290 7 is_stmt 1 view .LVU67
+ 305              	.LVL33:
+ 290:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
+ 306              		.loc 1 290 7 is_stmt 0 view .LVU68
+ 307 003e EAE7     		b	.L24
+ 308              	.LVL34:
+ 309              	.L25:
  301:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
- 263              		.loc 1 301 0
- 264 003e 01AA     		add	r2, sp, #4
- 265              	.LVL35:
- 266 0040 0146     		mov	r1, r0
- 267              	.LVL36:
- 268 0042 0848     		ldr	r0, .L36
- 269              	.LVL37:
- 270 0044 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
- 271              	.LVL38:
- 272 0048 48B9     		cbnz	r0, .L34
+ 310              		.loc 1 301 5 is_stmt 1 view .LVU69
+ 301:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 311              		.loc 1 301 8 is_stmt 0 view .LVU70
+ 312 0040 01AA     		add	r2, sp, #4
+ 313              	.LVL35:
+ 301:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 314              		.loc 1 301 8 view .LVU71
+ 315 0042 0146     		mov	r1, r0
+ 316              	.LVL36:
+ 301:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 317              		.loc 1 301 8 view .LVU72
+ 318 0044 0748     		ldr	r0, .L35
+ 319              	.LVL37:
+ 301:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 320              		.loc 1 301 8 view .LVU73
+ 321 0046 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
+ 322              	.LVL38:
+ 301:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 323              		.loc 1 301 7 view .LVU74
+ 324 004a 48B9     		cbnz	r0, .L33
  303:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
- 273              		.loc 1 303 0
- 274 004a BDF80C30 		ldrh	r3, [sp, #12]
- 275 004e 2360     		str	r3, [r4]
- 276              	.LVL39:
- 277 0050 E0E7     		b	.L25
- 278              	.LVL40:
- 279              	.L31:
+ 325              		.loc 1 303 7 is_stmt 1 view .LVU75
+ 303:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
+ 326              		.loc 1 303 36 is_stmt 0 view .LVU76
+ 327 004c BDF80C30 		ldrh	r3, [sp, #12]
+ARM GAS  /tmp/cck0gfKE.s 			page 13
+
+
+ 303:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       res = RES_OK;
+ 328              		.loc 1 303 21 view .LVU77
+ 329 0050 2B60     		str	r3, [r5]
+ 304:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
+ 330              		.loc 1 304 7 is_stmt 1 view .LVU78
+ 331              	.LVL39:
+ 304:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
+ 332              		.loc 1 304 7 is_stmt 0 view .LVU79
+ 333 0052 E0E7     		b	.L24
+ 334              	.LVL40:
+ 335              	.L30:
  313:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
- 280              		.loc 1 313 0
- 281 0052 0420     		movs	r0, #4
- 282              	.LVL41:
- 283 0054 DEE7     		b	.L25
- 284              	.LVL42:
- 285              	.L32:
+ 336              		.loc 1 313 9 view .LVU80
+ 337 0054 0420     		movs	r0, #4
+ 338              	.LVL41:
+ 313:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 339              		.loc 1 313 9 view .LVU81
+ 340 0056 DEE7     		b	.L24
+ 341              	.LVL42:
+ 342              	.L31:
  281:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
- 286              		.loc 1 281 0
- 287 0056 0120     		movs	r0, #1
- 288 0058 DCE7     		b	.L25
- 289              	.L33:
+ 343              		.loc 1 281 11 view .LVU82
+ 344 0058 2046     		mov	r0, r4
+ 345 005a DCE7     		b	.L24
+ 346              	.L32:
  294:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
- 290              		.loc 1 294 0
- 291 005a 0120     		movs	r0, #1
- 292 005c DAE7     		b	.L25
- 293              	.L34:
+ 347              		.loc 1 294 11 view .LVU83
+ 348 005c 0120     		movs	r0, #1
+ 349 005e DAE7     		b	.L24
+ 350              	.L33:
  308:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
- 294              		.loc 1 308 0
- 295 005e 0120     		movs	r0, #1
- 296 0060 D8E7     		b	.L25
- 297              	.L37:
- 298 0062 00BF     		.align	2
-ARM GAS  /tmp/ccqNjXFP.s 			page 12
-
-
- 299              	.L36:
- 300 0064 00000000 		.word	hUsbHostFS
- 301              		.cfi_endproc
- 302              	.LFE70:
- 304              		.section	.text.USBH_write,"ax",%progbits
- 305              		.align	1
- 306              		.global	USBH_write
- 307              		.syntax unified
- 308              		.thumb
- 309              		.thumb_func
- 310              		.fpu softvfp
- 312              	USBH_write:
- 313              	.LFB69:
+ 351              		.loc 1 308 11 view .LVU84
+ 352 0060 0120     		movs	r0, #1
+ 353 0062 D8E7     		b	.L24
+ 354              	.L36:
+ 355              		.align	2
+ 356              	.L35:
+ 357 0064 00000000 		.word	hUsbHostFS
+ 358              		.cfi_endproc
+ 359              	.LFE72:
+ 361              		.section	.text.USBH_write,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	USBH_write
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.fpu softvfp
+ 369              	USBH_write:
+ 370              	.LVL43:
+ 371              	.LFB71:
  193:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR; 
- 314              		.loc 1 193 0
- 315              		.cfi_startproc
- 316              		@ args = 0, pretend = 0, frame = 56
- 317              		@ frame_needed = 0, uses_anonymous_args = 0
- 318              	.LVL43:
+ 372              		.loc 1 193 1 is_stmt 1 view -0
+ 373              		.cfi_startproc
+ 374              		@ args = 0, pretend = 0, frame = 56
+ 375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   MSC_LUNTypeDef info;
+ 376              		.loc 1 194 3 view .LVU86
+ARM GAS  /tmp/cck0gfKE.s 			page 14
+
+
+ 195:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   USBH_StatusTypeDef  status = USBH_OK;  
+ 377              		.loc 1 195 3 view .LVU87
+ 196:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** 
+ 378              		.loc 1 196 3 view .LVU88
  198:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
- 319              		.loc 1 198 0
- 320 0000 11F0030F 		tst	r1, #3
- 321 0004 01D0     		beq	.L50
+ 379              		.loc 1 198 3 view .LVU89
+ 198:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
+ 380              		.loc 1 198 6 is_stmt 0 view .LVU90
+ 381 0000 11F0030F 		tst	r1, #3
+ 382 0004 01D0     		beq	.L49
  212:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #endif
- 322              		.loc 1 212 0
- 323 0006 0120     		movs	r0, #1
- 324              	.LVL44:
+ 383              		.loc 1 212 12 view .LVU91
+ 384 0006 0120     		movs	r0, #1
+ 385              	.LVL44:
  249:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #endif /* _USE_WRITE == 1 */
- 325              		.loc 1 249 0
- 326 0008 7047     		bx	lr
- 327              	.LVL45:
- 328              	.L50:
+ 386              		.loc 1 249 1 view .LVU92
+ 387 0008 7047     		bx	lr
+ 388              	.LVL45:
+ 389              	.L49:
  193:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   DRESULT res = RES_ERROR; 
- 329              		.loc 1 193 0
- 330 000a 30B5     		push	{r4, r5, lr}
- 331              	.LCFI9:
- 332              		.cfi_def_cfa_offset 12
- 333              		.cfi_offset 4, -12
- 334              		.cfi_offset 5, -8
- 335              		.cfi_offset 14, -4
- 336 000c 91B0     		sub	sp, sp, #68
- 337              	.LCFI10:
- 338              		.cfi_def_cfa_offset 80
- 339 000e 1D46     		mov	r5, r3
- 340 0010 0B46     		mov	r3, r1
- 341              	.LVL46:
- 342 0012 0446     		mov	r4, r0
+ 390              		.loc 1 193 1 view .LVU93
+ 391 000a 10B5     		push	{r4, lr}
+ 392              	.LCFI9:
+ 393              		.cfi_def_cfa_offset 8
+ 394              		.cfi_offset 4, -8
+ 395              		.cfi_offset 14, -4
+ 396 000c 90B0     		sub	sp, sp, #64
+ 397              	.LCFI10:
+ 398              		.cfi_def_cfa_offset 72
+ 399 000e 0446     		mov	r4, r0
  217:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
- 343              		.loc 1 217 0
- 344 0014 0095     		str	r5, [sp]
- 345 0016 0146     		mov	r1, r0
- 346              	.LVL47:
- 347 0018 0E48     		ldr	r0, .L53
- 348              	.LVL48:
- 349 001a FFF7FEFF 		bl	USBH_MSC_Write
- 350              	.LVL49:
+ 400              		.loc 1 217 5 is_stmt 1 view .LVU94
+ 217:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 401              		.loc 1 217 14 is_stmt 0 view .LVU95
+ 402 0010 0093     		str	r3, [sp]
+ 403 0012 0B46     		mov	r3, r1
+ 404              	.LVL46:
+ 217:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 405              		.loc 1 217 14 view .LVU96
+ 406 0014 0146     		mov	r1, r0
+ 407              	.LVL47:
+ 217:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 408              		.loc 1 217 14 view .LVU97
+ 409 0016 1148     		ldr	r0, .L53
+ 410              	.LVL48:
+ 217:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
+ 411              		.loc 1 217 14 view .LVU98
+ 412 0018 FFF7FEFF 		bl	USBH_MSC_Write
+ 413              	.LVL49:
  220:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
-ARM GAS  /tmp/ccqNjXFP.s 			page 13
-
-
- 351              		.loc 1 220 0
- 352 001e 10B9     		cbnz	r0, .L51
- 222:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   }
- 353              		.loc 1 222 0
- 354 0020 0020     		movs	r0, #0
- 355              	.LVL50:
- 356              	.L39:
+ 414              		.loc 1 220 3 is_stmt 1 view .LVU99
+ 220:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****   {
+ 415              		.loc 1 220 5 is_stmt 0 view .LVU100
+ 416 001c 08B9     		cbnz	r0, .L50
+ 417              	.LVL50:
+ 418              	.L38:
  249:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c **** #endif /* _USE_WRITE == 1 */
- 357              		.loc 1 249 0
- 358 0022 11B0     		add	sp, sp, #68
- 359              	.LCFI11:
- 360              		.cfi_remember_state
- 361              		.cfi_def_cfa_offset 12
- 362              		@ sp needed
- 363 0024 30BD     		pop	{r4, r5, pc}
- 364              	.LVL51:
- 365              	.L51:
- 366              	.LCFI12:
- 367              		.cfi_restore_state
+ARM GAS  /tmp/cck0gfKE.s 			page 15
+
+
+ 419              		.loc 1 249 1 view .LVU101
+ 420 001e 10B0     		add	sp, sp, #64
+ 421              	.LCFI11:
+ 422              		.cfi_remember_state
+ 423              		.cfi_def_cfa_offset 8
+ 424              		@ sp needed
+ 425 0020 10BD     		pop	{r4, pc}
+ 426              	.LVL51:
+ 427              	.L50:
+ 428              	.LCFI12:
+ 429              		.cfi_restore_state
  226:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     
- 368              		.loc 1 226 0
- 369 0026 03AA     		add	r2, sp, #12
- 370 0028 2146     		mov	r1, r4
- 371 002a 0A48     		ldr	r0, .L53
- 372              	.LVL52:
- 373 002c FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
- 374              	.LVL53:
+ 430              		.loc 1 226 5 is_stmt 1 view .LVU102
+ 431 0022 03AA     		add	r2, sp, #12
+ 432 0024 2146     		mov	r1, r4
+ 433 0026 0D48     		ldr	r0, .L53
+ 434              	.LVL52:
+ 226:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     
+ 435              		.loc 1 226 5 is_stmt 0 view .LVU103
+ 436 0028 FFF7FEFF 		bl	USBH_MSC_GetLUNInfo
+ 437              	.LVL53:
  228:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
- 375              		.loc 1 228 0
- 376 0030 9DF81930 		ldrb	r3, [sp, #25]	@ zero_extendqisi2
- 377 0034 272B     		cmp	r3, #39
- 378 0036 0AD0     		beq	.L41
- 379 0038 05D9     		bls	.L52
- 380 003a 282B     		cmp	r3, #40
- 381 003c 01D0     		beq	.L45
- 382 003e 3A2B     		cmp	r3, #58
- 383 0040 03D1     		bne	.L40
- 384              	.L45:
+ 438              		.loc 1 228 5 is_stmt 1 view .LVU104
+ 228:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 439              		.loc 1 228 23 is_stmt 0 view .LVU105
+ 440 002c 9DF81930 		ldrb	r3, [sp, #25]	@ zero_extendqisi2
+ 228:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 441              		.loc 1 228 5 view .LVU106
+ 442 0030 272B     		cmp	r3, #39
+ 443 0032 0CD0     		beq	.L41
+ 444 0034 05D9     		bls	.L51
+ 445 0036 282B     		cmp	r3, #40
+ 446 0038 0BD0     		beq	.L43
+ 447 003a 3A2B     		cmp	r3, #58
+ 448 003c 0BD1     		bne	.L44
  239:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break; 
- 385              		.loc 1 239 0
- 386 0042 0320     		movs	r0, #3
- 387 0044 EDE7     		b	.L39
- 388              	.L52:
+ 449              		.loc 1 239 11 view .LVU107
+ 450 003e 0320     		movs	r0, #3
+ 451 0040 EDE7     		b	.L38
+ 452              	.L51:
  228:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
- 389              		.loc 1 228 0
- 390 0046 042B     		cmp	r3, #4
- 391 0048 FBD0     		beq	.L45
- 392              	.L40:
+ 453              		.loc 1 228 5 view .LVU108
+ 454 0042 042B     		cmp	r3, #4
+ 455 0044 01D0     		beq	.L52
  243:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break;
- 393              		.loc 1 243 0
- 394 004a 0120     		movs	r0, #1
- 244:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     }
- 395              		.loc 1 244 0
- 396 004c E9E7     		b	.L39
- 397              	.L41:
- 232:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break;
- 398              		.loc 1 232 0
-ARM GAS  /tmp/ccqNjXFP.s 			page 14
+ 456              		.loc 1 243 11 view .LVU109
+ 457 0046 0120     		movs	r0, #1
+ 458 0048 E9E7     		b	.L38
+ 459              	.L52:
+ 239:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break; 
+ 460              		.loc 1 239 11 view .LVU110
+ 461 004a 0320     		movs	r0, #3
+ 462 004c E7E7     		b	.L38
+ 463              	.L41:
+ 228:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****     {
+ 464              		.loc 1 228 5 view .LVU111
+ 465 004e 0220     		movs	r0, #2
+ARM GAS  /tmp/cck0gfKE.s 			page 16
 
 
- 399 004e 0220     		movs	r0, #2
- 400 0050 E7E7     		b	.L39
- 401              	.L54:
- 402 0052 00BF     		.align	2
- 403              	.L53:
- 404 0054 00000000 		.word	hUsbHostFS
- 405              		.cfi_endproc
- 406              	.LFE69:
- 408              		.global	USBH_Driver
- 409              		.section	.rodata.USBH_Driver,"a",%progbits
- 410              		.align	2
- 413              	USBH_Driver:
- 414 0000 00000000 		.word	USBH_initialize
- 415 0004 00000000 		.word	USBH_status
- 416 0008 00000000 		.word	USBH_read
- 417 000c 00000000 		.word	USBH_write
- 418 0010 00000000 		.word	USBH_ioctl
- 419              		.text
- 420              	.Letext0:
- 421              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 422              		.file 3 "/usr/arm-none-eabi/include/sys/lock.h"
- 423              		.file 4 "/usr/arm-none-eabi/include/sys/_types.h"
- 424              		.file 5 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
- 425              		.file 6 "/usr/arm-none-eabi/include/sys/reent.h"
- 426              		.file 7 "Middlewares/Third_Party/FatFs/src/integer.h"
- 427              		.file 8 "Middlewares/Third_Party/FatFs/src/diskio.h"
- 428              		.file 9 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 429              		.file 10 "Drivers/CMSIS/Include/core_cm3.h"
- 430              		.file 11 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 431              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 432              		.file 13 "/usr/arm-none-eabi/include/stdlib.h"
- 433              		.file 14 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h"
- 434              		.file 15 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h"
- 435              		.file 16 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h"
- 436              		.file 17 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h"
- 437              		.file 18 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
-ARM GAS  /tmp/ccqNjXFP.s 			page 15
+ 466 0050 E5E7     		b	.L38
+ 467              	.L43:
+ 239:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break; 
+ 468              		.loc 1 239 11 view .LVU112
+ 469 0052 0320     		movs	r0, #3
+ 470 0054 E3E7     		b	.L38
+ 471              	.L44:
+ 243:Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.c ****       break;
+ 472              		.loc 1 243 11 view .LVU113
+ 473 0056 0120     		movs	r0, #1
+ 474 0058 E1E7     		b	.L38
+ 475              	.L54:
+ 476 005a 00BF     		.align	2
+ 477              	.L53:
+ 478 005c 00000000 		.word	hUsbHostFS
+ 479              		.cfi_endproc
+ 480              	.LFE71:
+ 482              		.global	USBH_Driver
+ 483              		.section	.rodata.USBH_Driver,"a"
+ 484              		.align	2
+ 487              	USBH_Driver:
+ 488 0000 00000000 		.word	USBH_initialize
+ 489 0004 00000000 		.word	USBH_status
+ 490 0008 00000000 		.word	USBH_read
+ 491 000c 00000000 		.word	USBH_write
+ 492 0010 00000000 		.word	USBH_ioctl
+ 493              		.text
+ 494              	.Letext0:
+ 495              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+ 496              		.file 3 "/usr/include/newlib/sys/_types.h"
+ 497              		.file 4 "/usr/include/newlib/sys/reent.h"
+ 498              		.file 5 "/usr/include/newlib/sys/lock.h"
+ 499              		.file 6 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 500              		.file 7 "Middlewares/Third_Party/FatFs/src/diskio.h"
+ 501              		.file 8 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+ 502              		.file 9 "Drivers/CMSIS/Include/core_cm3.h"
+ 503              		.file 10 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 504              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 505              		.file 12 "/usr/include/newlib/stdlib.h"
+ 506              		.file 13 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h"
+ 507              		.file 14 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h"
+ 508              		.file 15 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h"
+ 509              		.file 16 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h"
+ 510              		.file 17 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
+ARM GAS  /tmp/cck0gfKE.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 usbh_diskio.c
-     /tmp/ccqNjXFP.s:16     .text.USBH_initialize:0000000000000000 $t
-     /tmp/ccqNjXFP.s:23     .text.USBH_initialize:0000000000000000 USBH_initialize
-     /tmp/ccqNjXFP.s:40     .text.USBH_status:0000000000000000 $t
-     /tmp/ccqNjXFP.s:47     .text.USBH_status:0000000000000000 USBH_status
-     /tmp/ccqNjXFP.s:81     .text.USBH_status:0000000000000014 $d
-     /tmp/ccqNjXFP.s:86     .text.USBH_read:0000000000000000 $t
-     /tmp/ccqNjXFP.s:93     .text.USBH_read:0000000000000000 USBH_read
-     /tmp/ccqNjXFP.s:174    .text.USBH_read:0000000000000048 $d
-     /tmp/ccqNjXFP.s:179    .text.USBH_ioctl:0000000000000000 $t
-     /tmp/ccqNjXFP.s:186    .text.USBH_ioctl:0000000000000000 USBH_ioctl
-     /tmp/ccqNjXFP.s:208    .text.USBH_ioctl:000000000000000e $d
-     /tmp/ccqNjXFP.s:212    .text.USBH_ioctl:0000000000000012 $t
-     /tmp/ccqNjXFP.s:300    .text.USBH_ioctl:0000000000000064 $d
-     /tmp/ccqNjXFP.s:305    .text.USBH_write:0000000000000000 $t
-     /tmp/ccqNjXFP.s:312    .text.USBH_write:0000000000000000 USBH_write
-     /tmp/ccqNjXFP.s:404    .text.USBH_write:0000000000000054 $d
-     /tmp/ccqNjXFP.s:413    .rodata.USBH_Driver:0000000000000000 USBH_Driver
-     /tmp/ccqNjXFP.s:410    .rodata.USBH_Driver:0000000000000000 $d
+     /tmp/cck0gfKE.s:16     .text.USBH_initialize:0000000000000000 $t
+     /tmp/cck0gfKE.s:24     .text.USBH_initialize:0000000000000000 USBH_initialize
+     /tmp/cck0gfKE.s:43     .text.USBH_status:0000000000000000 $t
+     /tmp/cck0gfKE.s:50     .text.USBH_status:0000000000000000 USBH_status
+     /tmp/cck0gfKE.s:90     .text.USBH_status:0000000000000014 $d
+     /tmp/cck0gfKE.s:95     .text.USBH_read:0000000000000000 $t
+     /tmp/cck0gfKE.s:102    .text.USBH_read:0000000000000000 USBH_read
+     /tmp/cck0gfKE.s:197    .text.USBH_read:000000000000004c $d
+     /tmp/cck0gfKE.s:202    .text.USBH_ioctl:0000000000000000 $t
+     /tmp/cck0gfKE.s:209    .text.USBH_ioctl:0000000000000000 USBH_ioctl
+     /tmp/cck0gfKE.s:236    .text.USBH_ioctl:0000000000000010 $d
+     /tmp/cck0gfKE.s:240    .text.USBH_ioctl:0000000000000014 $t
+     /tmp/cck0gfKE.s:357    .text.USBH_ioctl:0000000000000064 $d
+     /tmp/cck0gfKE.s:362    .text.USBH_write:0000000000000000 $t
+     /tmp/cck0gfKE.s:369    .text.USBH_write:0000000000000000 USBH_write
+     /tmp/cck0gfKE.s:478    .text.USBH_write:000000000000005c $d
+     /tmp/cck0gfKE.s:487    .rodata.USBH_Driver:0000000000000000 USBH_Driver
+     /tmp/cck0gfKE.s:484    .rodata.USBH_Driver:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 USBH_MSC_UnitIsReady

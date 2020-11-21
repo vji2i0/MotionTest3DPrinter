@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc1igYCm.s 			page 1
+ARM GAS  /tmp/cc0aZ7t8.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,13 +17,15 @@ ARM GAS  /tmp/cc1igYCm.s 			page 1
   14              		.cfi_sections	.debug_frame
   15              		.section	.text.USBH_UserProcess,"ax",%progbits
   16              		.align	1
-  17              		.syntax unified
-  18              		.thumb
-  19              		.thumb_func
-  20              		.fpu softvfp
-  22              	USBH_UserProcess:
-  23              	.LFB68:
-  24              		.file 1 "Src/usb_host.c"
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	USBH_UserProcess:
+  24              	.LVL0:
+  25              	.LFB70:
+  26              		.file 1 "Src/usb_host.c"
    1:Src/usb_host.c **** /* USER CODE BEGIN Header */
    2:Src/usb_host.c **** /**
    3:Src/usb_host.c ****   ******************************************************************************
@@ -56,11 +58,11 @@ ARM GAS  /tmp/cc1igYCm.s 			page 1
   30:Src/usb_host.c **** #include "Driver_USBdrive.h"
   31:Src/usb_host.c **** /* USER CODE END Includes */
   32:Src/usb_host.c **** 
+ARM GAS  /tmp/cc0aZ7t8.s 			page 2
+
+
   33:Src/usb_host.c **** /* USER CODE BEGIN PV */
   34:Src/usb_host.c **** /* Private variables ---------------------------------------------------------*/
-ARM GAS  /tmp/cc1igYCm.s 			page 2
-
-
   35:Src/usb_host.c **** 
   36:Src/usb_host.c **** /* USER CODE END PV */
   37:Src/usb_host.c **** 
@@ -101,7 +103,7 @@ ARM GAS  /tmp/cc1igYCm.s 			page 1
   72:Src/usb_host.c ****   /* USER CODE BEGIN USB_HOST_Init_PreTreatment */
   73:Src/usb_host.c **** 
   74:Src/usb_host.c ****   /* USER CODE END USB_HOST_Init_PreTreatment */
-  75:Src/usb_host.c ****   
+  75:Src/usb_host.c **** 
   76:Src/usb_host.c ****   /* Init host Library, add supported class and start the library. */
   77:Src/usb_host.c ****   if (USBH_Init(&hUsbHostFS, USBH_UserProcess, HOST_FS) != USBH_OK)
   78:Src/usb_host.c ****   {
@@ -116,11 +118,11 @@ ARM GAS  /tmp/cc1igYCm.s 			page 1
   87:Src/usb_host.c ****     Error_Handler();
   88:Src/usb_host.c ****   }
   89:Src/usb_host.c ****   /* USER CODE BEGIN USB_HOST_Init_PostTreatment */
+ARM GAS  /tmp/cc0aZ7t8.s 			page 3
+
+
   90:Src/usb_host.c **** 
   91:Src/usb_host.c ****   /* USER CODE END USB_HOST_Init_PostTreatment */
-ARM GAS  /tmp/cc1igYCm.s 			page 3
-
-
   92:Src/usb_host.c **** }
   93:Src/usb_host.c **** 
   94:Src/usb_host.c **** /*
@@ -136,27 +138,27 @@ ARM GAS  /tmp/cc1igYCm.s 			page 1
  104:Src/usb_host.c ****  */
  105:Src/usb_host.c **** static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
  106:Src/usb_host.c **** {
-  25              		.loc 1 106 0
-  26              		.cfi_startproc
-  27              		@ args = 0, pretend = 0, frame = 0
-  28              		@ frame_needed = 0, uses_anonymous_args = 0
-  29              	.LVL0:
-  30 0000 08B5     		push	{r3, lr}
-  31              	.LCFI0:
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 3, -8
-  34              		.cfi_offset 14, -4
+  27              		.loc 1 106 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		.loc 1 106 1 is_stmt 0 view .LVU1
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
  107:Src/usb_host.c ****   /* USER CODE BEGIN CALL_BACK_1 */
  108:Src/usb_host.c ****   switch(id)
-  35              		.loc 1 108 0
-  36 0002 0429     		cmp	r1, #4
-  37 0004 18D0     		beq	.L3
-  38 0006 0529     		cmp	r1, #5
-  39 0008 02D0     		beq	.L4
-  40 000a 0229     		cmp	r1, #2
-  41 000c 0DD0     		beq	.L7
-  42              	.LVL1:
-  43              	.L1:
+  37              		.loc 1 108 3 is_stmt 1 view .LVU2
+  38 0002 0429     		cmp	r1, #4
+  39 0004 18D0     		beq	.L2
+  40 0006 0529     		cmp	r1, #5
+  41 0008 02D0     		beq	.L3
+  42 000a 0229     		cmp	r1, #2
+  43 000c 0DD0     		beq	.L7
+  44              	.LVL1:
+  45              	.L1:
  109:Src/usb_host.c ****   {
  110:Src/usb_host.c ****   case HOST_USER_SELECT_CONFIGURATION:
  111:Src/usb_host.c ****   break;
@@ -175,232 +177,270 @@ ARM GAS  /tmp/cc1igYCm.s 			page 1
  124:Src/usb_host.c **** 
  125:Src/usb_host.c ****   case HOST_USER_CONNECTION:
  126:Src/usb_host.c ****   Appli_state = APPLICATION_START;
- 127:Src/usb_host.c ****   break;
- 128:Src/usb_host.c **** 
- 129:Src/usb_host.c ****   default:
-ARM GAS  /tmp/cc1igYCm.s 			page 4
+ 127:Src/usb_host.c ****   setState_USBdrive(READY_USBDRIVE);
+ARM GAS  /tmp/cc0aZ7t8.s 			page 4
 
 
- 130:Src/usb_host.c ****   break;
- 131:Src/usb_host.c ****   }
- 132:Src/usb_host.c ****   /* USER CODE END CALL_BACK_1 */
- 133:Src/usb_host.c **** }
-  44              		.loc 1 133 0
-  45 000e 08BD     		pop	{r3, pc}
-  46              	.LVL2:
-  47              	.L4:
+ 128:Src/usb_host.c ****   break;
+ 129:Src/usb_host.c **** 
+ 130:Src/usb_host.c ****   default:
+ 131:Src/usb_host.c ****   break;
+ 132:Src/usb_host.c ****   }
+ 133:Src/usb_host.c ****   /* USER CODE END CALL_BACK_1 */
+ 134:Src/usb_host.c **** }
+  46              		.loc 1 134 1 is_stmt 0 view .LVU3
+  47 000e 08BD     		pop	{r3, pc}
+  48              	.LVL2:
+  49              	.L3:
  114:Src/usb_host.c ****   setState_USBdrive(NOT_READY_USBDRIVE);
-  48              		.loc 1 114 0
-  49 0010 0B4B     		ldr	r3, .L8
-  50 0012 0322     		movs	r2, #3
-  51 0014 1A70     		strb	r2, [r3]
+  50              		.loc 1 114 3 is_stmt 1 view .LVU4
+ 114:Src/usb_host.c ****   setState_USBdrive(NOT_READY_USBDRIVE);
+  51              		.loc 1 114 15 is_stmt 0 view .LVU5
+  52 0010 0C4B     		ldr	r3, .L8
+  53 0012 0322     		movs	r2, #3
+  54 0014 1A70     		strb	r2, [r3]
  115:Src/usb_host.c ****   if (getMountedStatus() == MOUNTED_USBDRIVE)
-  52              		.loc 1 115 0
-  53 0016 0020     		movs	r0, #0
-  54              	.LVL3:
-  55 0018 FFF7FEFF 		bl	setState_USBdrive
-  56              	.LVL4:
+  55              		.loc 1 115 3 is_stmt 1 view .LVU6
+  56 0016 0020     		movs	r0, #0
+  57              	.LVL3:
+ 115:Src/usb_host.c ****   if (getMountedStatus() == MOUNTED_USBDRIVE)
+  58              		.loc 1 115 3 is_stmt 0 view .LVU7
+  59 0018 FFF7FEFF 		bl	setState_USBdrive
+  60              	.LVL4:
  116:Src/usb_host.c ****     unmount_USBdrive();
-  57              		.loc 1 116 0
-  58 001c FFF7FEFF 		bl	getMountedStatus
-  59              	.LVL5:
-  60 0020 0128     		cmp	r0, #1
-  61 0022 F4D1     		bne	.L1
+  61              		.loc 1 116 3 is_stmt 1 view .LVU8
+ 116:Src/usb_host.c ****     unmount_USBdrive();
+  62              		.loc 1 116 7 is_stmt 0 view .LVU9
+  63 001c FFF7FEFF 		bl	getMountedStatus
+  64              	.LVL5:
+ 116:Src/usb_host.c ****     unmount_USBdrive();
+  65              		.loc 1 116 6 view .LVU10
+  66 0020 0128     		cmp	r0, #1
+  67 0022 F4D1     		bne	.L1
  117:Src/usb_host.c ****   break;
-  62              		.loc 1 117 0
-  63 0024 FFF7FEFF 		bl	unmount_USBdrive
-  64              	.LVL6:
-  65 0028 F1E7     		b	.L1
-  66              	.LVL7:
-  67              	.L7:
+  68              		.loc 1 117 5 is_stmt 1 view .LVU11
+  69 0024 FFF7FEFF 		bl	unmount_USBdrive
+  70              	.LVL6:
+  71 0028 F1E7     		b	.L1
+  72              	.LVL7:
+  73              	.L7:
  121:Src/usb_host.c ****   setState_USBdrive(READY_USBDRIVE);
-  68              		.loc 1 121 0
-  69 002a 054B     		ldr	r3, .L8
-  70 002c 0222     		movs	r2, #2
-  71 002e 1A70     		strb	r2, [r3]
+  74              		.loc 1 121 3 view .LVU12
+ 121:Src/usb_host.c ****   setState_USBdrive(READY_USBDRIVE);
+  75              		.loc 1 121 15 is_stmt 0 view .LVU13
+  76 002a 064B     		ldr	r3, .L8
+  77 002c 0222     		movs	r2, #2
+  78 002e 1A70     		strb	r2, [r3]
  122:Src/usb_host.c ****   break;
-  72              		.loc 1 122 0
-  73 0030 0120     		movs	r0, #1
-  74              	.LVL8:
-  75 0032 FFF7FEFF 		bl	setState_USBdrive
-  76              	.LVL9:
+  79              		.loc 1 122 3 is_stmt 1 view .LVU14
+  80 0030 0120     		movs	r0, #1
+  81              	.LVL8:
+ 122:Src/usb_host.c ****   break;
+  82              		.loc 1 122 3 is_stmt 0 view .LVU15
+  83 0032 FFF7FEFF 		bl	setState_USBdrive
+ARM GAS  /tmp/cc0aZ7t8.s 			page 5
+
+
+  84              	.LVL9:
  123:Src/usb_host.c **** 
-  77              		.loc 1 123 0
-  78 0036 EAE7     		b	.L1
-  79              	.LVL10:
-  80              	.L3:
- 126:Src/usb_host.c ****   break;
-  81              		.loc 1 126 0
-  82 0038 014B     		ldr	r3, .L8
-  83 003a 0122     		movs	r2, #1
-  84 003c 1A70     		strb	r2, [r3]
-  85              		.loc 1 133 0
-  86 003e E6E7     		b	.L1
-  87              	.L9:
-  88              		.align	2
-ARM GAS  /tmp/cc1igYCm.s 			page 5
-
-
-  89              	.L8:
-  90 0040 00000000 		.word	.LANCHOR0
-  91              		.cfi_endproc
-  92              	.LFE68:
-  94              		.section	.text.MX_USB_HOST_Init,"ax",%progbits
-  95              		.align	1
-  96              		.global	MX_USB_HOST_Init
-  97              		.syntax unified
-  98              		.thumb
-  99              		.thumb_func
- 100              		.fpu softvfp
- 102              	MX_USB_HOST_Init:
- 103              	.LFB66:
+  85              		.loc 1 123 3 is_stmt 1 view .LVU16
+  86 0036 EAE7     		b	.L1
+  87              	.LVL10:
+  88              	.L2:
+ 126:Src/usb_host.c ****   setState_USBdrive(READY_USBDRIVE);
+  89              		.loc 1 126 3 view .LVU17
+ 126:Src/usb_host.c ****   setState_USBdrive(READY_USBDRIVE);
+  90              		.loc 1 126 15 is_stmt 0 view .LVU18
+  91 0038 0120     		movs	r0, #1
+  92              	.LVL11:
+ 126:Src/usb_host.c ****   setState_USBdrive(READY_USBDRIVE);
+  93              		.loc 1 126 15 view .LVU19
+  94 003a 024B     		ldr	r3, .L8
+  95 003c 1870     		strb	r0, [r3]
+ 127:Src/usb_host.c ****   break;
+  96              		.loc 1 127 3 is_stmt 1 view .LVU20
+  97 003e FFF7FEFF 		bl	setState_USBdrive
+  98              	.LVL12:
+ 128:Src/usb_host.c **** 
+  99              		.loc 1 128 3 view .LVU21
+ 100              		.loc 1 134 1 is_stmt 0 view .LVU22
+ 101 0042 E4E7     		b	.L1
+ 102              	.L9:
+ 103              		.align	2
+ 104              	.L8:
+ 105 0044 00000000 		.word	.LANCHOR0
+ 106              		.cfi_endproc
+ 107              	.LFE70:
+ 109              		.section	.text.MX_USB_HOST_Init,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	MX_USB_HOST_Init
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 115              		.fpu softvfp
+ 117              	MX_USB_HOST_Init:
+ 118              	.LFB68:
   71:Src/usb_host.c ****   /* USER CODE BEGIN USB_HOST_Init_PreTreatment */
- 104              		.loc 1 71 0
- 105              		.cfi_startproc
- 106              		@ args = 0, pretend = 0, frame = 0
- 107              		@ frame_needed = 0, uses_anonymous_args = 0
- 108 0000 08B5     		push	{r3, lr}
- 109              	.LCFI1:
- 110              		.cfi_def_cfa_offset 8
- 111              		.cfi_offset 3, -8
- 112              		.cfi_offset 14, -4
+ 119              		.loc 1 71 1 is_stmt 1 view -0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123 0000 08B5     		push	{r3, lr}
+ 124              	.LCFI1:
+ 125              		.cfi_def_cfa_offset 8
+ 126              		.cfi_offset 3, -8
+ 127              		.cfi_offset 14, -4
   77:Src/usb_host.c ****   {
- 113              		.loc 1 77 0
- 114 0002 0122     		movs	r2, #1
- 115 0004 0B49     		ldr	r1, .L18
- 116 0006 0C48     		ldr	r0, .L18+4
- 117 0008 FFF7FEFF 		bl	USBH_Init
- 118              	.LVL11:
- 119 000c 48B9     		cbnz	r0, .L15
- 120              	.L11:
+ 128              		.loc 1 77 3 view .LVU24
+  77:Src/usb_host.c ****   {
+ 129              		.loc 1 77 7 is_stmt 0 view .LVU25
+ 130 0002 0122     		movs	r2, #1
+ 131 0004 0B49     		ldr	r1, .L18
+ 132 0006 0C48     		ldr	r0, .L18+4
+ 133 0008 FFF7FEFF 		bl	USBH_Init
+ARM GAS  /tmp/cc0aZ7t8.s 			page 6
+
+
+ 134              	.LVL13:
+  77:Src/usb_host.c ****   {
+ 135              		.loc 1 77 6 view .LVU26
+ 136 000c 48B9     		cbnz	r0, .L15
+ 137              	.L11:
   81:Src/usb_host.c ****   {
- 121              		.loc 1 81 0
- 122 000e 0B49     		ldr	r1, .L18+8
- 123 0010 0948     		ldr	r0, .L18+4
- 124 0012 FFF7FEFF 		bl	USBH_RegisterClass
- 125              	.LVL12:
- 126 0016 38B9     		cbnz	r0, .L16
- 127              	.L12:
+ 138              		.loc 1 81 3 is_stmt 1 view .LVU27
+  81:Src/usb_host.c ****   {
+ 139              		.loc 1 81 7 is_stmt 0 view .LVU28
+ 140 000e 0B49     		ldr	r1, .L18+8
+ 141 0010 0948     		ldr	r0, .L18+4
+ 142 0012 FFF7FEFF 		bl	USBH_RegisterClass
+ 143              	.LVL14:
+  81:Src/usb_host.c ****   {
+ 144              		.loc 1 81 6 view .LVU29
+ 145 0016 38B9     		cbnz	r0, .L16
+ 146              	.L12:
   85:Src/usb_host.c ****   {
- 128              		.loc 1 85 0
- 129 0018 0748     		ldr	r0, .L18+4
- 130 001a FFF7FEFF 		bl	USBH_Start
- 131              	.LVL13:
- 132 001e 30B9     		cbnz	r0, .L17
- 133              	.L10:
+ 147              		.loc 1 85 3 is_stmt 1 view .LVU30
+  85:Src/usb_host.c ****   {
+ 148              		.loc 1 85 7 is_stmt 0 view .LVU31
+ 149 0018 0748     		ldr	r0, .L18+4
+ 150 001a FFF7FEFF 		bl	USBH_Start
+ 151              	.LVL15:
+  85:Src/usb_host.c ****   {
+ 152              		.loc 1 85 6 view .LVU32
+ 153 001e 30B9     		cbnz	r0, .L17
+ 154              	.L10:
   92:Src/usb_host.c **** 
- 134              		.loc 1 92 0
- 135 0020 08BD     		pop	{r3, pc}
- 136              	.L15:
+ 155              		.loc 1 92 1 view .LVU33
+ 156 0020 08BD     		pop	{r3, pc}
+ 157              	.L15:
   79:Src/usb_host.c ****   }
- 137              		.loc 1 79 0
- 138 0022 FFF7FEFF 		bl	Error_Handler
- 139              	.LVL14:
- 140 0026 F2E7     		b	.L11
- 141              	.L16:
-ARM GAS  /tmp/cc1igYCm.s 			page 6
-
-
+ 158              		.loc 1 79 5 is_stmt 1 view .LVU34
+ 159 0022 FFF7FEFF 		bl	Error_Handler
+ 160              	.LVL16:
+ 161 0026 F2E7     		b	.L11
+ 162              	.L16:
   83:Src/usb_host.c ****   }
- 142              		.loc 1 83 0
- 143 0028 FFF7FEFF 		bl	Error_Handler
- 144              	.LVL15:
- 145 002c F4E7     		b	.L12
- 146              	.L17:
+ 163              		.loc 1 83 5 view .LVU35
+ 164 0028 FFF7FEFF 		bl	Error_Handler
+ 165              	.LVL17:
+ 166 002c F4E7     		b	.L12
+ 167              	.L17:
   87:Src/usb_host.c ****   }
- 147              		.loc 1 87 0
- 148 002e FFF7FEFF 		bl	Error_Handler
- 149              	.LVL16:
+ 168              		.loc 1 87 5 view .LVU36
+ 169 002e FFF7FEFF 		bl	Error_Handler
+ 170              	.LVL18:
   92:Src/usb_host.c **** 
- 150              		.loc 1 92 0
- 151 0032 F5E7     		b	.L10
- 152              	.L19:
- 153              		.align	2
- 154              	.L18:
- 155 0034 00000000 		.word	USBH_UserProcess
- 156 0038 00000000 		.word	hUsbHostFS
- 157 003c 00000000 		.word	USBH_msc
- 158              		.cfi_endproc
- 159              	.LFE66:
- 161              		.section	.text.MX_USB_HOST_Process,"ax",%progbits
- 162              		.align	1
- 163              		.global	MX_USB_HOST_Process
- 164              		.syntax unified
- 165              		.thumb
- 166              		.thumb_func
- 167              		.fpu softvfp
- 169              	MX_USB_HOST_Process:
- 170              	.LFB67:
+ 171              		.loc 1 92 1 is_stmt 0 view .LVU37
+ 172 0032 F5E7     		b	.L10
+ 173              	.L19:
+ 174              		.align	2
+ 175              	.L18:
+ 176 0034 00000000 		.word	USBH_UserProcess
+ 177 0038 00000000 		.word	hUsbHostFS
+ 178 003c 00000000 		.word	USBH_msc
+ARM GAS  /tmp/cc0aZ7t8.s 			page 7
+
+
+ 179              		.cfi_endproc
+ 180              	.LFE68:
+ 182              		.section	.text.MX_USB_HOST_Process,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	MX_USB_HOST_Process
+ 185              		.syntax unified
+ 186              		.thumb
+ 187              		.thumb_func
+ 188              		.fpu softvfp
+ 190              	MX_USB_HOST_Process:
+ 191              	.LFB69:
   98:Src/usb_host.c ****   /* USB Host Background task */
- 171              		.loc 1 98 0
- 172              		.cfi_startproc
- 173              		@ args = 0, pretend = 0, frame = 0
- 174              		@ frame_needed = 0, uses_anonymous_args = 0
- 175 0000 08B5     		push	{r3, lr}
- 176              	.LCFI2:
- 177              		.cfi_def_cfa_offset 8
- 178              		.cfi_offset 3, -8
- 179              		.cfi_offset 14, -4
+ 192              		.loc 1 98 1 is_stmt 1 view -0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196 0000 08B5     		push	{r3, lr}
+ 197              	.LCFI2:
+ 198              		.cfi_def_cfa_offset 8
+ 199              		.cfi_offset 3, -8
+ 200              		.cfi_offset 14, -4
  100:Src/usb_host.c **** }
- 180              		.loc 1 100 0
- 181 0002 0248     		ldr	r0, .L22
- 182 0004 FFF7FEFF 		bl	USBH_Process
- 183              	.LVL17:
+ 201              		.loc 1 100 3 view .LVU39
+ 202 0002 0248     		ldr	r0, .L22
+ 203 0004 FFF7FEFF 		bl	USBH_Process
+ 204              	.LVL19:
  101:Src/usb_host.c **** /*
- 184              		.loc 1 101 0
- 185 0008 08BD     		pop	{r3, pc}
- 186              	.L23:
- 187 000a 00BF     		.align	2
- 188              	.L22:
- 189 000c 00000000 		.word	hUsbHostFS
- 190              		.cfi_endproc
- 191              	.LFE67:
- 193              		.global	Appli_state
- 194              		.comm	hUsbHostFS,968,4
- 195              		.section	.bss.Appli_state,"aw",%nobits
-ARM GAS  /tmp/cc1igYCm.s 			page 7
+ 205              		.loc 1 101 1 is_stmt 0 view .LVU40
+ 206 0008 08BD     		pop	{r3, pc}
+ 207              	.L23:
+ 208 000a 00BF     		.align	2
+ 209              	.L22:
+ 210 000c 00000000 		.word	hUsbHostFS
+ 211              		.cfi_endproc
+ 212              	.LFE69:
+ 214              		.global	Appli_state
+ 215              		.comm	hUsbHostFS,976,4
+ 216              		.section	.bss.Appli_state,"aw",%nobits
+ 217              		.set	.LANCHOR0,. + 0
+ 220              	Appli_state:
+ 221 0000 00       		.space	1
+ 222              		.text
+ 223              	.Letext0:
+ 224              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+ 225              		.file 3 "Drivers/CMSIS/Include/core_cm3.h"
+ 226              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 227              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 228              		.file 6 "Inc/usb_host.h"
+ 229              		.file 7 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+ 230              		.file 8 "/usr/include/newlib/sys/_types.h"
+ 231              		.file 9 "/usr/include/newlib/sys/reent.h"
+ 232              		.file 10 "/usr/include/newlib/sys/lock.h"
+ 233              		.file 11 "/usr/include/newlib/stdlib.h"
+ 234              		.file 12 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h"
+ 235              		.file 13 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h"
+ 236              		.file 14 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h"
+ 237              		.file 15 "Inc/USB/State_USBdrive.h"
+ARM GAS  /tmp/cc0aZ7t8.s 			page 8
 
 
- 196              		.set	.LANCHOR0,. + 0
- 199              	Appli_state:
- 200 0000 00       		.space	1
- 201              		.text
- 202              	.Letext0:
- 203              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 204              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 205              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 206              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 207              		.file 6 "/usr/arm-none-eabi/include/sys/lock.h"
- 208              		.file 7 "/usr/arm-none-eabi/include/sys/_types.h"
- 209              		.file 8 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
- 210              		.file 9 "/usr/arm-none-eabi/include/sys/reent.h"
- 211              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 212              		.file 11 "Inc/usb_host.h"
- 213              		.file 12 "/usr/arm-none-eabi/include/stdlib.h"
- 214              		.file 13 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h"
- 215              		.file 14 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h"
- 216              		.file 15 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h"
- 217              		.file 16 "Inc/USB/State_USBdrive.h"
- 218              		.file 17 "Inc/USB/Driver_USBdrive.h"
- 219              		.file 18 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h"
- 220              		.file 19 "Inc/main.h"
-ARM GAS  /tmp/cc1igYCm.s 			page 8
+ 238              		.file 16 "Inc/USB/Driver_USBdrive.h"
+ 239              		.file 17 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h"
+ 240              		.file 18 "Inc/main.h"
+ARM GAS  /tmp/cc0aZ7t8.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 usb_host.c
-     /tmp/cc1igYCm.s:16     .text.USBH_UserProcess:0000000000000000 $t
-     /tmp/cc1igYCm.s:22     .text.USBH_UserProcess:0000000000000000 USBH_UserProcess
-     /tmp/cc1igYCm.s:90     .text.USBH_UserProcess:0000000000000040 $d
-     /tmp/cc1igYCm.s:95     .text.MX_USB_HOST_Init:0000000000000000 $t
-     /tmp/cc1igYCm.s:102    .text.MX_USB_HOST_Init:0000000000000000 MX_USB_HOST_Init
-     /tmp/cc1igYCm.s:155    .text.MX_USB_HOST_Init:0000000000000034 $d
-                            *COM*:00000000000003c8 hUsbHostFS
-     /tmp/cc1igYCm.s:162    .text.MX_USB_HOST_Process:0000000000000000 $t
-     /tmp/cc1igYCm.s:169    .text.MX_USB_HOST_Process:0000000000000000 MX_USB_HOST_Process
-     /tmp/cc1igYCm.s:189    .text.MX_USB_HOST_Process:000000000000000c $d
-     /tmp/cc1igYCm.s:199    .bss.Appli_state:0000000000000000 Appli_state
-     /tmp/cc1igYCm.s:200    .bss.Appli_state:0000000000000000 $d
+     /tmp/cc0aZ7t8.s:16     .text.USBH_UserProcess:0000000000000000 $t
+     /tmp/cc0aZ7t8.s:23     .text.USBH_UserProcess:0000000000000000 USBH_UserProcess
+     /tmp/cc0aZ7t8.s:105    .text.USBH_UserProcess:0000000000000044 $d
+     /tmp/cc0aZ7t8.s:110    .text.MX_USB_HOST_Init:0000000000000000 $t
+     /tmp/cc0aZ7t8.s:117    .text.MX_USB_HOST_Init:0000000000000000 MX_USB_HOST_Init
+     /tmp/cc0aZ7t8.s:176    .text.MX_USB_HOST_Init:0000000000000034 $d
+                            *COM*:00000000000003d0 hUsbHostFS
+     /tmp/cc0aZ7t8.s:183    .text.MX_USB_HOST_Process:0000000000000000 $t
+     /tmp/cc0aZ7t8.s:190    .text.MX_USB_HOST_Process:0000000000000000 MX_USB_HOST_Process
+     /tmp/cc0aZ7t8.s:210    .text.MX_USB_HOST_Process:000000000000000c $d
+     /tmp/cc0aZ7t8.s:220    .bss.Appli_state:0000000000000000 Appli_state
+     /tmp/cc0aZ7t8.s:221    .bss.Appli_state:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 setState_USBdrive

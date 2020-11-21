@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccKP1uaH.s 			page 1
+ARM GAS  /tmp/ccR5Y2I8.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,13 +17,15 @@ ARM GAS  /tmp/ccKP1uaH.s 			page 1
   14              		.cfi_sections	.debug_frame
   15              		.section	.text.TCHAR2wchar_t,"ax",%progbits
   16              		.align	1
-  17              		.syntax unified
-  18              		.thumb
-  19              		.thumb_func
-  20              		.fpu softvfp
-  22              	TCHAR2wchar_t:
-  23              	.LFB70:
-  24              		.file 1 "Src/USB/Driver_USBdrive.c"
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	TCHAR2wchar_t:
+  24              	.LVL0:
+  25              	.LFB72:
+  26              		.file 1 "Src/USB/Driver_USBdrive.c"
    1:Src/USB/Driver_USBdrive.c **** #include "Driver_USBdrive.h"
    2:Src/USB/Driver_USBdrive.c **** #include "string.h"
    3:Src/USB/Driver_USBdrive.c **** #include "stdio.h"
@@ -40,7 +42,7 @@ ARM GAS  /tmp/ccKP1uaH.s 			page 1
   14:Src/USB/Driver_USBdrive.c **** static DIR directory;
   15:Src/USB/Driver_USBdrive.c **** static FILINFO fileInformation;
   16:Src/USB/Driver_USBdrive.c **** static FIL file;
-  17:Src/USB/Driver_USBdrive.c **** 
+  17:Src/USB/Driver_USBdrive.c **** static TCHAR fname_arr[_MAX_LFN];
   18:Src/USB/Driver_USBdrive.c **** 
   19:Src/USB/Driver_USBdrive.c **** void createDriver_USBdrive(void)
   20:Src/USB/Driver_USBdrive.c **** {
@@ -48,2277 +50,2270 @@ ARM GAS  /tmp/ccKP1uaH.s 			page 1
   22:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
   23:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.fname, "%s", "");
   24:Src/USB/Driver_USBdrive.c ****     fileInformation.lfsize = _MAX_LFN;
-  25:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.lfname, "%s", "");
-  26:Src/USB/Driver_USBdrive.c **** }
-  27:Src/USB/Driver_USBdrive.c **** 
-  28:Src/USB/Driver_USBdrive.c **** void mount_USBdrive(void)
-  29:Src/USB/Driver_USBdrive.c **** {
-  30:Src/USB/Driver_USBdrive.c ****     if(currentMountedStatus_USBdrive == MOUNTED_USBDRIVE)
-  31:Src/USB/Driver_USBdrive.c ****         return;
-  32:Src/USB/Driver_USBdrive.c **** 
-  33:Src/USB/Driver_USBdrive.c ****     if(f_mount(&USBDISKFatFs, USBHPath, 0) == FR_OK)
-  34:Src/USB/Driver_USBdrive.c ****     {
-ARM GAS  /tmp/ccKP1uaH.s 			page 2
+  25:Src/USB/Driver_USBdrive.c ****     fileInformation.lfname = fname_arr;
+  26:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.lfname, "%s", "");
+  27:Src/USB/Driver_USBdrive.c **** }
+  28:Src/USB/Driver_USBdrive.c **** 
+  29:Src/USB/Driver_USBdrive.c **** void mount_USBdrive(void)
+  30:Src/USB/Driver_USBdrive.c **** {
+  31:Src/USB/Driver_USBdrive.c ****     if(currentMountedStatus_USBdrive == MOUNTED_USBDRIVE)
+  32:Src/USB/Driver_USBdrive.c ****         return;
+ARM GAS  /tmp/ccR5Y2I8.s 			page 2
 
 
-  35:Src/USB/Driver_USBdrive.c ****         currentMountedStatus_USBdrive = MOUNTED_USBDRIVE;
-  36:Src/USB/Driver_USBdrive.c ****         sprintf(path, "%s", USBHPath);
-  37:Src/USB/Driver_USBdrive.c ****         return;
-  38:Src/USB/Driver_USBdrive.c ****     }
-  39:Src/USB/Driver_USBdrive.c **** 
-  40:Src/USB/Driver_USBdrive.c ****     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
-  41:Src/USB/Driver_USBdrive.c **** }
-  42:Src/USB/Driver_USBdrive.c **** 
-  43:Src/USB/Driver_USBdrive.c **** void unmount_USBdrive(void)
-  44:Src/USB/Driver_USBdrive.c **** {
-  45:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
-  46:Src/USB/Driver_USBdrive.c ****         return;
-  47:Src/USB/Driver_USBdrive.c **** 
-  48:Src/USB/Driver_USBdrive.c ****     sprintf(USBHPath, "%c",'\0');
-  49:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
-  50:Src/USB/Driver_USBdrive.c **** 
-  51:Src/USB/Driver_USBdrive.c ****     while (f_mount(NULL, USBHPath, 0) != FR_OK) {};
-  52:Src/USB/Driver_USBdrive.c **** 
-  53:Src/USB/Driver_USBdrive.c ****     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
-  54:Src/USB/Driver_USBdrive.c **** }
-  55:Src/USB/Driver_USBdrive.c **** 
-  56:Src/USB/Driver_USBdrive.c **** mountedStatus_USBdrive getMountedStatus(void) { return currentMountedStatus_USBdrive;}
-  57:Src/USB/Driver_USBdrive.c **** 
+  33:Src/USB/Driver_USBdrive.c **** 
+  34:Src/USB/Driver_USBdrive.c ****     if(f_mount(&USBDISKFatFs, USBHPath, 0) == FR_OK)
+  35:Src/USB/Driver_USBdrive.c ****     {
+  36:Src/USB/Driver_USBdrive.c ****         currentMountedStatus_USBdrive = MOUNTED_USBDRIVE;
+  37:Src/USB/Driver_USBdrive.c ****         sprintf(path, "%s", USBHPath);
+  38:Src/USB/Driver_USBdrive.c ****         return;
+  39:Src/USB/Driver_USBdrive.c ****     }
+  40:Src/USB/Driver_USBdrive.c **** 
+  41:Src/USB/Driver_USBdrive.c ****     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
+  42:Src/USB/Driver_USBdrive.c **** }
+  43:Src/USB/Driver_USBdrive.c **** 
+  44:Src/USB/Driver_USBdrive.c **** void unmount_USBdrive(void)
+  45:Src/USB/Driver_USBdrive.c **** {
+  46:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+  47:Src/USB/Driver_USBdrive.c ****         return;
+  48:Src/USB/Driver_USBdrive.c **** 
+  49:Src/USB/Driver_USBdrive.c ****     sprintf(USBHPath, "%c",'\0');
+  50:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
+  51:Src/USB/Driver_USBdrive.c **** 
+  52:Src/USB/Driver_USBdrive.c ****     while (f_mount(NULL, USBHPath, 0) != FR_OK) {};
+  53:Src/USB/Driver_USBdrive.c **** 
+  54:Src/USB/Driver_USBdrive.c ****     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
+  55:Src/USB/Driver_USBdrive.c **** }
+  56:Src/USB/Driver_USBdrive.c **** 
+  57:Src/USB/Driver_USBdrive.c **** mountedStatus_USBdrive getMountedStatus(void) { return currentMountedStatus_USBdrive;}
   58:Src/USB/Driver_USBdrive.c **** 
-  59:Src/USB/Driver_USBdrive.c **** static wchar_t TCHAR2wchar_t(TCHAR character)
-  60:Src/USB/Driver_USBdrive.c **** {
-  25              		.loc 1 60 0
-  26              		.cfi_startproc
-  27              		@ args = 0, pretend = 0, frame = 0
-  28              		@ frame_needed = 0, uses_anonymous_args = 0
-  29              		@ link register save eliminated.
-  30              	.LVL0:
-  61:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA0) return *L"а";
-  31              		.loc 1 61 0
-  32 0000 A028     		cmp	r0, #160
-  33 0002 30D0     		beq	.L69
+  59:Src/USB/Driver_USBdrive.c **** 
+  60:Src/USB/Driver_USBdrive.c **** static wchar_t TCHAR2wchar_t(TCHAR character)
+  61:Src/USB/Driver_USBdrive.c **** {
+  27              		.loc 1 61 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  62:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA0) return *L"а";
+  32              		.loc 1 62 5 view .LVU1
+  33              		.loc 1 62 7 is_stmt 0 view .LVU2
+  34 0000 A028     		cmp	r0, #160
+  35 0002 00F0C480 		beq	.L3
+  63:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA1) return *L"б";
+  36              		.loc 1 63 5 is_stmt 1 view .LVU3
+  37              		.loc 1 63 7 is_stmt 0 view .LVU4
+  38 0006 A128     		cmp	r0, #161
+  39 0008 00F0C480 		beq	.L4
+  64:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA2) return *L"в";
+  40              		.loc 1 64 5 is_stmt 1 view .LVU5
+  41              		.loc 1 64 7 is_stmt 0 view .LVU6
+  42 000c A228     		cmp	r0, #162
+  43 000e 00F0C480 		beq	.L5
+  65:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA3) return *L"г";
+  44              		.loc 1 65 5 is_stmt 1 view .LVU7
+  45              		.loc 1 65 7 is_stmt 0 view .LVU8
+  46 0012 A328     		cmp	r0, #163
+  47 0014 00F0C480 		beq	.L6
+  66:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA4) return *L"д";
+  48              		.loc 1 66 5 is_stmt 1 view .LVU9
+  49              		.loc 1 66 7 is_stmt 0 view .LVU10
+ARM GAS  /tmp/ccR5Y2I8.s 			page 3
+
+
+  50 0018 A428     		cmp	r0, #164
+  51 001a 00F0C480 		beq	.L7
+  67:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA5) return *L"е";
+  52              		.loc 1 67 5 is_stmt 1 view .LVU11
+  53              		.loc 1 67 7 is_stmt 0 view .LVU12
+  54 001e A528     		cmp	r0, #165
+  55 0020 00F0C480 		beq	.L8
+  68:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF1) return *L"ё";
+  56              		.loc 1 68 5 is_stmt 1 view .LVU13
+  57              		.loc 1 68 7 is_stmt 0 view .LVU14
+  58 0024 F128     		cmp	r0, #241
+  59 0026 00F0C480 		beq	.L9
+  69:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA6) return *L"ж";
+  60              		.loc 1 69 5 is_stmt 1 view .LVU15
+  61              		.loc 1 69 7 is_stmt 0 view .LVU16
+  62 002a A628     		cmp	r0, #166
+  63 002c 00F0C480 		beq	.L10
+  70:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA7) return *L"з";
+  64              		.loc 1 70 5 is_stmt 1 view .LVU17
+  65              		.loc 1 70 7 is_stmt 0 view .LVU18
+  66 0030 A728     		cmp	r0, #167
+  67 0032 00F0C480 		beq	.L11
+  71:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA8) return *L"и";
+  68              		.loc 1 71 5 is_stmt 1 view .LVU19
+  69              		.loc 1 71 7 is_stmt 0 view .LVU20
+  70 0036 A828     		cmp	r0, #168
+  71 0038 00F0C480 		beq	.L12
+  72:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA9) return *L"й";
+  72              		.loc 1 72 5 is_stmt 1 view .LVU21
+  73              		.loc 1 72 7 is_stmt 0 view .LVU22
+  74 003c A928     		cmp	r0, #169
+  75 003e 00F0C480 		beq	.L13
+  73:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAA) return *L"к";
+  76              		.loc 1 73 5 is_stmt 1 view .LVU23
+  77              		.loc 1 73 7 is_stmt 0 view .LVU24
+  78 0042 AA28     		cmp	r0, #170
+  79 0044 00F0C480 		beq	.L14
+  74:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAB) return *L"л";
+  80              		.loc 1 74 5 is_stmt 1 view .LVU25
+  81              		.loc 1 74 7 is_stmt 0 view .LVU26
+  82 0048 AB28     		cmp	r0, #171
+  83 004a 00F0C480 		beq	.L15
+  75:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAC) return *L"м";
+  84              		.loc 1 75 5 is_stmt 1 view .LVU27
+  85              		.loc 1 75 7 is_stmt 0 view .LVU28
+  86 004e AC28     		cmp	r0, #172
+  87 0050 00F0C480 		beq	.L16
+  76:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAD) return *L"н";
+  88              		.loc 1 76 5 is_stmt 1 view .LVU29
+  89              		.loc 1 76 7 is_stmt 0 view .LVU30
+  90 0054 AD28     		cmp	r0, #173
+  91 0056 00F0C480 		beq	.L17
+  77:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAE) return *L"о";
+  92              		.loc 1 77 5 is_stmt 1 view .LVU31
+  93              		.loc 1 77 7 is_stmt 0 view .LVU32
+  94 005a AE28     		cmp	r0, #174
+  95 005c 00F0C480 		beq	.L18
+ARM GAS  /tmp/ccR5Y2I8.s 			page 4
+
+
+  78:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAF) return *L"п";
+  96              		.loc 1 78 5 is_stmt 1 view .LVU33
+  97              		.loc 1 78 7 is_stmt 0 view .LVU34
+  98 0060 AF28     		cmp	r0, #175
+  99 0062 00F0C480 		beq	.L19
+  79:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE0) return *L"р";
+ 100              		.loc 1 79 5 is_stmt 1 view .LVU35
+ 101              		.loc 1 79 7 is_stmt 0 view .LVU36
+ 102 0066 E028     		cmp	r0, #224
+ 103 0068 00F0C480 		beq	.L20
+  80:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE1) return *L"с";
+ 104              		.loc 1 80 5 is_stmt 1 view .LVU37
+ 105              		.loc 1 80 7 is_stmt 0 view .LVU38
+ 106 006c E128     		cmp	r0, #225
+ 107 006e 00F0C480 		beq	.L21
+  81:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE2) return *L"т";
+ 108              		.loc 1 81 5 is_stmt 1 view .LVU39
+ 109              		.loc 1 81 7 is_stmt 0 view .LVU40
+ 110 0072 E228     		cmp	r0, #226
+ 111 0074 00F0C480 		beq	.L22
+  82:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE3) return *L"у";
+ 112              		.loc 1 82 5 is_stmt 1 view .LVU41
+ 113              		.loc 1 82 7 is_stmt 0 view .LVU42
+ 114 0078 E328     		cmp	r0, #227
+ 115 007a 00F0C480 		beq	.L23
+  83:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE4) return *L"ф";
+ 116              		.loc 1 83 5 is_stmt 1 view .LVU43
+ 117              		.loc 1 83 7 is_stmt 0 view .LVU44
+ 118 007e E428     		cmp	r0, #228
+ 119 0080 00F0C480 		beq	.L24
+  84:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE5) return *L"х";
+ 120              		.loc 1 84 5 is_stmt 1 view .LVU45
+ 121              		.loc 1 84 7 is_stmt 0 view .LVU46
+ 122 0084 E528     		cmp	r0, #229
+ 123 0086 00F0C480 		beq	.L25
+  85:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE6) return *L"ц";
+ 124              		.loc 1 85 5 is_stmt 1 view .LVU47
+ 125              		.loc 1 85 7 is_stmt 0 view .LVU48
+ 126 008a E628     		cmp	r0, #230
+ 127 008c 00F0C480 		beq	.L26
+  86:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE7) return *L"ч";
+ 128              		.loc 1 86 5 is_stmt 1 view .LVU49
+ 129              		.loc 1 86 7 is_stmt 0 view .LVU50
+ 130 0090 E728     		cmp	r0, #231
+ 131 0092 00F0C480 		beq	.L27
+  87:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE8) return *L"ш";
+ 132              		.loc 1 87 5 is_stmt 1 view .LVU51
+ 133              		.loc 1 87 7 is_stmt 0 view .LVU52
+ 134 0096 E828     		cmp	r0, #232
+ 135 0098 00F0C480 		beq	.L28
+  88:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE9) return *L"щ";
+ 136              		.loc 1 88 5 is_stmt 1 view .LVU53
+ 137              		.loc 1 88 7 is_stmt 0 view .LVU54
+ 138 009c E928     		cmp	r0, #233
+ 139 009e 00F0C480 		beq	.L29
+  89:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEA) return *L"ъ";
+ 140              		.loc 1 89 5 is_stmt 1 view .LVU55
+ARM GAS  /tmp/ccR5Y2I8.s 			page 5
+
+
+ 141              		.loc 1 89 7 is_stmt 0 view .LVU56
+ 142 00a2 EA28     		cmp	r0, #234
+ 143 00a4 00F0C480 		beq	.L30
+  90:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEB) return *L"ы";
+ 144              		.loc 1 90 5 is_stmt 1 view .LVU57
+ 145              		.loc 1 90 7 is_stmt 0 view .LVU58
+ 146 00a8 EB28     		cmp	r0, #235
+ 147 00aa 00F0C480 		beq	.L31
+  91:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEC) return *L"ь";
+ 148              		.loc 1 91 5 is_stmt 1 view .LVU59
+ 149              		.loc 1 91 7 is_stmt 0 view .LVU60
+ 150 00ae EC28     		cmp	r0, #236
+ 151 00b0 00F0C480 		beq	.L32
+  92:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xED) return *L"э";
+ 152              		.loc 1 92 5 is_stmt 1 view .LVU61
+ 153              		.loc 1 92 7 is_stmt 0 view .LVU62
+ 154 00b4 ED28     		cmp	r0, #237
+ 155 00b6 00F0C480 		beq	.L33
+  93:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEE) return *L"ю";
+ 156              		.loc 1 93 5 is_stmt 1 view .LVU63
+ 157              		.loc 1 93 7 is_stmt 0 view .LVU64
+ 158 00ba EE28     		cmp	r0, #238
+ 159 00bc 00F0C480 		beq	.L34
+  94:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEF) return *L"я";
+ 160              		.loc 1 94 5 is_stmt 1 view .LVU65
+ 161              		.loc 1 94 7 is_stmt 0 view .LVU66
+ 162 00c0 EF28     		cmp	r0, #239
+ 163 00c2 00F0C480 		beq	.L35
+  95:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x80) return *L"А";
+ 164              		.loc 1 95 5 is_stmt 1 view .LVU67
+ 165              		.loc 1 95 7 is_stmt 0 view .LVU68
+ 166 00c6 8028     		cmp	r0, #128
+ 167 00c8 00F0C480 		beq	.L36
+  96:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x81) return *L"Б";
+ 168              		.loc 1 96 5 is_stmt 1 view .LVU69
+ 169              		.loc 1 96 7 is_stmt 0 view .LVU70
+ 170 00cc 8128     		cmp	r0, #129
+ 171 00ce 00F0C480 		beq	.L37
+  97:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x82) return *L"В";
+ 172              		.loc 1 97 5 is_stmt 1 view .LVU71
+ 173              		.loc 1 97 7 is_stmt 0 view .LVU72
+ 174 00d2 8228     		cmp	r0, #130
+ 175 00d4 00F0C480 		beq	.L38
+  98:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x83) return *L"Г";
+ 176              		.loc 1 98 5 is_stmt 1 view .LVU73
+ 177              		.loc 1 98 7 is_stmt 0 view .LVU74
+ 178 00d8 8328     		cmp	r0, #131
+ 179 00da 00F0C480 		beq	.L39
+  99:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x84) return *L"Д";
+ 180              		.loc 1 99 5 is_stmt 1 view .LVU75
+ 181              		.loc 1 99 7 is_stmt 0 view .LVU76
+ 182 00de 8428     		cmp	r0, #132
+ 183 00e0 00F0C480 		beq	.L40
+ 100:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x85) return *L"Е";
+ 184              		.loc 1 100 5 is_stmt 1 view .LVU77
+ 185              		.loc 1 100 7 is_stmt 0 view .LVU78
+ 186 00e4 8528     		cmp	r0, #133
+ARM GAS  /tmp/ccR5Y2I8.s 			page 6
+
+
+ 187 00e6 00F0C480 		beq	.L41
+ 101:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF0) return *L"Ё";
+ 188              		.loc 1 101 5 is_stmt 1 view .LVU79
+ 189              		.loc 1 101 7 is_stmt 0 view .LVU80
+ 190 00ea F028     		cmp	r0, #240
+ 191 00ec 00F0C480 		beq	.L42
+ 102:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x86) return *L"Ж";
+ 192              		.loc 1 102 5 is_stmt 1 view .LVU81
+ 193              		.loc 1 102 7 is_stmt 0 view .LVU82
+ 194 00f0 8628     		cmp	r0, #134
+ 195 00f2 00F0C480 		beq	.L43
+ 103:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x87) return *L"З";
+ 196              		.loc 1 103 5 is_stmt 1 view .LVU83
+ 197              		.loc 1 103 7 is_stmt 0 view .LVU84
+ 198 00f6 8728     		cmp	r0, #135
+ 199 00f8 00F0C480 		beq	.L44
+ 104:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x88) return *L"И";
+ 200              		.loc 1 104 5 is_stmt 1 view .LVU85
+ 201              		.loc 1 104 7 is_stmt 0 view .LVU86
+ 202 00fc 8828     		cmp	r0, #136
+ 203 00fe 00F0C480 		beq	.L45
+ 105:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x89) return *L"Й";
+ 204              		.loc 1 105 5 is_stmt 1 view .LVU87
+ 205              		.loc 1 105 7 is_stmt 0 view .LVU88
+ 206 0102 8928     		cmp	r0, #137
+ 207 0104 00F0C480 		beq	.L46
+ 106:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8A) return *L"К";
+ 208              		.loc 1 106 5 is_stmt 1 view .LVU89
+ 209              		.loc 1 106 7 is_stmt 0 view .LVU90
+ 210 0108 8A28     		cmp	r0, #138
+ 211 010a 00F0C480 		beq	.L47
+ 107:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8B) return *L"Л";
+ 212              		.loc 1 107 5 is_stmt 1 view .LVU91
+ 213              		.loc 1 107 7 is_stmt 0 view .LVU92
+ 214 010e 8B28     		cmp	r0, #139
+ 215 0110 00F0C480 		beq	.L48
+ 108:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8C) return *L"М";
+ 216              		.loc 1 108 5 is_stmt 1 view .LVU93
+ 217              		.loc 1 108 7 is_stmt 0 view .LVU94
+ 218 0114 8C28     		cmp	r0, #140
+ 219 0116 00F0C480 		beq	.L49
+ 109:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8D) return *L"Н";
+ 220              		.loc 1 109 5 is_stmt 1 view .LVU95
+ 221              		.loc 1 109 7 is_stmt 0 view .LVU96
+ 222 011a 8D28     		cmp	r0, #141
+ 223 011c 00F0C480 		beq	.L50
+ 110:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8E) return *L"О";
+ 224              		.loc 1 110 5 is_stmt 1 view .LVU97
+ 225              		.loc 1 110 7 is_stmt 0 view .LVU98
+ 226 0120 8E28     		cmp	r0, #142
+ 227 0122 00F0C480 		beq	.L51
+ 111:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8F) return *L"П";
+ 228              		.loc 1 111 5 is_stmt 1 view .LVU99
+ 229              		.loc 1 111 7 is_stmt 0 view .LVU100
+ 230 0126 8F28     		cmp	r0, #143
+ 231 0128 00F0C480 		beq	.L52
+ 112:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x90) return *L"Р";
+ARM GAS  /tmp/ccR5Y2I8.s 			page 7
+
+
+ 232              		.loc 1 112 5 is_stmt 1 view .LVU101
+ 233              		.loc 1 112 7 is_stmt 0 view .LVU102
+ 234 012c 9028     		cmp	r0, #144
+ 235 012e 00F0C480 		beq	.L53
+ 113:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x91) return *L"С";
+ 236              		.loc 1 113 5 is_stmt 1 view .LVU103
+ 237              		.loc 1 113 7 is_stmt 0 view .LVU104
+ 238 0132 9128     		cmp	r0, #145
+ 239 0134 00F0C480 		beq	.L54
+ 114:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x92) return *L"Т";
+ 240              		.loc 1 114 5 is_stmt 1 view .LVU105
+ 241              		.loc 1 114 7 is_stmt 0 view .LVU106
+ 242 0138 9228     		cmp	r0, #146
+ 243 013a 00F0C480 		beq	.L55
+ 115:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x93) return *L"У";
+ 244              		.loc 1 115 5 is_stmt 1 view .LVU107
+ 245              		.loc 1 115 7 is_stmt 0 view .LVU108
+ 246 013e 9328     		cmp	r0, #147
+ 247 0140 00F0C480 		beq	.L56
+ 116:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x94) return *L"Ф";
+ 248              		.loc 1 116 5 is_stmt 1 view .LVU109
+ 249              		.loc 1 116 7 is_stmt 0 view .LVU110
+ 250 0144 9428     		cmp	r0, #148
+ 251 0146 00F0C480 		beq	.L57
+ 117:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x95) return *L"Х";
+ 252              		.loc 1 117 5 is_stmt 1 view .LVU111
+ 253              		.loc 1 117 7 is_stmt 0 view .LVU112
+ 254 014a 9528     		cmp	r0, #149
+ 255 014c 00F0C480 		beq	.L58
+ 118:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x96) return *L"Ц";
+ 256              		.loc 1 118 5 is_stmt 1 view .LVU113
+ 257              		.loc 1 118 7 is_stmt 0 view .LVU114
+ 258 0150 9628     		cmp	r0, #150
+ 259 0152 00F0C480 		beq	.L59
+ 119:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x97) return *L"Ч";
+ 260              		.loc 1 119 5 is_stmt 1 view .LVU115
+ 261              		.loc 1 119 7 is_stmt 0 view .LVU116
+ 262 0156 9728     		cmp	r0, #151
+ 263 0158 00F0C480 		beq	.L60
+ 120:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x98) return *L"Ш";
+ 264              		.loc 1 120 5 is_stmt 1 view .LVU117
+ 265              		.loc 1 120 7 is_stmt 0 view .LVU118
+ 266 015c 9828     		cmp	r0, #152
+ 267 015e 00F0C480 		beq	.L61
+ 121:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x99) return *L"Щ";
+ 268              		.loc 1 121 5 is_stmt 1 view .LVU119
+ 269              		.loc 1 121 7 is_stmt 0 view .LVU120
+ 270 0162 9928     		cmp	r0, #153
+ 271 0164 00F0C480 		beq	.L62
+ 122:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9A) return *L"Ъ";
+ 272              		.loc 1 122 5 is_stmt 1 view .LVU121
+ 273              		.loc 1 122 7 is_stmt 0 view .LVU122
+ 274 0168 9A28     		cmp	r0, #154
+ 275 016a 00F0C480 		beq	.L63
+ 123:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9B) return *L"Ы";
+ 276              		.loc 1 123 5 is_stmt 1 view .LVU123
+ 277              		.loc 1 123 7 is_stmt 0 view .LVU124
+ARM GAS  /tmp/ccR5Y2I8.s 			page 8
+
+
+ 278 016e 9B28     		cmp	r0, #155
+ 279 0170 00F0C480 		beq	.L64
+ 124:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9C) return *L"Ь";
+ 280              		.loc 1 124 5 is_stmt 1 view .LVU125
+ 281              		.loc 1 124 7 is_stmt 0 view .LVU126
+ 282 0174 9C28     		cmp	r0, #156
+ 283 0176 00F0C480 		beq	.L65
+ 125:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9D) return *L"Э";
+ 284              		.loc 1 125 5 is_stmt 1 view .LVU127
+ 285              		.loc 1 125 7 is_stmt 0 view .LVU128
+ 286 017a 9D28     		cmp	r0, #157
+ 287 017c 00F0C480 		beq	.L66
+ 126:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9E) return *L"Ю";
+ 288              		.loc 1 126 5 is_stmt 1 view .LVU129
+ 289              		.loc 1 126 7 is_stmt 0 view .LVU130
+ 290 0180 9E28     		cmp	r0, #158
+ 291 0182 00F0C480 		beq	.L67
+ 127:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9F) return *L"Я";
+ 292              		.loc 1 127 5 is_stmt 1 view .LVU131
+ 293              		.loc 1 127 7 is_stmt 0 view .LVU132
+ 294 0186 9F28     		cmp	r0, #159
+ 295 0188 00F0C480 		beq	.L68
+ 128:Src/USB/Driver_USBdrive.c ****     return (wchar_t) character;
+ 296              		.loc 1 128 5 is_stmt 1 view .LVU133
+ 297              		.loc 1 128 12 is_stmt 0 view .LVU134
+ 298 018c 7047     		bx	lr
+ 299              	.L3:
   62:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA1) return *L"б";
-  34              		.loc 1 62 0
-  35 0004 A128     		cmp	r0, #161
-  36 0006 31D0     		beq	.L70
+ 300              		.loc 1 62 42 view .LVU135
+ 301 018e 4FF48660 		mov	r0, #1072
+ 302              	.LVL1:
+  62:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA1) return *L"б";
+ 303              		.loc 1 62 42 view .LVU136
+ 304 0192 7047     		bx	lr
+ 305              	.LVL2:
+ 306              	.L4:
   63:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA2) return *L"в";
-  37              		.loc 1 63 0
-  38 0008 A228     		cmp	r0, #162
-  39 000a 32D0     		beq	.L71
+ 307              		.loc 1 63 42 view .LVU137
+ 308 0194 40F23140 		movw	r0, #1073
+ 309              	.LVL3:
+  63:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA2) return *L"в";
+ 310              		.loc 1 63 42 view .LVU138
+ 311 0198 7047     		bx	lr
+ 312              	.LVL4:
+ 313              	.L5:
   64:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA3) return *L"г";
-  40              		.loc 1 64 0
-  41 000c A328     		cmp	r0, #163
-  42 000e 33D0     		beq	.L72
+ 314              		.loc 1 64 42 view .LVU139
+ 315 019a 40F23240 		movw	r0, #1074
+ 316              	.LVL5:
+  64:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA3) return *L"г";
+ 317              		.loc 1 64 42 view .LVU140
+ 318 019e 7047     		bx	lr
+ 319              	.LVL6:
+ 320              	.L6:
   65:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA4) return *L"д";
-  43              		.loc 1 65 0
-  44 0010 A428     		cmp	r0, #164
-  45 0012 34D0     		beq	.L73
+ 321              		.loc 1 65 42 view .LVU141
+ 322 01a0 40F23340 		movw	r0, #1075
+ARM GAS  /tmp/ccR5Y2I8.s 			page 9
+
+
+ 323              	.LVL7:
+  65:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA4) return *L"д";
+ 324              		.loc 1 65 42 view .LVU142
+ 325 01a4 7047     		bx	lr
+ 326              	.LVL8:
+ 327              	.L7:
   66:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA5) return *L"е";
-  46              		.loc 1 66 0
-  47 0014 A528     		cmp	r0, #165
-  48 0016 35D0     		beq	.L74
+ 328              		.loc 1 66 42 view .LVU143
+ 329 01a6 40F23440 		movw	r0, #1076
+ 330              	.LVL9:
+  66:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA5) return *L"е";
+ 331              		.loc 1 66 42 view .LVU144
+ 332 01aa 7047     		bx	lr
+ 333              	.LVL10:
+ 334              	.L8:
   67:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF1) return *L"ё";
-ARM GAS  /tmp/ccKP1uaH.s 			page 3
-
-
-  49              		.loc 1 67 0
-  50 0018 F128     		cmp	r0, #241
-  51 001a 36D0     		beq	.L75
+ 335              		.loc 1 67 42 view .LVU145
+ 336 01ac 40F23540 		movw	r0, #1077
+ 337              	.LVL11:
+  67:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF1) return *L"ё";
+ 338              		.loc 1 67 42 view .LVU146
+ 339 01b0 7047     		bx	lr
+ 340              	.LVL12:
+ 341              	.L9:
   68:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA6) return *L"ж";
-  52              		.loc 1 68 0
-  53 001c A628     		cmp	r0, #166
-  54 001e 37D0     		beq	.L76
+ 342              		.loc 1 68 42 view .LVU147
+ 343 01b2 40F25140 		movw	r0, #1105
+ 344              	.LVL13:
+  68:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA6) return *L"ж";
+ 345              		.loc 1 68 42 view .LVU148
+ 346 01b6 7047     		bx	lr
+ 347              	.LVL14:
+ 348              	.L10:
   69:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA7) return *L"з";
-  55              		.loc 1 69 0
-  56 0020 A728     		cmp	r0, #167
-  57 0022 38D0     		beq	.L77
+ 349              		.loc 1 69 42 view .LVU149
+ 350 01b8 40F23640 		movw	r0, #1078
+ 351              	.LVL15:
+  69:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA7) return *L"з";
+ 352              		.loc 1 69 42 view .LVU150
+ 353 01bc 7047     		bx	lr
+ 354              	.LVL16:
+ 355              	.L11:
   70:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA8) return *L"и";
-  58              		.loc 1 70 0
-  59 0024 A828     		cmp	r0, #168
-  60 0026 39D0     		beq	.L78
+ 356              		.loc 1 70 42 view .LVU151
+ 357 01be 40F23740 		movw	r0, #1079
+ 358              	.LVL17:
+  70:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA8) return *L"и";
+ 359              		.loc 1 70 42 view .LVU152
+ 360 01c2 7047     		bx	lr
+ 361              	.LVL18:
+ 362              	.L12:
   71:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA9) return *L"й";
-  61              		.loc 1 71 0
-  62 0028 A928     		cmp	r0, #169
-  63 002a 3AD0     		beq	.L79
+ 363              		.loc 1 71 42 view .LVU153
+ 364 01c4 4FF48760 		mov	r0, #1080
+ 365              	.LVL19:
+  71:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA9) return *L"й";
+ 366              		.loc 1 71 42 view .LVU154
+ARM GAS  /tmp/ccR5Y2I8.s 			page 10
+
+
+ 367 01c8 7047     		bx	lr
+ 368              	.LVL20:
+ 369              	.L13:
   72:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAA) return *L"к";
-  64              		.loc 1 72 0
-  65 002c AA28     		cmp	r0, #170
-  66 002e 3BD0     		beq	.L80
+ 370              		.loc 1 72 42 view .LVU155
+ 371 01ca 40F23940 		movw	r0, #1081
+ 372              	.LVL21:
+  72:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAA) return *L"к";
+ 373              		.loc 1 72 42 view .LVU156
+ 374 01ce 7047     		bx	lr
+ 375              	.LVL22:
+ 376              	.L14:
   73:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAB) return *L"л";
-  67              		.loc 1 73 0
-  68 0030 AB28     		cmp	r0, #171
-  69 0032 3CD0     		beq	.L81
+ 377              		.loc 1 73 42 view .LVU157
+ 378 01d0 40F23A40 		movw	r0, #1082
+ 379              	.LVL23:
+  73:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAB) return *L"л";
+ 380              		.loc 1 73 42 view .LVU158
+ 381 01d4 7047     		bx	lr
+ 382              	.LVL24:
+ 383              	.L15:
   74:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAC) return *L"м";
-  70              		.loc 1 74 0
-  71 0034 AC28     		cmp	r0, #172
-  72 0036 3DD0     		beq	.L82
+ 384              		.loc 1 74 42 view .LVU159
+ 385 01d6 40F23B40 		movw	r0, #1083
+ 386              	.LVL25:
+  74:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAC) return *L"м";
+ 387              		.loc 1 74 42 view .LVU160
+ 388 01da 7047     		bx	lr
+ 389              	.LVL26:
+ 390              	.L16:
   75:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAD) return *L"н";
-  73              		.loc 1 75 0
-  74 0038 AD28     		cmp	r0, #173
-  75 003a 3ED0     		beq	.L83
+ 391              		.loc 1 75 42 view .LVU161
+ 392 01dc 40F23C40 		movw	r0, #1084
+ 393              	.LVL27:
+  75:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAD) return *L"н";
+ 394              		.loc 1 75 42 view .LVU162
+ 395 01e0 7047     		bx	lr
+ 396              	.LVL28:
+ 397              	.L17:
   76:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAE) return *L"о";
-  76              		.loc 1 76 0
-  77 003c AE28     		cmp	r0, #174
-  78 003e 3FD0     		beq	.L84
+ 398              		.loc 1 76 42 view .LVU163
+ 399 01e2 40F23D40 		movw	r0, #1085
+ 400              	.LVL29:
+  76:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAE) return *L"о";
+ 401              		.loc 1 76 42 view .LVU164
+ 402 01e6 7047     		bx	lr
+ 403              	.LVL30:
+ 404              	.L18:
   77:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAF) return *L"п";
-  79              		.loc 1 77 0
-  80 0040 AF28     		cmp	r0, #175
-  81 0042 40D0     		beq	.L85
+ 405              		.loc 1 77 42 view .LVU165
+ 406 01e8 40F23E40 		movw	r0, #1086
+ 407              	.LVL31:
+  77:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAF) return *L"п";
+ 408              		.loc 1 77 42 view .LVU166
+ 409 01ec 7047     		bx	lr
+ 410              	.LVL32:
+ 411              	.L19:
+ARM GAS  /tmp/ccR5Y2I8.s 			page 11
+
+
   78:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE0) return *L"р";
-  82              		.loc 1 78 0
-  83 0044 E028     		cmp	r0, #224
-  84 0046 41D0     		beq	.L86
+ 412              		.loc 1 78 42 view .LVU167
+ 413 01ee 40F23F40 		movw	r0, #1087
+ 414              	.LVL33:
+  78:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE0) return *L"р";
+ 415              		.loc 1 78 42 view .LVU168
+ 416 01f2 7047     		bx	lr
+ 417              	.LVL34:
+ 418              	.L20:
   79:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE1) return *L"с";
-  85              		.loc 1 79 0
-  86 0048 E128     		cmp	r0, #225
-  87 004a 42D0     		beq	.L87
+ 419              		.loc 1 79 42 view .LVU169
+ 420 01f4 4FF48860 		mov	r0, #1088
+ 421              	.LVL35:
+  79:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE1) return *L"с";
+ 422              		.loc 1 79 42 view .LVU170
+ 423 01f8 7047     		bx	lr
+ 424              	.LVL36:
+ 425              	.L21:
   80:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE2) return *L"т";
-  88              		.loc 1 80 0
-  89 004c E228     		cmp	r0, #226
-  90 004e 43D0     		beq	.L88
+ 426              		.loc 1 80 42 view .LVU171
+ 427 01fa 40F24140 		movw	r0, #1089
+ 428              	.LVL37:
+  80:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE2) return *L"т";
+ 429              		.loc 1 80 42 view .LVU172
+ 430 01fe 7047     		bx	lr
+ 431              	.LVL38:
+ 432              	.L22:
   81:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE3) return *L"у";
-  91              		.loc 1 81 0
-ARM GAS  /tmp/ccKP1uaH.s 			page 4
-
-
-  92 0050 E328     		cmp	r0, #227
-  93 0052 44D0     		beq	.L89
+ 433              		.loc 1 81 42 view .LVU173
+ 434 0200 40F24240 		movw	r0, #1090
+ 435              	.LVL39:
+  81:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE3) return *L"у";
+ 436              		.loc 1 81 42 view .LVU174
+ 437 0204 7047     		bx	lr
+ 438              	.LVL40:
+ 439              	.L23:
   82:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE4) return *L"ф";
-  94              		.loc 1 82 0
-  95 0054 E428     		cmp	r0, #228
-  96 0056 45D0     		beq	.L90
+ 440              		.loc 1 82 42 view .LVU175
+ 441 0206 40F24340 		movw	r0, #1091
+ 442              	.LVL41:
+  82:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE4) return *L"ф";
+ 443              		.loc 1 82 42 view .LVU176
+ 444 020a 7047     		bx	lr
+ 445              	.LVL42:
+ 446              	.L24:
   83:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE5) return *L"х";
-  97              		.loc 1 83 0
-  98 0058 E528     		cmp	r0, #229
-  99 005a 46D0     		beq	.L91
+ 447              		.loc 1 83 42 view .LVU177
+ 448 020c 40F24440 		movw	r0, #1092
+ 449              	.LVL43:
+  83:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE5) return *L"х";
+ 450              		.loc 1 83 42 view .LVU178
+ 451 0210 7047     		bx	lr
+ 452              	.LVL44:
+ 453              	.L25:
   84:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE6) return *L"ц";
- 100              		.loc 1 84 0
- 101 005c E628     		cmp	r0, #230
- 102 005e 47D1     		bne	.L26
- 103              		.loc 1 84 0 is_stmt 0 discriminator 1
- 104 0060 884B     		ldr	r3, .L95
- 105 0062 1868     		ldr	r0, [r3]
- 106              	.LVL1:
- 107 0064 7047     		bx	lr
- 108              	.LVL2:
- 109              	.L69:
-  61:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA1) return *L"б";
- 110              		.loc 1 61 0 is_stmt 1 discriminator 1
- 111 0066 884B     		ldr	r3, .L95+4
- 112 0068 1868     		ldr	r0, [r3]
- 113              	.LVL3:
- 114 006a 7047     		bx	lr
- 115              	.LVL4:
- 116              	.L70:
-  62:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA2) return *L"в";
- 117              		.loc 1 62 0 discriminator 1
- 118 006c 874B     		ldr	r3, .L95+8
- 119 006e 1868     		ldr	r0, [r3]
- 120              	.LVL5:
- 121 0070 7047     		bx	lr
- 122              	.LVL6:
- 123              	.L71:
-  63:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA3) return *L"г";
- 124              		.loc 1 63 0 discriminator 1
- 125 0072 874B     		ldr	r3, .L95+12
- 126 0074 1868     		ldr	r0, [r3]
- 127              	.LVL7:
- 128 0076 7047     		bx	lr
- 129              	.LVL8:
- 130              	.L72:
-  64:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA4) return *L"д";
- 131              		.loc 1 64 0 discriminator 1
- 132 0078 864B     		ldr	r3, .L95+16
- 133 007a 1868     		ldr	r0, [r3]
- 134              	.LVL9:
- 135 007c 7047     		bx	lr
- 136              	.LVL10:
- 137              	.L73:
-  65:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA5) return *L"е";
- 138              		.loc 1 65 0 discriminator 1
- 139 007e 864B     		ldr	r3, .L95+20
- 140 0080 1868     		ldr	r0, [r3]
-ARM GAS  /tmp/ccKP1uaH.s 			page 5
+ 454              		.loc 1 84 42 view .LVU179
+ 455 0212 40F24540 		movw	r0, #1093
+ARM GAS  /tmp/ccR5Y2I8.s 			page 12
 
 
- 141              	.LVL11:
- 142 0082 7047     		bx	lr
- 143              	.LVL12:
- 144              	.L74:
-  66:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF1) return *L"ё";
- 145              		.loc 1 66 0 discriminator 1
- 146 0084 854B     		ldr	r3, .L95+24
- 147 0086 1868     		ldr	r0, [r3]
- 148              	.LVL13:
- 149 0088 7047     		bx	lr
- 150              	.LVL14:
- 151              	.L75:
-  67:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA6) return *L"ж";
- 152              		.loc 1 67 0 discriminator 1
- 153 008a 854B     		ldr	r3, .L95+28
- 154 008c 1868     		ldr	r0, [r3]
- 155              	.LVL15:
- 156 008e 7047     		bx	lr
- 157              	.LVL16:
- 158              	.L76:
-  68:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA7) return *L"з";
- 159              		.loc 1 68 0 discriminator 1
- 160 0090 844B     		ldr	r3, .L95+32
- 161 0092 1868     		ldr	r0, [r3]
- 162              	.LVL17:
- 163 0094 7047     		bx	lr
- 164              	.LVL18:
- 165              	.L77:
-  69:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA8) return *L"и";
- 166              		.loc 1 69 0 discriminator 1
- 167 0096 844B     		ldr	r3, .L95+36
- 168 0098 1868     		ldr	r0, [r3]
- 169              	.LVL19:
- 170 009a 7047     		bx	lr
- 171              	.LVL20:
- 172              	.L78:
-  70:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xA9) return *L"й";
- 173              		.loc 1 70 0 discriminator 1
- 174 009c 834B     		ldr	r3, .L95+40
- 175 009e 1868     		ldr	r0, [r3]
- 176              	.LVL21:
- 177 00a0 7047     		bx	lr
- 178              	.LVL22:
- 179              	.L79:
-  71:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAA) return *L"к";
- 180              		.loc 1 71 0 discriminator 1
- 181 00a2 834B     		ldr	r3, .L95+44
- 182 00a4 1868     		ldr	r0, [r3]
- 183              	.LVL23:
- 184 00a6 7047     		bx	lr
- 185              	.LVL24:
- 186              	.L80:
-  72:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAB) return *L"л";
- 187              		.loc 1 72 0 discriminator 1
- 188 00a8 824B     		ldr	r3, .L95+48
- 189 00aa 1868     		ldr	r0, [r3]
- 190              	.LVL25:
-ARM GAS  /tmp/ccKP1uaH.s 			page 6
-
-
- 191 00ac 7047     		bx	lr
- 192              	.LVL26:
- 193              	.L81:
-  73:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAC) return *L"м";
- 194              		.loc 1 73 0 discriminator 1
- 195 00ae 824B     		ldr	r3, .L95+52
- 196 00b0 1868     		ldr	r0, [r3]
- 197              	.LVL27:
- 198 00b2 7047     		bx	lr
- 199              	.LVL28:
- 200              	.L82:
-  74:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAD) return *L"н";
- 201              		.loc 1 74 0 discriminator 1
- 202 00b4 814B     		ldr	r3, .L95+56
- 203 00b6 1868     		ldr	r0, [r3]
- 204              	.LVL29:
- 205 00b8 7047     		bx	lr
- 206              	.LVL30:
- 207              	.L83:
-  75:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAE) return *L"о";
- 208              		.loc 1 75 0 discriminator 1
- 209 00ba 814B     		ldr	r3, .L95+60
- 210 00bc 1868     		ldr	r0, [r3]
- 211              	.LVL31:
- 212 00be 7047     		bx	lr
- 213              	.LVL32:
- 214              	.L84:
-  76:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xAF) return *L"п";
- 215              		.loc 1 76 0 discriminator 1
- 216 00c0 804B     		ldr	r3, .L95+64
- 217 00c2 1868     		ldr	r0, [r3]
- 218              	.LVL33:
- 219 00c4 7047     		bx	lr
- 220              	.LVL34:
- 221              	.L85:
-  77:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE0) return *L"р";
- 222              		.loc 1 77 0 discriminator 1
- 223 00c6 804B     		ldr	r3, .L95+68
- 224 00c8 1868     		ldr	r0, [r3]
- 225              	.LVL35:
- 226 00ca 7047     		bx	lr
- 227              	.LVL36:
- 228              	.L86:
-  78:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE1) return *L"с";
- 229              		.loc 1 78 0 discriminator 1
- 230 00cc 7F4B     		ldr	r3, .L95+72
- 231 00ce 1868     		ldr	r0, [r3]
- 232              	.LVL37:
- 233 00d0 7047     		bx	lr
- 234              	.LVL38:
- 235              	.L87:
-  79:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE2) return *L"т";
- 236              		.loc 1 79 0 discriminator 1
- 237 00d2 7F4B     		ldr	r3, .L95+76
- 238 00d4 1868     		ldr	r0, [r3]
- 239              	.LVL39:
- 240 00d6 7047     		bx	lr
-ARM GAS  /tmp/ccKP1uaH.s 			page 7
-
-
- 241              	.LVL40:
- 242              	.L88:
-  80:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE3) return *L"у";
- 243              		.loc 1 80 0 discriminator 1
- 244 00d8 7E4B     		ldr	r3, .L95+80
- 245 00da 1868     		ldr	r0, [r3]
- 246              	.LVL41:
- 247 00dc 7047     		bx	lr
- 248              	.LVL42:
- 249              	.L89:
-  81:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE4) return *L"ф";
- 250              		.loc 1 81 0 discriminator 1
- 251 00de 7E4B     		ldr	r3, .L95+84
- 252 00e0 1868     		ldr	r0, [r3]
- 253              	.LVL43:
- 254 00e2 7047     		bx	lr
- 255              	.LVL44:
- 256              	.L90:
-  82:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE5) return *L"х";
- 257              		.loc 1 82 0 discriminator 1
- 258 00e4 7D4B     		ldr	r3, .L95+88
- 259 00e6 1868     		ldr	r0, [r3]
- 260              	.LVL45:
- 261 00e8 7047     		bx	lr
- 262              	.LVL46:
- 263              	.L91:
-  83:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE6) return *L"ц";
- 264              		.loc 1 83 0 discriminator 1
- 265 00ea 7D4B     		ldr	r3, .L95+92
- 266 00ec 1868     		ldr	r0, [r3]
- 267              	.LVL47:
- 268 00ee 7047     		bx	lr
- 269              	.LVL48:
- 270              	.L26:
+ 456              	.LVL45:
+  84:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE6) return *L"ц";
+ 457              		.loc 1 84 42 view .LVU180
+ 458 0216 7047     		bx	lr
+ 459              	.LVL46:
+ 460              	.L26:
   85:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE7) return *L"ч";
- 271              		.loc 1 85 0
- 272 00f0 E728     		cmp	r0, #231
- 273 00f2 02D1     		bne	.L27
- 274              		.loc 1 85 0 is_stmt 0 discriminator 1
- 275 00f4 7B4B     		ldr	r3, .L95+96
- 276 00f6 1868     		ldr	r0, [r3]
- 277              	.LVL49:
- 278 00f8 7047     		bx	lr
- 279              	.LVL50:
- 280              	.L27:
+ 461              		.loc 1 85 42 view .LVU181
+ 462 0218 40F24640 		movw	r0, #1094
+ 463              	.LVL47:
+  85:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE7) return *L"ч";
+ 464              		.loc 1 85 42 view .LVU182
+ 465 021c 7047     		bx	lr
+ 466              	.LVL48:
+ 467              	.L27:
   86:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE8) return *L"ш";
- 281              		.loc 1 86 0 is_stmt 1
- 282 00fa E828     		cmp	r0, #232
- 283 00fc 08D0     		beq	.L92
+ 468              		.loc 1 86 42 view .LVU183
+ 469 021e 40F24740 		movw	r0, #1095
+ 470              	.LVL49:
+  86:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE8) return *L"ш";
+ 471              		.loc 1 86 42 view .LVU184
+ 472 0222 7047     		bx	lr
+ 473              	.LVL50:
+ 474              	.L28:
   87:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE9) return *L"щ";
- 284              		.loc 1 87 0
- 285 00fe E928     		cmp	r0, #233
- 286 0100 09D0     		beq	.L93
+ 475              		.loc 1 87 42 view .LVU185
+ 476 0224 4FF48960 		mov	r0, #1096
+ 477              	.LVL51:
+  87:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE9) return *L"щ";
+ 478              		.loc 1 87 42 view .LVU186
+ 479 0228 7047     		bx	lr
+ 480              	.LVL52:
+ 481              	.L29:
   88:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEA) return *L"ъ";
- 287              		.loc 1 88 0
- 288 0102 EA28     		cmp	r0, #234
- 289 0104 0AD0     		beq	.L94
-ARM GAS  /tmp/ccKP1uaH.s 			page 8
-
-
+ 482              		.loc 1 88 42 view .LVU187
+ 483 022a 40F24940 		movw	r0, #1097
+ 484              	.LVL53:
+  88:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEA) return *L"ъ";
+ 485              		.loc 1 88 42 view .LVU188
+ 486 022e 7047     		bx	lr
+ 487              	.LVL54:
+ 488              	.L30:
   89:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEB) return *L"ы";
- 290              		.loc 1 89 0
- 291 0106 EB28     		cmp	r0, #235
- 292 0108 0BD1     		bne	.L31
- 293              		.loc 1 89 0 is_stmt 0 discriminator 1
- 294 010a 774B     		ldr	r3, .L95+100
- 295 010c 1868     		ldr	r0, [r3]
- 296              	.LVL51:
- 297 010e 7047     		bx	lr
- 298              	.LVL52:
- 299              	.L92:
-  86:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xE9) return *L"щ";
- 300              		.loc 1 86 0 is_stmt 1 discriminator 1
- 301 0110 764B     		ldr	r3, .L95+104
- 302 0112 1868     		ldr	r0, [r3]
- 303              	.LVL53:
- 304 0114 7047     		bx	lr
- 305              	.LVL54:
- 306              	.L93:
-  87:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEA) return *L"ъ";
- 307              		.loc 1 87 0 discriminator 1
- 308 0116 764B     		ldr	r3, .L95+108
- 309 0118 1868     		ldr	r0, [r3]
- 310              	.LVL55:
- 311 011a 7047     		bx	lr
- 312              	.LVL56:
- 313              	.L94:
-  88:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEB) return *L"ы";
- 314              		.loc 1 88 0 discriminator 1
- 315 011c 754B     		ldr	r3, .L95+112
- 316 011e 1868     		ldr	r0, [r3]
- 317              	.LVL57:
- 318 0120 7047     		bx	lr
- 319              	.LVL58:
- 320              	.L31:
+ 489              		.loc 1 89 42 view .LVU189
+ 490 0230 40F24A40 		movw	r0, #1098
+ 491              	.LVL55:
+  89:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEB) return *L"ы";
+ 492              		.loc 1 89 42 view .LVU190
+ 493 0234 7047     		bx	lr
+ 494              	.LVL56:
+ 495              	.L31:
   90:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEC) return *L"ь";
- 321              		.loc 1 90 0
- 322 0122 EC28     		cmp	r0, #236
- 323 0124 02D1     		bne	.L32
- 324              		.loc 1 90 0 is_stmt 0 discriminator 1
- 325 0126 744B     		ldr	r3, .L95+116
- 326 0128 1868     		ldr	r0, [r3]
- 327              	.LVL59:
- 328 012a 7047     		bx	lr
- 329              	.LVL60:
- 330              	.L32:
+ 496              		.loc 1 90 42 view .LVU191
+ 497 0236 40F24B40 		movw	r0, #1099
+ 498              	.LVL57:
+  90:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEC) return *L"ь";
+ 499              		.loc 1 90 42 view .LVU192
+ARM GAS  /tmp/ccR5Y2I8.s 			page 13
+
+
+ 500 023a 7047     		bx	lr
+ 501              	.LVL58:
+ 502              	.L32:
   91:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xED) return *L"э";
- 331              		.loc 1 91 0 is_stmt 1
- 332 012c ED28     		cmp	r0, #237
- 333 012e 02D1     		bne	.L33
- 334              		.loc 1 91 0 is_stmt 0 discriminator 1
- 335 0130 724B     		ldr	r3, .L95+120
- 336 0132 1868     		ldr	r0, [r3]
- 337              	.LVL61:
- 338 0134 7047     		bx	lr
- 339              	.LVL62:
- 340              	.L33:
-ARM GAS  /tmp/ccKP1uaH.s 			page 9
-
-
+ 503              		.loc 1 91 42 view .LVU193
+ 504 023c 40F24C40 		movw	r0, #1100
+ 505              	.LVL59:
+  91:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xED) return *L"э";
+ 506              		.loc 1 91 42 view .LVU194
+ 507 0240 7047     		bx	lr
+ 508              	.LVL60:
+ 509              	.L33:
   92:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEE) return *L"ю";
- 341              		.loc 1 92 0 is_stmt 1
- 342 0136 EE28     		cmp	r0, #238
- 343 0138 02D1     		bne	.L34
- 344              		.loc 1 92 0 is_stmt 0 discriminator 1
- 345 013a 714B     		ldr	r3, .L95+124
- 346 013c 1868     		ldr	r0, [r3]
- 347              	.LVL63:
- 348 013e 7047     		bx	lr
- 349              	.LVL64:
- 350              	.L34:
+ 510              		.loc 1 92 42 view .LVU195
+ 511 0242 40F24D40 		movw	r0, #1101
+ 512              	.LVL61:
+  92:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEE) return *L"ю";
+ 513              		.loc 1 92 42 view .LVU196
+ 514 0246 7047     		bx	lr
+ 515              	.LVL62:
+ 516              	.L34:
   93:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEF) return *L"я";
- 351              		.loc 1 93 0 is_stmt 1
- 352 0140 EF28     		cmp	r0, #239
- 353 0142 02D1     		bne	.L35
- 354              		.loc 1 93 0 is_stmt 0 discriminator 1
- 355 0144 6F4B     		ldr	r3, .L95+128
- 356 0146 1868     		ldr	r0, [r3]
- 357              	.LVL65:
- 358 0148 7047     		bx	lr
- 359              	.LVL66:
- 360              	.L35:
+ 517              		.loc 1 93 42 view .LVU197
+ 518 0248 40F24E40 		movw	r0, #1102
+ 519              	.LVL63:
+  93:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xEF) return *L"я";
+ 520              		.loc 1 93 42 view .LVU198
+ 521 024c 7047     		bx	lr
+ 522              	.LVL64:
+ 523              	.L35:
   94:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x80) return *L"А";
- 361              		.loc 1 94 0 is_stmt 1
- 362 014a 8028     		cmp	r0, #128
- 363 014c 02D1     		bne	.L36
- 364              		.loc 1 94 0 is_stmt 0 discriminator 1
- 365 014e 6E4B     		ldr	r3, .L95+132
- 366 0150 1868     		ldr	r0, [r3]
- 367              	.LVL67:
- 368 0152 7047     		bx	lr
- 369              	.LVL68:
- 370              	.L36:
+ 524              		.loc 1 94 42 view .LVU199
+ 525 024e 40F24F40 		movw	r0, #1103
+ 526              	.LVL65:
+  94:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x80) return *L"А";
+ 527              		.loc 1 94 42 view .LVU200
+ 528 0252 7047     		bx	lr
+ 529              	.LVL66:
+ 530              	.L36:
   95:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x81) return *L"Б";
- 371              		.loc 1 95 0 is_stmt 1
- 372 0154 8128     		cmp	r0, #129
- 373 0156 02D1     		bne	.L37
- 374              		.loc 1 95 0 is_stmt 0 discriminator 1
- 375 0158 6C4B     		ldr	r3, .L95+136
- 376 015a 1868     		ldr	r0, [r3]
- 377              	.LVL69:
- 378 015c 7047     		bx	lr
- 379              	.LVL70:
- 380              	.L37:
+ 531              		.loc 1 95 42 view .LVU201
+ 532 0254 4FF48260 		mov	r0, #1040
+ 533              	.LVL67:
+  95:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x81) return *L"Б";
+ 534              		.loc 1 95 42 view .LVU202
+ 535 0258 7047     		bx	lr
+ 536              	.LVL68:
+ 537              	.L37:
   96:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x82) return *L"В";
- 381              		.loc 1 96 0 is_stmt 1
- 382 015e 8228     		cmp	r0, #130
- 383 0160 02D1     		bne	.L38
- 384              		.loc 1 96 0 is_stmt 0 discriminator 1
- 385 0162 6B4B     		ldr	r3, .L95+140
- 386 0164 1868     		ldr	r0, [r3]
- 387              	.LVL71:
- 388 0166 7047     		bx	lr
- 389              	.LVL72:
- 390              	.L38:
+ 538              		.loc 1 96 42 view .LVU203
+ 539 025a 40F21140 		movw	r0, #1041
+ 540              	.LVL69:
+  96:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x82) return *L"В";
+ 541              		.loc 1 96 42 view .LVU204
+ 542 025e 7047     		bx	lr
+ 543              	.LVL70:
+ 544              	.L38:
+ARM GAS  /tmp/ccR5Y2I8.s 			page 14
+
+
   97:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x83) return *L"Г";
- 391              		.loc 1 97 0 is_stmt 1
-ARM GAS  /tmp/ccKP1uaH.s 			page 10
-
-
- 392 0168 8328     		cmp	r0, #131
- 393 016a 02D1     		bne	.L39
- 394              		.loc 1 97 0 is_stmt 0 discriminator 1
- 395 016c 694B     		ldr	r3, .L95+144
- 396 016e 1868     		ldr	r0, [r3]
- 397              	.LVL73:
- 398 0170 7047     		bx	lr
- 399              	.LVL74:
- 400              	.L39:
+ 545              		.loc 1 97 42 view .LVU205
+ 546 0260 40F21240 		movw	r0, #1042
+ 547              	.LVL71:
+  97:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x83) return *L"Г";
+ 548              		.loc 1 97 42 view .LVU206
+ 549 0264 7047     		bx	lr
+ 550              	.LVL72:
+ 551              	.L39:
   98:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x84) return *L"Д";
- 401              		.loc 1 98 0 is_stmt 1
- 402 0172 8428     		cmp	r0, #132
- 403 0174 02D1     		bne	.L40
- 404              		.loc 1 98 0 is_stmt 0 discriminator 1
- 405 0176 684B     		ldr	r3, .L95+148
- 406 0178 1868     		ldr	r0, [r3]
- 407              	.LVL75:
- 408 017a 7047     		bx	lr
- 409              	.LVL76:
- 410              	.L40:
+ 552              		.loc 1 98 42 view .LVU207
+ 553 0266 40F21340 		movw	r0, #1043
+ 554              	.LVL73:
+  98:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x84) return *L"Д";
+ 555              		.loc 1 98 42 view .LVU208
+ 556 026a 7047     		bx	lr
+ 557              	.LVL74:
+ 558              	.L40:
   99:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x85) return *L"Е";
- 411              		.loc 1 99 0 is_stmt 1
- 412 017c 8528     		cmp	r0, #133
- 413 017e 02D1     		bne	.L41
- 414              		.loc 1 99 0 is_stmt 0 discriminator 1
- 415 0180 664B     		ldr	r3, .L95+152
- 416 0182 1868     		ldr	r0, [r3]
- 417              	.LVL77:
- 418 0184 7047     		bx	lr
- 419              	.LVL78:
- 420              	.L41:
+ 559              		.loc 1 99 42 view .LVU209
+ 560 026c 40F21440 		movw	r0, #1044
+ 561              	.LVL75:
+  99:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x85) return *L"Е";
+ 562              		.loc 1 99 42 view .LVU210
+ 563 0270 7047     		bx	lr
+ 564              	.LVL76:
+ 565              	.L41:
  100:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF0) return *L"Ё";
- 421              		.loc 1 100 0 is_stmt 1
- 422 0186 F028     		cmp	r0, #240
- 423 0188 02D1     		bne	.L42
- 424              		.loc 1 100 0 is_stmt 0 discriminator 1
- 425 018a 654B     		ldr	r3, .L95+156
- 426 018c 1868     		ldr	r0, [r3]
- 427              	.LVL79:
- 428 018e 7047     		bx	lr
- 429              	.LVL80:
- 430              	.L42:
+ 566              		.loc 1 100 42 view .LVU211
+ 567 0272 40F21540 		movw	r0, #1045
+ 568              	.LVL77:
+ 100:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0xF0) return *L"Ё";
+ 569              		.loc 1 100 42 view .LVU212
+ 570 0276 7047     		bx	lr
+ 571              	.LVL78:
+ 572              	.L42:
  101:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x86) return *L"Ж";
- 431              		.loc 1 101 0 is_stmt 1
- 432 0190 8628     		cmp	r0, #134
- 433 0192 02D1     		bne	.L43
- 434              		.loc 1 101 0 is_stmt 0 discriminator 1
- 435 0194 634B     		ldr	r3, .L95+160
- 436 0196 1868     		ldr	r0, [r3]
- 437              	.LVL81:
- 438 0198 7047     		bx	lr
- 439              	.LVL82:
- 440              	.L43:
+ 573              		.loc 1 101 42 view .LVU213
+ 574 0278 40F20140 		movw	r0, #1025
+ 575              	.LVL79:
+ 101:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x86) return *L"Ж";
+ 576              		.loc 1 101 42 view .LVU214
+ 577 027c 7047     		bx	lr
+ 578              	.LVL80:
+ 579              	.L43:
  102:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x87) return *L"З";
- 441              		.loc 1 102 0 is_stmt 1
- 442 019a 8728     		cmp	r0, #135
- 443 019c 02D1     		bne	.L44
-ARM GAS  /tmp/ccKP1uaH.s 			page 11
-
-
- 444              		.loc 1 102 0 is_stmt 0 discriminator 1
- 445 019e 624B     		ldr	r3, .L95+164
- 446 01a0 1868     		ldr	r0, [r3]
- 447              	.LVL83:
- 448 01a2 7047     		bx	lr
- 449              	.LVL84:
- 450              	.L44:
+ 580              		.loc 1 102 42 view .LVU215
+ 581 027e 40F21640 		movw	r0, #1046
+ 582              	.LVL81:
+ 102:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x87) return *L"З";
+ 583              		.loc 1 102 42 view .LVU216
+ 584 0282 7047     		bx	lr
+ 585              	.LVL82:
+ 586              	.L44:
  103:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x88) return *L"И";
- 451              		.loc 1 103 0 is_stmt 1
- 452 01a4 8828     		cmp	r0, #136
- 453 01a6 02D1     		bne	.L45
- 454              		.loc 1 103 0 is_stmt 0 discriminator 1
- 455 01a8 604B     		ldr	r3, .L95+168
- 456 01aa 1868     		ldr	r0, [r3]
- 457              	.LVL85:
- 458 01ac 7047     		bx	lr
- 459              	.LVL86:
- 460              	.L45:
+ 587              		.loc 1 103 42 view .LVU217
+ 588 0284 40F21740 		movw	r0, #1047
+ARM GAS  /tmp/ccR5Y2I8.s 			page 15
+
+
+ 589              	.LVL83:
+ 103:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x88) return *L"И";
+ 590              		.loc 1 103 42 view .LVU218
+ 591 0288 7047     		bx	lr
+ 592              	.LVL84:
+ 593              	.L45:
  104:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x89) return *L"Й";
- 461              		.loc 1 104 0 is_stmt 1
- 462 01ae 8928     		cmp	r0, #137
- 463 01b0 02D1     		bne	.L46
- 464              		.loc 1 104 0 is_stmt 0 discriminator 1
- 465 01b2 5F4B     		ldr	r3, .L95+172
- 466 01b4 1868     		ldr	r0, [r3]
- 467              	.LVL87:
- 468 01b6 7047     		bx	lr
- 469              	.LVL88:
- 470              	.L46:
+ 594              		.loc 1 104 42 view .LVU219
+ 595 028a 4FF48360 		mov	r0, #1048
+ 596              	.LVL85:
+ 104:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x89) return *L"Й";
+ 597              		.loc 1 104 42 view .LVU220
+ 598 028e 7047     		bx	lr
+ 599              	.LVL86:
+ 600              	.L46:
  105:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8A) return *L"К";
- 471              		.loc 1 105 0 is_stmt 1
- 472 01b8 8A28     		cmp	r0, #138
- 473 01ba 02D1     		bne	.L47
- 474              		.loc 1 105 0 is_stmt 0 discriminator 1
- 475 01bc 5D4B     		ldr	r3, .L95+176
- 476 01be 1868     		ldr	r0, [r3]
- 477              	.LVL89:
- 478 01c0 7047     		bx	lr
- 479              	.LVL90:
- 480              	.L47:
+ 601              		.loc 1 105 42 view .LVU221
+ 602 0290 40F21940 		movw	r0, #1049
+ 603              	.LVL87:
+ 105:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8A) return *L"К";
+ 604              		.loc 1 105 42 view .LVU222
+ 605 0294 7047     		bx	lr
+ 606              	.LVL88:
+ 607              	.L47:
  106:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8B) return *L"Л";
- 481              		.loc 1 106 0 is_stmt 1
- 482 01c2 8B28     		cmp	r0, #139
- 483 01c4 02D1     		bne	.L48
- 484              		.loc 1 106 0 is_stmt 0 discriminator 1
- 485 01c6 5C4B     		ldr	r3, .L95+180
- 486 01c8 1868     		ldr	r0, [r3]
- 487              	.LVL91:
- 488 01ca 7047     		bx	lr
- 489              	.LVL92:
- 490              	.L48:
+ 608              		.loc 1 106 42 view .LVU223
+ 609 0296 40F21A40 		movw	r0, #1050
+ 610              	.LVL89:
+ 106:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8B) return *L"Л";
+ 611              		.loc 1 106 42 view .LVU224
+ 612 029a 7047     		bx	lr
+ 613              	.LVL90:
+ 614              	.L48:
  107:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8C) return *L"М";
- 491              		.loc 1 107 0 is_stmt 1
- 492 01cc 8C28     		cmp	r0, #140
- 493 01ce 02D1     		bne	.L49
- 494              		.loc 1 107 0 is_stmt 0 discriminator 1
- 495 01d0 5A4B     		ldr	r3, .L95+184
-ARM GAS  /tmp/ccKP1uaH.s 			page 12
-
-
- 496 01d2 1868     		ldr	r0, [r3]
- 497              	.LVL93:
- 498 01d4 7047     		bx	lr
- 499              	.LVL94:
- 500              	.L49:
+ 615              		.loc 1 107 42 view .LVU225
+ 616 029c 40F21B40 		movw	r0, #1051
+ 617              	.LVL91:
+ 107:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8C) return *L"М";
+ 618              		.loc 1 107 42 view .LVU226
+ 619 02a0 7047     		bx	lr
+ 620              	.LVL92:
+ 621              	.L49:
  108:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8D) return *L"Н";
- 501              		.loc 1 108 0 is_stmt 1
- 502 01d6 8D28     		cmp	r0, #141
- 503 01d8 02D1     		bne	.L50
- 504              		.loc 1 108 0 is_stmt 0 discriminator 1
- 505 01da 594B     		ldr	r3, .L95+188
- 506 01dc 1868     		ldr	r0, [r3]
- 507              	.LVL95:
- 508 01de 7047     		bx	lr
- 509              	.LVL96:
- 510              	.L50:
+ 622              		.loc 1 108 42 view .LVU227
+ 623 02a2 40F21C40 		movw	r0, #1052
+ 624              	.LVL93:
+ 108:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8D) return *L"Н";
+ 625              		.loc 1 108 42 view .LVU228
+ 626 02a6 7047     		bx	lr
+ 627              	.LVL94:
+ 628              	.L50:
  109:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8E) return *L"О";
- 511              		.loc 1 109 0 is_stmt 1
- 512 01e0 8E28     		cmp	r0, #142
- 513 01e2 02D1     		bne	.L51
- 514              		.loc 1 109 0 is_stmt 0 discriminator 1
- 515 01e4 574B     		ldr	r3, .L95+192
- 516 01e6 1868     		ldr	r0, [r3]
- 517              	.LVL97:
- 518 01e8 7047     		bx	lr
- 519              	.LVL98:
- 520              	.L51:
+ 629              		.loc 1 109 42 view .LVU229
+ 630 02a8 40F21D40 		movw	r0, #1053
+ 631              	.LVL95:
+ 109:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8E) return *L"О";
+ 632              		.loc 1 109 42 view .LVU230
+ARM GAS  /tmp/ccR5Y2I8.s 			page 16
+
+
+ 633 02ac 7047     		bx	lr
+ 634              	.LVL96:
+ 635              	.L51:
  110:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8F) return *L"П";
- 521              		.loc 1 110 0 is_stmt 1
- 522 01ea 8F28     		cmp	r0, #143
- 523 01ec 02D1     		bne	.L52
- 524              		.loc 1 110 0 is_stmt 0 discriminator 1
- 525 01ee 564B     		ldr	r3, .L95+196
- 526 01f0 1868     		ldr	r0, [r3]
- 527              	.LVL99:
- 528 01f2 7047     		bx	lr
- 529              	.LVL100:
- 530              	.L52:
+ 636              		.loc 1 110 42 view .LVU231
+ 637 02ae 40F21E40 		movw	r0, #1054
+ 638              	.LVL97:
+ 110:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x8F) return *L"П";
+ 639              		.loc 1 110 42 view .LVU232
+ 640 02b2 7047     		bx	lr
+ 641              	.LVL98:
+ 642              	.L52:
  111:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x90) return *L"Р";
- 531              		.loc 1 111 0 is_stmt 1
- 532 01f4 9028     		cmp	r0, #144
- 533 01f6 02D1     		bne	.L53
- 534              		.loc 1 111 0 is_stmt 0 discriminator 1
- 535 01f8 544B     		ldr	r3, .L95+200
- 536 01fa 1868     		ldr	r0, [r3]
- 537              	.LVL101:
- 538 01fc 7047     		bx	lr
- 539              	.LVL102:
- 540              	.L53:
+ 643              		.loc 1 111 42 view .LVU233
+ 644 02b4 40F21F40 		movw	r0, #1055
+ 645              	.LVL99:
+ 111:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x90) return *L"Р";
+ 646              		.loc 1 111 42 view .LVU234
+ 647 02b8 7047     		bx	lr
+ 648              	.LVL100:
+ 649              	.L53:
  112:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x91) return *L"С";
- 541              		.loc 1 112 0 is_stmt 1
- 542 01fe 9128     		cmp	r0, #145
- 543 0200 02D1     		bne	.L54
- 544              		.loc 1 112 0 is_stmt 0 discriminator 1
- 545 0202 534B     		ldr	r3, .L95+204
- 546 0204 1868     		ldr	r0, [r3]
- 547              	.LVL103:
-ARM GAS  /tmp/ccKP1uaH.s 			page 13
-
-
- 548 0206 7047     		bx	lr
- 549              	.LVL104:
- 550              	.L54:
+ 650              		.loc 1 112 42 view .LVU235
+ 651 02ba 4FF48460 		mov	r0, #1056
+ 652              	.LVL101:
+ 112:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x91) return *L"С";
+ 653              		.loc 1 112 42 view .LVU236
+ 654 02be 7047     		bx	lr
+ 655              	.LVL102:
+ 656              	.L54:
  113:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x92) return *L"Т";
- 551              		.loc 1 113 0 is_stmt 1
- 552 0208 9228     		cmp	r0, #146
- 553 020a 02D1     		bne	.L55
- 554              		.loc 1 113 0 is_stmt 0 discriminator 1
- 555 020c 514B     		ldr	r3, .L95+208
- 556 020e 1868     		ldr	r0, [r3]
- 557              	.LVL105:
- 558 0210 7047     		bx	lr
- 559              	.LVL106:
- 560              	.L55:
+ 657              		.loc 1 113 42 view .LVU237
+ 658 02c0 40F22140 		movw	r0, #1057
+ 659              	.LVL103:
+ 113:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x92) return *L"Т";
+ 660              		.loc 1 113 42 view .LVU238
+ 661 02c4 7047     		bx	lr
+ 662              	.LVL104:
+ 663              	.L55:
  114:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x93) return *L"У";
- 561              		.loc 1 114 0 is_stmt 1
- 562 0212 9328     		cmp	r0, #147
- 563 0214 02D1     		bne	.L56
- 564              		.loc 1 114 0 is_stmt 0 discriminator 1
- 565 0216 504B     		ldr	r3, .L95+212
- 566 0218 1868     		ldr	r0, [r3]
- 567              	.LVL107:
- 568 021a 7047     		bx	lr
- 569              	.LVL108:
- 570              	.L56:
+ 664              		.loc 1 114 42 view .LVU239
+ 665 02c6 40F22240 		movw	r0, #1058
+ 666              	.LVL105:
+ 114:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x93) return *L"У";
+ 667              		.loc 1 114 42 view .LVU240
+ 668 02ca 7047     		bx	lr
+ 669              	.LVL106:
+ 670              	.L56:
  115:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x94) return *L"Ф";
- 571              		.loc 1 115 0 is_stmt 1
- 572 021c 9428     		cmp	r0, #148
- 573 021e 02D1     		bne	.L57
- 574              		.loc 1 115 0 is_stmt 0 discriminator 1
- 575 0220 4E4B     		ldr	r3, .L95+216
- 576 0222 1868     		ldr	r0, [r3]
- 577              	.LVL109:
- 578 0224 7047     		bx	lr
- 579              	.LVL110:
- 580              	.L57:
+ 671              		.loc 1 115 42 view .LVU241
+ 672 02cc 40F22340 		movw	r0, #1059
+ 673              	.LVL107:
+ 115:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x94) return *L"Ф";
+ 674              		.loc 1 115 42 view .LVU242
+ 675 02d0 7047     		bx	lr
+ 676              	.LVL108:
+ 677              	.L57:
+ARM GAS  /tmp/ccR5Y2I8.s 			page 17
+
+
  116:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x95) return *L"Х";
- 581              		.loc 1 116 0 is_stmt 1
- 582 0226 9528     		cmp	r0, #149
- 583 0228 02D1     		bne	.L58
- 584              		.loc 1 116 0 is_stmt 0 discriminator 1
- 585 022a 4D4B     		ldr	r3, .L95+220
- 586 022c 1868     		ldr	r0, [r3]
- 587              	.LVL111:
- 588 022e 7047     		bx	lr
- 589              	.LVL112:
- 590              	.L58:
+ 678              		.loc 1 116 42 view .LVU243
+ 679 02d2 40F22440 		movw	r0, #1060
+ 680              	.LVL109:
+ 116:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x95) return *L"Х";
+ 681              		.loc 1 116 42 view .LVU244
+ 682 02d6 7047     		bx	lr
+ 683              	.LVL110:
+ 684              	.L58:
  117:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x96) return *L"Ц";
- 591              		.loc 1 117 0 is_stmt 1
- 592 0230 9628     		cmp	r0, #150
- 593 0232 02D1     		bne	.L59
- 594              		.loc 1 117 0 is_stmt 0 discriminator 1
- 595 0234 4B4B     		ldr	r3, .L95+224
- 596 0236 1868     		ldr	r0, [r3]
- 597              	.LVL113:
- 598 0238 7047     		bx	lr
- 599              	.LVL114:
-ARM GAS  /tmp/ccKP1uaH.s 			page 14
-
-
- 600              	.L59:
+ 685              		.loc 1 117 42 view .LVU245
+ 686 02d8 40F22540 		movw	r0, #1061
+ 687              	.LVL111:
+ 117:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x96) return *L"Ц";
+ 688              		.loc 1 117 42 view .LVU246
+ 689 02dc 7047     		bx	lr
+ 690              	.LVL112:
+ 691              	.L59:
  118:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x97) return *L"Ч";
- 601              		.loc 1 118 0 is_stmt 1
- 602 023a 9728     		cmp	r0, #151
- 603 023c 02D1     		bne	.L60
- 604              		.loc 1 118 0 is_stmt 0 discriminator 1
- 605 023e 4A4B     		ldr	r3, .L95+228
- 606 0240 1868     		ldr	r0, [r3]
- 607              	.LVL115:
- 608 0242 7047     		bx	lr
- 609              	.LVL116:
- 610              	.L60:
+ 692              		.loc 1 118 42 view .LVU247
+ 693 02de 40F22640 		movw	r0, #1062
+ 694              	.LVL113:
+ 118:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x97) return *L"Ч";
+ 695              		.loc 1 118 42 view .LVU248
+ 696 02e2 7047     		bx	lr
+ 697              	.LVL114:
+ 698              	.L60:
  119:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x98) return *L"Ш";
- 611              		.loc 1 119 0 is_stmt 1
- 612 0244 9828     		cmp	r0, #152
- 613 0246 02D1     		bne	.L61
- 614              		.loc 1 119 0 is_stmt 0 discriminator 1
- 615 0248 484B     		ldr	r3, .L95+232
- 616 024a 1868     		ldr	r0, [r3]
- 617              	.LVL117:
- 618 024c 7047     		bx	lr
- 619              	.LVL118:
- 620              	.L61:
+ 699              		.loc 1 119 42 view .LVU249
+ 700 02e4 40F22740 		movw	r0, #1063
+ 701              	.LVL115:
+ 119:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x98) return *L"Ш";
+ 702              		.loc 1 119 42 view .LVU250
+ 703 02e8 7047     		bx	lr
+ 704              	.LVL116:
+ 705              	.L61:
  120:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x99) return *L"Щ";
- 621              		.loc 1 120 0 is_stmt 1
- 622 024e 9928     		cmp	r0, #153
- 623 0250 02D1     		bne	.L62
- 624              		.loc 1 120 0 is_stmt 0 discriminator 1
- 625 0252 474B     		ldr	r3, .L95+236
- 626 0254 1868     		ldr	r0, [r3]
- 627              	.LVL119:
- 628 0256 7047     		bx	lr
- 629              	.LVL120:
- 630              	.L62:
+ 706              		.loc 1 120 42 view .LVU251
+ 707 02ea 4FF48560 		mov	r0, #1064
+ 708              	.LVL117:
+ 120:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x99) return *L"Щ";
+ 709              		.loc 1 120 42 view .LVU252
+ 710 02ee 7047     		bx	lr
+ 711              	.LVL118:
+ 712              	.L62:
  121:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9A) return *L"Ъ";
- 631              		.loc 1 121 0 is_stmt 1
- 632 0258 9A28     		cmp	r0, #154
- 633 025a 02D1     		bne	.L63
- 634              		.loc 1 121 0 is_stmt 0 discriminator 1
- 635 025c 454B     		ldr	r3, .L95+240
- 636 025e 1868     		ldr	r0, [r3]
- 637              	.LVL121:
- 638 0260 7047     		bx	lr
- 639              	.LVL122:
- 640              	.L63:
+ 713              		.loc 1 121 42 view .LVU253
+ 714 02f0 40F22940 		movw	r0, #1065
+ 715              	.LVL119:
+ 121:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9A) return *L"Ъ";
+ 716              		.loc 1 121 42 view .LVU254
+ 717 02f4 7047     		bx	lr
+ 718              	.LVL120:
+ 719              	.L63:
  122:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9B) return *L"Ы";
- 641              		.loc 1 122 0 is_stmt 1
- 642 0262 9B28     		cmp	r0, #155
- 643 0264 02D1     		bne	.L64
- 644              		.loc 1 122 0 is_stmt 0 discriminator 1
- 645 0266 444B     		ldr	r3, .L95+244
- 646 0268 1868     		ldr	r0, [r3]
- 647              	.LVL123:
- 648 026a 7047     		bx	lr
- 649              	.LVL124:
- 650              	.L64:
+ 720              		.loc 1 122 42 view .LVU255
+ 721 02f6 40F22A40 		movw	r0, #1066
+ARM GAS  /tmp/ccR5Y2I8.s 			page 18
+
+
+ 722              	.LVL121:
+ 122:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9B) return *L"Ы";
+ 723              		.loc 1 122 42 view .LVU256
+ 724 02fa 7047     		bx	lr
+ 725              	.LVL122:
+ 726              	.L64:
  123:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9C) return *L"Ь";
-ARM GAS  /tmp/ccKP1uaH.s 			page 15
-
-
- 651              		.loc 1 123 0 is_stmt 1
- 652 026c 9C28     		cmp	r0, #156
- 653 026e 02D1     		bne	.L65
- 654              		.loc 1 123 0 is_stmt 0 discriminator 1
- 655 0270 424B     		ldr	r3, .L95+248
- 656 0272 1868     		ldr	r0, [r3]
- 657              	.LVL125:
- 658 0274 7047     		bx	lr
- 659              	.LVL126:
- 660              	.L65:
+ 727              		.loc 1 123 42 view .LVU257
+ 728 02fc 40F22B40 		movw	r0, #1067
+ 729              	.LVL123:
+ 123:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9C) return *L"Ь";
+ 730              		.loc 1 123 42 view .LVU258
+ 731 0300 7047     		bx	lr
+ 732              	.LVL124:
+ 733              	.L65:
  124:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9D) return *L"Э";
- 661              		.loc 1 124 0 is_stmt 1
- 662 0276 9D28     		cmp	r0, #157
- 663 0278 40F08480 		bne	.L66
- 664              		.loc 1 124 0 is_stmt 0 discriminator 1
- 665 027c 404B     		ldr	r3, .L95+252
- 666 027e 1868     		ldr	r0, [r3]
- 667              	.LVL127:
- 668 0280 7047     		bx	lr
- 669              	.L96:
- 670 0282 00BF     		.align	2
- 671              	.L95:
- 672 0284 00000000 		.word	.LC23
- 673 0288 08000000 		.word	.LC0
- 674 028c 10000000 		.word	.LC1
- 675 0290 18000000 		.word	.LC2
- 676 0294 20000000 		.word	.LC3
- 677 0298 28000000 		.word	.LC4
- 678 029c 30000000 		.word	.LC5
- 679 02a0 38000000 		.word	.LC6
- 680 02a4 40000000 		.word	.LC7
- 681 02a8 48000000 		.word	.LC8
- 682 02ac 50000000 		.word	.LC9
- 683 02b0 58000000 		.word	.LC10
- 684 02b4 60000000 		.word	.LC11
- 685 02b8 68000000 		.word	.LC12
- 686 02bc 70000000 		.word	.LC13
- 687 02c0 78000000 		.word	.LC14
- 688 02c4 80000000 		.word	.LC15
- 689 02c8 88000000 		.word	.LC16
- 690 02cc 90000000 		.word	.LC17
- 691 02d0 98000000 		.word	.LC18
- 692 02d4 A0000000 		.word	.LC19
- 693 02d8 A8000000 		.word	.LC20
- 694 02dc B0000000 		.word	.LC21
- 695 02e0 B8000000 		.word	.LC22
- 696 02e4 C0000000 		.word	.LC24
- 697 02e8 C8000000 		.word	.LC28
- 698 02ec D0000000 		.word	.LC25
- 699 02f0 D8000000 		.word	.LC26
- 700 02f4 E0000000 		.word	.LC27
- 701 02f8 E8000000 		.word	.LC29
- 702 02fc F0000000 		.word	.LC30
- 703 0300 F8000000 		.word	.LC31
- 704 0304 00010000 		.word	.LC32
- 705 0308 08010000 		.word	.LC33
- 706 030c 10010000 		.word	.LC34
-ARM GAS  /tmp/ccKP1uaH.s 			page 16
-
-
- 707 0310 18010000 		.word	.LC35
- 708 0314 20010000 		.word	.LC36
- 709 0318 28010000 		.word	.LC37
- 710 031c 30010000 		.word	.LC38
- 711 0320 38010000 		.word	.LC39
- 712 0324 40010000 		.word	.LC40
- 713 0328 48010000 		.word	.LC41
- 714 032c 50010000 		.word	.LC42
- 715 0330 58010000 		.word	.LC43
- 716 0334 60010000 		.word	.LC44
- 717 0338 68010000 		.word	.LC45
- 718 033c 70010000 		.word	.LC46
- 719 0340 78010000 		.word	.LC47
- 720 0344 80010000 		.word	.LC48
- 721 0348 88010000 		.word	.LC49
- 722 034c 90010000 		.word	.LC50
- 723 0350 98010000 		.word	.LC51
- 724 0354 A0010000 		.word	.LC52
- 725 0358 A8010000 		.word	.LC53
- 726 035c B0010000 		.word	.LC54
- 727 0360 B8010000 		.word	.LC55
- 728 0364 C0010000 		.word	.LC56
- 729 0368 C8010000 		.word	.LC57
- 730 036c D0010000 		.word	.LC58
- 731 0370 D8010000 		.word	.LC59
- 732 0374 E0010000 		.word	.LC60
- 733 0378 E8010000 		.word	.LC61
- 734 037c F0010000 		.word	.LC62
- 735 0380 F8010000 		.word	.LC63
- 736              	.LVL128:
- 737              	.L66:
+ 734              		.loc 1 124 42 view .LVU259
+ 735 0302 40F22C40 		movw	r0, #1068
+ 736              	.LVL125:
+ 124:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9D) return *L"Э";
+ 737              		.loc 1 124 42 view .LVU260
+ 738 0306 7047     		bx	lr
+ 739              	.LVL126:
+ 740              	.L66:
  125:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9E) return *L"Ю";
- 738              		.loc 1 125 0 is_stmt 1
- 739 0384 9E28     		cmp	r0, #158
- 740 0386 02D1     		bne	.L67
- 741              		.loc 1 125 0 is_stmt 0 discriminator 1
- 742 0388 034B     		ldr	r3, .L97
- 743 038a 1868     		ldr	r0, [r3]
- 744              	.LVL129:
- 745 038c 7047     		bx	lr
- 746              	.LVL130:
+ 741              		.loc 1 125 42 view .LVU261
+ 742 0308 40F22D40 		movw	r0, #1069
+ 743              	.LVL127:
+ 125:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9E) return *L"Ю";
+ 744              		.loc 1 125 42 view .LVU262
+ 745 030c 7047     		bx	lr
+ 746              	.LVL128:
  747              	.L67:
  126:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9F) return *L"Я";
- 748              		.loc 1 126 0 is_stmt 1
- 749 038e 9F28     		cmp	r0, #159
- 750 0390 01D1     		bne	.L1
- 751              		.loc 1 126 0 is_stmt 0 discriminator 1
- 752 0392 024B     		ldr	r3, .L97+4
- 753 0394 1868     		ldr	r0, [r3]
- 754              	.LVL131:
- 755              	.L1:
+ 748              		.loc 1 126 42 view .LVU263
+ 749 030e 40F22E40 		movw	r0, #1070
+ 750              	.LVL129:
+ 126:Src/USB/Driver_USBdrive.c ****     if(character == (TCHAR) 0x9F) return *L"Я";
+ 751              		.loc 1 126 42 view .LVU264
+ 752 0312 7047     		bx	lr
+ 753              	.LVL130:
+ 754              	.L68:
  127:Src/USB/Driver_USBdrive.c ****     return (wchar_t) character;
- 128:Src/USB/Driver_USBdrive.c **** }
- 756              		.loc 1 128 0 is_stmt 1
- 757 0396 7047     		bx	lr
- 758              	.L98:
- 759              		.align	2
-ARM GAS  /tmp/ccKP1uaH.s 			page 17
+ 755              		.loc 1 127 42 view .LVU265
+ 756 0314 40F22F40 		movw	r0, #1071
+ 757              	.LVL131:
+ 129:Src/USB/Driver_USBdrive.c **** }
+ 758              		.loc 1 129 1 view .LVU266
+ 759 0318 7047     		bx	lr
+ 760              		.cfi_endproc
+ 761              	.LFE72:
+ 763              		.section	.text.convertPathToWidePath,"ax",%progbits
+ 764              		.align	1
+ 765              		.syntax unified
+ 766              		.thumb
+ 767              		.thumb_func
+ 768              		.fpu softvfp
+ARM GAS  /tmp/ccR5Y2I8.s 			page 19
 
 
- 760              	.L97:
- 761 0398 00020000 		.word	.LC64
- 762 039c 08020000 		.word	.LC65
- 763              		.cfi_endproc
- 764              	.LFE70:
- 766              		.section	.text.convertPathToWidePath,"ax",%progbits
- 767              		.align	1
- 768              		.syntax unified
- 769              		.thumb
- 770              		.thumb_func
- 771              		.fpu softvfp
- 773              	convertPathToWidePath:
- 774              	.LFB72:
- 129:Src/USB/Driver_USBdrive.c **** 
+ 770              	convertPathToWidePath:
+ 771              	.LVL132:
+ 772              	.LFB74:
  130:Src/USB/Driver_USBdrive.c **** 
- 131:Src/USB/Driver_USBdrive.c **** const TCHAR* getPath_USBdrive(void){ return path;}
- 132:Src/USB/Driver_USBdrive.c **** 
- 133:Src/USB/Driver_USBdrive.c **** static void convertPathToWidePath(wchar_t* widePath)
- 134:Src/USB/Driver_USBdrive.c **** {
- 775              		.loc 1 134 0
- 776              		.cfi_startproc
- 777              		@ args = 0, pretend = 0, frame = 0
- 778              		@ frame_needed = 0, uses_anonymous_args = 0
- 779              	.LVL132:
- 780 0000 38B5     		push	{r3, r4, r5, lr}
- 781              	.LCFI0:
- 782              		.cfi_def_cfa_offset 16
- 783              		.cfi_offset 3, -16
- 784              		.cfi_offset 4, -12
- 785              		.cfi_offset 5, -8
- 786              		.cfi_offset 14, -4
- 787 0002 0546     		mov	r5, r0
+ 131:Src/USB/Driver_USBdrive.c **** 
+ 132:Src/USB/Driver_USBdrive.c **** const TCHAR* getPath_USBdrive(void){ return path;}
+ 133:Src/USB/Driver_USBdrive.c **** 
+ 134:Src/USB/Driver_USBdrive.c **** static void convertPathToWidePath(wchar_t* widePath)
+ 135:Src/USB/Driver_USBdrive.c **** {
+ 773              		.loc 1 135 1 is_stmt 1 view -0
+ 774              		.cfi_startproc
+ 775              		@ args = 0, pretend = 0, frame = 0
+ 776              		@ frame_needed = 0, uses_anonymous_args = 0
+ 777              		.loc 1 135 1 is_stmt 0 view .LVU268
+ 778 0000 38B5     		push	{r3, r4, r5, lr}
+ 779              	.LCFI0:
+ 780              		.cfi_def_cfa_offset 16
+ 781              		.cfi_offset 3, -16
+ 782              		.cfi_offset 4, -12
+ 783              		.cfi_offset 5, -8
+ 784              		.cfi_offset 14, -4
+ 785 0002 0546     		mov	r5, r0
+ 136:Src/USB/Driver_USBdrive.c ****     int letterNember;
+ 786              		.loc 1 136 5 is_stmt 1 view .LVU269
+ 137:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < PATH_LENGTH; letterNember++)
+ 787              		.loc 1 137 5 view .LVU270
  788              	.LVL133:
- 135:Src/USB/Driver_USBdrive.c ****     int letterNember;
- 136:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < PATH_LENGTH; letterNember++)
- 789              		.loc 1 136 0
+ 789              		.loc 1 137 23 is_stmt 0 view .LVU271
  790 0004 0024     		movs	r4, #0
- 791 0006 06E0     		b	.L100
- 792              	.LVL134:
- 793              	.L101:
- 137:Src/USB/Driver_USBdrive.c ****         widePath[letterNember] = TCHAR2wchar_t(path[letterNember]);
- 794              		.loc 1 137 0 discriminator 3
- 795 0008 044B     		ldr	r3, .L103
- 796 000a 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
- 797 000c FFF7FEFF 		bl	TCHAR2wchar_t
- 798              	.LVL135:
- 799 0010 45F82400 		str	r0, [r5, r4, lsl #2]
- 136:Src/USB/Driver_USBdrive.c ****         widePath[letterNember] = TCHAR2wchar_t(path[letterNember]);
- 800              		.loc 1 136 0 discriminator 3
- 801 0014 0134     		adds	r4, r4, #1
- 802              	.LVL136:
- 803              	.L100:
- 136:Src/USB/Driver_USBdrive.c ****         widePath[letterNember] = TCHAR2wchar_t(path[letterNember]);
- 804              		.loc 1 136 0 is_stmt 0 discriminator 1
- 805 0016 632C     		cmp	r4, #99
- 806 0018 F6DD     		ble	.L101
- 138:Src/USB/Driver_USBdrive.c **** }
-ARM GAS  /tmp/ccKP1uaH.s 			page 18
+ 791              	.LVL134:
+ 792              	.L70:
+ 793              		.loc 1 137 28 is_stmt 1 discriminator 1 view .LVU272
+ 794              		.loc 1 137 5 is_stmt 0 discriminator 1 view .LVU273
+ 795 0006 632C     		cmp	r4, #99
+ 796 0008 07DC     		bgt	.L73
+ 138:Src/USB/Driver_USBdrive.c ****         widePath[letterNember] = TCHAR2wchar_t(path[letterNember]);
+ 797              		.loc 1 138 9 is_stmt 1 discriminator 3 view .LVU274
+ 798              		.loc 1 138 34 is_stmt 0 discriminator 3 view .LVU275
+ 799 000a 044B     		ldr	r3, .L74
+ 800 000c 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
+ 801 000e FFF7FEFF 		bl	TCHAR2wchar_t
+ 802              	.LVL135:
+ 803              		.loc 1 138 32 discriminator 3 view .LVU276
+ 804 0012 45F82400 		str	r0, [r5, r4, lsl #2]
+ 137:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < PATH_LENGTH; letterNember++)
+ 805              		.loc 1 137 56 is_stmt 1 discriminator 3 view .LVU277
+ 137:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < PATH_LENGTH; letterNember++)
+ 806              		.loc 1 137 68 is_stmt 0 discriminator 3 view .LVU278
+ 807 0016 0134     		adds	r4, r4, #1
+ 808              	.LVL136:
+ 137:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < PATH_LENGTH; letterNember++)
+ 809              		.loc 1 137 68 discriminator 3 view .LVU279
+ 810 0018 F5E7     		b	.L70
+ 811              	.L73:
+ 139:Src/USB/Driver_USBdrive.c **** }
+ 812              		.loc 1 139 1 view .LVU280
+ 813 001a 38BD     		pop	{r3, r4, r5, pc}
+ARM GAS  /tmp/ccR5Y2I8.s 			page 20
 
 
- 807              		.loc 1 138 0 is_stmt 1
- 808 001a 38BD     		pop	{r3, r4, r5, pc}
- 809              	.LVL137:
- 810              	.L104:
- 811              		.align	2
- 812              	.L103:
- 813 001c 00000000 		.word	.LANCHOR0
- 814              		.cfi_endproc
- 815              	.LFE72:
- 817              		.section	.text.convertLongNameToWideLongName,"ax",%progbits
- 818              		.align	1
- 819              		.syntax unified
- 820              		.thumb
- 821              		.thumb_func
- 822              		.fpu softvfp
- 824              	convertLongNameToWideLongName:
- 825              	.LFB78:
- 139:Src/USB/Driver_USBdrive.c **** 
- 140:Src/USB/Driver_USBdrive.c **** static wchar_t widePath[PATH_LENGTH];
- 141:Src/USB/Driver_USBdrive.c **** const wchar_t* getWidePath_USBdrive(void)
- 142:Src/USB/Driver_USBdrive.c **** {
- 143:Src/USB/Driver_USBdrive.c ****     convertPathToWidePath(widePath);
- 144:Src/USB/Driver_USBdrive.c ****     return (const wchar_t*) widePath;
- 145:Src/USB/Driver_USBdrive.c **** }
- 146:Src/USB/Driver_USBdrive.c **** 
+ 814              	.LVL137:
+ 815              	.L75:
+ 816              		.loc 1 139 1 view .LVU281
+ 817              		.align	2
+ 818              	.L74:
+ 819 001c 00000000 		.word	.LANCHOR0
+ 820              		.cfi_endproc
+ 821              	.LFE74:
+ 823              		.section	.text.convertLongNameToWideLongName,"ax",%progbits
+ 824              		.align	1
+ 825              		.syntax unified
+ 826              		.thumb
+ 827              		.thumb_func
+ 828              		.fpu softvfp
+ 830              	convertLongNameToWideLongName:
+ 831              	.LVL138:
+ 832              	.LFB80:
+ 140:Src/USB/Driver_USBdrive.c **** 
+ 141:Src/USB/Driver_USBdrive.c **** static wchar_t widePath[PATH_LENGTH];
+ 142:Src/USB/Driver_USBdrive.c **** const wchar_t* getWidePath_USBdrive(void)
+ 143:Src/USB/Driver_USBdrive.c **** {
+ 144:Src/USB/Driver_USBdrive.c ****     convertPathToWidePath(widePath);
+ 145:Src/USB/Driver_USBdrive.c ****     return (const wchar_t*) widePath;
+ 146:Src/USB/Driver_USBdrive.c **** }
  147:Src/USB/Driver_USBdrive.c **** 
- 148:Src/USB/Driver_USBdrive.c **** void openDirectory_USBdrive(const TCHAR* pathToDirectory)
- 149:Src/USB/Driver_USBdrive.c **** {
- 150:Src/USB/Driver_USBdrive.c ****     f_closedir(&directory);
- 151:Src/USB/Driver_USBdrive.c **** 
- 152:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 153:Src/USB/Driver_USBdrive.c ****         return;
- 154:Src/USB/Driver_USBdrive.c **** 
- 155:Src/USB/Driver_USBdrive.c ****     if(f_opendir(&directory, pathToDirectory)!=FR_OK)
- 156:Src/USB/Driver_USBdrive.c ****     {
- 157:Src/USB/Driver_USBdrive.c ****         f_opendir(&directory, path);
- 158:Src/USB/Driver_USBdrive.c ****         return;
- 159:Src/USB/Driver_USBdrive.c ****     }
- 160:Src/USB/Driver_USBdrive.c **** 
- 161:Src/USB/Driver_USBdrive.c ****     sprintf(path, "%s", pathToDirectory);
- 162:Src/USB/Driver_USBdrive.c **** 
- 163:Src/USB/Driver_USBdrive.c **** }
- 164:Src/USB/Driver_USBdrive.c **** 
- 165:Src/USB/Driver_USBdrive.c **** void readItem_USBdrive()
- 166:Src/USB/Driver_USBdrive.c **** {
- 167:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 168:Src/USB/Driver_USBdrive.c ****         return;
- 169:Src/USB/Driver_USBdrive.c **** 
- 170:Src/USB/Driver_USBdrive.c ****     if(f_readdir(&directory, &fileInformation)!=FR_OK)
- 171:Src/USB/Driver_USBdrive.c ****         return;
- 172:Src/USB/Driver_USBdrive.c **** }
- 173:Src/USB/Driver_USBdrive.c **** 
- 174:Src/USB/Driver_USBdrive.c **** const TCHAR* getName_USBdrive(void) { return (const TCHAR*) fileInformation.fname;}
- 175:Src/USB/Driver_USBdrive.c **** 
- 176:Src/USB/Driver_USBdrive.c **** const TCHAR* getLongName_USBdrive(void) { return (const TCHAR*) fileInformation.lfname;}
- 177:Src/USB/Driver_USBdrive.c **** 
- 178:Src/USB/Driver_USBdrive.c **** 
-ARM GAS  /tmp/ccKP1uaH.s 			page 19
-
-
- 179:Src/USB/Driver_USBdrive.c **** 
- 180:Src/USB/Driver_USBdrive.c **** static void convertLongNameToWideLongName(wchar_t* wideLongName, const TCHAR* longName)
- 181:Src/USB/Driver_USBdrive.c **** {
- 826              		.loc 1 181 0
- 827              		.cfi_startproc
- 828              		@ args = 0, pretend = 0, frame = 0
- 829              		@ frame_needed = 0, uses_anonymous_args = 0
- 830              	.LVL138:
- 831 0000 70B5     		push	{r4, r5, r6, lr}
- 832              	.LCFI1:
- 833              		.cfi_def_cfa_offset 16
- 834              		.cfi_offset 4, -16
- 835              		.cfi_offset 5, -12
- 836              		.cfi_offset 6, -8
- 837              		.cfi_offset 14, -4
- 838 0002 0546     		mov	r5, r0
- 839 0004 0E46     		mov	r6, r1
- 182:Src/USB/Driver_USBdrive.c ****     wideLongName[0] = *L" ";
- 840              		.loc 1 182 0
- 841 0006 0C4B     		ldr	r3, .L111
- 842 0008 1B68     		ldr	r3, [r3]
- 843 000a 0360     		str	r3, [r0]
- 844              	.LVL139:
- 183:Src/USB/Driver_USBdrive.c ****     int letterNember;
- 184:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
- 845              		.loc 1 184 0
- 846 000c 0023     		movs	r3, #0
- 847 000e 04E0     		b	.L106
- 848              	.LVL140:
- 849              	.L107:
- 185:Src/USB/Driver_USBdrive.c ****         wideLongName[letterNember+1] = *L"\0";
- 850              		.loc 1 185 0 discriminator 3
- 851 0010 0133     		adds	r3, r3, #1
- 852              	.LVL141:
- 853 0012 0A4A     		ldr	r2, .L111+4
- 854 0014 1268     		ldr	r2, [r2]
- 855 0016 45F82320 		str	r2, [r5, r3, lsl #2]
- 856              	.LVL142:
- 857              	.L106:
- 184:Src/USB/Driver_USBdrive.c ****         wideLongName[letterNember+1] = *L"\0";
- 858              		.loc 1 184 0 discriminator 1
- 859 001a 632B     		cmp	r3, #99
- 860 001c F8DD     		ble	.L107
- 186:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
- 861              		.loc 1 186 0
- 862 001e 0023     		movs	r3, #0
- 863              	.LVL143:
- 864 0020 06E0     		b	.L108
- 865              	.LVL144:
- 866              	.L109:
- 187:Src/USB/Driver_USBdrive.c ****         wideLongName[letterNember+1] = TCHAR2wchar_t(longName[letterNember]);
- 867              		.loc 1 187 0 discriminator 3
- 868 0022 5C1C     		adds	r4, r3, #1
- 869 0024 F05C     		ldrb	r0, [r6, r3]	@ zero_extendqisi2
- 870 0026 FFF7FEFF 		bl	TCHAR2wchar_t
- 871              	.LVL145:
- 872 002a 45F82400 		str	r0, [r5, r4, lsl #2]
-ARM GAS  /tmp/ccKP1uaH.s 			page 20
-
-
- 186:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
- 873              		.loc 1 186 0 discriminator 3
- 874 002e 2346     		mov	r3, r4
- 875              	.LVL146:
- 876              	.L108:
- 186:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
- 877              		.loc 1 186 0 is_stmt 0 discriminator 1
- 878 0030 632B     		cmp	r3, #99
- 879 0032 F6DD     		ble	.L109
- 188:Src/USB/Driver_USBdrive.c **** }
- 880              		.loc 1 188 0 is_stmt 1
- 881 0034 70BD     		pop	{r4, r5, r6, pc}
- 882              	.LVL147:
- 883              	.L112:
- 884 0036 00BF     		.align	2
- 885              	.L111:
- 886 0038 00000000 		.word	.LC66
- 887 003c 00000000 		.word	.LANCHOR1
- 888              		.cfi_endproc
- 889              	.LFE78:
- 891              		.section	.text.createDriver_USBdrive,"ax",%progbits
- 892              		.align	1
- 893              		.global	createDriver_USBdrive
- 894              		.syntax unified
- 895              		.thumb
- 896              		.thumb_func
- 897              		.fpu softvfp
- 899              	createDriver_USBdrive:
- 900              	.LFB66:
-  20:Src/USB/Driver_USBdrive.c ****     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
- 901              		.loc 1 20 0
- 902              		.cfi_startproc
- 903              		@ args = 0, pretend = 0, frame = 0
- 904              		@ frame_needed = 0, uses_anonymous_args = 0
- 905 0000 10B5     		push	{r4, lr}
- 906              	.LCFI2:
- 907              		.cfi_def_cfa_offset 8
- 908              		.cfi_offset 4, -8
- 909              		.cfi_offset 14, -4
-  21:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
- 910              		.loc 1 21 0
- 911 0002 0024     		movs	r4, #0
- 912 0004 074B     		ldr	r3, .L115
- 913 0006 1C70     		strb	r4, [r3]
-  22:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.fname, "%s", "");
- 914              		.loc 1 22 0
- 915 0008 0748     		ldr	r0, .L115+4
- 916 000a 40F8044B 		str	r4, [r0], #4
- 917 000e 6022     		movs	r2, #96
- 918 0010 2146     		mov	r1, r4
- 919 0012 FFF7FEFF 		bl	memset
- 920              	.LVL148:
-  23:Src/USB/Driver_USBdrive.c ****     fileInformation.lfsize = _MAX_LFN;
- 921              		.loc 1 23 0
- 922 0016 054B     		ldr	r3, .L115+8
- 923 0018 5C72     		strb	r4, [r3, #9]
-  24:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.lfname, "%s", "");
-ARM GAS  /tmp/ccKP1uaH.s 			page 21
-
-
- 924              		.loc 1 24 0
- 925 001a FF22     		movs	r2, #255
- 926 001c C3F81821 		str	r2, [r3, #280]
-  25:Src/USB/Driver_USBdrive.c **** }
- 927              		.loc 1 25 0
- 928 0020 9C75     		strb	r4, [r3, #22]
-  26:Src/USB/Driver_USBdrive.c **** 
- 929              		.loc 1 26 0
- 930 0022 10BD     		pop	{r4, pc}
- 931              	.L116:
- 932              		.align	2
- 933              	.L115:
- 934 0024 00000000 		.word	.LANCHOR2
- 935 0028 00000000 		.word	.LANCHOR0
- 936 002c 00000000 		.word	.LANCHOR3
- 937              		.cfi_endproc
- 938              	.LFE66:
- 940              		.section	.text.mount_USBdrive,"ax",%progbits
- 941              		.align	1
- 942              		.global	mount_USBdrive
- 943              		.syntax unified
- 944              		.thumb
- 945              		.thumb_func
- 946              		.fpu softvfp
- 948              	mount_USBdrive:
- 949              	.LFB67:
-  29:Src/USB/Driver_USBdrive.c ****     if(currentMountedStatus_USBdrive == MOUNTED_USBDRIVE)
- 950              		.loc 1 29 0
- 951              		.cfi_startproc
- 952              		@ args = 0, pretend = 0, frame = 0
- 953              		@ frame_needed = 0, uses_anonymous_args = 0
- 954 0000 08B5     		push	{r3, lr}
- 955              	.LCFI3:
- 956              		.cfi_def_cfa_offset 8
- 957              		.cfi_offset 3, -8
- 958              		.cfi_offset 14, -4
-  30:Src/USB/Driver_USBdrive.c ****         return;
- 959              		.loc 1 30 0
- 960 0002 0B4B     		ldr	r3, .L122
- 961 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 962 0006 012B     		cmp	r3, #1
- 963 0008 08D0     		beq	.L117
-  33:Src/USB/Driver_USBdrive.c ****     {
- 964              		.loc 1 33 0
- 965 000a 0022     		movs	r2, #0
- 966 000c 0949     		ldr	r1, .L122+4
- 967 000e 0A48     		ldr	r0, .L122+8
- 968 0010 FFF7FEFF 		bl	f_mount
- 969              	.LVL149:
- 970 0014 18B1     		cbz	r0, .L121
-  40:Src/USB/Driver_USBdrive.c **** }
- 971              		.loc 1 40 0
- 972 0016 064B     		ldr	r3, .L122
- 973 0018 0022     		movs	r2, #0
- 974 001a 1A70     		strb	r2, [r3]
- 975              	.L117:
-  41:Src/USB/Driver_USBdrive.c **** 
-ARM GAS  /tmp/ccKP1uaH.s 			page 22
-
-
- 976              		.loc 1 41 0
- 977 001c 08BD     		pop	{r3, pc}
- 978              	.L121:
-  35:Src/USB/Driver_USBdrive.c ****         sprintf(path, "%s", USBHPath);
- 979              		.loc 1 35 0
- 980 001e 044B     		ldr	r3, .L122
- 981 0020 0122     		movs	r2, #1
- 982 0022 1A70     		strb	r2, [r3]
-  36:Src/USB/Driver_USBdrive.c ****         return;
- 983              		.loc 1 36 0
- 984 0024 0349     		ldr	r1, .L122+4
- 985 0026 0548     		ldr	r0, .L122+12
- 986 0028 FFF7FEFF 		bl	strcpy
- 987              	.LVL150:
-  37:Src/USB/Driver_USBdrive.c ****     }
- 988              		.loc 1 37 0
- 989 002c F6E7     		b	.L117
- 990              	.L123:
- 991 002e 00BF     		.align	2
- 992              	.L122:
- 993 0030 00000000 		.word	.LANCHOR2
- 994 0034 00000000 		.word	USBHPath
- 995 0038 00000000 		.word	USBDISKFatFs
- 996 003c 00000000 		.word	.LANCHOR0
- 997              		.cfi_endproc
- 998              	.LFE67:
- 1000              		.section	.text.unmount_USBdrive,"ax",%progbits
- 1001              		.align	1
- 1002              		.global	unmount_USBdrive
- 1003              		.syntax unified
- 1004              		.thumb
- 1005              		.thumb_func
- 1006              		.fpu softvfp
- 1008              	unmount_USBdrive:
- 1009              	.LFB68:
-  44:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 1010              		.loc 1 44 0
- 1011              		.cfi_startproc
- 1012              		@ args = 0, pretend = 0, frame = 0
- 1013              		@ frame_needed = 0, uses_anonymous_args = 0
- 1014 0000 08B5     		push	{r3, lr}
- 1015              	.LCFI4:
- 1016              		.cfi_def_cfa_offset 8
- 1017              		.cfi_offset 3, -8
- 1018              		.cfi_offset 14, -4
-  45:Src/USB/Driver_USBdrive.c ****         return;
- 1019              		.loc 1 45 0
- 1020 0002 0D4B     		ldr	r3, .L129
- 1021 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1022 0006 03B9     		cbnz	r3, .L128
- 1023              	.L124:
-  54:Src/USB/Driver_USBdrive.c **** 
- 1024              		.loc 1 54 0
- 1025 0008 08BD     		pop	{r3, pc}
- 1026              	.L128:
-  48:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
- 1027              		.loc 1 48 0
-ARM GAS  /tmp/ccKP1uaH.s 			page 23
-
-
- 1028 000a 0022     		movs	r2, #0
- 1029 000c 0B49     		ldr	r1, .L129+4
- 1030 000e 0C48     		ldr	r0, .L129+8
- 1031 0010 FFF7FEFF 		bl	sprintf
- 1032              	.LVL151:
-  49:Src/USB/Driver_USBdrive.c **** 
- 1033              		.loc 1 49 0
- 1034 0014 0021     		movs	r1, #0
- 1035 0016 0B48     		ldr	r0, .L129+12
- 1036 0018 40F8041B 		str	r1, [r0], #4
- 1037 001c 6022     		movs	r2, #96
- 1038 001e FFF7FEFF 		bl	memset
- 1039              	.LVL152:
- 1040              	.L126:
-  51:Src/USB/Driver_USBdrive.c **** 
- 1041              		.loc 1 51 0 discriminator 1
- 1042 0022 0022     		movs	r2, #0
- 1043 0024 0649     		ldr	r1, .L129+8
- 1044 0026 1046     		mov	r0, r2
- 1045 0028 FFF7FEFF 		bl	f_mount
- 1046              	.LVL153:
- 1047 002c 0028     		cmp	r0, #0
- 1048 002e F8D1     		bne	.L126
-  53:Src/USB/Driver_USBdrive.c **** }
- 1049              		.loc 1 53 0
- 1050 0030 014B     		ldr	r3, .L129
- 1051 0032 0022     		movs	r2, #0
- 1052 0034 1A70     		strb	r2, [r3]
- 1053 0036 E7E7     		b	.L124
- 1054              	.L130:
- 1055              		.align	2
- 1056              	.L129:
- 1057 0038 00000000 		.word	.LANCHOR2
- 1058 003c 00000000 		.word	.LC68
- 1059 0040 00000000 		.word	USBHPath
- 1060 0044 00000000 		.word	.LANCHOR0
- 1061              		.cfi_endproc
- 1062              	.LFE68:
- 1064              		.section	.text.getMountedStatus,"ax",%progbits
- 1065              		.align	1
- 1066              		.global	getMountedStatus
- 1067              		.syntax unified
- 1068              		.thumb
- 1069              		.thumb_func
- 1070              		.fpu softvfp
- 1072              	getMountedStatus:
- 1073              	.LFB69:
-  56:Src/USB/Driver_USBdrive.c **** 
- 1074              		.loc 1 56 0
- 1075              		.cfi_startproc
- 1076              		@ args = 0, pretend = 0, frame = 0
- 1077              		@ frame_needed = 0, uses_anonymous_args = 0
- 1078              		@ link register save eliminated.
-  56:Src/USB/Driver_USBdrive.c **** 
- 1079              		.loc 1 56 0
- 1080 0000 014B     		ldr	r3, .L132
- 1081 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/ccKP1uaH.s 			page 24
-
-
- 1082 0004 7047     		bx	lr
- 1083              	.L133:
- 1084 0006 00BF     		.align	2
- 1085              	.L132:
- 1086 0008 00000000 		.word	.LANCHOR2
- 1087              		.cfi_endproc
- 1088              	.LFE69:
- 1090              		.section	.text.getPath_USBdrive,"ax",%progbits
- 1091              		.align	1
- 1092              		.global	getPath_USBdrive
- 1093              		.syntax unified
- 1094              		.thumb
- 1095              		.thumb_func
- 1096              		.fpu softvfp
- 1098              	getPath_USBdrive:
- 1099              	.LFB71:
- 131:Src/USB/Driver_USBdrive.c **** 
- 1100              		.loc 1 131 0
- 1101              		.cfi_startproc
- 1102              		@ args = 0, pretend = 0, frame = 0
- 1103              		@ frame_needed = 0, uses_anonymous_args = 0
- 1104              		@ link register save eliminated.
- 131:Src/USB/Driver_USBdrive.c **** 
- 1105              		.loc 1 131 0
- 1106 0000 0048     		ldr	r0, .L135
- 1107 0002 7047     		bx	lr
- 1108              	.L136:
- 1109              		.align	2
- 1110              	.L135:
- 1111 0004 00000000 		.word	.LANCHOR0
- 1112              		.cfi_endproc
- 1113              	.LFE71:
- 1115              		.section	.text.getWidePath_USBdrive,"ax",%progbits
- 1116              		.align	1
- 1117              		.global	getWidePath_USBdrive
- 1118              		.syntax unified
- 1119              		.thumb
- 1120              		.thumb_func
- 1121              		.fpu softvfp
- 1123              	getWidePath_USBdrive:
- 1124              	.LFB73:
- 142:Src/USB/Driver_USBdrive.c ****     convertPathToWidePath(widePath);
- 1125              		.loc 1 142 0
- 1126              		.cfi_startproc
- 1127              		@ args = 0, pretend = 0, frame = 0
- 1128              		@ frame_needed = 0, uses_anonymous_args = 0
- 1129 0000 10B5     		push	{r4, lr}
- 1130              	.LCFI5:
- 1131              		.cfi_def_cfa_offset 8
- 1132              		.cfi_offset 4, -8
- 1133              		.cfi_offset 14, -4
- 143:Src/USB/Driver_USBdrive.c ****     return (const wchar_t*) widePath;
- 1134              		.loc 1 143 0
- 1135 0002 034C     		ldr	r4, .L139
- 1136 0004 2046     		mov	r0, r4
- 1137 0006 FFF7FEFF 		bl	convertPathToWidePath
- 1138              	.LVL154:
-ARM GAS  /tmp/ccKP1uaH.s 			page 25
-
-
- 145:Src/USB/Driver_USBdrive.c **** 
- 1139              		.loc 1 145 0
- 1140 000a 2046     		mov	r0, r4
- 1141 000c 10BD     		pop	{r4, pc}
- 1142              	.L140:
- 1143 000e 00BF     		.align	2
- 1144              	.L139:
- 1145 0010 00000000 		.word	.LANCHOR4
- 1146              		.cfi_endproc
- 1147              	.LFE73:
- 1149              		.section	.text.openDirectory_USBdrive,"ax",%progbits
- 1150              		.align	1
- 1151              		.global	openDirectory_USBdrive
- 1152              		.syntax unified
- 1153              		.thumb
- 1154              		.thumb_func
- 1155              		.fpu softvfp
- 1157              	openDirectory_USBdrive:
- 1158              	.LFB74:
- 149:Src/USB/Driver_USBdrive.c ****     f_closedir(&directory);
- 1159              		.loc 1 149 0
- 1160              		.cfi_startproc
- 1161              		@ args = 0, pretend = 0, frame = 0
- 1162              		@ frame_needed = 0, uses_anonymous_args = 0
- 1163              	.LVL155:
- 1164 0000 10B5     		push	{r4, lr}
- 1165              	.LCFI6:
- 1166              		.cfi_def_cfa_offset 8
- 1167              		.cfi_offset 4, -8
- 1168              		.cfi_offset 14, -4
- 1169 0002 0446     		mov	r4, r0
- 150:Src/USB/Driver_USBdrive.c **** 
- 1170              		.loc 1 150 0
- 1171 0004 0A48     		ldr	r0, .L147
- 1172              	.LVL156:
- 1173 0006 FFF7FEFF 		bl	f_closedir
- 1174              	.LVL157:
- 152:Src/USB/Driver_USBdrive.c ****         return;
- 1175              		.loc 1 152 0
- 1176 000a 0A4B     		ldr	r3, .L147+4
- 1177 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1178 000e 03B9     		cbnz	r3, .L145
- 1179              	.L141:
- 163:Src/USB/Driver_USBdrive.c **** 
- 1180              		.loc 1 163 0
- 1181 0010 10BD     		pop	{r4, pc}
- 1182              	.LVL158:
- 1183              	.L145:
- 155:Src/USB/Driver_USBdrive.c ****     {
- 1184              		.loc 1 155 0
- 1185 0012 2146     		mov	r1, r4
- 1186 0014 0648     		ldr	r0, .L147
- 1187 0016 FFF7FEFF 		bl	f_opendir
- 1188              	.LVL159:
- 1189 001a 20B9     		cbnz	r0, .L146
+ 148:Src/USB/Driver_USBdrive.c **** 
+ 149:Src/USB/Driver_USBdrive.c **** void openDirectory_USBdrive(const TCHAR* pathToDirectory)
+ 150:Src/USB/Driver_USBdrive.c **** {
+ 151:Src/USB/Driver_USBdrive.c ****     f_closedir(&directory);
+ 152:Src/USB/Driver_USBdrive.c **** 
+ 153:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+ 154:Src/USB/Driver_USBdrive.c ****         return;
+ 155:Src/USB/Driver_USBdrive.c **** 
+ 156:Src/USB/Driver_USBdrive.c ****     if(f_opendir(&directory, pathToDirectory)!=FR_OK)
+ 157:Src/USB/Driver_USBdrive.c ****     {
+ 158:Src/USB/Driver_USBdrive.c ****         f_opendir(&directory, path);
+ 159:Src/USB/Driver_USBdrive.c ****         return;
+ 160:Src/USB/Driver_USBdrive.c ****     }
  161:Src/USB/Driver_USBdrive.c **** 
- 1190              		.loc 1 161 0
-ARM GAS  /tmp/ccKP1uaH.s 			page 26
-
-
- 1191 001c 2146     		mov	r1, r4
- 1192 001e 0648     		ldr	r0, .L147+8
- 1193 0020 FFF7FEFF 		bl	strcpy
- 1194              	.LVL160:
- 1195 0024 F4E7     		b	.L141
- 1196              	.L146:
- 157:Src/USB/Driver_USBdrive.c ****         return;
- 1197              		.loc 1 157 0
- 1198 0026 0449     		ldr	r1, .L147+8
- 1199 0028 0148     		ldr	r0, .L147
- 1200 002a FFF7FEFF 		bl	f_opendir
- 1201              	.LVL161:
- 158:Src/USB/Driver_USBdrive.c ****     }
- 1202              		.loc 1 158 0
- 1203 002e EFE7     		b	.L141
- 1204              	.L148:
- 1205              		.align	2
- 1206              	.L147:
- 1207 0030 00000000 		.word	directory
- 1208 0034 00000000 		.word	.LANCHOR2
- 1209 0038 00000000 		.word	.LANCHOR0
- 1210              		.cfi_endproc
- 1211              	.LFE74:
- 1213              		.section	.text.readItem_USBdrive,"ax",%progbits
- 1214              		.align	1
- 1215              		.global	readItem_USBdrive
- 1216              		.syntax unified
- 1217              		.thumb
- 1218              		.thumb_func
- 1219              		.fpu softvfp
- 1221              	readItem_USBdrive:
- 1222              	.LFB75:
- 166:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 1223              		.loc 1 166 0
- 1224              		.cfi_startproc
- 1225              		@ args = 0, pretend = 0, frame = 0
- 1226              		@ frame_needed = 0, uses_anonymous_args = 0
- 1227 0000 08B5     		push	{r3, lr}
- 1228              	.LCFI7:
- 1229              		.cfi_def_cfa_offset 8
- 1230              		.cfi_offset 3, -8
- 1231              		.cfi_offset 14, -4
- 167:Src/USB/Driver_USBdrive.c ****         return;
- 1232              		.loc 1 167 0
- 1233 0002 044B     		ldr	r3, .L153
- 1234 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1235 0006 03B9     		cbnz	r3, .L152
- 1236              	.L149:
- 172:Src/USB/Driver_USBdrive.c **** 
- 1237              		.loc 1 172 0
- 1238 0008 08BD     		pop	{r3, pc}
- 1239              	.L152:
- 170:Src/USB/Driver_USBdrive.c ****         return;
- 1240              		.loc 1 170 0
- 1241 000a 0349     		ldr	r1, .L153+4
- 1242 000c 0348     		ldr	r0, .L153+8
- 1243 000e FFF7FEFF 		bl	f_readdir
-ARM GAS  /tmp/ccKP1uaH.s 			page 27
-
-
- 1244              	.LVL162:
- 1245 0012 F9E7     		b	.L149
- 1246              	.L154:
- 1247              		.align	2
- 1248              	.L153:
- 1249 0014 00000000 		.word	.LANCHOR2
- 1250 0018 00000000 		.word	.LANCHOR3
- 1251 001c 00000000 		.word	directory
- 1252              		.cfi_endproc
- 1253              	.LFE75:
- 1255              		.section	.text.getName_USBdrive,"ax",%progbits
- 1256              		.align	1
- 1257              		.global	getName_USBdrive
- 1258              		.syntax unified
- 1259              		.thumb
- 1260              		.thumb_func
- 1261              		.fpu softvfp
- 1263              	getName_USBdrive:
- 1264              	.LFB76:
+ 162:Src/USB/Driver_USBdrive.c ****     sprintf(path, "%s", pathToDirectory);
+ 163:Src/USB/Driver_USBdrive.c **** 
+ 164:Src/USB/Driver_USBdrive.c **** }
+ 165:Src/USB/Driver_USBdrive.c **** 
+ 166:Src/USB/Driver_USBdrive.c **** void readItem_USBdrive()
+ 167:Src/USB/Driver_USBdrive.c **** {
+ 168:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+ 169:Src/USB/Driver_USBdrive.c ****         return;
+ 170:Src/USB/Driver_USBdrive.c **** 
+ 171:Src/USB/Driver_USBdrive.c ****     if(f_readdir(&directory, &fileInformation)!=FR_OK)
+ 172:Src/USB/Driver_USBdrive.c ****         return;
+ 173:Src/USB/Driver_USBdrive.c **** }
  174:Src/USB/Driver_USBdrive.c **** 
- 1265              		.loc 1 174 0
- 1266              		.cfi_startproc
- 1267              		@ args = 0, pretend = 0, frame = 0
- 1268              		@ frame_needed = 0, uses_anonymous_args = 0
- 1269              		@ link register save eliminated.
- 174:Src/USB/Driver_USBdrive.c **** 
- 1270              		.loc 1 174 0
- 1271 0000 0048     		ldr	r0, .L156
- 1272 0002 7047     		bx	lr
- 1273              	.L157:
- 1274              		.align	2
- 1275              	.L156:
- 1276 0004 09000000 		.word	.LANCHOR3+9
- 1277              		.cfi_endproc
- 1278              	.LFE76:
- 1280              		.section	.text.getLongName_USBdrive,"ax",%progbits
- 1281              		.align	1
- 1282              		.global	getLongName_USBdrive
- 1283              		.syntax unified
- 1284              		.thumb
- 1285              		.thumb_func
- 1286              		.fpu softvfp
- 1288              	getLongName_USBdrive:
- 1289              	.LFB77:
+ 175:Src/USB/Driver_USBdrive.c **** const TCHAR* getName_USBdrive(void) { return (const TCHAR*) fileInformation.fname;}
  176:Src/USB/Driver_USBdrive.c **** 
- 1290              		.loc 1 176 0
- 1291              		.cfi_startproc
- 1292              		@ args = 0, pretend = 0, frame = 0
- 1293              		@ frame_needed = 0, uses_anonymous_args = 0
- 1294              		@ link register save eliminated.
- 176:Src/USB/Driver_USBdrive.c **** 
- 1295              		.loc 1 176 0
- 1296 0000 0048     		ldr	r0, .L159
- 1297 0002 7047     		bx	lr
- 1298              	.L160:
- 1299              		.align	2
- 1300              	.L159:
-ARM GAS  /tmp/ccKP1uaH.s 			page 28
+ 177:Src/USB/Driver_USBdrive.c **** const TCHAR* getLongName_USBdrive(void) { return (const TCHAR*) fileInformation.lfname;}
+ 178:Src/USB/Driver_USBdrive.c **** 
+ 179:Src/USB/Driver_USBdrive.c **** 
+ARM GAS  /tmp/ccR5Y2I8.s 			page 21
 
 
- 1301 0004 16000000 		.word	.LANCHOR3+22
- 1302              		.cfi_endproc
- 1303              	.LFE77:
- 1305              		.section	.text.getWideLongName_USBdrive,"ax",%progbits
- 1306              		.align	1
- 1307              		.global	getWideLongName_USBdrive
- 1308              		.syntax unified
- 1309              		.thumb
- 1310              		.thumb_func
- 1311              		.fpu softvfp
- 1313              	getWideLongName_USBdrive:
- 1314              	.LFB79:
- 189:Src/USB/Driver_USBdrive.c **** 
- 190:Src/USB/Driver_USBdrive.c **** static wchar_t outputWideName[MAX_WIDE_NAME_LENGTH];
- 191:Src/USB/Driver_USBdrive.c **** const wchar_t* getWideLongName_USBdrive(void)
- 192:Src/USB/Driver_USBdrive.c **** {
- 1315              		.loc 1 192 0
- 1316              		.cfi_startproc
- 1317              		@ args = 0, pretend = 0, frame = 0
- 1318              		@ frame_needed = 0, uses_anonymous_args = 0
- 1319 0000 10B5     		push	{r4, lr}
- 1320              	.LCFI8:
- 1321              		.cfi_def_cfa_offset 8
- 1322              		.cfi_offset 4, -8
- 1323              		.cfi_offset 14, -4
- 193:Src/USB/Driver_USBdrive.c ****     convertLongNameToWideLongName(outputWideName, fileInformation.lfname);
- 1324              		.loc 1 193 0
- 1325 0002 034C     		ldr	r4, .L163
- 1326 0004 0349     		ldr	r1, .L163+4
- 1327 0006 2046     		mov	r0, r4
- 1328 0008 FFF7FEFF 		bl	convertLongNameToWideLongName
- 1329              	.LVL163:
- 194:Src/USB/Driver_USBdrive.c ****     return (const wchar_t*) outputWideName;
- 195:Src/USB/Driver_USBdrive.c **** }
- 1330              		.loc 1 195 0
- 1331 000c 2046     		mov	r0, r4
- 1332 000e 10BD     		pop	{r4, pc}
- 1333              	.L164:
- 1334              		.align	2
- 1335              	.L163:
- 1336 0010 00000000 		.word	.LANCHOR5
- 1337 0014 16000000 		.word	.LANCHOR3+22
- 1338              		.cfi_endproc
- 1339              	.LFE79:
- 1341              		.section	.text.getItemType_USBdrive,"ax",%progbits
- 1342              		.align	1
- 1343              		.global	getItemType_USBdrive
- 1344              		.syntax unified
- 1345              		.thumb
- 1346              		.thumb_func
- 1347              		.fpu softvfp
- 1349              	getItemType_USBdrive:
- 1350              	.LFB80:
- 196:Src/USB/Driver_USBdrive.c **** 
- 197:Src/USB/Driver_USBdrive.c **** itemType_USBdrive getItemType_USBdrive(void)
- 198:Src/USB/Driver_USBdrive.c **** {
- 1351              		.loc 1 198 0
-ARM GAS  /tmp/ccKP1uaH.s 			page 29
+ 180:Src/USB/Driver_USBdrive.c **** 
+ 181:Src/USB/Driver_USBdrive.c **** static void convertLongNameToWideLongName(wchar_t* wideLongName, const TCHAR* longName)
+ 182:Src/USB/Driver_USBdrive.c **** {
+ 833              		.loc 1 182 1 is_stmt 1 view -0
+ 834              		.cfi_startproc
+ 835              		@ args = 0, pretend = 0, frame = 0
+ 836              		@ frame_needed = 0, uses_anonymous_args = 0
+ 837              		.loc 1 182 1 is_stmt 0 view .LVU283
+ 838 0000 70B5     		push	{r4, r5, r6, lr}
+ 839              	.LCFI1:
+ 840              		.cfi_def_cfa_offset 16
+ 841              		.cfi_offset 4, -16
+ 842              		.cfi_offset 5, -12
+ 843              		.cfi_offset 6, -8
+ 844              		.cfi_offset 14, -4
+ 845 0002 0546     		mov	r5, r0
+ 846 0004 0E46     		mov	r6, r1
+ 183:Src/USB/Driver_USBdrive.c ****     wideLongName[0] = *L" ";
+ 847              		.loc 1 183 5 is_stmt 1 view .LVU284
+ 848              		.loc 1 183 21 is_stmt 0 view .LVU285
+ 849 0006 2023     		movs	r3, #32
+ 850 0008 0360     		str	r3, [r0]
+ 184:Src/USB/Driver_USBdrive.c ****     int letterNember;
+ 851              		.loc 1 184 5 is_stmt 1 view .LVU286
+ 185:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 852              		.loc 1 185 5 view .LVU287
+ 853              	.LVL139:
+ 854              		.loc 1 185 23 is_stmt 0 view .LVU288
+ 855 000a 0023     		movs	r3, #0
+ 856              	.LVL140:
+ 857              	.L77:
+ 858              		.loc 1 185 28 is_stmt 1 discriminator 1 view .LVU289
+ 859              		.loc 1 185 5 is_stmt 0 discriminator 1 view .LVU290
+ 860 000c 632B     		cmp	r3, #99
+ 861 000e 04DC     		bgt	.L82
+ 186:Src/USB/Driver_USBdrive.c ****         wideLongName[letterNember+1] = *L"\0";
+ 862              		.loc 1 186 9 is_stmt 1 discriminator 3 view .LVU291
+ 863              		.loc 1 186 21 is_stmt 0 discriminator 3 view .LVU292
+ 864 0010 0133     		adds	r3, r3, #1
+ 865              	.LVL141:
+ 866              		.loc 1 186 38 discriminator 3 view .LVU293
+ 867 0012 0022     		movs	r2, #0
+ 868 0014 45F82320 		str	r2, [r5, r3, lsl #2]
+ 185:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 869              		.loc 1 185 65 is_stmt 1 discriminator 3 view .LVU294
+ 870              	.LVL142:
+ 185:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 871              		.loc 1 185 65 is_stmt 0 discriminator 3 view .LVU295
+ 872 0018 F8E7     		b	.L77
+ 873              	.L82:
+ 187:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 874              		.loc 1 187 23 view .LVU296
+ 875 001a 0023     		movs	r3, #0
+ 876              	.LVL143:
+ 877              	.L79:
+ 878              		.loc 1 187 28 is_stmt 1 discriminator 1 view .LVU297
+ 879              		.loc 1 187 5 is_stmt 0 discriminator 1 view .LVU298
+ARM GAS  /tmp/ccR5Y2I8.s 			page 22
 
 
- 1352              		.cfi_startproc
- 1353              		@ args = 0, pretend = 0, frame = 0
- 1354              		@ frame_needed = 0, uses_anonymous_args = 0
- 1355 0000 08B5     		push	{r3, lr}
- 1356              	.LCFI9:
- 1357              		.cfi_def_cfa_offset 8
- 1358              		.cfi_offset 3, -8
- 1359              		.cfi_offset 14, -4
- 199:Src/USB/Driver_USBdrive.c ****     if (getName_USBdrive()[0] == '\0')
- 1360              		.loc 1 199 0
- 1361 0002 FFF7FEFF 		bl	getName_USBdrive
- 1362              	.LVL164:
- 1363 0006 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
- 1364 0008 3BB1     		cbz	r3, .L167
- 200:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_EMPTY;
- 201:Src/USB/Driver_USBdrive.c ****     if (fileInformation.fattrib == AM_DIR)
- 1365              		.loc 1 201 0
- 1366 000a 054B     		ldr	r3, .L171
- 1367 000c 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
- 1368 000e 102B     		cmp	r3, #16
- 1369 0010 01D0     		beq	.L170
- 202:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_DIRECTORY;
- 203:Src/USB/Driver_USBdrive.c ****     return ITEM_IS_FILE;
- 1370              		.loc 1 203 0
- 1371 0012 0120     		movs	r0, #1
- 1372 0014 02E0     		b	.L166
- 1373              	.L170:
- 202:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_DIRECTORY;
- 1374              		.loc 1 202 0
- 1375 0016 0220     		movs	r0, #2
- 1376 0018 00E0     		b	.L166
- 1377              	.L167:
- 200:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_EMPTY;
- 1378              		.loc 1 200 0
- 1379 001a 0020     		movs	r0, #0
- 1380              	.L166:
- 204:Src/USB/Driver_USBdrive.c **** }
- 1381              		.loc 1 204 0
- 1382 001c 08BD     		pop	{r3, pc}
- 1383              	.L172:
- 1384 001e 00BF     		.align	2
- 1385              	.L171:
- 1386 0020 00000000 		.word	.LANCHOR3
- 1387              		.cfi_endproc
- 1388              	.LFE80:
- 1390              		.section	.text.openFile_USBdrive,"ax",%progbits
- 1391              		.align	1
- 1392              		.global	openFile_USBdrive
- 1393              		.syntax unified
- 1394              		.thumb
- 1395              		.thumb_func
- 1396              		.fpu softvfp
- 1398              	openFile_USBdrive:
- 1399              	.LFB81:
- 205:Src/USB/Driver_USBdrive.c **** 
- 206:Src/USB/Driver_USBdrive.c **** void openFile_USBdrive(const TCHAR* pathToFile)
- 207:Src/USB/Driver_USBdrive.c **** {
-ARM GAS  /tmp/ccKP1uaH.s 			page 30
+ 880 001c 632B     		cmp	r3, #99
+ 881 001e 07DC     		bgt	.L83
+ 188:Src/USB/Driver_USBdrive.c ****         wideLongName[letterNember+1] = TCHAR2wchar_t(longName[letterNember]);
+ 882              		.loc 1 188 9 is_stmt 1 discriminator 3 view .LVU299
+ 883              		.loc 1 188 21 is_stmt 0 discriminator 3 view .LVU300
+ 884 0020 5C1C     		adds	r4, r3, #1
+ 885              		.loc 1 188 40 discriminator 3 view .LVU301
+ 886 0022 F05C     		ldrb	r0, [r6, r3]	@ zero_extendqisi2
+ 887 0024 FFF7FEFF 		bl	TCHAR2wchar_t
+ 888              	.LVL144:
+ 889              		.loc 1 188 38 discriminator 3 view .LVU302
+ 890 0028 45F82400 		str	r0, [r5, r4, lsl #2]
+ 187:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 891              		.loc 1 187 65 is_stmt 1 discriminator 3 view .LVU303
+ 187:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 892              		.loc 1 187 77 is_stmt 0 discriminator 3 view .LVU304
+ 893 002c 2346     		mov	r3, r4
+ 894              	.LVL145:
+ 187:Src/USB/Driver_USBdrive.c ****     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH; letterNember++)
+ 895              		.loc 1 187 77 discriminator 3 view .LVU305
+ 896 002e F5E7     		b	.L79
+ 897              	.LVL146:
+ 898              	.L83:
+ 189:Src/USB/Driver_USBdrive.c **** }
+ 899              		.loc 1 189 1 view .LVU306
+ 900 0030 70BD     		pop	{r4, r5, r6, pc}
+ 901              		.loc 1 189 1 view .LVU307
+ 902              		.cfi_endproc
+ 903              	.LFE80:
+ 905              		.section	.text.createDriver_USBdrive,"ax",%progbits
+ 906              		.align	1
+ 907              		.global	createDriver_USBdrive
+ 908              		.syntax unified
+ 909              		.thumb
+ 910              		.thumb_func
+ 911              		.fpu softvfp
+ 913              	createDriver_USBdrive:
+ 914              	.LFB68:
+  20:Src/USB/Driver_USBdrive.c ****     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
+ 915              		.loc 1 20 1 is_stmt 1 view -0
+ 916              		.cfi_startproc
+ 917              		@ args = 0, pretend = 0, frame = 0
+ 918              		@ frame_needed = 0, uses_anonymous_args = 0
+ 919 0000 10B5     		push	{r4, lr}
+ 920              	.LCFI2:
+ 921              		.cfi_def_cfa_offset 8
+ 922              		.cfi_offset 4, -8
+ 923              		.cfi_offset 14, -4
+  21:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
+ 924              		.loc 1 21 5 view .LVU309
+  21:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
+ 925              		.loc 1 21 35 is_stmt 0 view .LVU310
+ 926 0002 0024     		movs	r4, #0
+ 927 0004 084B     		ldr	r3, .L86
+ 928 0006 1C70     		strb	r4, [r3]
+  22:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.fname, "%s", "");
+ 929              		.loc 1 22 5 is_stmt 1 view .LVU311
+ARM GAS  /tmp/ccR5Y2I8.s 			page 23
 
 
- 1400              		.loc 1 207 0
- 1401              		.cfi_startproc
- 1402              		@ args = 0, pretend = 0, frame = 0
- 1403              		@ frame_needed = 0, uses_anonymous_args = 0
- 1404              	.LVL165:
- 1405 0000 10B5     		push	{r4, lr}
- 1406              	.LCFI10:
- 1407              		.cfi_def_cfa_offset 8
- 1408              		.cfi_offset 4, -8
- 1409              		.cfi_offset 14, -4
- 1410 0002 0446     		mov	r4, r0
- 208:Src/USB/Driver_USBdrive.c ****     f_close(&file);
- 1411              		.loc 1 208 0
- 1412 0004 0648     		ldr	r0, .L177
- 1413              	.LVL166:
- 1414 0006 FFF7FEFF 		bl	f_close
- 1415              	.LVL167:
- 209:Src/USB/Driver_USBdrive.c **** 
- 210:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 1416              		.loc 1 210 0
- 1417 000a 064B     		ldr	r3, .L177+4
- 1418 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1419 000e 03B9     		cbnz	r3, .L176
- 1420              	.L173:
- 211:Src/USB/Driver_USBdrive.c ****         return;
- 212:Src/USB/Driver_USBdrive.c **** 
- 213:Src/USB/Driver_USBdrive.c ****     f_open(&file, pathToFile, FA_READ);
+ 930 0008 0848     		ldr	r0, .L86+4
+ 931 000a 40F8044B 		str	r4, [r0], #4
+ 932 000e 6022     		movs	r2, #96
+ 933 0010 2146     		mov	r1, r4
+ 934 0012 FFF7FEFF 		bl	memset
+ 935              	.LVL147:
+  23:Src/USB/Driver_USBdrive.c ****     fileInformation.lfsize = _MAX_LFN;
+ 936              		.loc 1 23 5 view .LVU312
+ 937 0016 064B     		ldr	r3, .L86+8
+ 938 0018 5C72     		strb	r4, [r3, #9]
+  24:Src/USB/Driver_USBdrive.c ****     fileInformation.lfname = fname_arr;
+ 939              		.loc 1 24 5 view .LVU313
+  24:Src/USB/Driver_USBdrive.c ****     fileInformation.lfname = fname_arr;
+ 940              		.loc 1 24 28 is_stmt 0 view .LVU314
+ 941 001a FF22     		movs	r2, #255
+ 942 001c DA61     		str	r2, [r3, #28]
+  25:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.lfname, "%s", "");
+ 943              		.loc 1 25 5 is_stmt 1 view .LVU315
+  25:Src/USB/Driver_USBdrive.c ****     sprintf(fileInformation.lfname, "%s", "");
+ 944              		.loc 1 25 28 is_stmt 0 view .LVU316
+ 945 001e 054A     		ldr	r2, .L86+12
+ 946 0020 9A61     		str	r2, [r3, #24]
+  26:Src/USB/Driver_USBdrive.c **** }
+ 947              		.loc 1 26 5 is_stmt 1 view .LVU317
+ 948 0022 1470     		strb	r4, [r2]
+  27:Src/USB/Driver_USBdrive.c **** 
+ 949              		.loc 1 27 1 is_stmt 0 view .LVU318
+ 950 0024 10BD     		pop	{r4, pc}
+ 951              	.L87:
+ 952 0026 00BF     		.align	2
+ 953              	.L86:
+ 954 0028 00000000 		.word	.LANCHOR1
+ 955 002c 00000000 		.word	.LANCHOR0
+ 956 0030 00000000 		.word	.LANCHOR2
+ 957 0034 00000000 		.word	.LANCHOR3
+ 958              		.cfi_endproc
+ 959              	.LFE68:
+ 961              		.section	.text.mount_USBdrive,"ax",%progbits
+ 962              		.align	1
+ 963              		.global	mount_USBdrive
+ 964              		.syntax unified
+ 965              		.thumb
+ 966              		.thumb_func
+ 967              		.fpu softvfp
+ 969              	mount_USBdrive:
+ 970              	.LFB69:
+  30:Src/USB/Driver_USBdrive.c ****     if(currentMountedStatus_USBdrive == MOUNTED_USBDRIVE)
+ 971              		.loc 1 30 1 is_stmt 1 view -0
+ 972              		.cfi_startproc
+ 973              		@ args = 0, pretend = 0, frame = 0
+ 974              		@ frame_needed = 0, uses_anonymous_args = 0
+ 975 0000 08B5     		push	{r3, lr}
+ 976              	.LCFI3:
+ 977              		.cfi_def_cfa_offset 8
+ 978              		.cfi_offset 3, -8
+ 979              		.cfi_offset 14, -4
+  31:Src/USB/Driver_USBdrive.c ****         return;
+ARM GAS  /tmp/ccR5Y2I8.s 			page 24
+
+
+ 980              		.loc 1 31 5 view .LVU320
+  31:Src/USB/Driver_USBdrive.c ****         return;
+ 981              		.loc 1 31 38 is_stmt 0 view .LVU321
+ 982 0002 0B4B     		ldr	r3, .L93
+ 983 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  31:Src/USB/Driver_USBdrive.c ****         return;
+ 984              		.loc 1 31 7 view .LVU322
+ 985 0006 012B     		cmp	r3, #1
+ 986 0008 08D0     		beq	.L88
+  34:Src/USB/Driver_USBdrive.c ****     {
+ 987              		.loc 1 34 5 is_stmt 1 view .LVU323
+  34:Src/USB/Driver_USBdrive.c ****     {
+ 988              		.loc 1 34 8 is_stmt 0 view .LVU324
+ 989 000a 0022     		movs	r2, #0
+ 990 000c 0949     		ldr	r1, .L93+4
+ 991 000e 0A48     		ldr	r0, .L93+8
+ 992 0010 FFF7FEFF 		bl	f_mount
+ 993              	.LVL148:
+  34:Src/USB/Driver_USBdrive.c ****     {
+ 994              		.loc 1 34 7 view .LVU325
+ 995 0014 18B1     		cbz	r0, .L92
+  41:Src/USB/Driver_USBdrive.c **** }
+ 996              		.loc 1 41 5 is_stmt 1 view .LVU326
+  41:Src/USB/Driver_USBdrive.c **** }
+ 997              		.loc 1 41 35 is_stmt 0 view .LVU327
+ 998 0016 064B     		ldr	r3, .L93
+ 999 0018 0022     		movs	r2, #0
+ 1000 001a 1A70     		strb	r2, [r3]
+ 1001              	.L88:
+  42:Src/USB/Driver_USBdrive.c **** 
+ 1002              		.loc 1 42 1 view .LVU328
+ 1003 001c 08BD     		pop	{r3, pc}
+ 1004              	.L92:
+  36:Src/USB/Driver_USBdrive.c ****         sprintf(path, "%s", USBHPath);
+ 1005              		.loc 1 36 9 is_stmt 1 view .LVU329
+  36:Src/USB/Driver_USBdrive.c ****         sprintf(path, "%s", USBHPath);
+ 1006              		.loc 1 36 39 is_stmt 0 view .LVU330
+ 1007 001e 044B     		ldr	r3, .L93
+ 1008 0020 0122     		movs	r2, #1
+ 1009 0022 1A70     		strb	r2, [r3]
+  37:Src/USB/Driver_USBdrive.c ****         return;
+ 1010              		.loc 1 37 9 is_stmt 1 view .LVU331
+ 1011 0024 0349     		ldr	r1, .L93+4
+ 1012 0026 0548     		ldr	r0, .L93+12
+ 1013 0028 FFF7FEFF 		bl	strcpy
+ 1014              	.LVL149:
+  38:Src/USB/Driver_USBdrive.c ****     }
+ 1015              		.loc 1 38 9 view .LVU332
+ 1016 002c F6E7     		b	.L88
+ 1017              	.L94:
+ 1018 002e 00BF     		.align	2
+ 1019              	.L93:
+ 1020 0030 00000000 		.word	.LANCHOR1
+ 1021 0034 00000000 		.word	USBHPath
+ 1022 0038 00000000 		.word	USBDISKFatFs
+ 1023 003c 00000000 		.word	.LANCHOR0
+ 1024              		.cfi_endproc
+ARM GAS  /tmp/ccR5Y2I8.s 			page 25
+
+
+ 1025              	.LFE69:
+ 1027              		.section	.rodata.unmount_USBdrive.str1.4,"aMS",%progbits,1
+ 1028              		.align	2
+ 1029              	.LC0:
+ 1030 0000 256300   		.ascii	"%c\000"
+ 1031              		.section	.text.unmount_USBdrive,"ax",%progbits
+ 1032              		.align	1
+ 1033              		.global	unmount_USBdrive
+ 1034              		.syntax unified
+ 1035              		.thumb
+ 1036              		.thumb_func
+ 1037              		.fpu softvfp
+ 1039              	unmount_USBdrive:
+ 1040              	.LFB70:
+  45:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+ 1041              		.loc 1 45 1 view -0
+ 1042              		.cfi_startproc
+ 1043              		@ args = 0, pretend = 0, frame = 0
+ 1044              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1045 0000 08B5     		push	{r3, lr}
+ 1046              	.LCFI4:
+ 1047              		.cfi_def_cfa_offset 8
+ 1048              		.cfi_offset 3, -8
+ 1049              		.cfi_offset 14, -4
+  46:Src/USB/Driver_USBdrive.c ****         return;
+ 1050              		.loc 1 46 5 view .LVU334
+  46:Src/USB/Driver_USBdrive.c ****         return;
+ 1051              		.loc 1 46 39 is_stmt 0 view .LVU335
+ 1052 0002 0D4B     		ldr	r3, .L100
+ 1053 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46:Src/USB/Driver_USBdrive.c ****         return;
+ 1054              		.loc 1 46 8 view .LVU336
+ 1055 0006 03B9     		cbnz	r3, .L99
+ 1056              	.L95:
+  55:Src/USB/Driver_USBdrive.c **** 
+ 1057              		.loc 1 55 1 view .LVU337
+ 1058 0008 08BD     		pop	{r3, pc}
+ 1059              	.L99:
+  49:Src/USB/Driver_USBdrive.c ****     memcpy(path, zeroPath_USBdriver, PATH_LENGTH);
+ 1060              		.loc 1 49 5 is_stmt 1 view .LVU338
+ 1061 000a 0022     		movs	r2, #0
+ 1062 000c 0B49     		ldr	r1, .L100+4
+ 1063 000e 0C48     		ldr	r0, .L100+8
+ 1064 0010 FFF7FEFF 		bl	sprintf
+ 1065              	.LVL150:
+  50:Src/USB/Driver_USBdrive.c **** 
+ 1066              		.loc 1 50 5 view .LVU339
+ 1067 0014 0021     		movs	r1, #0
+ 1068 0016 0B48     		ldr	r0, .L100+12
+ 1069 0018 40F8041B 		str	r1, [r0], #4
+ 1070 001c 6022     		movs	r2, #96
+ 1071 001e FFF7FEFF 		bl	memset
+ 1072              	.LVL151:
+  52:Src/USB/Driver_USBdrive.c **** 
+ 1073              		.loc 1 52 5 view .LVU340
+ 1074              	.L97:
+  52:Src/USB/Driver_USBdrive.c **** 
+ARM GAS  /tmp/ccR5Y2I8.s 			page 26
+
+
+ 1075              		.loc 1 52 50 discriminator 1 view .LVU341
+  52:Src/USB/Driver_USBdrive.c **** 
+ 1076              		.loc 1 52 11 discriminator 1 view .LVU342
+  52:Src/USB/Driver_USBdrive.c **** 
+ 1077              		.loc 1 52 12 is_stmt 0 discriminator 1 view .LVU343
+ 1078 0022 0022     		movs	r2, #0
+ 1079 0024 0649     		ldr	r1, .L100+8
+ 1080 0026 1046     		mov	r0, r2
+ 1081 0028 FFF7FEFF 		bl	f_mount
+ 1082              	.LVL152:
+  52:Src/USB/Driver_USBdrive.c **** 
+ 1083              		.loc 1 52 11 discriminator 1 view .LVU344
+ 1084 002c 0028     		cmp	r0, #0
+ 1085 002e F8D1     		bne	.L97
+  52:Src/USB/Driver_USBdrive.c **** 
+ 1086              		.loc 1 52 51 is_stmt 1 discriminator 2 view .LVU345
+  54:Src/USB/Driver_USBdrive.c **** }
+ 1087              		.loc 1 54 5 discriminator 2 view .LVU346
+  54:Src/USB/Driver_USBdrive.c **** }
+ 1088              		.loc 1 54 35 is_stmt 0 discriminator 2 view .LVU347
+ 1089 0030 014B     		ldr	r3, .L100
+ 1090 0032 0022     		movs	r2, #0
+ 1091 0034 1A70     		strb	r2, [r3]
+ 1092 0036 E7E7     		b	.L95
+ 1093              	.L101:
+ 1094              		.align	2
+ 1095              	.L100:
+ 1096 0038 00000000 		.word	.LANCHOR1
+ 1097 003c 00000000 		.word	.LC0
+ 1098 0040 00000000 		.word	USBHPath
+ 1099 0044 00000000 		.word	.LANCHOR0
+ 1100              		.cfi_endproc
+ 1101              	.LFE70:
+ 1103              		.section	.text.getMountedStatus,"ax",%progbits
+ 1104              		.align	1
+ 1105              		.global	getMountedStatus
+ 1106              		.syntax unified
+ 1107              		.thumb
+ 1108              		.thumb_func
+ 1109              		.fpu softvfp
+ 1111              	getMountedStatus:
+ 1112              	.LFB71:
+  57:Src/USB/Driver_USBdrive.c **** 
+ 1113              		.loc 1 57 47 is_stmt 1 view -0
+ 1114              		.cfi_startproc
+ 1115              		@ args = 0, pretend = 0, frame = 0
+ 1116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1117              		@ link register save eliminated.
+  57:Src/USB/Driver_USBdrive.c **** 
+ 1118              		.loc 1 57 49 view .LVU349
+  57:Src/USB/Driver_USBdrive.c **** 
+ 1119              		.loc 1 57 1 is_stmt 0 view .LVU350
+ 1120 0000 014B     		ldr	r3, .L103
+ 1121 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 1122 0004 7047     		bx	lr
+ 1123              	.L104:
+ 1124 0006 00BF     		.align	2
+ARM GAS  /tmp/ccR5Y2I8.s 			page 27
+
+
+ 1125              	.L103:
+ 1126 0008 00000000 		.word	.LANCHOR1
+ 1127              		.cfi_endproc
+ 1128              	.LFE71:
+ 1130              		.section	.text.getPath_USBdrive,"ax",%progbits
+ 1131              		.align	1
+ 1132              		.global	getPath_USBdrive
+ 1133              		.syntax unified
+ 1134              		.thumb
+ 1135              		.thumb_func
+ 1136              		.fpu softvfp
+ 1138              	getPath_USBdrive:
+ 1139              	.LFB73:
+ 132:Src/USB/Driver_USBdrive.c **** 
+ 1140              		.loc 1 132 36 is_stmt 1 view -0
+ 1141              		.cfi_startproc
+ 1142              		@ args = 0, pretend = 0, frame = 0
+ 1143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1144              		@ link register save eliminated.
+ 132:Src/USB/Driver_USBdrive.c **** 
+ 1145              		.loc 1 132 38 view .LVU352
+ 132:Src/USB/Driver_USBdrive.c **** 
+ 1146              		.loc 1 132 1 is_stmt 0 view .LVU353
+ 1147 0000 0048     		ldr	r0, .L106
+ 1148 0002 7047     		bx	lr
+ 1149              	.L107:
+ 1150              		.align	2
+ 1151              	.L106:
+ 1152 0004 00000000 		.word	.LANCHOR0
+ 1153              		.cfi_endproc
+ 1154              	.LFE73:
+ 1156              		.section	.text.getWidePath_USBdrive,"ax",%progbits
+ 1157              		.align	1
+ 1158              		.global	getWidePath_USBdrive
+ 1159              		.syntax unified
+ 1160              		.thumb
+ 1161              		.thumb_func
+ 1162              		.fpu softvfp
+ 1164              	getWidePath_USBdrive:
+ 1165              	.LFB75:
+ 143:Src/USB/Driver_USBdrive.c ****     convertPathToWidePath(widePath);
+ 1166              		.loc 1 143 1 is_stmt 1 view -0
+ 1167              		.cfi_startproc
+ 1168              		@ args = 0, pretend = 0, frame = 0
+ 1169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1170 0000 10B5     		push	{r4, lr}
+ 1171              	.LCFI5:
+ 1172              		.cfi_def_cfa_offset 8
+ 1173              		.cfi_offset 4, -8
+ 1174              		.cfi_offset 14, -4
+ 144:Src/USB/Driver_USBdrive.c ****     return (const wchar_t*) widePath;
+ 1175              		.loc 1 144 5 view .LVU355
+ 1176 0002 034C     		ldr	r4, .L110
+ 1177 0004 2046     		mov	r0, r4
+ 1178 0006 FFF7FEFF 		bl	convertPathToWidePath
+ 1179              	.LVL153:
+ 145:Src/USB/Driver_USBdrive.c **** }
+ARM GAS  /tmp/ccR5Y2I8.s 			page 28
+
+
+ 1180              		.loc 1 145 5 view .LVU356
+ 146:Src/USB/Driver_USBdrive.c **** 
+ 1181              		.loc 1 146 1 is_stmt 0 view .LVU357
+ 1182 000a 2046     		mov	r0, r4
+ 1183 000c 10BD     		pop	{r4, pc}
+ 1184              	.L111:
+ 1185 000e 00BF     		.align	2
+ 1186              	.L110:
+ 1187 0010 00000000 		.word	.LANCHOR4
+ 1188              		.cfi_endproc
+ 1189              	.LFE75:
+ 1191              		.section	.text.openDirectory_USBdrive,"ax",%progbits
+ 1192              		.align	1
+ 1193              		.global	openDirectory_USBdrive
+ 1194              		.syntax unified
+ 1195              		.thumb
+ 1196              		.thumb_func
+ 1197              		.fpu softvfp
+ 1199              	openDirectory_USBdrive:
+ 1200              	.LVL154:
+ 1201              	.LFB76:
+ 150:Src/USB/Driver_USBdrive.c ****     f_closedir(&directory);
+ 1202              		.loc 1 150 1 is_stmt 1 view -0
+ 1203              		.cfi_startproc
+ 1204              		@ args = 0, pretend = 0, frame = 0
+ 1205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150:Src/USB/Driver_USBdrive.c ****     f_closedir(&directory);
+ 1206              		.loc 1 150 1 is_stmt 0 view .LVU359
+ 1207 0000 10B5     		push	{r4, lr}
+ 1208              	.LCFI6:
+ 1209              		.cfi_def_cfa_offset 8
+ 1210              		.cfi_offset 4, -8
+ 1211              		.cfi_offset 14, -4
+ 1212 0002 0446     		mov	r4, r0
+ 151:Src/USB/Driver_USBdrive.c **** 
+ 1213              		.loc 1 151 5 is_stmt 1 view .LVU360
+ 1214 0004 0A48     		ldr	r0, .L118
+ 1215              	.LVL155:
+ 151:Src/USB/Driver_USBdrive.c **** 
+ 1216              		.loc 1 151 5 is_stmt 0 view .LVU361
+ 1217 0006 FFF7FEFF 		bl	f_closedir
+ 1218              	.LVL156:
+ 153:Src/USB/Driver_USBdrive.c ****         return;
+ 1219              		.loc 1 153 5 is_stmt 1 view .LVU362
+ 153:Src/USB/Driver_USBdrive.c ****         return;
+ 1220              		.loc 1 153 39 is_stmt 0 view .LVU363
+ 1221 000a 0A4B     		ldr	r3, .L118+4
+ 1222 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 153:Src/USB/Driver_USBdrive.c ****         return;
+ 1223              		.loc 1 153 8 view .LVU364
+ 1224 000e 03B9     		cbnz	r3, .L116
+ 1225              	.L112:
+ 164:Src/USB/Driver_USBdrive.c **** 
+ 1226              		.loc 1 164 1 view .LVU365
+ 1227 0010 10BD     		pop	{r4, pc}
+ 1228              	.LVL157:
+ 1229              	.L116:
+ARM GAS  /tmp/ccR5Y2I8.s 			page 29
+
+
+ 156:Src/USB/Driver_USBdrive.c ****     {
+ 1230              		.loc 1 156 5 is_stmt 1 view .LVU366
+ 156:Src/USB/Driver_USBdrive.c ****     {
+ 1231              		.loc 1 156 8 is_stmt 0 view .LVU367
+ 1232 0012 2146     		mov	r1, r4
+ 1233 0014 0648     		ldr	r0, .L118
+ 1234 0016 FFF7FEFF 		bl	f_opendir
+ 1235              	.LVL158:
+ 156:Src/USB/Driver_USBdrive.c ****     {
+ 1236              		.loc 1 156 7 view .LVU368
+ 1237 001a 20B9     		cbnz	r0, .L117
+ 162:Src/USB/Driver_USBdrive.c **** 
+ 1238              		.loc 1 162 5 is_stmt 1 view .LVU369
+ 1239 001c 2146     		mov	r1, r4
+ 1240 001e 0648     		ldr	r0, .L118+8
+ 1241 0020 FFF7FEFF 		bl	strcpy
+ 1242              	.LVL159:
+ 1243 0024 F4E7     		b	.L112
+ 1244              	.L117:
+ 158:Src/USB/Driver_USBdrive.c ****         return;
+ 1245              		.loc 1 158 9 view .LVU370
+ 1246 0026 0449     		ldr	r1, .L118+8
+ 1247 0028 0148     		ldr	r0, .L118
+ 1248 002a FFF7FEFF 		bl	f_opendir
+ 1249              	.LVL160:
+ 159:Src/USB/Driver_USBdrive.c ****     }
+ 1250              		.loc 1 159 9 view .LVU371
+ 1251 002e EFE7     		b	.L112
+ 1252              	.L119:
+ 1253              		.align	2
+ 1254              	.L118:
+ 1255 0030 00000000 		.word	directory
+ 1256 0034 00000000 		.word	.LANCHOR1
+ 1257 0038 00000000 		.word	.LANCHOR0
+ 1258              		.cfi_endproc
+ 1259              	.LFE76:
+ 1261              		.section	.text.readItem_USBdrive,"ax",%progbits
+ 1262              		.align	1
+ 1263              		.global	readItem_USBdrive
+ 1264              		.syntax unified
+ 1265              		.thumb
+ 1266              		.thumb_func
+ 1267              		.fpu softvfp
+ 1269              	readItem_USBdrive:
+ 1270              	.LFB77:
+ 167:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+ 1271              		.loc 1 167 1 view -0
+ 1272              		.cfi_startproc
+ 1273              		@ args = 0, pretend = 0, frame = 0
+ 1274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1275 0000 08B5     		push	{r3, lr}
+ 1276              	.LCFI7:
+ 1277              		.cfi_def_cfa_offset 8
+ 1278              		.cfi_offset 3, -8
+ 1279              		.cfi_offset 14, -4
+ 168:Src/USB/Driver_USBdrive.c ****         return;
+ 1280              		.loc 1 168 5 view .LVU373
+ARM GAS  /tmp/ccR5Y2I8.s 			page 30
+
+
+ 168:Src/USB/Driver_USBdrive.c ****         return;
+ 1281              		.loc 1 168 39 is_stmt 0 view .LVU374
+ 1282 0002 044B     		ldr	r3, .L124
+ 1283 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 168:Src/USB/Driver_USBdrive.c ****         return;
+ 1284              		.loc 1 168 8 view .LVU375
+ 1285 0006 03B9     		cbnz	r3, .L123
+ 1286              	.L120:
+ 173:Src/USB/Driver_USBdrive.c **** 
+ 1287              		.loc 1 173 1 view .LVU376
+ 1288 0008 08BD     		pop	{r3, pc}
+ 1289              	.L123:
+ 171:Src/USB/Driver_USBdrive.c ****         return;
+ 1290              		.loc 1 171 5 is_stmt 1 view .LVU377
+ 171:Src/USB/Driver_USBdrive.c ****         return;
+ 1291              		.loc 1 171 8 is_stmt 0 view .LVU378
+ 1292 000a 0349     		ldr	r1, .L124+4
+ 1293 000c 0348     		ldr	r0, .L124+8
+ 1294 000e FFF7FEFF 		bl	f_readdir
+ 1295              	.LVL161:
+ 1296 0012 F9E7     		b	.L120
+ 1297              	.L125:
+ 1298              		.align	2
+ 1299              	.L124:
+ 1300 0014 00000000 		.word	.LANCHOR1
+ 1301 0018 00000000 		.word	.LANCHOR2
+ 1302 001c 00000000 		.word	directory
+ 1303              		.cfi_endproc
+ 1304              	.LFE77:
+ 1306              		.section	.text.getName_USBdrive,"ax",%progbits
+ 1307              		.align	1
+ 1308              		.global	getName_USBdrive
+ 1309              		.syntax unified
+ 1310              		.thumb
+ 1311              		.thumb_func
+ 1312              		.fpu softvfp
+ 1314              	getName_USBdrive:
+ 1315              	.LFB78:
+ 175:Src/USB/Driver_USBdrive.c **** 
+ 1316              		.loc 1 175 37 is_stmt 1 view -0
+ 1317              		.cfi_startproc
+ 1318              		@ args = 0, pretend = 0, frame = 0
+ 1319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1320              		@ link register save eliminated.
+ 175:Src/USB/Driver_USBdrive.c **** 
+ 1321              		.loc 1 175 39 view .LVU380
+ 175:Src/USB/Driver_USBdrive.c **** 
+ 1322              		.loc 1 175 1 is_stmt 0 view .LVU381
+ 1323 0000 0048     		ldr	r0, .L127
+ 1324 0002 7047     		bx	lr
+ 1325              	.L128:
+ 1326              		.align	2
+ 1327              	.L127:
+ 1328 0004 09000000 		.word	.LANCHOR2+9
+ 1329              		.cfi_endproc
+ 1330              	.LFE78:
+ 1332              		.section	.text.getLongName_USBdrive,"ax",%progbits
+ARM GAS  /tmp/ccR5Y2I8.s 			page 31
+
+
+ 1333              		.align	1
+ 1334              		.global	getLongName_USBdrive
+ 1335              		.syntax unified
+ 1336              		.thumb
+ 1337              		.thumb_func
+ 1338              		.fpu softvfp
+ 1340              	getLongName_USBdrive:
+ 1341              	.LFB79:
+ 177:Src/USB/Driver_USBdrive.c **** 
+ 1342              		.loc 1 177 41 is_stmt 1 view -0
+ 1343              		.cfi_startproc
+ 1344              		@ args = 0, pretend = 0, frame = 0
+ 1345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1346              		@ link register save eliminated.
+ 177:Src/USB/Driver_USBdrive.c **** 
+ 1347              		.loc 1 177 43 view .LVU383
+ 177:Src/USB/Driver_USBdrive.c **** 
+ 1348              		.loc 1 177 1 is_stmt 0 view .LVU384
+ 1349 0000 014B     		ldr	r3, .L130
+ 1350 0002 9869     		ldr	r0, [r3, #24]
+ 1351 0004 7047     		bx	lr
+ 1352              	.L131:
+ 1353 0006 00BF     		.align	2
+ 1354              	.L130:
+ 1355 0008 00000000 		.word	.LANCHOR2
+ 1356              		.cfi_endproc
+ 1357              	.LFE79:
+ 1359              		.section	.text.getWideLongName_USBdrive,"ax",%progbits
+ 1360              		.align	1
+ 1361              		.global	getWideLongName_USBdrive
+ 1362              		.syntax unified
+ 1363              		.thumb
+ 1364              		.thumb_func
+ 1365              		.fpu softvfp
+ 1367              	getWideLongName_USBdrive:
+ 1368              	.LFB81:
+ 190:Src/USB/Driver_USBdrive.c **** 
+ 191:Src/USB/Driver_USBdrive.c **** static wchar_t outputWideName[MAX_WIDE_NAME_LENGTH];
+ 192:Src/USB/Driver_USBdrive.c **** const wchar_t* getWideLongName_USBdrive(void)
+ 193:Src/USB/Driver_USBdrive.c **** {
+ 1369              		.loc 1 193 1 is_stmt 1 view -0
+ 1370              		.cfi_startproc
+ 1371              		@ args = 0, pretend = 0, frame = 0
+ 1372              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1373 0000 10B5     		push	{r4, lr}
+ 1374              	.LCFI8:
+ 1375              		.cfi_def_cfa_offset 8
+ 1376              		.cfi_offset 4, -8
+ 1377              		.cfi_offset 14, -4
+ 194:Src/USB/Driver_USBdrive.c ****     convertLongNameToWideLongName(outputWideName, fileInformation.lfname);
+ 1378              		.loc 1 194 5 view .LVU386
+ 1379 0002 044C     		ldr	r4, .L134
+ 1380 0004 044B     		ldr	r3, .L134+4
+ 1381 0006 9969     		ldr	r1, [r3, #24]
+ 1382 0008 2046     		mov	r0, r4
+ 1383 000a FFF7FEFF 		bl	convertLongNameToWideLongName
+ 1384              	.LVL162:
+ARM GAS  /tmp/ccR5Y2I8.s 			page 32
+
+
+ 195:Src/USB/Driver_USBdrive.c ****     return (const wchar_t*) outputWideName;
+ 1385              		.loc 1 195 5 view .LVU387
+ 196:Src/USB/Driver_USBdrive.c **** }
+ 1386              		.loc 1 196 1 is_stmt 0 view .LVU388
+ 1387 000e 2046     		mov	r0, r4
+ 1388 0010 10BD     		pop	{r4, pc}
+ 1389              	.L135:
+ 1390 0012 00BF     		.align	2
+ 1391              	.L134:
+ 1392 0014 00000000 		.word	.LANCHOR5
+ 1393 0018 00000000 		.word	.LANCHOR2
+ 1394              		.cfi_endproc
+ 1395              	.LFE81:
+ 1397              		.section	.text.getItemType_USBdrive,"ax",%progbits
+ 1398              		.align	1
+ 1399              		.global	getItemType_USBdrive
+ 1400              		.syntax unified
+ 1401              		.thumb
+ 1402              		.thumb_func
+ 1403              		.fpu softvfp
+ 1405              	getItemType_USBdrive:
+ 1406              	.LFB82:
+ 197:Src/USB/Driver_USBdrive.c **** 
+ 198:Src/USB/Driver_USBdrive.c **** itemType_USBdrive getItemType_USBdrive(void)
+ 199:Src/USB/Driver_USBdrive.c **** {
+ 1407              		.loc 1 199 1 is_stmt 1 view -0
+ 1408              		.cfi_startproc
+ 1409              		@ args = 0, pretend = 0, frame = 0
+ 1410              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1411 0000 08B5     		push	{r3, lr}
+ 1412              	.LCFI9:
+ 1413              		.cfi_def_cfa_offset 8
+ 1414              		.cfi_offset 3, -8
+ 1415              		.cfi_offset 14, -4
+ 200:Src/USB/Driver_USBdrive.c ****     if (getName_USBdrive()[0] == '\0')
+ 1416              		.loc 1 200 5 view .LVU390
+ 1417              		.loc 1 200 27 is_stmt 0 view .LVU391
+ 1418 0002 FFF7FEFF 		bl	getName_USBdrive
+ 1419              	.LVL163:
+ 1420 0006 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 1421              		.loc 1 200 8 view .LVU392
+ 1422 0008 20B1     		cbz	r0, .L137
+ 201:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_EMPTY;
+ 202:Src/USB/Driver_USBdrive.c ****     if (fileInformation.fattrib == AM_DIR)
+ 1423              		.loc 1 202 5 is_stmt 1 view .LVU393
+ 1424              		.loc 1 202 24 is_stmt 0 view .LVU394
+ 1425 000a 044B     		ldr	r3, .L140
+ 1426 000c 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+ 1427              		.loc 1 202 8 view .LVU395
+ 1428 000e 102B     		cmp	r3, #16
+ 1429 0010 01D0     		beq	.L138
+ 203:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_DIRECTORY;
+ 204:Src/USB/Driver_USBdrive.c ****     return ITEM_IS_FILE;
+ 1430              		.loc 1 204 12 view .LVU396
+ 1431 0012 0120     		movs	r0, #1
+ 1432              	.L137:
+ 205:Src/USB/Driver_USBdrive.c **** }
+ARM GAS  /tmp/ccR5Y2I8.s 			page 33
+
+
+ 1433              		.loc 1 205 1 view .LVU397
+ 1434 0014 08BD     		pop	{r3, pc}
+ 1435              	.L138:
+ 203:Src/USB/Driver_USBdrive.c ****         return ITEM_IS_DIRECTORY;
+ 1436              		.loc 1 203 16 view .LVU398
+ 1437 0016 0220     		movs	r0, #2
+ 1438 0018 FCE7     		b	.L137
+ 1439              	.L141:
+ 1440 001a 00BF     		.align	2
+ 1441              	.L140:
+ 1442 001c 00000000 		.word	.LANCHOR2
+ 1443              		.cfi_endproc
+ 1444              	.LFE82:
+ 1446              		.section	.text.openFile_USBdrive,"ax",%progbits
+ 1447              		.align	1
+ 1448              		.global	openFile_USBdrive
+ 1449              		.syntax unified
+ 1450              		.thumb
+ 1451              		.thumb_func
+ 1452              		.fpu softvfp
+ 1454              	openFile_USBdrive:
+ 1455              	.LVL164:
+ 1456              	.LFB83:
+ 206:Src/USB/Driver_USBdrive.c **** 
+ 207:Src/USB/Driver_USBdrive.c **** void openFile_USBdrive(const TCHAR* pathToFile)
+ 208:Src/USB/Driver_USBdrive.c **** {
+ 1457              		.loc 1 208 1 is_stmt 1 view -0
+ 1458              		.cfi_startproc
+ 1459              		@ args = 0, pretend = 0, frame = 0
+ 1460              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1461              		.loc 1 208 1 is_stmt 0 view .LVU400
+ 1462 0000 10B5     		push	{r4, lr}
+ 1463              	.LCFI10:
+ 1464              		.cfi_def_cfa_offset 8
+ 1465              		.cfi_offset 4, -8
+ 1466              		.cfi_offset 14, -4
+ 1467 0002 0446     		mov	r4, r0
+ 209:Src/USB/Driver_USBdrive.c ****     f_close(&file);
+ 1468              		.loc 1 209 5 is_stmt 1 view .LVU401
+ 1469 0004 0648     		ldr	r0, .L146
+ 1470              	.LVL165:
+ 1471              		.loc 1 209 5 is_stmt 0 view .LVU402
+ 1472 0006 FFF7FEFF 		bl	f_close
+ 1473              	.LVL166:
+ 210:Src/USB/Driver_USBdrive.c **** 
+ 211:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+ 1474              		.loc 1 211 5 is_stmt 1 view .LVU403
+ 1475              		.loc 1 211 39 is_stmt 0 view .LVU404
+ 1476 000a 064B     		ldr	r3, .L146+4
+ 1477 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1478              		.loc 1 211 8 view .LVU405
+ 1479 000e 03B9     		cbnz	r3, .L145
+ 1480              	.L142:
+ 212:Src/USB/Driver_USBdrive.c ****         return;
+ 213:Src/USB/Driver_USBdrive.c **** 
+ 214:Src/USB/Driver_USBdrive.c ****     f_open(&file, pathToFile, FA_READ);
+ 215:Src/USB/Driver_USBdrive.c **** }
+ARM GAS  /tmp/ccR5Y2I8.s 			page 34
+
+
+ 1481              		.loc 1 215 1 view .LVU406
+ 1482 0010 10BD     		pop	{r4, pc}
+ 1483              	.LVL167:
+ 1484              	.L145:
  214:Src/USB/Driver_USBdrive.c **** }
- 1421              		.loc 1 214 0
- 1422 0010 10BD     		pop	{r4, pc}
- 1423              	.LVL168:
- 1424              	.L176:
- 213:Src/USB/Driver_USBdrive.c **** }
- 1425              		.loc 1 213 0
- 1426 0012 0122     		movs	r2, #1
- 1427 0014 2146     		mov	r1, r4
- 1428 0016 0248     		ldr	r0, .L177
- 1429 0018 FFF7FEFF 		bl	f_open
- 1430              	.LVL169:
- 1431 001c F8E7     		b	.L173
- 1432              	.L178:
- 1433 001e 00BF     		.align	2
- 1434              	.L177:
- 1435 0020 00000000 		.word	file
- 1436 0024 00000000 		.word	.LANCHOR2
- 1437              		.cfi_endproc
- 1438              	.LFE81:
- 1440              		.section	.text.getStringFromFile_USBdrive,"ax",%progbits
- 1441              		.align	1
- 1442              		.global	getStringFromFile_USBdrive
- 1443              		.syntax unified
- 1444              		.thumb
- 1445              		.thumb_func
- 1446              		.fpu softvfp
- 1448              	getStringFromFile_USBdrive:
- 1449              	.LFB82:
- 215:Src/USB/Driver_USBdrive.c **** 
-ARM GAS  /tmp/ccKP1uaH.s 			page 31
+ 1485              		.loc 1 214 5 is_stmt 1 view .LVU407
+ 1486 0012 0122     		movs	r2, #1
+ 1487 0014 2146     		mov	r1, r4
+ 1488 0016 0248     		ldr	r0, .L146
+ 1489 0018 FFF7FEFF 		bl	f_open
+ 1490              	.LVL168:
+ 1491 001c F8E7     		b	.L142
+ 1492              	.L147:
+ 1493 001e 00BF     		.align	2
+ 1494              	.L146:
+ 1495 0020 00000000 		.word	file
+ 1496 0024 00000000 		.word	.LANCHOR1
+ 1497              		.cfi_endproc
+ 1498              	.LFE83:
+ 1500              		.section	.rodata.getStringFromFile_USBdrive.str1.4,"aMS",%progbits,1
+ 1501              		.align	2
+ 1502              	.LC1:
+ 1503 0000 00       		.ascii	"\000"
+ 1504              		.section	.text.getStringFromFile_USBdrive,"ax",%progbits
+ 1505              		.align	1
+ 1506              		.global	getStringFromFile_USBdrive
+ 1507              		.syntax unified
+ 1508              		.thumb
+ 1509              		.thumb_func
+ 1510              		.fpu softvfp
+ 1512              	getStringFromFile_USBdrive:
+ 1513              	.LFB84:
+ 216:Src/USB/Driver_USBdrive.c **** 
+ 217:Src/USB/Driver_USBdrive.c **** static TCHAR stringFromFile[STRING_FROM_FILE_LENGTH];
+ 218:Src/USB/Driver_USBdrive.c **** const TCHAR* getStringFromFile_USBdrive(void)
+ 219:Src/USB/Driver_USBdrive.c **** {
+ 1514              		.loc 1 219 1 view -0
+ 1515              		.cfi_startproc
+ 1516              		@ args = 0, pretend = 0, frame = 0
+ 1517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
+ 1518              		.loc 1 220 5 view .LVU409
+ 1519              		.loc 1 220 39 is_stmt 0 view .LVU410
+ 1520 0000 064B     		ldr	r3, .L156
+ 1521 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1522              		.loc 1 220 8 view .LVU411
+ 1523 0004 0BB9     		cbnz	r3, .L155
+ 221:Src/USB/Driver_USBdrive.c ****         return "";
+ 1524              		.loc 1 221 16 view .LVU412
+ 1525 0006 0648     		ldr	r0, .L156+4
+ 222:Src/USB/Driver_USBdrive.c **** 
+ 223:Src/USB/Driver_USBdrive.c ****     f_gets(stringFromFile, STRING_FROM_FILE_LENGTH, &file);
+ 224:Src/USB/Driver_USBdrive.c ****     return (const TCHAR*) stringFromFile;
+ 225:Src/USB/Driver_USBdrive.c **** }
+ 1526              		.loc 1 225 1 view .LVU413
+ 1527 0008 7047     		bx	lr
+ 1528              	.L155:
+ARM GAS  /tmp/ccR5Y2I8.s 			page 35
 
 
- 216:Src/USB/Driver_USBdrive.c **** static TCHAR stringFromFile[STRING_FROM_FILE_LENGTH];
- 217:Src/USB/Driver_USBdrive.c **** const TCHAR* getStringFromFile_USBdrive(void)
- 218:Src/USB/Driver_USBdrive.c **** {
- 1450              		.loc 1 218 0
- 1451              		.cfi_startproc
- 1452              		@ args = 0, pretend = 0, frame = 0
- 1453              		@ frame_needed = 0, uses_anonymous_args = 0
  219:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 1454              		.loc 1 219 0
- 1455 0000 064B     		ldr	r3, .L187
- 1456 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1457 0004 0BB9     		cbnz	r3, .L186
- 220:Src/USB/Driver_USBdrive.c ****         return "";
- 1458              		.loc 1 220 0
- 1459 0006 0648     		ldr	r0, .L187+4
- 221:Src/USB/Driver_USBdrive.c **** 
- 222:Src/USB/Driver_USBdrive.c ****     f_gets(stringFromFile, STRING_FROM_FILE_LENGTH, &file);
+ 1529              		.loc 1 219 1 view .LVU414
+ 1530 000a 10B5     		push	{r4, lr}
+ 1531              	.LCFI11:
+ 1532              		.cfi_def_cfa_offset 8
+ 1533              		.cfi_offset 4, -8
+ 1534              		.cfi_offset 14, -4
  223:Src/USB/Driver_USBdrive.c ****     return (const TCHAR*) stringFromFile;
+ 1535              		.loc 1 223 5 is_stmt 1 view .LVU415
+ 1536 000c 054C     		ldr	r4, .L156+8
+ 1537 000e 064A     		ldr	r2, .L156+12
+ 1538 0010 6421     		movs	r1, #100
+ 1539 0012 2046     		mov	r0, r4
+ 1540 0014 FFF7FEFF 		bl	f_gets
+ 1541              	.LVL169:
  224:Src/USB/Driver_USBdrive.c **** }
- 1460              		.loc 1 224 0
- 1461 0008 7047     		bx	lr
- 1462              	.L186:
- 218:Src/USB/Driver_USBdrive.c ****     if (currentMountedStatus_USBdrive == UNMOUNTED_USBDRIVE)
- 1463              		.loc 1 218 0
- 1464 000a 10B5     		push	{r4, lr}
- 1465              	.LCFI11:
- 1466              		.cfi_def_cfa_offset 8
- 1467              		.cfi_offset 4, -8
- 1468              		.cfi_offset 14, -4
- 222:Src/USB/Driver_USBdrive.c ****     return (const TCHAR*) stringFromFile;
- 1469              		.loc 1 222 0
- 1470 000c 054C     		ldr	r4, .L187+8
- 1471 000e 064A     		ldr	r2, .L187+12
- 1472 0010 6421     		movs	r1, #100
- 1473 0012 2046     		mov	r0, r4
- 1474 0014 FFF7FEFF 		bl	f_gets
- 1475              	.LVL170:
- 223:Src/USB/Driver_USBdrive.c **** }
- 1476              		.loc 1 223 0
- 1477 0018 2046     		mov	r0, r4
- 1478              		.loc 1 224 0
- 1479 001a 10BD     		pop	{r4, pc}
- 1480              	.L188:
- 1481              		.align	2
- 1482              	.L187:
- 1483 001c 00000000 		.word	.LANCHOR2
- 1484 0020 00000000 		.word	.LC69
- 1485 0024 00000000 		.word	.LANCHOR6
- 1486 0028 00000000 		.word	file
- 1487              		.cfi_endproc
- 1488              	.LFE82:
- 1490              		.section	.text.endOfFile_USBdrive,"ax",%progbits
- 1491              		.align	1
- 1492              		.global	endOfFile_USBdrive
- 1493              		.syntax unified
- 1494              		.thumb
- 1495              		.thumb_func
-ARM GAS  /tmp/ccKP1uaH.s 			page 32
+ 1542              		.loc 1 224 5 view .LVU416
+ 224:Src/USB/Driver_USBdrive.c **** }
+ 1543              		.loc 1 224 12 is_stmt 0 view .LVU417
+ 1544 0018 2046     		mov	r0, r4
+ 1545              		.loc 1 225 1 view .LVU418
+ 1546 001a 10BD     		pop	{r4, pc}
+ 1547              	.L157:
+ 1548              		.align	2
+ 1549              	.L156:
+ 1550 001c 00000000 		.word	.LANCHOR1
+ 1551 0020 00000000 		.word	.LC1
+ 1552 0024 00000000 		.word	.LANCHOR6
+ 1553 0028 00000000 		.word	file
+ 1554              		.cfi_endproc
+ 1555              	.LFE84:
+ 1557              		.section	.text.endOfFile_USBdrive,"ax",%progbits
+ 1558              		.align	1
+ 1559              		.global	endOfFile_USBdrive
+ 1560              		.syntax unified
+ 1561              		.thumb
+ 1562              		.thumb_func
+ 1563              		.fpu softvfp
+ 1565              	endOfFile_USBdrive:
+ 1566              	.LFB85:
+ 226:Src/USB/Driver_USBdrive.c **** 
+ 227:Src/USB/Driver_USBdrive.c **** _Bool endOfFile_USBdrive(void)
+ 228:Src/USB/Driver_USBdrive.c **** {
+ 1567              		.loc 1 228 1 is_stmt 1 view -0
+ 1568              		.cfi_startproc
+ 1569              		@ args = 0, pretend = 0, frame = 0
+ 1570              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1571              		@ link register save eliminated.
+ 229:Src/USB/Driver_USBdrive.c ****     if(f_eof(&file)==0)
+ 1572              		.loc 1 229 5 view .LVU420
+ 1573              		.loc 1 229 8 is_stmt 0 view .LVU421
+ 1574 0000 064B     		ldr	r3, .L161
+ 1575 0002 41F20802 		movw	r2, #4104
+ 1576 0006 9A58     		ldr	r2, [r3, r2]
+ 1577 0008 41F20C01 		movw	r1, #4108
+ 1578 000c 5B58     		ldr	r3, [r3, r1]
+ 1579              		.loc 1 229 7 view .LVU422
+ARM GAS  /tmp/ccR5Y2I8.s 			page 36
 
 
- 1496              		.fpu softvfp
- 1498              	endOfFile_USBdrive:
- 1499              	.LFB83:
- 225:Src/USB/Driver_USBdrive.c **** 
- 226:Src/USB/Driver_USBdrive.c **** _Bool endOfFile_USBdrive(void)
- 227:Src/USB/Driver_USBdrive.c **** {
- 1500              		.loc 1 227 0
- 1501              		.cfi_startproc
- 1502              		@ args = 0, pretend = 0, frame = 0
- 1503              		@ frame_needed = 0, uses_anonymous_args = 0
- 1504              		@ link register save eliminated.
- 228:Src/USB/Driver_USBdrive.c ****     if(f_eof(&file)==0)
- 1505              		.loc 1 228 0
- 1506 0000 064B     		ldr	r3, .L192
- 1507 0002 41F20802 		movw	r2, #4104
- 1508 0006 9A58     		ldr	r2, [r3, r2]
- 1509 0008 41F20C01 		movw	r1, #4108
- 1510 000c 5B58     		ldr	r3, [r3, r1]
- 1511 000e 9A42     		cmp	r2, r3
- 1512 0010 01D0     		beq	.L191
- 229:Src/USB/Driver_USBdrive.c ****         return false;
- 1513              		.loc 1 229 0
- 1514 0012 0020     		movs	r0, #0
- 1515 0014 7047     		bx	lr
- 1516              	.L191:
- 230:Src/USB/Driver_USBdrive.c ****     return true;
- 1517              		.loc 1 230 0
- 1518 0016 0120     		movs	r0, #1
- 231:Src/USB/Driver_USBdrive.c **** }
- 1519              		.loc 1 231 0
- 1520 0018 7047     		bx	lr
- 1521              	.L193:
- 1522 001a 00BF     		.align	2
- 1523              	.L192:
- 1524 001c 00000000 		.word	file
- 1525              		.cfi_endproc
- 1526              	.LFE83:
- 1528              		.section	.rodata
- 1529              		.align	2
- 1530              		.set	.LANCHOR1,. + 0
- 1531              	.LC67:
- 1532 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
- 1532      00000000 
- 1533              		.section	.bss.USBDISKFatFs,"aw",%nobits
- 1534              		.align	2
- 1537              	USBDISKFatFs:
- 1538 0000 00000000 		.space	4144
- 1538      00000000 
- 1538      00000000 
- 1538      00000000 
- 1538      00000000 
- 1539              		.section	.bss.currentMountedStatus_USBdrive,"aw",%nobits
- 1540              		.set	.LANCHOR2,. + 0
- 1543              	currentMountedStatus_USBdrive:
- 1544 0000 00       		.space	1
- 1545              		.section	.bss.directory,"aw",%nobits
- 1546              		.align	2
-ARM GAS  /tmp/ccKP1uaH.s 			page 33
-
-
- 1549              	directory:
- 1550 0000 00000000 		.space	4136
- 1550      00000000 
- 1550      00000000 
- 1550      00000000 
- 1550      00000000 
- 1551              		.section	.bss.file,"aw",%nobits
- 1552              		.align	2
- 1555              	file:
- 1556 0000 00000000 		.space	4140
- 1556      00000000 
- 1556      00000000 
- 1556      00000000 
- 1556      00000000 
- 1557              		.section	.bss.fileInformation,"aw",%nobits
- 1558              		.align	2
- 1559              		.set	.LANCHOR3,. + 0
- 1562              	fileInformation:
- 1563 0000 00000000 		.space	284
- 1563      00000000 
- 1563      00000000 
- 1563      00000000 
- 1563      00000000 
- 1564              		.section	.bss.outputWideName,"aw",%nobits
- 1565              		.align	2
- 1566              		.set	.LANCHOR5,. + 0
- 1569              	outputWideName:
- 1570 0000 00000000 		.space	400
- 1570      00000000 
- 1570      00000000 
- 1570      00000000 
- 1570      00000000 
- 1571              		.section	.bss.path,"aw",%nobits
- 1572              		.align	2
- 1573              		.set	.LANCHOR0,. + 0
- 1576              	path:
- 1577 0000 00000000 		.space	100
- 1577      00000000 
- 1577      00000000 
- 1577      00000000 
- 1577      00000000 
- 1578              		.section	.bss.stringFromFile,"aw",%nobits
- 1579              		.align	2
- 1580              		.set	.LANCHOR6,. + 0
- 1583              	stringFromFile:
- 1584 0000 00000000 		.space	100
- 1584      00000000 
- 1584      00000000 
- 1584      00000000 
- 1584      00000000 
- 1585              		.section	.bss.widePath,"aw",%nobits
- 1586              		.align	2
- 1587              		.set	.LANCHOR4,. + 0
- 1590              	widePath:
- 1591 0000 00000000 		.space	400
- 1591      00000000 
- 1591      00000000 
-ARM GAS  /tmp/ccKP1uaH.s 			page 34
-
-
- 1591      00000000 
- 1591      00000000 
- 1592              		.section	.rodata.TCHAR2wchar_t.str4.4,"aMS",%progbits,4
- 1593              		.align	2
- 1594              	.LC23:
- 1595 0000 46040000 		.ascii	"F\004\000\000\000\000\000\000"
- 1595      00000000 
- 1596              	.LC0:
- 1597 0008 30040000 		.ascii	"0\004\000\000\000\000\000\000"
- 1597      00000000 
- 1598              	.LC1:
- 1599 0010 31040000 		.ascii	"1\004\000\000\000\000\000\000"
- 1599      00000000 
- 1600              	.LC2:
- 1601 0018 32040000 		.ascii	"2\004\000\000\000\000\000\000"
- 1601      00000000 
- 1602              	.LC3:
- 1603 0020 33040000 		.ascii	"3\004\000\000\000\000\000\000"
- 1603      00000000 
- 1604              	.LC4:
- 1605 0028 34040000 		.ascii	"4\004\000\000\000\000\000\000"
- 1605      00000000 
- 1606              	.LC5:
- 1607 0030 35040000 		.ascii	"5\004\000\000\000\000\000\000"
- 1607      00000000 
- 1608              	.LC6:
- 1609 0038 51040000 		.ascii	"Q\004\000\000\000\000\000\000"
- 1609      00000000 
- 1610              	.LC7:
- 1611 0040 36040000 		.ascii	"6\004\000\000\000\000\000\000"
- 1611      00000000 
- 1612              	.LC8:
- 1613 0048 37040000 		.ascii	"7\004\000\000\000\000\000\000"
- 1613      00000000 
- 1614              	.LC9:
- 1615 0050 38040000 		.ascii	"8\004\000\000\000\000\000\000"
- 1615      00000000 
- 1616              	.LC10:
- 1617 0058 39040000 		.ascii	"9\004\000\000\000\000\000\000"
- 1617      00000000 
- 1618              	.LC11:
- 1619 0060 3A040000 		.ascii	":\004\000\000\000\000\000\000"
- 1619      00000000 
- 1620              	.LC12:
- 1621 0068 3B040000 		.ascii	";\004\000\000\000\000\000\000"
- 1621      00000000 
- 1622              	.LC13:
- 1623 0070 3C040000 		.ascii	"<\004\000\000\000\000\000\000"
- 1623      00000000 
- 1624              	.LC14:
- 1625 0078 3D040000 		.ascii	"=\004\000\000\000\000\000\000"
- 1625      00000000 
- 1626              	.LC15:
- 1627 0080 3E040000 		.ascii	">\004\000\000\000\000\000\000"
+ 1580 000e 9A42     		cmp	r2, r3
+ 1581 0010 01D1     		bne	.L160
+ 230:Src/USB/Driver_USBdrive.c ****         return false;
+ 231:Src/USB/Driver_USBdrive.c ****     return true;
+ 1582              		.loc 1 231 12 view .LVU423
+ 1583 0012 0120     		movs	r0, #1
+ 1584 0014 7047     		bx	lr
+ 1585              	.L160:
+ 230:Src/USB/Driver_USBdrive.c ****         return false;
+ 1586              		.loc 1 230 16 view .LVU424
+ 1587 0016 0020     		movs	r0, #0
+ 232:Src/USB/Driver_USBdrive.c **** }
+ 1588              		.loc 1 232 1 view .LVU425
+ 1589 0018 7047     		bx	lr
+ 1590              	.L162:
+ 1591 001a 00BF     		.align	2
+ 1592              	.L161:
+ 1593 001c 00000000 		.word	file
+ 1594              		.cfi_endproc
+ 1595              	.LFE85:
+ 1597              		.section	.bss.USBDISKFatFs,"aw",%nobits
+ 1598              		.align	2
+ 1601              	USBDISKFatFs:
+ 1602 0000 00000000 		.space	4144
+ 1602      00000000 
+ 1602      00000000 
+ 1602      00000000 
+ 1602      00000000 
+ 1603              		.section	.bss.currentMountedStatus_USBdrive,"aw",%nobits
+ 1604              		.set	.LANCHOR1,. + 0
+ 1607              	currentMountedStatus_USBdrive:
+ 1608 0000 00       		.space	1
+ 1609              		.section	.bss.directory,"aw",%nobits
+ 1610              		.align	2
+ 1613              	directory:
+ 1614 0000 00000000 		.space	4136
+ 1614      00000000 
+ 1614      00000000 
+ 1614      00000000 
+ 1614      00000000 
+ 1615              		.section	.bss.file,"aw",%nobits
+ 1616              		.align	2
+ 1619              	file:
+ 1620 0000 00000000 		.space	4140
+ 1620      00000000 
+ 1620      00000000 
+ 1620      00000000 
+ 1620      00000000 
+ 1621              		.section	.bss.fileInformation,"aw",%nobits
+ 1622              		.align	2
+ 1623              		.set	.LANCHOR2,. + 0
+ 1626              	fileInformation:
+ 1627 0000 00000000 		.space	32
  1627      00000000 
- 1628              	.LC16:
- 1629 0088 3F040000 		.ascii	"?\004\000\000\000\000\000\000"
-ARM GAS  /tmp/ccKP1uaH.s 			page 35
+ 1627      00000000 
+ 1627      00000000 
+ 1627      00000000 
+ARM GAS  /tmp/ccR5Y2I8.s 			page 37
 
 
- 1629      00000000 
- 1630              	.LC17:
- 1631 0090 40040000 		.ascii	"@\004\000\000\000\000\000\000"
- 1631      00000000 
- 1632              	.LC18:
- 1633 0098 41040000 		.ascii	"A\004\000\000\000\000\000\000"
- 1633      00000000 
- 1634              	.LC19:
- 1635 00a0 42040000 		.ascii	"B\004\000\000\000\000\000\000"
- 1635      00000000 
- 1636              	.LC20:
- 1637 00a8 43040000 		.ascii	"C\004\000\000\000\000\000\000"
- 1637      00000000 
- 1638              	.LC21:
- 1639 00b0 44040000 		.ascii	"D\004\000\000\000\000\000\000"
- 1639      00000000 
- 1640              	.LC22:
- 1641 00b8 45040000 		.ascii	"E\004\000\000\000\000\000\000"
+ 1628              		.section	.bss.fname_arr,"aw",%nobits
+ 1629              		.align	2
+ 1630              		.set	.LANCHOR3,. + 0
+ 1633              	fname_arr:
+ 1634 0000 00000000 		.space	255
+ 1634      00000000 
+ 1634      00000000 
+ 1634      00000000 
+ 1634      00000000 
+ 1635              		.section	.bss.outputWideName,"aw",%nobits
+ 1636              		.align	2
+ 1637              		.set	.LANCHOR5,. + 0
+ 1640              	outputWideName:
+ 1641 0000 00000000 		.space	400
  1641      00000000 
- 1642              	.LC24:
- 1643 00c0 47040000 		.ascii	"G\004\000\000\000\000\000\000"
- 1643      00000000 
- 1644              	.LC28:
- 1645 00c8 4B040000 		.ascii	"K\004\000\000\000\000\000\000"
- 1645      00000000 
- 1646              	.LC25:
- 1647 00d0 48040000 		.ascii	"H\004\000\000\000\000\000\000"
- 1647      00000000 
- 1648              	.LC26:
- 1649 00d8 49040000 		.ascii	"I\004\000\000\000\000\000\000"
- 1649      00000000 
- 1650              	.LC27:
- 1651 00e0 4A040000 		.ascii	"J\004\000\000\000\000\000\000"
- 1651      00000000 
- 1652              	.LC29:
- 1653 00e8 4C040000 		.ascii	"L\004\000\000\000\000\000\000"
- 1653      00000000 
- 1654              	.LC30:
- 1655 00f0 4D040000 		.ascii	"M\004\000\000\000\000\000\000"
+ 1641      00000000 
+ 1641      00000000 
+ 1641      00000000 
+ 1642              		.section	.bss.path,"aw",%nobits
+ 1643              		.align	2
+ 1644              		.set	.LANCHOR0,. + 0
+ 1647              	path:
+ 1648 0000 00000000 		.space	100
+ 1648      00000000 
+ 1648      00000000 
+ 1648      00000000 
+ 1648      00000000 
+ 1649              		.section	.bss.stringFromFile,"aw",%nobits
+ 1650              		.align	2
+ 1651              		.set	.LANCHOR6,. + 0
+ 1654              	stringFromFile:
+ 1655 0000 00000000 		.space	100
  1655      00000000 
- 1656              	.LC31:
- 1657 00f8 4E040000 		.ascii	"N\004\000\000\000\000\000\000"
- 1657      00000000 
- 1658              	.LC32:
- 1659 0100 4F040000 		.ascii	"O\004\000\000\000\000\000\000"
- 1659      00000000 
- 1660              	.LC33:
- 1661 0108 10040000 		.ascii	"\020\004\000\000\000\000\000\000"
- 1661      00000000 
- 1662              	.LC34:
- 1663 0110 11040000 		.ascii	"\021\004\000\000\000\000\000\000"
- 1663      00000000 
- 1664              	.LC35:
- 1665 0118 12040000 		.ascii	"\022\004\000\000\000\000\000\000"
- 1665      00000000 
- 1666              	.LC36:
- 1667 0120 13040000 		.ascii	"\023\004\000\000\000\000\000\000"
-ARM GAS  /tmp/ccKP1uaH.s 			page 36
+ 1655      00000000 
+ 1655      00000000 
+ 1655      00000000 
+ 1656              		.section	.bss.widePath,"aw",%nobits
+ 1657              		.align	2
+ 1658              		.set	.LANCHOR4,. + 0
+ 1661              	widePath:
+ 1662 0000 00000000 		.space	400
+ 1662      00000000 
+ 1662      00000000 
+ 1662      00000000 
+ 1662      00000000 
+ 1663              		.text
+ 1664              	.Letext0:
+ 1665              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+ 1666              		.file 3 "/usr/include/newlib/sys/_types.h"
+ 1667              		.file 4 "/usr/include/newlib/sys/reent.h"
+ 1668              		.file 5 "/usr/include/newlib/sys/lock.h"
+ 1669              		.file 6 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 1670              		.file 7 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+ 1671              		.file 8 "Drivers/CMSIS/Include/core_cm3.h"
+ 1672              		.file 9 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 1673              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 1674              		.file 11 "/usr/include/newlib/stdlib.h"
+ARM GAS  /tmp/ccR5Y2I8.s 			page 38
 
 
- 1667      00000000 
- 1668              	.LC37:
- 1669 0128 14040000 		.ascii	"\024\004\000\000\000\000\000\000"
- 1669      00000000 
- 1670              	.LC38:
- 1671 0130 15040000 		.ascii	"\025\004\000\000\000\000\000\000"
- 1671      00000000 
- 1672              	.LC39:
- 1673 0138 01040000 		.ascii	"\001\004\000\000\000\000\000\000"
- 1673      00000000 
- 1674              	.LC40:
- 1675 0140 16040000 		.ascii	"\026\004\000\000\000\000\000\000"
- 1675      00000000 
- 1676              	.LC41:
- 1677 0148 17040000 		.ascii	"\027\004\000\000\000\000\000\000"
- 1677      00000000 
- 1678              	.LC42:
- 1679 0150 18040000 		.ascii	"\030\004\000\000\000\000\000\000"
- 1679      00000000 
- 1680              	.LC43:
- 1681 0158 19040000 		.ascii	"\031\004\000\000\000\000\000\000"
- 1681      00000000 
- 1682              	.LC44:
- 1683 0160 1A040000 		.ascii	"\032\004\000\000\000\000\000\000"
- 1683      00000000 
- 1684              	.LC45:
- 1685 0168 1B040000 		.ascii	"\033\004\000\000\000\000\000\000"
- 1685      00000000 
- 1686              	.LC46:
- 1687 0170 1C040000 		.ascii	"\034\004\000\000\000\000\000\000"
- 1687      00000000 
- 1688              	.LC47:
- 1689 0178 1D040000 		.ascii	"\035\004\000\000\000\000\000\000"
- 1689      00000000 
- 1690              	.LC48:
- 1691 0180 1E040000 		.ascii	"\036\004\000\000\000\000\000\000"
- 1691      00000000 
- 1692              	.LC49:
- 1693 0188 1F040000 		.ascii	"\037\004\000\000\000\000\000\000"
- 1693      00000000 
- 1694              	.LC50:
- 1695 0190 20040000 		.ascii	" \004\000\000\000\000\000\000"
- 1695      00000000 
- 1696              	.LC51:
- 1697 0198 21040000 		.ascii	"!\004\000\000\000\000\000\000"
- 1697      00000000 
- 1698              	.LC52:
- 1699 01a0 22040000 		.ascii	"\"\004\000\000\000\000\000\000"
- 1699      00000000 
- 1700              	.LC53:
- 1701 01a8 23040000 		.ascii	"#\004\000\000\000\000\000\000"
- 1701      00000000 
- 1702              	.LC54:
- 1703 01b0 24040000 		.ascii	"$\004\000\000\000\000\000\000"
- 1703      00000000 
- 1704              	.LC55:
- 1705 01b8 25040000 		.ascii	"%\004\000\000\000\000\000\000"
-ARM GAS  /tmp/ccKP1uaH.s 			page 37
-
-
- 1705      00000000 
- 1706              	.LC56:
- 1707 01c0 26040000 		.ascii	"&\004\000\000\000\000\000\000"
- 1707      00000000 
- 1708              	.LC57:
- 1709 01c8 27040000 		.ascii	"'\004\000\000\000\000\000\000"
- 1709      00000000 
- 1710              	.LC58:
- 1711 01d0 28040000 		.ascii	"(\004\000\000\000\000\000\000"
- 1711      00000000 
- 1712              	.LC59:
- 1713 01d8 29040000 		.ascii	")\004\000\000\000\000\000\000"
- 1713      00000000 
- 1714              	.LC60:
- 1715 01e0 2A040000 		.ascii	"*\004\000\000\000\000\000\000"
- 1715      00000000 
- 1716              	.LC61:
- 1717 01e8 2B040000 		.ascii	"+\004\000\000\000\000\000\000"
- 1717      00000000 
- 1718              	.LC62:
- 1719 01f0 2C040000 		.ascii	",\004\000\000\000\000\000\000"
- 1719      00000000 
- 1720              	.LC63:
- 1721 01f8 2D040000 		.ascii	"-\004\000\000\000\000\000\000"
- 1721      00000000 
- 1722              	.LC64:
- 1723 0200 2E040000 		.ascii	".\004\000\000\000\000\000\000"
- 1723      00000000 
- 1724              	.LC65:
- 1725 0208 2F040000 		.ascii	"/\004\000\000\000\000\000\000"
- 1725      00000000 
- 1726              		.section	.rodata.convertLongNameToWideLongName.str4.4,"aMS",%progbits,4
- 1727              		.align	2
- 1728              	.LC66:
- 1729 0000 20000000 		.ascii	" \000\000\000\000\000\000\000"
- 1729      00000000 
- 1730              		.section	.rodata.getStringFromFile_USBdrive.str1.4,"aMS",%progbits,1
- 1731              		.align	2
- 1732              	.LC69:
- 1733 0000 00       		.ascii	"\000"
- 1734              		.section	.rodata.unmount_USBdrive.str1.4,"aMS",%progbits,1
- 1735              		.align	2
- 1736              	.LC68:
- 1737 0000 256300   		.ascii	"%c\000"
- 1738              		.text
- 1739              	.Letext0:
- 1740              		.file 2 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
- 1741              		.file 3 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 1742              		.file 4 "/usr/arm-none-eabi/include/sys/lock.h"
- 1743              		.file 5 "/usr/arm-none-eabi/include/sys/_types.h"
- 1744              		.file 6 "/usr/arm-none-eabi/include/sys/reent.h"
- 1745              		.file 7 "Middlewares/Third_Party/FatFs/src/integer.h"
- 1746              		.file 8 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 1747              		.file 9 "Drivers/CMSIS/Include/core_cm3.h"
- 1748              		.file 10 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 1749              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 1750              		.file 12 "/usr/arm-none-eabi/include/stdlib.h"
-ARM GAS  /tmp/ccKP1uaH.s 			page 38
-
-
- 1751              		.file 13 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h"
- 1752              		.file 14 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h"
- 1753              		.file 15 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h"
- 1754              		.file 16 "Middlewares/Third_Party/FatFs/src/ff.h"
- 1755              		.file 17 "Inc/USB/Driver_USBdrive.h"
- 1756              		.file 18 "Middlewares/Third_Party/FatFs/src/diskio.h"
- 1757              		.file 19 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
- 1758              		.file 20 "Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.h"
- 1759              		.file 21 "Inc/fatfs.h"
- 1760              		.file 22 "/usr/arm-none-eabi/include/stdio.h"
- 1761              		.file 23 "<built-in>"
-ARM GAS  /tmp/ccKP1uaH.s 			page 39
+ 1675              		.file 12 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h"
+ 1676              		.file 13 "Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h"
+ 1677              		.file 14 "Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h"
+ 1678              		.file 15 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 1679              		.file 16 "Inc/USB/Driver_USBdrive.h"
+ 1680              		.file 17 "Middlewares/Third_Party/FatFs/src/diskio.h"
+ 1681              		.file 18 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
+ 1682              		.file 19 "Middlewares/Third_Party/FatFs/src/drivers/usbh_diskio.h"
+ 1683              		.file 20 "Inc/fatfs.h"
+ 1684              		.file 21 "/usr/include/newlib/stdio.h"
+ 1685              		.file 22 "<built-in>"
+ARM GAS  /tmp/ccR5Y2I8.s 			page 39
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Driver_USBdrive.c
-     /tmp/ccKP1uaH.s:16     .text.TCHAR2wchar_t:0000000000000000 $t
-     /tmp/ccKP1uaH.s:22     .text.TCHAR2wchar_t:0000000000000000 TCHAR2wchar_t
-     /tmp/ccKP1uaH.s:672    .text.TCHAR2wchar_t:0000000000000284 $d
-     /tmp/ccKP1uaH.s:739    .text.TCHAR2wchar_t:0000000000000384 $t
-     /tmp/ccKP1uaH.s:761    .text.TCHAR2wchar_t:0000000000000398 $d
-     /tmp/ccKP1uaH.s:767    .text.convertPathToWidePath:0000000000000000 $t
-     /tmp/ccKP1uaH.s:773    .text.convertPathToWidePath:0000000000000000 convertPathToWidePath
-     /tmp/ccKP1uaH.s:813    .text.convertPathToWidePath:000000000000001c $d
-     /tmp/ccKP1uaH.s:818    .text.convertLongNameToWideLongName:0000000000000000 $t
-     /tmp/ccKP1uaH.s:824    .text.convertLongNameToWideLongName:0000000000000000 convertLongNameToWideLongName
-     /tmp/ccKP1uaH.s:886    .text.convertLongNameToWideLongName:0000000000000038 $d
-     /tmp/ccKP1uaH.s:892    .text.createDriver_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:899    .text.createDriver_USBdrive:0000000000000000 createDriver_USBdrive
-     /tmp/ccKP1uaH.s:934    .text.createDriver_USBdrive:0000000000000024 $d
-     /tmp/ccKP1uaH.s:941    .text.mount_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:948    .text.mount_USBdrive:0000000000000000 mount_USBdrive
-     /tmp/ccKP1uaH.s:993    .text.mount_USBdrive:0000000000000030 $d
-     /tmp/ccKP1uaH.s:1537   .bss.USBDISKFatFs:0000000000000000 USBDISKFatFs
-     /tmp/ccKP1uaH.s:1001   .text.unmount_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1008   .text.unmount_USBdrive:0000000000000000 unmount_USBdrive
-     /tmp/ccKP1uaH.s:1057   .text.unmount_USBdrive:0000000000000038 $d
-     /tmp/ccKP1uaH.s:1065   .text.getMountedStatus:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1072   .text.getMountedStatus:0000000000000000 getMountedStatus
-     /tmp/ccKP1uaH.s:1086   .text.getMountedStatus:0000000000000008 $d
-     /tmp/ccKP1uaH.s:1091   .text.getPath_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1098   .text.getPath_USBdrive:0000000000000000 getPath_USBdrive
-     /tmp/ccKP1uaH.s:1111   .text.getPath_USBdrive:0000000000000004 $d
-     /tmp/ccKP1uaH.s:1116   .text.getWidePath_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1123   .text.getWidePath_USBdrive:0000000000000000 getWidePath_USBdrive
-     /tmp/ccKP1uaH.s:1145   .text.getWidePath_USBdrive:0000000000000010 $d
-     /tmp/ccKP1uaH.s:1150   .text.openDirectory_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1157   .text.openDirectory_USBdrive:0000000000000000 openDirectory_USBdrive
-     /tmp/ccKP1uaH.s:1207   .text.openDirectory_USBdrive:0000000000000030 $d
-     /tmp/ccKP1uaH.s:1549   .bss.directory:0000000000000000 directory
-     /tmp/ccKP1uaH.s:1214   .text.readItem_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1221   .text.readItem_USBdrive:0000000000000000 readItem_USBdrive
-     /tmp/ccKP1uaH.s:1249   .text.readItem_USBdrive:0000000000000014 $d
-     /tmp/ccKP1uaH.s:1256   .text.getName_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1263   .text.getName_USBdrive:0000000000000000 getName_USBdrive
-     /tmp/ccKP1uaH.s:1276   .text.getName_USBdrive:0000000000000004 $d
-     /tmp/ccKP1uaH.s:1281   .text.getLongName_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1288   .text.getLongName_USBdrive:0000000000000000 getLongName_USBdrive
-     /tmp/ccKP1uaH.s:1301   .text.getLongName_USBdrive:0000000000000004 $d
-     /tmp/ccKP1uaH.s:1306   .text.getWideLongName_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1313   .text.getWideLongName_USBdrive:0000000000000000 getWideLongName_USBdrive
-     /tmp/ccKP1uaH.s:1336   .text.getWideLongName_USBdrive:0000000000000010 $d
-     /tmp/ccKP1uaH.s:1342   .text.getItemType_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1349   .text.getItemType_USBdrive:0000000000000000 getItemType_USBdrive
-     /tmp/ccKP1uaH.s:1386   .text.getItemType_USBdrive:0000000000000020 $d
-     /tmp/ccKP1uaH.s:1391   .text.openFile_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1398   .text.openFile_USBdrive:0000000000000000 openFile_USBdrive
-     /tmp/ccKP1uaH.s:1435   .text.openFile_USBdrive:0000000000000020 $d
-     /tmp/ccKP1uaH.s:1555   .bss.file:0000000000000000 file
-     /tmp/ccKP1uaH.s:1441   .text.getStringFromFile_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1448   .text.getStringFromFile_USBdrive:0000000000000000 getStringFromFile_USBdrive
-ARM GAS  /tmp/ccKP1uaH.s 			page 40
+     /tmp/ccR5Y2I8.s:16     .text.TCHAR2wchar_t:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:23     .text.TCHAR2wchar_t:0000000000000000 TCHAR2wchar_t
+     /tmp/ccR5Y2I8.s:764    .text.convertPathToWidePath:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:770    .text.convertPathToWidePath:0000000000000000 convertPathToWidePath
+     /tmp/ccR5Y2I8.s:819    .text.convertPathToWidePath:000000000000001c $d
+     /tmp/ccR5Y2I8.s:824    .text.convertLongNameToWideLongName:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:830    .text.convertLongNameToWideLongName:0000000000000000 convertLongNameToWideLongName
+     /tmp/ccR5Y2I8.s:906    .text.createDriver_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:913    .text.createDriver_USBdrive:0000000000000000 createDriver_USBdrive
+     /tmp/ccR5Y2I8.s:954    .text.createDriver_USBdrive:0000000000000028 $d
+     /tmp/ccR5Y2I8.s:962    .text.mount_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:969    .text.mount_USBdrive:0000000000000000 mount_USBdrive
+     /tmp/ccR5Y2I8.s:1020   .text.mount_USBdrive:0000000000000030 $d
+     /tmp/ccR5Y2I8.s:1601   .bss.USBDISKFatFs:0000000000000000 USBDISKFatFs
+     /tmp/ccR5Y2I8.s:1028   .rodata.unmount_USBdrive.str1.4:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1032   .text.unmount_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1039   .text.unmount_USBdrive:0000000000000000 unmount_USBdrive
+     /tmp/ccR5Y2I8.s:1096   .text.unmount_USBdrive:0000000000000038 $d
+     /tmp/ccR5Y2I8.s:1104   .text.getMountedStatus:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1111   .text.getMountedStatus:0000000000000000 getMountedStatus
+     /tmp/ccR5Y2I8.s:1126   .text.getMountedStatus:0000000000000008 $d
+     /tmp/ccR5Y2I8.s:1131   .text.getPath_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1138   .text.getPath_USBdrive:0000000000000000 getPath_USBdrive
+     /tmp/ccR5Y2I8.s:1152   .text.getPath_USBdrive:0000000000000004 $d
+     /tmp/ccR5Y2I8.s:1157   .text.getWidePath_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1164   .text.getWidePath_USBdrive:0000000000000000 getWidePath_USBdrive
+     /tmp/ccR5Y2I8.s:1187   .text.getWidePath_USBdrive:0000000000000010 $d
+     /tmp/ccR5Y2I8.s:1192   .text.openDirectory_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1199   .text.openDirectory_USBdrive:0000000000000000 openDirectory_USBdrive
+     /tmp/ccR5Y2I8.s:1255   .text.openDirectory_USBdrive:0000000000000030 $d
+     /tmp/ccR5Y2I8.s:1613   .bss.directory:0000000000000000 directory
+     /tmp/ccR5Y2I8.s:1262   .text.readItem_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1269   .text.readItem_USBdrive:0000000000000000 readItem_USBdrive
+     /tmp/ccR5Y2I8.s:1300   .text.readItem_USBdrive:0000000000000014 $d
+     /tmp/ccR5Y2I8.s:1307   .text.getName_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1314   .text.getName_USBdrive:0000000000000000 getName_USBdrive
+     /tmp/ccR5Y2I8.s:1328   .text.getName_USBdrive:0000000000000004 $d
+     /tmp/ccR5Y2I8.s:1333   .text.getLongName_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1340   .text.getLongName_USBdrive:0000000000000000 getLongName_USBdrive
+     /tmp/ccR5Y2I8.s:1355   .text.getLongName_USBdrive:0000000000000008 $d
+     /tmp/ccR5Y2I8.s:1360   .text.getWideLongName_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1367   .text.getWideLongName_USBdrive:0000000000000000 getWideLongName_USBdrive
+     /tmp/ccR5Y2I8.s:1392   .text.getWideLongName_USBdrive:0000000000000014 $d
+     /tmp/ccR5Y2I8.s:1398   .text.getItemType_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1405   .text.getItemType_USBdrive:0000000000000000 getItemType_USBdrive
+     /tmp/ccR5Y2I8.s:1442   .text.getItemType_USBdrive:000000000000001c $d
+     /tmp/ccR5Y2I8.s:1447   .text.openFile_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1454   .text.openFile_USBdrive:0000000000000000 openFile_USBdrive
+     /tmp/ccR5Y2I8.s:1495   .text.openFile_USBdrive:0000000000000020 $d
+     /tmp/ccR5Y2I8.s:1619   .bss.file:0000000000000000 file
+     /tmp/ccR5Y2I8.s:1501   .rodata.getStringFromFile_USBdrive.str1.4:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1505   .text.getStringFromFile_USBdrive:0000000000000000 $t
+     /tmp/ccR5Y2I8.s:1512   .text.getStringFromFile_USBdrive:0000000000000000 getStringFromFile_USBdrive
+     /tmp/ccR5Y2I8.s:1550   .text.getStringFromFile_USBdrive:000000000000001c $d
+     /tmp/ccR5Y2I8.s:1558   .text.endOfFile_USBdrive:0000000000000000 $t
+ARM GAS  /tmp/ccR5Y2I8.s 			page 40
 
 
-     /tmp/ccKP1uaH.s:1483   .text.getStringFromFile_USBdrive:000000000000001c $d
-     /tmp/ccKP1uaH.s:1491   .text.endOfFile_USBdrive:0000000000000000 $t
-     /tmp/ccKP1uaH.s:1498   .text.endOfFile_USBdrive:0000000000000000 endOfFile_USBdrive
-     /tmp/ccKP1uaH.s:1524   .text.endOfFile_USBdrive:000000000000001c $d
-     /tmp/ccKP1uaH.s:1529   .rodata:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1534   .bss.USBDISKFatFs:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1543   .bss.currentMountedStatus_USBdrive:0000000000000000 currentMountedStatus_USBdrive
-     /tmp/ccKP1uaH.s:1544   .bss.currentMountedStatus_USBdrive:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1546   .bss.directory:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1552   .bss.file:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1558   .bss.fileInformation:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1562   .bss.fileInformation:0000000000000000 fileInformation
-     /tmp/ccKP1uaH.s:1565   .bss.outputWideName:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1569   .bss.outputWideName:0000000000000000 outputWideName
-     /tmp/ccKP1uaH.s:1572   .bss.path:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1576   .bss.path:0000000000000000 path
-     /tmp/ccKP1uaH.s:1579   .bss.stringFromFile:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1583   .bss.stringFromFile:0000000000000000 stringFromFile
-     /tmp/ccKP1uaH.s:1586   .bss.widePath:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1590   .bss.widePath:0000000000000000 widePath
-     /tmp/ccKP1uaH.s:1593   .rodata.TCHAR2wchar_t.str4.4:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1727   .rodata.convertLongNameToWideLongName.str4.4:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1731   .rodata.getStringFromFile_USBdrive.str1.4:0000000000000000 $d
-     /tmp/ccKP1uaH.s:1735   .rodata.unmount_USBdrive.str1.4:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1565   .text.endOfFile_USBdrive:0000000000000000 endOfFile_USBdrive
+     /tmp/ccR5Y2I8.s:1593   .text.endOfFile_USBdrive:000000000000001c $d
+     /tmp/ccR5Y2I8.s:1598   .bss.USBDISKFatFs:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1607   .bss.currentMountedStatus_USBdrive:0000000000000000 currentMountedStatus_USBdrive
+     /tmp/ccR5Y2I8.s:1608   .bss.currentMountedStatus_USBdrive:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1610   .bss.directory:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1616   .bss.file:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1622   .bss.fileInformation:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1626   .bss.fileInformation:0000000000000000 fileInformation
+     /tmp/ccR5Y2I8.s:1629   .bss.fname_arr:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1633   .bss.fname_arr:0000000000000000 fname_arr
+     /tmp/ccR5Y2I8.s:1636   .bss.outputWideName:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1640   .bss.outputWideName:0000000000000000 outputWideName
+     /tmp/ccR5Y2I8.s:1643   .bss.path:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1647   .bss.path:0000000000000000 path
+     /tmp/ccR5Y2I8.s:1650   .bss.stringFromFile:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1654   .bss.stringFromFile:0000000000000000 stringFromFile
+     /tmp/ccR5Y2I8.s:1657   .bss.widePath:0000000000000000 $d
+     /tmp/ccR5Y2I8.s:1661   .bss.widePath:0000000000000000 widePath
 
 UNDEFINED SYMBOLS
 memset

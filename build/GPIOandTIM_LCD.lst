@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cczC4zNF.s 			page 1
+ARM GAS  /tmp/ccb5ddER.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -18,13 +18,14 @@ ARM GAS  /tmp/cczC4zNF.s 			page 1
   15              		.section	.text.RS_high_LCD,"ax",%progbits
   16              		.align	1
   17              		.global	RS_high_LCD
-  18              		.syntax unified
-  19              		.thumb
-  20              		.thumb_func
-  21              		.fpu softvfp
-  23              	RS_high_LCD:
-  24              	.LFB66:
-  25              		.file 1 "Src/LCD/GPIOandTIM_LCD.c"
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	RS_high_LCD:
+  25              	.LFB65:
+  26              		.file 1 "Src/LCD/GPIOandTIM_LCD.c"
    1:Src/LCD/GPIOandTIM_LCD.c **** #include "GPIOandTIM_LCD.h"
    2:Src/LCD/GPIOandTIM_LCD.c **** #include "Driver_LCD.h"
    3:Src/LCD/GPIOandTIM_LCD.c **** 
@@ -35,766 +36,789 @@ ARM GAS  /tmp/cczC4zNF.s 			page 1
    8:Src/LCD/GPIOandTIM_LCD.c **** #include "stm32f1xx_hal.h"
    9:Src/LCD/GPIOandTIM_LCD.c **** 
   10:Src/LCD/GPIOandTIM_LCD.c **** void RS_high_LCD(void)  {HAL_GPIO_WritePin(LCD_RS_GPIO_Port, LCD_RS_Pin, GPIO_PIN_SET);}
-  26              		.loc 1 10 0
-  27              		.cfi_startproc
-  28              		@ args = 0, pretend = 0, frame = 0
-  29              		@ frame_needed = 0, uses_anonymous_args = 0
-  30 0000 08B5     		push	{r3, lr}
-  31              	.LCFI0:
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 3, -8
-  34              		.cfi_offset 14, -4
-  35              		.loc 1 10 0
-  36 0002 0122     		movs	r2, #1
-  37 0004 4FF40071 		mov	r1, #512
-  38 0008 0148     		ldr	r0, .L3
-  39 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  40              	.LVL0:
-  41 000e 08BD     		pop	{r3, pc}
-  42              	.L4:
-  43              		.align	2
-  44              	.L3:
-  45 0010 00140140 		.word	1073812480
-  46              		.cfi_endproc
-  47              	.LFE66:
-  49              		.section	.text.RS_low_LCD,"ax",%progbits
-ARM GAS  /tmp/cczC4zNF.s 			page 2
+  27              		.loc 1 10 25 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  36              		.loc 1 10 26 view .LVU1
+  37 0002 0122     		movs	r2, #1
+  38 0004 4FF40071 		mov	r1, #512
+  39 0008 0148     		ldr	r0, .L3
+  40 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  41              	.LVL0:
+  42              		.loc 1 10 1 is_stmt 0 view .LVU2
+  43 000e 08BD     		pop	{r3, pc}
+  44              	.L4:
+  45              		.align	2
+  46              	.L3:
+  47 0010 00140140 		.word	1073812480
+  48              		.cfi_endproc
+ARM GAS  /tmp/ccb5ddER.s 			page 2
 
 
-  50              		.align	1
-  51              		.global	RS_low_LCD
-  52              		.syntax unified
-  53              		.thumb
-  54              		.thumb_func
-  55              		.fpu softvfp
-  57              	RS_low_LCD:
-  58              	.LFB67:
+  49              	.LFE65:
+  51              		.section	.text.RS_low_LCD,"ax",%progbits
+  52              		.align	1
+  53              		.global	RS_low_LCD
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  57              		.fpu softvfp
+  59              	RS_low_LCD:
+  60              	.LFB66:
   11:Src/LCD/GPIOandTIM_LCD.c **** void RS_low_LCD(void)   {HAL_GPIO_WritePin(LCD_RS_GPIO_Port, LCD_RS_Pin, GPIO_PIN_RESET);}
-  59              		.loc 1 11 0
-  60              		.cfi_startproc
-  61              		@ args = 0, pretend = 0, frame = 0
-  62              		@ frame_needed = 0, uses_anonymous_args = 0
-  63 0000 08B5     		push	{r3, lr}
-  64              	.LCFI1:
-  65              		.cfi_def_cfa_offset 8
-  66              		.cfi_offset 3, -8
-  67              		.cfi_offset 14, -4
-  68              		.loc 1 11 0
-  69 0002 0022     		movs	r2, #0
-  70 0004 4FF40071 		mov	r1, #512
-  71 0008 0148     		ldr	r0, .L7
-  72 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  73              	.LVL1:
-  74 000e 08BD     		pop	{r3, pc}
-  75              	.L8:
-  76              		.align	2
-  77              	.L7:
-  78 0010 00140140 		.word	1073812480
-  79              		.cfi_endproc
-  80              	.LFE67:
-  82              		.section	.text.RW_high_LCD,"ax",%progbits
-  83              		.align	1
-  84              		.global	RW_high_LCD
-  85              		.syntax unified
-  86              		.thumb
-  87              		.thumb_func
-  88              		.fpu softvfp
-  90              	RW_high_LCD:
-  91              	.LFB68:
+  61              		.loc 1 11 25 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65 0000 08B5     		push	{r3, lr}
+  66              	.LCFI1:
+  67              		.cfi_def_cfa_offset 8
+  68              		.cfi_offset 3, -8
+  69              		.cfi_offset 14, -4
+  70              		.loc 1 11 26 view .LVU4
+  71 0002 0022     		movs	r2, #0
+  72 0004 4FF40071 		mov	r1, #512
+  73 0008 0148     		ldr	r0, .L7
+  74 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  75              	.LVL1:
+  76              		.loc 1 11 1 is_stmt 0 view .LVU5
+  77 000e 08BD     		pop	{r3, pc}
+  78              	.L8:
+  79              		.align	2
+  80              	.L7:
+  81 0010 00140140 		.word	1073812480
+  82              		.cfi_endproc
+  83              	.LFE66:
+  85              		.section	.text.RW_high_LCD,"ax",%progbits
+  86              		.align	1
+  87              		.global	RW_high_LCD
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  91              		.fpu softvfp
+  93              	RW_high_LCD:
+  94              	.LFB67:
   12:Src/LCD/GPIOandTIM_LCD.c **** void RW_high_LCD(void)  {HAL_GPIO_WritePin(LCD_RW_GPIO_Port, LCD_RW_Pin, GPIO_PIN_SET);}
-  92              		.loc 1 12 0
-  93              		.cfi_startproc
-  94              		@ args = 0, pretend = 0, frame = 0
-  95              		@ frame_needed = 0, uses_anonymous_args = 0
-  96 0000 08B5     		push	{r3, lr}
-  97              	.LCFI2:
-  98              		.cfi_def_cfa_offset 8
-  99              		.cfi_offset 3, -8
- 100              		.cfi_offset 14, -4
- 101              		.loc 1 12 0
- 102 0002 0122     		movs	r2, #1
- 103 0004 4FF48061 		mov	r1, #1024
- 104 0008 0148     		ldr	r0, .L11
- 105 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 106              	.LVL2:
- 107 000e 08BD     		pop	{r3, pc}
-ARM GAS  /tmp/cczC4zNF.s 			page 3
+  95              		.loc 1 12 25 is_stmt 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99 0000 08B5     		push	{r3, lr}
+ 100              	.LCFI2:
+ 101              		.cfi_def_cfa_offset 8
+ 102              		.cfi_offset 3, -8
+ 103              		.cfi_offset 14, -4
+ 104              		.loc 1 12 26 view .LVU7
+ 105 0002 0122     		movs	r2, #1
+ 106 0004 4FF48061 		mov	r1, #1024
+ 107 0008 0148     		ldr	r0, .L11
+ARM GAS  /tmp/ccb5ddER.s 			page 3
 
 
- 108              	.L12:
- 109              		.align	2
- 110              	.L11:
- 111 0010 00140140 		.word	1073812480
- 112              		.cfi_endproc
- 113              	.LFE68:
- 115              		.section	.text.RW_low_LCD,"ax",%progbits
- 116              		.align	1
- 117              		.global	RW_low_LCD
- 118              		.syntax unified
- 119              		.thumb
- 120              		.thumb_func
- 121              		.fpu softvfp
- 123              	RW_low_LCD:
- 124              	.LFB69:
+ 108 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 109              	.LVL2:
+ 110              		.loc 1 12 1 is_stmt 0 view .LVU8
+ 111 000e 08BD     		pop	{r3, pc}
+ 112              	.L12:
+ 113              		.align	2
+ 114              	.L11:
+ 115 0010 00140140 		.word	1073812480
+ 116              		.cfi_endproc
+ 117              	.LFE67:
+ 119              		.section	.text.RW_low_LCD,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	RW_low_LCD
+ 122              		.syntax unified
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.fpu softvfp
+ 127              	RW_low_LCD:
+ 128              	.LFB68:
   13:Src/LCD/GPIOandTIM_LCD.c **** void RW_low_LCD(void)   {HAL_GPIO_WritePin(LCD_RW_GPIO_Port, LCD_RW_Pin, GPIO_PIN_RESET);}
- 125              		.loc 1 13 0
- 126              		.cfi_startproc
- 127              		@ args = 0, pretend = 0, frame = 0
- 128              		@ frame_needed = 0, uses_anonymous_args = 0
- 129 0000 08B5     		push	{r3, lr}
- 130              	.LCFI3:
- 131              		.cfi_def_cfa_offset 8
- 132              		.cfi_offset 3, -8
- 133              		.cfi_offset 14, -4
- 134              		.loc 1 13 0
- 135 0002 0022     		movs	r2, #0
- 136 0004 4FF48061 		mov	r1, #1024
- 137 0008 0148     		ldr	r0, .L15
- 138 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 139              	.LVL3:
- 140 000e 08BD     		pop	{r3, pc}
- 141              	.L16:
- 142              		.align	2
- 143              	.L15:
- 144 0010 00140140 		.word	1073812480
- 145              		.cfi_endproc
- 146              	.LFE69:
- 148              		.section	.text.E_high_LCD,"ax",%progbits
- 149              		.align	1
- 150              		.global	E_high_LCD
- 151              		.syntax unified
- 152              		.thumb
- 153              		.thumb_func
- 154              		.fpu softvfp
- 156              	E_high_LCD:
- 157              	.LFB70:
+ 129              		.loc 1 13 25 is_stmt 1 view -0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133 0000 08B5     		push	{r3, lr}
+ 134              	.LCFI3:
+ 135              		.cfi_def_cfa_offset 8
+ 136              		.cfi_offset 3, -8
+ 137              		.cfi_offset 14, -4
+ 138              		.loc 1 13 26 view .LVU10
+ 139 0002 0022     		movs	r2, #0
+ 140 0004 4FF48061 		mov	r1, #1024
+ 141 0008 0148     		ldr	r0, .L15
+ 142 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 143              	.LVL3:
+ 144              		.loc 1 13 1 is_stmt 0 view .LVU11
+ 145 000e 08BD     		pop	{r3, pc}
+ 146              	.L16:
+ 147              		.align	2
+ 148              	.L15:
+ 149 0010 00140140 		.word	1073812480
+ 150              		.cfi_endproc
+ 151              	.LFE68:
+ 153              		.section	.text.E_high_LCD,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	E_high_LCD
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.fpu softvfp
+ 161              	E_high_LCD:
+ 162              	.LFB69:
   14:Src/LCD/GPIOandTIM_LCD.c **** void E_high_LCD(void)   {HAL_GPIO_WritePin(LCD_EN_GPIO_Port, LCD_EN_Pin, GPIO_PIN_SET);}
- 158              		.loc 1 14 0
- 159              		.cfi_startproc
- 160              		@ args = 0, pretend = 0, frame = 0
- 161              		@ frame_needed = 0, uses_anonymous_args = 0
- 162 0000 08B5     		push	{r3, lr}
- 163              	.LCFI4:
- 164              		.cfi_def_cfa_offset 8
- 165              		.cfi_offset 3, -8
- 166              		.cfi_offset 14, -4
-ARM GAS  /tmp/cczC4zNF.s 			page 4
+ 163              		.loc 1 14 25 is_stmt 1 view -0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccb5ddER.s 			page 4
 
 
- 167              		.loc 1 14 0
- 168 0002 0122     		movs	r2, #1
- 169 0004 4FF40061 		mov	r1, #2048
- 170 0008 0148     		ldr	r0, .L19
- 171 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 172              	.LVL4:
- 173 000e 08BD     		pop	{r3, pc}
- 174              	.L20:
- 175              		.align	2
- 176              	.L19:
- 177 0010 00140140 		.word	1073812480
- 178              		.cfi_endproc
- 179              	.LFE70:
- 181              		.section	.text.E_low_LCD,"ax",%progbits
- 182              		.align	1
- 183              		.global	E_low_LCD
- 184              		.syntax unified
- 185              		.thumb
- 186              		.thumb_func
- 187              		.fpu softvfp
- 189              	E_low_LCD:
- 190              	.LFB71:
+ 167 0000 08B5     		push	{r3, lr}
+ 168              	.LCFI4:
+ 169              		.cfi_def_cfa_offset 8
+ 170              		.cfi_offset 3, -8
+ 171              		.cfi_offset 14, -4
+ 172              		.loc 1 14 26 view .LVU13
+ 173 0002 0122     		movs	r2, #1
+ 174 0004 4FF40061 		mov	r1, #2048
+ 175 0008 0148     		ldr	r0, .L19
+ 176 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 177              	.LVL4:
+ 178              		.loc 1 14 1 is_stmt 0 view .LVU14
+ 179 000e 08BD     		pop	{r3, pc}
+ 180              	.L20:
+ 181              		.align	2
+ 182              	.L19:
+ 183 0010 00140140 		.word	1073812480
+ 184              		.cfi_endproc
+ 185              	.LFE69:
+ 187              		.section	.text.E_low_LCD,"ax",%progbits
+ 188              		.align	1
+ 189              		.global	E_low_LCD
+ 190              		.syntax unified
+ 191              		.thumb
+ 192              		.thumb_func
+ 193              		.fpu softvfp
+ 195              	E_low_LCD:
+ 196              	.LFB70:
   15:Src/LCD/GPIOandTIM_LCD.c **** void E_low_LCD(void)    {HAL_GPIO_WritePin(LCD_EN_GPIO_Port, LCD_EN_Pin, GPIO_PIN_RESET);}
- 191              		.loc 1 15 0
- 192              		.cfi_startproc
- 193              		@ args = 0, pretend = 0, frame = 0
- 194              		@ frame_needed = 0, uses_anonymous_args = 0
- 195 0000 08B5     		push	{r3, lr}
- 196              	.LCFI5:
- 197              		.cfi_def_cfa_offset 8
- 198              		.cfi_offset 3, -8
- 199              		.cfi_offset 14, -4
- 200              		.loc 1 15 0
- 201 0002 0022     		movs	r2, #0
- 202 0004 4FF40061 		mov	r1, #2048
- 203 0008 0148     		ldr	r0, .L23
- 204 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 205              	.LVL5:
- 206 000e 08BD     		pop	{r3, pc}
- 207              	.L24:
- 208              		.align	2
- 209              	.L23:
- 210 0010 00140140 		.word	1073812480
- 211              		.cfi_endproc
- 212              	.LFE71:
- 214              		.section	.text.DB0_high_LCD,"ax",%progbits
- 215              		.align	1
- 216              		.global	DB0_high_LCD
- 217              		.syntax unified
- 218              		.thumb
- 219              		.thumb_func
- 220              		.fpu softvfp
- 222              	DB0_high_LCD:
- 223              	.LFB72:
+ 197              		.loc 1 15 25 is_stmt 1 view -0
+ 198              		.cfi_startproc
+ 199              		@ args = 0, pretend = 0, frame = 0
+ 200              		@ frame_needed = 0, uses_anonymous_args = 0
+ 201 0000 08B5     		push	{r3, lr}
+ 202              	.LCFI5:
+ 203              		.cfi_def_cfa_offset 8
+ 204              		.cfi_offset 3, -8
+ 205              		.cfi_offset 14, -4
+ 206              		.loc 1 15 26 view .LVU16
+ 207 0002 0022     		movs	r2, #0
+ 208 0004 4FF40061 		mov	r1, #2048
+ 209 0008 0148     		ldr	r0, .L23
+ 210 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 211              	.LVL5:
+ 212              		.loc 1 15 1 is_stmt 0 view .LVU17
+ 213 000e 08BD     		pop	{r3, pc}
+ 214              	.L24:
+ 215              		.align	2
+ 216              	.L23:
+ 217 0010 00140140 		.word	1073812480
+ 218              		.cfi_endproc
+ 219              	.LFE70:
+ 221              		.section	.text.DB0_high_LCD,"ax",%progbits
+ 222              		.align	1
+ 223              		.global	DB0_high_LCD
+ 224              		.syntax unified
+ 225              		.thumb
+ARM GAS  /tmp/ccb5ddER.s 			page 5
+
+
+ 226              		.thumb_func
+ 227              		.fpu softvfp
+ 229              	DB0_high_LCD:
+ 230              	.LFB71:
   16:Src/LCD/GPIOandTIM_LCD.c **** void DB0_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB0_GPIO_Port, LCD_DB0_Pin, GPIO_PIN_SET);}
- 224              		.loc 1 16 0
- 225              		.cfi_startproc
-ARM GAS  /tmp/cczC4zNF.s 			page 5
-
-
- 226              		@ args = 0, pretend = 0, frame = 0
- 227              		@ frame_needed = 0, uses_anonymous_args = 0
- 228 0000 08B5     		push	{r3, lr}
- 229              	.LCFI6:
- 230              		.cfi_def_cfa_offset 8
- 231              		.cfi_offset 3, -8
- 232              		.cfi_offset 14, -4
- 233              		.loc 1 16 0
- 234 0002 0122     		movs	r2, #1
- 235 0004 4FF48051 		mov	r1, #4096
- 236 0008 0148     		ldr	r0, .L27
- 237 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 238              	.LVL6:
- 239 000e 08BD     		pop	{r3, pc}
- 240              	.L28:
- 241              		.align	2
- 242              	.L27:
- 243 0010 00140140 		.word	1073812480
- 244              		.cfi_endproc
- 245              	.LFE72:
- 247              		.section	.text.DB0_low_LCD,"ax",%progbits
- 248              		.align	1
- 249              		.global	DB0_low_LCD
- 250              		.syntax unified
- 251              		.thumb
- 252              		.thumb_func
- 253              		.fpu softvfp
- 255              	DB0_low_LCD:
- 256              	.LFB73:
+ 231              		.loc 1 16 25 is_stmt 1 view -0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235 0000 08B5     		push	{r3, lr}
+ 236              	.LCFI6:
+ 237              		.cfi_def_cfa_offset 8
+ 238              		.cfi_offset 3, -8
+ 239              		.cfi_offset 14, -4
+ 240              		.loc 1 16 26 view .LVU19
+ 241 0002 0122     		movs	r2, #1
+ 242 0004 4FF48051 		mov	r1, #4096
+ 243 0008 0148     		ldr	r0, .L27
+ 244 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 245              	.LVL6:
+ 246              		.loc 1 16 1 is_stmt 0 view .LVU20
+ 247 000e 08BD     		pop	{r3, pc}
+ 248              	.L28:
+ 249              		.align	2
+ 250              	.L27:
+ 251 0010 00140140 		.word	1073812480
+ 252              		.cfi_endproc
+ 253              	.LFE71:
+ 255              		.section	.text.DB0_low_LCD,"ax",%progbits
+ 256              		.align	1
+ 257              		.global	DB0_low_LCD
+ 258              		.syntax unified
+ 259              		.thumb
+ 260              		.thumb_func
+ 261              		.fpu softvfp
+ 263              	DB0_low_LCD:
+ 264              	.LFB72:
   17:Src/LCD/GPIOandTIM_LCD.c **** void DB0_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB0_GPIO_Port, LCD_DB0_Pin, GPIO_PIN_RESET);}
- 257              		.loc 1 17 0
- 258              		.cfi_startproc
- 259              		@ args = 0, pretend = 0, frame = 0
- 260              		@ frame_needed = 0, uses_anonymous_args = 0
- 261 0000 08B5     		push	{r3, lr}
- 262              	.LCFI7:
- 263              		.cfi_def_cfa_offset 8
- 264              		.cfi_offset 3, -8
- 265              		.cfi_offset 14, -4
- 266              		.loc 1 17 0
- 267 0002 0022     		movs	r2, #0
- 268 0004 4FF48051 		mov	r1, #4096
- 269 0008 0148     		ldr	r0, .L31
- 270 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 271              	.LVL7:
- 272 000e 08BD     		pop	{r3, pc}
- 273              	.L32:
- 274              		.align	2
- 275              	.L31:
- 276 0010 00140140 		.word	1073812480
- 277              		.cfi_endproc
- 278              	.LFE73:
- 280              		.section	.text.DB1_high_LCD,"ax",%progbits
- 281              		.align	1
- 282              		.global	DB1_high_LCD
- 283              		.syntax unified
- 284              		.thumb
-ARM GAS  /tmp/cczC4zNF.s 			page 6
+ 265              		.loc 1 17 25 is_stmt 1 view -0
+ 266              		.cfi_startproc
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269 0000 08B5     		push	{r3, lr}
+ 270              	.LCFI7:
+ 271              		.cfi_def_cfa_offset 8
+ 272              		.cfi_offset 3, -8
+ 273              		.cfi_offset 14, -4
+ 274              		.loc 1 17 26 view .LVU22
+ 275 0002 0022     		movs	r2, #0
+ 276 0004 4FF48051 		mov	r1, #4096
+ 277 0008 0148     		ldr	r0, .L31
+ 278 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 279              	.LVL7:
+ 280              		.loc 1 17 1 is_stmt 0 view .LVU23
+ 281 000e 08BD     		pop	{r3, pc}
+ 282              	.L32:
+ 283              		.align	2
+ARM GAS  /tmp/ccb5ddER.s 			page 6
 
 
- 285              		.thumb_func
- 286              		.fpu softvfp
- 288              	DB1_high_LCD:
- 289              	.LFB74:
+ 284              	.L31:
+ 285 0010 00140140 		.word	1073812480
+ 286              		.cfi_endproc
+ 287              	.LFE72:
+ 289              		.section	.text.DB1_high_LCD,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	DB1_high_LCD
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 295              		.fpu softvfp
+ 297              	DB1_high_LCD:
+ 298              	.LFB73:
   18:Src/LCD/GPIOandTIM_LCD.c **** void DB1_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB1_GPIO_Port, LCD_DB1_Pin, GPIO_PIN_SET);}
- 290              		.loc 1 18 0
- 291              		.cfi_startproc
- 292              		@ args = 0, pretend = 0, frame = 0
- 293              		@ frame_needed = 0, uses_anonymous_args = 0
- 294 0000 08B5     		push	{r3, lr}
- 295              	.LCFI8:
- 296              		.cfi_def_cfa_offset 8
- 297              		.cfi_offset 3, -8
- 298              		.cfi_offset 14, -4
- 299              		.loc 1 18 0
- 300 0002 0122     		movs	r2, #1
- 301 0004 4FF40051 		mov	r1, #8192
- 302 0008 0148     		ldr	r0, .L35
- 303 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 304              	.LVL8:
- 305 000e 08BD     		pop	{r3, pc}
- 306              	.L36:
- 307              		.align	2
- 308              	.L35:
- 309 0010 00140140 		.word	1073812480
- 310              		.cfi_endproc
- 311              	.LFE74:
- 313              		.section	.text.DB1_low_LCD,"ax",%progbits
- 314              		.align	1
- 315              		.global	DB1_low_LCD
- 316              		.syntax unified
- 317              		.thumb
- 318              		.thumb_func
- 319              		.fpu softvfp
- 321              	DB1_low_LCD:
- 322              	.LFB75:
+ 299              		.loc 1 18 25 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303 0000 08B5     		push	{r3, lr}
+ 304              	.LCFI8:
+ 305              		.cfi_def_cfa_offset 8
+ 306              		.cfi_offset 3, -8
+ 307              		.cfi_offset 14, -4
+ 308              		.loc 1 18 26 view .LVU25
+ 309 0002 0122     		movs	r2, #1
+ 310 0004 4FF40051 		mov	r1, #8192
+ 311 0008 0148     		ldr	r0, .L35
+ 312 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 313              	.LVL8:
+ 314              		.loc 1 18 1 is_stmt 0 view .LVU26
+ 315 000e 08BD     		pop	{r3, pc}
+ 316              	.L36:
+ 317              		.align	2
+ 318              	.L35:
+ 319 0010 00140140 		.word	1073812480
+ 320              		.cfi_endproc
+ 321              	.LFE73:
+ 323              		.section	.text.DB1_low_LCD,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	DB1_low_LCD
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 329              		.fpu softvfp
+ 331              	DB1_low_LCD:
+ 332              	.LFB74:
   19:Src/LCD/GPIOandTIM_LCD.c **** void DB1_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB1_GPIO_Port, LCD_DB1_Pin, GPIO_PIN_RESET);}
- 323              		.loc 1 19 0
- 324              		.cfi_startproc
- 325              		@ args = 0, pretend = 0, frame = 0
- 326              		@ frame_needed = 0, uses_anonymous_args = 0
- 327 0000 08B5     		push	{r3, lr}
- 328              	.LCFI9:
- 329              		.cfi_def_cfa_offset 8
- 330              		.cfi_offset 3, -8
- 331              		.cfi_offset 14, -4
- 332              		.loc 1 19 0
- 333 0002 0022     		movs	r2, #0
- 334 0004 4FF40051 		mov	r1, #8192
- 335 0008 0148     		ldr	r0, .L39
- 336 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 337              	.LVL9:
- 338 000e 08BD     		pop	{r3, pc}
- 339              	.L40:
- 340              		.align	2
- 341              	.L39:
- 342 0010 00140140 		.word	1073812480
-ARM GAS  /tmp/cczC4zNF.s 			page 7
+ 333              		.loc 1 19 25 is_stmt 1 view -0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337 0000 08B5     		push	{r3, lr}
+ 338              	.LCFI9:
+ 339              		.cfi_def_cfa_offset 8
+ 340              		.cfi_offset 3, -8
+ 341              		.cfi_offset 14, -4
+ 342              		.loc 1 19 26 view .LVU28
+ARM GAS  /tmp/ccb5ddER.s 			page 7
 
 
- 343              		.cfi_endproc
- 344              	.LFE75:
- 346              		.section	.text.DB2_high_LCD,"ax",%progbits
- 347              		.align	1
- 348              		.global	DB2_high_LCD
- 349              		.syntax unified
- 350              		.thumb
- 351              		.thumb_func
- 352              		.fpu softvfp
- 354              	DB2_high_LCD:
- 355              	.LFB76:
+ 343 0002 0022     		movs	r2, #0
+ 344 0004 4FF40051 		mov	r1, #8192
+ 345 0008 0148     		ldr	r0, .L39
+ 346 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 347              	.LVL9:
+ 348              		.loc 1 19 1 is_stmt 0 view .LVU29
+ 349 000e 08BD     		pop	{r3, pc}
+ 350              	.L40:
+ 351              		.align	2
+ 352              	.L39:
+ 353 0010 00140140 		.word	1073812480
+ 354              		.cfi_endproc
+ 355              	.LFE74:
+ 357              		.section	.text.DB2_high_LCD,"ax",%progbits
+ 358              		.align	1
+ 359              		.global	DB2_high_LCD
+ 360              		.syntax unified
+ 361              		.thumb
+ 362              		.thumb_func
+ 363              		.fpu softvfp
+ 365              	DB2_high_LCD:
+ 366              	.LFB75:
   20:Src/LCD/GPIOandTIM_LCD.c **** void DB2_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB2_GPIO_Port, LCD_DB2_Pin, GPIO_PIN_SET);}
- 356              		.loc 1 20 0
- 357              		.cfi_startproc
- 358              		@ args = 0, pretend = 0, frame = 0
- 359              		@ frame_needed = 0, uses_anonymous_args = 0
- 360 0000 08B5     		push	{r3, lr}
- 361              	.LCFI10:
- 362              		.cfi_def_cfa_offset 8
- 363              		.cfi_offset 3, -8
- 364              		.cfi_offset 14, -4
- 365              		.loc 1 20 0
- 366 0002 0122     		movs	r2, #1
- 367 0004 4FF48041 		mov	r1, #16384
- 368 0008 0148     		ldr	r0, .L43
- 369 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 370              	.LVL10:
- 371 000e 08BD     		pop	{r3, pc}
- 372              	.L44:
- 373              		.align	2
- 374              	.L43:
- 375 0010 00140140 		.word	1073812480
- 376              		.cfi_endproc
- 377              	.LFE76:
- 379              		.section	.text.DB2_low_LCD,"ax",%progbits
- 380              		.align	1
- 381              		.global	DB2_low_LCD
- 382              		.syntax unified
- 383              		.thumb
- 384              		.thumb_func
- 385              		.fpu softvfp
- 387              	DB2_low_LCD:
- 388              	.LFB77:
+ 367              		.loc 1 20 25 is_stmt 1 view -0
+ 368              		.cfi_startproc
+ 369              		@ args = 0, pretend = 0, frame = 0
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371 0000 08B5     		push	{r3, lr}
+ 372              	.LCFI10:
+ 373              		.cfi_def_cfa_offset 8
+ 374              		.cfi_offset 3, -8
+ 375              		.cfi_offset 14, -4
+ 376              		.loc 1 20 26 view .LVU31
+ 377 0002 0122     		movs	r2, #1
+ 378 0004 4FF48041 		mov	r1, #16384
+ 379 0008 0148     		ldr	r0, .L43
+ 380 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 381              	.LVL10:
+ 382              		.loc 1 20 1 is_stmt 0 view .LVU32
+ 383 000e 08BD     		pop	{r3, pc}
+ 384              	.L44:
+ 385              		.align	2
+ 386              	.L43:
+ 387 0010 00140140 		.word	1073812480
+ 388              		.cfi_endproc
+ 389              	.LFE75:
+ 391              		.section	.text.DB2_low_LCD,"ax",%progbits
+ 392              		.align	1
+ 393              		.global	DB2_low_LCD
+ 394              		.syntax unified
+ 395              		.thumb
+ 396              		.thumb_func
+ 397              		.fpu softvfp
+ 399              	DB2_low_LCD:
+ 400              	.LFB76:
   21:Src/LCD/GPIOandTIM_LCD.c **** void DB2_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB2_GPIO_Port, LCD_DB2_Pin, GPIO_PIN_RESET);}
- 389              		.loc 1 21 0
- 390              		.cfi_startproc
- 391              		@ args = 0, pretend = 0, frame = 0
- 392              		@ frame_needed = 0, uses_anonymous_args = 0
- 393 0000 08B5     		push	{r3, lr}
- 394              	.LCFI11:
- 395              		.cfi_def_cfa_offset 8
- 396              		.cfi_offset 3, -8
- 397              		.cfi_offset 14, -4
- 398              		.loc 1 21 0
- 399 0002 0022     		movs	r2, #0
- 400 0004 4FF48041 		mov	r1, #16384
- 401 0008 0148     		ldr	r0, .L47
-ARM GAS  /tmp/cczC4zNF.s 			page 8
+ 401              		.loc 1 21 25 is_stmt 1 view -0
+ARM GAS  /tmp/ccb5ddER.s 			page 8
 
 
- 402 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 403              	.LVL11:
- 404 000e 08BD     		pop	{r3, pc}
- 405              	.L48:
- 406              		.align	2
- 407              	.L47:
- 408 0010 00140140 		.word	1073812480
- 409              		.cfi_endproc
- 410              	.LFE77:
- 412              		.section	.text.DB3_high_LCD,"ax",%progbits
- 413              		.align	1
- 414              		.global	DB3_high_LCD
- 415              		.syntax unified
- 416              		.thumb
- 417              		.thumb_func
- 418              		.fpu softvfp
- 420              	DB3_high_LCD:
- 421              	.LFB78:
+ 402              		.cfi_startproc
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405 0000 08B5     		push	{r3, lr}
+ 406              	.LCFI11:
+ 407              		.cfi_def_cfa_offset 8
+ 408              		.cfi_offset 3, -8
+ 409              		.cfi_offset 14, -4
+ 410              		.loc 1 21 26 view .LVU34
+ 411 0002 0022     		movs	r2, #0
+ 412 0004 4FF48041 		mov	r1, #16384
+ 413 0008 0148     		ldr	r0, .L47
+ 414 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 415              	.LVL11:
+ 416              		.loc 1 21 1 is_stmt 0 view .LVU35
+ 417 000e 08BD     		pop	{r3, pc}
+ 418              	.L48:
+ 419              		.align	2
+ 420              	.L47:
+ 421 0010 00140140 		.word	1073812480
+ 422              		.cfi_endproc
+ 423              	.LFE76:
+ 425              		.section	.text.DB3_high_LCD,"ax",%progbits
+ 426              		.align	1
+ 427              		.global	DB3_high_LCD
+ 428              		.syntax unified
+ 429              		.thumb
+ 430              		.thumb_func
+ 431              		.fpu softvfp
+ 433              	DB3_high_LCD:
+ 434              	.LFB77:
   22:Src/LCD/GPIOandTIM_LCD.c **** void DB3_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB3_GPIO_Port, LCD_DB3_Pin, GPIO_PIN_SET);}
- 422              		.loc 1 22 0
- 423              		.cfi_startproc
- 424              		@ args = 0, pretend = 0, frame = 0
- 425              		@ frame_needed = 0, uses_anonymous_args = 0
- 426 0000 08B5     		push	{r3, lr}
- 427              	.LCFI12:
- 428              		.cfi_def_cfa_offset 8
- 429              		.cfi_offset 3, -8
- 430              		.cfi_offset 14, -4
- 431              		.loc 1 22 0
- 432 0002 0122     		movs	r2, #1
- 433 0004 4FF40041 		mov	r1, #32768
- 434 0008 0148     		ldr	r0, .L51
- 435 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 436              	.LVL12:
- 437 000e 08BD     		pop	{r3, pc}
- 438              	.L52:
- 439              		.align	2
- 440              	.L51:
- 441 0010 00140140 		.word	1073812480
- 442              		.cfi_endproc
- 443              	.LFE78:
- 445              		.section	.text.DB3_low_LCD,"ax",%progbits
- 446              		.align	1
- 447              		.global	DB3_low_LCD
- 448              		.syntax unified
- 449              		.thumb
- 450              		.thumb_func
- 451              		.fpu softvfp
- 453              	DB3_low_LCD:
- 454              	.LFB79:
+ 435              		.loc 1 22 25 is_stmt 1 view -0
+ 436              		.cfi_startproc
+ 437              		@ args = 0, pretend = 0, frame = 0
+ 438              		@ frame_needed = 0, uses_anonymous_args = 0
+ 439 0000 08B5     		push	{r3, lr}
+ 440              	.LCFI12:
+ 441              		.cfi_def_cfa_offset 8
+ 442              		.cfi_offset 3, -8
+ 443              		.cfi_offset 14, -4
+ 444              		.loc 1 22 26 view .LVU37
+ 445 0002 0122     		movs	r2, #1
+ 446 0004 4FF40041 		mov	r1, #32768
+ 447 0008 0148     		ldr	r0, .L51
+ 448 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 449              	.LVL12:
+ 450              		.loc 1 22 1 is_stmt 0 view .LVU38
+ 451 000e 08BD     		pop	{r3, pc}
+ 452              	.L52:
+ 453              		.align	2
+ 454              	.L51:
+ 455 0010 00140140 		.word	1073812480
+ 456              		.cfi_endproc
+ 457              	.LFE77:
+ 459              		.section	.text.DB3_low_LCD,"ax",%progbits
+ 460              		.align	1
+ARM GAS  /tmp/ccb5ddER.s 			page 9
+
+
+ 461              		.global	DB3_low_LCD
+ 462              		.syntax unified
+ 463              		.thumb
+ 464              		.thumb_func
+ 465              		.fpu softvfp
+ 467              	DB3_low_LCD:
+ 468              	.LFB78:
   23:Src/LCD/GPIOandTIM_LCD.c **** void DB3_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB3_GPIO_Port, LCD_DB3_Pin, GPIO_PIN_RESET);}
- 455              		.loc 1 23 0
- 456              		.cfi_startproc
- 457              		@ args = 0, pretend = 0, frame = 0
- 458              		@ frame_needed = 0, uses_anonymous_args = 0
- 459 0000 08B5     		push	{r3, lr}
- 460              	.LCFI13:
-ARM GAS  /tmp/cczC4zNF.s 			page 9
-
-
- 461              		.cfi_def_cfa_offset 8
- 462              		.cfi_offset 3, -8
- 463              		.cfi_offset 14, -4
- 464              		.loc 1 23 0
- 465 0002 0022     		movs	r2, #0
- 466 0004 4FF40041 		mov	r1, #32768
- 467 0008 0148     		ldr	r0, .L55
- 468 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 469              	.LVL13:
- 470 000e 08BD     		pop	{r3, pc}
- 471              	.L56:
- 472              		.align	2
- 473              	.L55:
- 474 0010 00140140 		.word	1073812480
- 475              		.cfi_endproc
- 476              	.LFE79:
- 478              		.section	.text.DB4_high_LCD,"ax",%progbits
- 479              		.align	1
- 480              		.global	DB4_high_LCD
- 481              		.syntax unified
- 482              		.thumb
- 483              		.thumb_func
- 484              		.fpu softvfp
- 486              	DB4_high_LCD:
- 487              	.LFB80:
+ 469              		.loc 1 23 25 is_stmt 1 view -0
+ 470              		.cfi_startproc
+ 471              		@ args = 0, pretend = 0, frame = 0
+ 472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 473 0000 08B5     		push	{r3, lr}
+ 474              	.LCFI13:
+ 475              		.cfi_def_cfa_offset 8
+ 476              		.cfi_offset 3, -8
+ 477              		.cfi_offset 14, -4
+ 478              		.loc 1 23 26 view .LVU40
+ 479 0002 0022     		movs	r2, #0
+ 480 0004 4FF40041 		mov	r1, #32768
+ 481 0008 0148     		ldr	r0, .L55
+ 482 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 483              	.LVL13:
+ 484              		.loc 1 23 1 is_stmt 0 view .LVU41
+ 485 000e 08BD     		pop	{r3, pc}
+ 486              	.L56:
+ 487              		.align	2
+ 488              	.L55:
+ 489 0010 00140140 		.word	1073812480
+ 490              		.cfi_endproc
+ 491              	.LFE78:
+ 493              		.section	.text.DB4_high_LCD,"ax",%progbits
+ 494              		.align	1
+ 495              		.global	DB4_high_LCD
+ 496              		.syntax unified
+ 497              		.thumb
+ 498              		.thumb_func
+ 499              		.fpu softvfp
+ 501              	DB4_high_LCD:
+ 502              	.LFB79:
   24:Src/LCD/GPIOandTIM_LCD.c **** void DB4_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB4_GPIO_Port, LCD_DB4_Pin, GPIO_PIN_SET);}
- 488              		.loc 1 24 0
- 489              		.cfi_startproc
- 490              		@ args = 0, pretend = 0, frame = 0
- 491              		@ frame_needed = 0, uses_anonymous_args = 0
- 492 0000 08B5     		push	{r3, lr}
- 493              	.LCFI14:
- 494              		.cfi_def_cfa_offset 8
- 495              		.cfi_offset 3, -8
- 496              		.cfi_offset 14, -4
- 497              		.loc 1 24 0
- 498 0002 0122     		movs	r2, #1
- 499 0004 4021     		movs	r1, #64
- 500 0006 0248     		ldr	r0, .L59
- 501 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 502              	.LVL14:
- 503 000c 08BD     		pop	{r3, pc}
- 504              	.L60:
- 505 000e 00BF     		.align	2
- 506              	.L59:
- 507 0010 00100140 		.word	1073811456
- 508              		.cfi_endproc
- 509              	.LFE80:
- 511              		.section	.text.DB4_low_LCD,"ax",%progbits
- 512              		.align	1
- 513              		.global	DB4_low_LCD
- 514              		.syntax unified
- 515              		.thumb
- 516              		.thumb_func
- 517              		.fpu softvfp
- 519              	DB4_low_LCD:
- 520              	.LFB81:
-ARM GAS  /tmp/cczC4zNF.s 			page 10
+ 503              		.loc 1 24 25 is_stmt 1 view -0
+ 504              		.cfi_startproc
+ 505              		@ args = 0, pretend = 0, frame = 0
+ 506              		@ frame_needed = 0, uses_anonymous_args = 0
+ 507 0000 08B5     		push	{r3, lr}
+ 508              	.LCFI14:
+ 509              		.cfi_def_cfa_offset 8
+ 510              		.cfi_offset 3, -8
+ 511              		.cfi_offset 14, -4
+ 512              		.loc 1 24 26 view .LVU43
+ 513 0002 0122     		movs	r2, #1
+ 514 0004 4021     		movs	r1, #64
+ 515 0006 0248     		ldr	r0, .L59
+ 516 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 517              	.LVL14:
+ 518              		.loc 1 24 1 is_stmt 0 view .LVU44
+ARM GAS  /tmp/ccb5ddER.s 			page 10
 
 
+ 519 000c 08BD     		pop	{r3, pc}
+ 520              	.L60:
+ 521 000e 00BF     		.align	2
+ 522              	.L59:
+ 523 0010 00100140 		.word	1073811456
+ 524              		.cfi_endproc
+ 525              	.LFE79:
+ 527              		.section	.text.DB4_low_LCD,"ax",%progbits
+ 528              		.align	1
+ 529              		.global	DB4_low_LCD
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 533              		.fpu softvfp
+ 535              	DB4_low_LCD:
+ 536              	.LFB80:
   25:Src/LCD/GPIOandTIM_LCD.c **** void DB4_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB4_GPIO_Port, LCD_DB4_Pin, GPIO_PIN_RESET);}
- 521              		.loc 1 25 0
- 522              		.cfi_startproc
- 523              		@ args = 0, pretend = 0, frame = 0
- 524              		@ frame_needed = 0, uses_anonymous_args = 0
- 525 0000 08B5     		push	{r3, lr}
- 526              	.LCFI15:
- 527              		.cfi_def_cfa_offset 8
- 528              		.cfi_offset 3, -8
- 529              		.cfi_offset 14, -4
- 530              		.loc 1 25 0
- 531 0002 0022     		movs	r2, #0
- 532 0004 4021     		movs	r1, #64
- 533 0006 0248     		ldr	r0, .L63
- 534 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 535              	.LVL15:
- 536 000c 08BD     		pop	{r3, pc}
- 537              	.L64:
- 538 000e 00BF     		.align	2
- 539              	.L63:
- 540 0010 00100140 		.word	1073811456
- 541              		.cfi_endproc
- 542              	.LFE81:
- 544              		.section	.text.DB5_high_LCD,"ax",%progbits
- 545              		.align	1
- 546              		.global	DB5_high_LCD
- 547              		.syntax unified
- 548              		.thumb
- 549              		.thumb_func
- 550              		.fpu softvfp
- 552              	DB5_high_LCD:
- 553              	.LFB82:
+ 537              		.loc 1 25 25 is_stmt 1 view -0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541 0000 08B5     		push	{r3, lr}
+ 542              	.LCFI15:
+ 543              		.cfi_def_cfa_offset 8
+ 544              		.cfi_offset 3, -8
+ 545              		.cfi_offset 14, -4
+ 546              		.loc 1 25 26 view .LVU46
+ 547 0002 0022     		movs	r2, #0
+ 548 0004 4021     		movs	r1, #64
+ 549 0006 0248     		ldr	r0, .L63
+ 550 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 551              	.LVL15:
+ 552              		.loc 1 25 1 is_stmt 0 view .LVU47
+ 553 000c 08BD     		pop	{r3, pc}
+ 554              	.L64:
+ 555 000e 00BF     		.align	2
+ 556              	.L63:
+ 557 0010 00100140 		.word	1073811456
+ 558              		.cfi_endproc
+ 559              	.LFE80:
+ 561              		.section	.text.DB5_high_LCD,"ax",%progbits
+ 562              		.align	1
+ 563              		.global	DB5_high_LCD
+ 564              		.syntax unified
+ 565              		.thumb
+ 566              		.thumb_func
+ 567              		.fpu softvfp
+ 569              	DB5_high_LCD:
+ 570              	.LFB81:
   26:Src/LCD/GPIOandTIM_LCD.c **** void DB5_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB5_GPIO_Port, LCD_DB5_Pin, GPIO_PIN_SET);}
- 554              		.loc 1 26 0
- 555              		.cfi_startproc
- 556              		@ args = 0, pretend = 0, frame = 0
- 557              		@ frame_needed = 0, uses_anonymous_args = 0
- 558 0000 08B5     		push	{r3, lr}
- 559              	.LCFI16:
- 560              		.cfi_def_cfa_offset 8
- 561              		.cfi_offset 3, -8
- 562              		.cfi_offset 14, -4
- 563              		.loc 1 26 0
- 564 0002 0122     		movs	r2, #1
- 565 0004 8021     		movs	r1, #128
- 566 0006 0248     		ldr	r0, .L67
- 567 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 568              	.LVL16:
- 569 000c 08BD     		pop	{r3, pc}
- 570              	.L68:
- 571 000e 00BF     		.align	2
- 572              	.L67:
- 573 0010 00100140 		.word	1073811456
- 574              		.cfi_endproc
- 575              	.LFE82:
- 577              		.section	.text.DB5_low_LCD,"ax",%progbits
- 578              		.align	1
-ARM GAS  /tmp/cczC4zNF.s 			page 11
+ 571              		.loc 1 26 25 is_stmt 1 view -0
+ 572              		.cfi_startproc
+ 573              		@ args = 0, pretend = 0, frame = 0
+ 574              		@ frame_needed = 0, uses_anonymous_args = 0
+ 575 0000 08B5     		push	{r3, lr}
+ 576              	.LCFI16:
+ 577              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccb5ddER.s 			page 11
 
 
- 579              		.global	DB5_low_LCD
- 580              		.syntax unified
- 581              		.thumb
- 582              		.thumb_func
- 583              		.fpu softvfp
- 585              	DB5_low_LCD:
- 586              	.LFB83:
+ 578              		.cfi_offset 3, -8
+ 579              		.cfi_offset 14, -4
+ 580              		.loc 1 26 26 view .LVU49
+ 581 0002 0122     		movs	r2, #1
+ 582 0004 8021     		movs	r1, #128
+ 583 0006 0248     		ldr	r0, .L67
+ 584 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 585              	.LVL16:
+ 586              		.loc 1 26 1 is_stmt 0 view .LVU50
+ 587 000c 08BD     		pop	{r3, pc}
+ 588              	.L68:
+ 589 000e 00BF     		.align	2
+ 590              	.L67:
+ 591 0010 00100140 		.word	1073811456
+ 592              		.cfi_endproc
+ 593              	.LFE81:
+ 595              		.section	.text.DB5_low_LCD,"ax",%progbits
+ 596              		.align	1
+ 597              		.global	DB5_low_LCD
+ 598              		.syntax unified
+ 599              		.thumb
+ 600              		.thumb_func
+ 601              		.fpu softvfp
+ 603              	DB5_low_LCD:
+ 604              	.LFB82:
   27:Src/LCD/GPIOandTIM_LCD.c **** void DB5_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB5_GPIO_Port, LCD_DB5_Pin, GPIO_PIN_RESET);}
- 587              		.loc 1 27 0
- 588              		.cfi_startproc
- 589              		@ args = 0, pretend = 0, frame = 0
- 590              		@ frame_needed = 0, uses_anonymous_args = 0
- 591 0000 08B5     		push	{r3, lr}
- 592              	.LCFI17:
- 593              		.cfi_def_cfa_offset 8
- 594              		.cfi_offset 3, -8
- 595              		.cfi_offset 14, -4
- 596              		.loc 1 27 0
- 597 0002 0022     		movs	r2, #0
- 598 0004 8021     		movs	r1, #128
- 599 0006 0248     		ldr	r0, .L71
- 600 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 601              	.LVL17:
- 602 000c 08BD     		pop	{r3, pc}
- 603              	.L72:
- 604 000e 00BF     		.align	2
- 605              	.L71:
- 606 0010 00100140 		.word	1073811456
- 607              		.cfi_endproc
- 608              	.LFE83:
- 610              		.section	.text.DB6_high_LCD,"ax",%progbits
- 611              		.align	1
- 612              		.global	DB6_high_LCD
- 613              		.syntax unified
- 614              		.thumb
- 615              		.thumb_func
- 616              		.fpu softvfp
- 618              	DB6_high_LCD:
- 619              	.LFB84:
+ 605              		.loc 1 27 25 is_stmt 1 view -0
+ 606              		.cfi_startproc
+ 607              		@ args = 0, pretend = 0, frame = 0
+ 608              		@ frame_needed = 0, uses_anonymous_args = 0
+ 609 0000 08B5     		push	{r3, lr}
+ 610              	.LCFI17:
+ 611              		.cfi_def_cfa_offset 8
+ 612              		.cfi_offset 3, -8
+ 613              		.cfi_offset 14, -4
+ 614              		.loc 1 27 26 view .LVU52
+ 615 0002 0022     		movs	r2, #0
+ 616 0004 8021     		movs	r1, #128
+ 617 0006 0248     		ldr	r0, .L71
+ 618 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 619              	.LVL17:
+ 620              		.loc 1 27 1 is_stmt 0 view .LVU53
+ 621 000c 08BD     		pop	{r3, pc}
+ 622              	.L72:
+ 623 000e 00BF     		.align	2
+ 624              	.L71:
+ 625 0010 00100140 		.word	1073811456
+ 626              		.cfi_endproc
+ 627              	.LFE82:
+ 629              		.section	.text.DB6_high_LCD,"ax",%progbits
+ 630              		.align	1
+ 631              		.global	DB6_high_LCD
+ 632              		.syntax unified
+ 633              		.thumb
+ 634              		.thumb_func
+ 635              		.fpu softvfp
+ 637              	DB6_high_LCD:
+ARM GAS  /tmp/ccb5ddER.s 			page 12
+
+
+ 638              	.LFB83:
   28:Src/LCD/GPIOandTIM_LCD.c **** void DB6_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB6_GPIO_Port, LCD_DB6_Pin, GPIO_PIN_SET);}
- 620              		.loc 1 28 0
- 621              		.cfi_startproc
- 622              		@ args = 0, pretend = 0, frame = 0
- 623              		@ frame_needed = 0, uses_anonymous_args = 0
- 624 0000 08B5     		push	{r3, lr}
- 625              	.LCFI18:
- 626              		.cfi_def_cfa_offset 8
- 627              		.cfi_offset 3, -8
- 628              		.cfi_offset 14, -4
- 629              		.loc 1 28 0
- 630 0002 0122     		movs	r2, #1
- 631 0004 4FF48071 		mov	r1, #256
- 632 0008 0148     		ldr	r0, .L75
- 633 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 634              	.LVL18:
- 635 000e 08BD     		pop	{r3, pc}
- 636              	.L76:
-ARM GAS  /tmp/cczC4zNF.s 			page 12
-
-
- 637              		.align	2
- 638              	.L75:
- 639 0010 00100140 		.word	1073811456
- 640              		.cfi_endproc
- 641              	.LFE84:
- 643              		.section	.text.DB6_low_LCD,"ax",%progbits
- 644              		.align	1
- 645              		.global	DB6_low_LCD
- 646              		.syntax unified
- 647              		.thumb
- 648              		.thumb_func
- 649              		.fpu softvfp
- 651              	DB6_low_LCD:
- 652              	.LFB85:
+ 639              		.loc 1 28 25 is_stmt 1 view -0
+ 640              		.cfi_startproc
+ 641              		@ args = 0, pretend = 0, frame = 0
+ 642              		@ frame_needed = 0, uses_anonymous_args = 0
+ 643 0000 08B5     		push	{r3, lr}
+ 644              	.LCFI18:
+ 645              		.cfi_def_cfa_offset 8
+ 646              		.cfi_offset 3, -8
+ 647              		.cfi_offset 14, -4
+ 648              		.loc 1 28 26 view .LVU55
+ 649 0002 0122     		movs	r2, #1
+ 650 0004 4FF48071 		mov	r1, #256
+ 651 0008 0148     		ldr	r0, .L75
+ 652 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 653              	.LVL18:
+ 654              		.loc 1 28 1 is_stmt 0 view .LVU56
+ 655 000e 08BD     		pop	{r3, pc}
+ 656              	.L76:
+ 657              		.align	2
+ 658              	.L75:
+ 659 0010 00100140 		.word	1073811456
+ 660              		.cfi_endproc
+ 661              	.LFE83:
+ 663              		.section	.text.DB6_low_LCD,"ax",%progbits
+ 664              		.align	1
+ 665              		.global	DB6_low_LCD
+ 666              		.syntax unified
+ 667              		.thumb
+ 668              		.thumb_func
+ 669              		.fpu softvfp
+ 671              	DB6_low_LCD:
+ 672              	.LFB84:
   29:Src/LCD/GPIOandTIM_LCD.c **** void DB6_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB6_GPIO_Port, LCD_DB6_Pin, GPIO_PIN_RESET);}
- 653              		.loc 1 29 0
- 654              		.cfi_startproc
- 655              		@ args = 0, pretend = 0, frame = 0
- 656              		@ frame_needed = 0, uses_anonymous_args = 0
- 657 0000 08B5     		push	{r3, lr}
- 658              	.LCFI19:
- 659              		.cfi_def_cfa_offset 8
- 660              		.cfi_offset 3, -8
- 661              		.cfi_offset 14, -4
- 662              		.loc 1 29 0
- 663 0002 0022     		movs	r2, #0
- 664 0004 4FF48071 		mov	r1, #256
- 665 0008 0148     		ldr	r0, .L79
- 666 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 667              	.LVL19:
- 668 000e 08BD     		pop	{r3, pc}
- 669              	.L80:
- 670              		.align	2
- 671              	.L79:
- 672 0010 00100140 		.word	1073811456
- 673              		.cfi_endproc
- 674              	.LFE85:
- 676              		.section	.text.DB7_high_LCD,"ax",%progbits
- 677              		.align	1
- 678              		.global	DB7_high_LCD
- 679              		.syntax unified
- 680              		.thumb
- 681              		.thumb_func
- 682              		.fpu softvfp
- 684              	DB7_high_LCD:
- 685              	.LFB86:
+ 673              		.loc 1 29 25 is_stmt 1 view -0
+ 674              		.cfi_startproc
+ 675              		@ args = 0, pretend = 0, frame = 0
+ 676              		@ frame_needed = 0, uses_anonymous_args = 0
+ 677 0000 08B5     		push	{r3, lr}
+ 678              	.LCFI19:
+ 679              		.cfi_def_cfa_offset 8
+ 680              		.cfi_offset 3, -8
+ 681              		.cfi_offset 14, -4
+ 682              		.loc 1 29 26 view .LVU58
+ 683 0002 0022     		movs	r2, #0
+ 684 0004 4FF48071 		mov	r1, #256
+ 685 0008 0148     		ldr	r0, .L79
+ 686 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 687              	.LVL19:
+ 688              		.loc 1 29 1 is_stmt 0 view .LVU59
+ 689 000e 08BD     		pop	{r3, pc}
+ 690              	.L80:
+ 691              		.align	2
+ 692              	.L79:
+ 693 0010 00100140 		.word	1073811456
+ 694              		.cfi_endproc
+ARM GAS  /tmp/ccb5ddER.s 			page 13
+
+
+ 695              	.LFE84:
+ 697              		.section	.text.DB7_high_LCD,"ax",%progbits
+ 698              		.align	1
+ 699              		.global	DB7_high_LCD
+ 700              		.syntax unified
+ 701              		.thumb
+ 702              		.thumb_func
+ 703              		.fpu softvfp
+ 705              	DB7_high_LCD:
+ 706              	.LFB85:
   30:Src/LCD/GPIOandTIM_LCD.c **** void DB7_high_LCD(void) {HAL_GPIO_WritePin(LCD_DB7_GPIO_Port, LCD_DB7_Pin, GPIO_PIN_SET);}
- 686              		.loc 1 30 0
- 687              		.cfi_startproc
- 688              		@ args = 0, pretend = 0, frame = 0
- 689              		@ frame_needed = 0, uses_anonymous_args = 0
- 690 0000 08B5     		push	{r3, lr}
- 691              	.LCFI20:
- 692              		.cfi_def_cfa_offset 8
- 693              		.cfi_offset 3, -8
- 694              		.cfi_offset 14, -4
- 695              		.loc 1 30 0
-ARM GAS  /tmp/cczC4zNF.s 			page 13
-
-
- 696 0002 0122     		movs	r2, #1
- 697 0004 4FF40071 		mov	r1, #512
- 698 0008 0148     		ldr	r0, .L83
- 699 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 700              	.LVL20:
- 701 000e 08BD     		pop	{r3, pc}
- 702              	.L84:
- 703              		.align	2
- 704              	.L83:
- 705 0010 00100140 		.word	1073811456
- 706              		.cfi_endproc
- 707              	.LFE86:
- 709              		.section	.text.DB7_low_LCD,"ax",%progbits
- 710              		.align	1
- 711              		.global	DB7_low_LCD
- 712              		.syntax unified
- 713              		.thumb
- 714              		.thumb_func
- 715              		.fpu softvfp
- 717              	DB7_low_LCD:
- 718              	.LFB87:
+ 707              		.loc 1 30 25 is_stmt 1 view -0
+ 708              		.cfi_startproc
+ 709              		@ args = 0, pretend = 0, frame = 0
+ 710              		@ frame_needed = 0, uses_anonymous_args = 0
+ 711 0000 08B5     		push	{r3, lr}
+ 712              	.LCFI20:
+ 713              		.cfi_def_cfa_offset 8
+ 714              		.cfi_offset 3, -8
+ 715              		.cfi_offset 14, -4
+ 716              		.loc 1 30 26 view .LVU61
+ 717 0002 0122     		movs	r2, #1
+ 718 0004 4FF40071 		mov	r1, #512
+ 719 0008 0148     		ldr	r0, .L83
+ 720 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 721              	.LVL20:
+ 722              		.loc 1 30 1 is_stmt 0 view .LVU62
+ 723 000e 08BD     		pop	{r3, pc}
+ 724              	.L84:
+ 725              		.align	2
+ 726              	.L83:
+ 727 0010 00100140 		.word	1073811456
+ 728              		.cfi_endproc
+ 729              	.LFE85:
+ 731              		.section	.text.DB7_low_LCD,"ax",%progbits
+ 732              		.align	1
+ 733              		.global	DB7_low_LCD
+ 734              		.syntax unified
+ 735              		.thumb
+ 736              		.thumb_func
+ 737              		.fpu softvfp
+ 739              	DB7_low_LCD:
+ 740              	.LFB86:
   31:Src/LCD/GPIOandTIM_LCD.c **** void DB7_low_LCD(void)  {HAL_GPIO_WritePin(LCD_DB7_GPIO_Port, LCD_DB7_Pin, GPIO_PIN_RESET);}
- 719              		.loc 1 31 0
- 720              		.cfi_startproc
- 721              		@ args = 0, pretend = 0, frame = 0
- 722              		@ frame_needed = 0, uses_anonymous_args = 0
- 723 0000 08B5     		push	{r3, lr}
- 724              	.LCFI21:
- 725              		.cfi_def_cfa_offset 8
- 726              		.cfi_offset 3, -8
- 727              		.cfi_offset 14, -4
- 728              		.loc 1 31 0
- 729 0002 0022     		movs	r2, #0
- 730 0004 4FF40071 		mov	r1, #512
- 731 0008 0148     		ldr	r0, .L87
- 732 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 733              	.LVL21:
- 734 000e 08BD     		pop	{r3, pc}
- 735              	.L88:
- 736              		.align	2
- 737              	.L87:
- 738 0010 00100140 		.word	1073811456
- 739              		.cfi_endproc
- 740              	.LFE87:
- 742              		.section	.text.Ready_LCD,"ax",%progbits
- 743              		.align	1
- 744              		.global	Ready_LCD
- 745              		.syntax unified
- 746              		.thumb
- 747              		.thumb_func
- 748              		.fpu softvfp
- 750              	Ready_LCD:
- 751              	.LFB88:
+ 741              		.loc 1 31 25 is_stmt 1 view -0
+ 742              		.cfi_startproc
+ 743              		@ args = 0, pretend = 0, frame = 0
+ 744              		@ frame_needed = 0, uses_anonymous_args = 0
+ 745 0000 08B5     		push	{r3, lr}
+ 746              	.LCFI21:
+ 747              		.cfi_def_cfa_offset 8
+ 748              		.cfi_offset 3, -8
+ 749              		.cfi_offset 14, -4
+ 750              		.loc 1 31 26 view .LVU64
+ 751 0002 0022     		movs	r2, #0
+ 752 0004 4FF40071 		mov	r1, #512
+ 753 0008 0148     		ldr	r0, .L87
+ARM GAS  /tmp/ccb5ddER.s 			page 14
+
+
+ 754 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 755              	.LVL21:
+ 756              		.loc 1 31 1 is_stmt 0 view .LVU65
+ 757 000e 08BD     		pop	{r3, pc}
+ 758              	.L88:
+ 759              		.align	2
+ 760              	.L87:
+ 761 0010 00100140 		.word	1073811456
+ 762              		.cfi_endproc
+ 763              	.LFE86:
+ 765              		.section	.text.Ready_LCD,"ax",%progbits
+ 766              		.align	1
+ 767              		.global	Ready_LCD
+ 768              		.syntax unified
+ 769              		.thumb
+ 770              		.thumb_func
+ 771              		.fpu softvfp
+ 773              	Ready_LCD:
+ 774              	.LFB87:
   32:Src/LCD/GPIOandTIM_LCD.c **** 
   33:Src/LCD/GPIOandTIM_LCD.c **** int Ready_LCD(void)
   34:Src/LCD/GPIOandTIM_LCD.c **** {
- 752              		.loc 1 34 0
-ARM GAS  /tmp/cczC4zNF.s 			page 14
-
-
- 753              		.cfi_startproc
- 754              		@ args = 0, pretend = 0, frame = 0
- 755              		@ frame_needed = 0, uses_anonymous_args = 0
- 756 0000 08B5     		push	{r3, lr}
- 757              	.LCFI22:
- 758              		.cfi_def_cfa_offset 8
- 759              		.cfi_offset 3, -8
- 760              		.cfi_offset 14, -4
+ 775              		.loc 1 34 1 is_stmt 1 view -0
+ 776              		.cfi_startproc
+ 777              		@ args = 0, pretend = 0, frame = 0
+ 778              		@ frame_needed = 0, uses_anonymous_args = 0
+ 779 0000 08B5     		push	{r3, lr}
+ 780              	.LCFI22:
+ 781              		.cfi_def_cfa_offset 8
+ 782              		.cfi_offset 3, -8
+ 783              		.cfi_offset 14, -4
   35:Src/LCD/GPIOandTIM_LCD.c ****     HAL_Delay(1);
- 761              		.loc 1 35 0
- 762 0002 0120     		movs	r0, #1
- 763 0004 FFF7FEFF 		bl	HAL_Delay
- 764              	.LVL22:
+ 784              		.loc 1 35 5 view .LVU67
+ 785 0002 0120     		movs	r0, #1
+ 786 0004 FFF7FEFF 		bl	HAL_Delay
+ 787              	.LVL22:
   36:Src/LCD/GPIOandTIM_LCD.c ****     return READY_LCD;
+ 788              		.loc 1 36 5 view .LVU68
   37:Src/LCD/GPIOandTIM_LCD.c **** 
   38:Src/LCD/GPIOandTIM_LCD.c ****     /*
   39:Src/LCD/GPIOandTIM_LCD.c ****     static _Bool wait = true;
@@ -814,110 +838,105 @@ ARM GAS  /tmp/cczC4zNF.s 			page 1
   53:Src/LCD/GPIOandTIM_LCD.c ****     }
   54:Src/LCD/GPIOandTIM_LCD.c **** 
   55:Src/LCD/GPIOandTIM_LCD.c ****     return NOT_READY_LCD;
+ARM GAS  /tmp/ccb5ddER.s 			page 15
+
+
   56:Src/LCD/GPIOandTIM_LCD.c ****     */
   57:Src/LCD/GPIOandTIM_LCD.c **** }
- 765              		.loc 1 57 0
- 766 0008 0120     		movs	r0, #1
- 767 000a 08BD     		pop	{r3, pc}
- 768              		.cfi_endproc
- 769              	.LFE88:
- 771              		.text
- 772              	.Letext0:
- 773              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 774              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 775              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 776              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 777              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f105xc.h"
- 778              		.file 7 "/usr/arm-none-eabi/include/sys/lock.h"
- 779              		.file 8 "/usr/arm-none-eabi/include/sys/_types.h"
- 780              		.file 9 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
- 781              		.file 10 "/usr/arm-none-eabi/include/sys/reent.h"
- 782              		.file 11 "Inc/LCD/Driver_LCD.h"
- 783              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 784              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 785              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 786              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 787              		.file 16 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  /tmp/cczC4zNF.s 			page 15
-
-
- 788              		.file 17 "Inc/tim.h"
-ARM GAS  /tmp/cczC4zNF.s 			page 16
+ 789              		.loc 1 57 1 is_stmt 0 view .LVU69
+ 790 0008 0120     		movs	r0, #1
+ 791 000a 08BD     		pop	{r3, pc}
+ 792              		.cfi_endproc
+ 793              	.LFE87:
+ 795              		.text
+ 796              	.Letext0:
+ 797              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+ 798              		.file 3 "Drivers/CMSIS/Include/core_cm3.h"
+ 799              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 800              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f105xc.h"
+ 801              		.file 6 "Inc/LCD/Driver_LCD.h"
+ 802              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 803              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 804              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 805              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 806              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 807              		.file 12 "Inc/tim.h"
+ARM GAS  /tmp/ccb5ddER.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 GPIOandTIM_LCD.c
-     /tmp/cczC4zNF.s:16     .text.RS_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:23     .text.RS_high_LCD:0000000000000000 RS_high_LCD
-     /tmp/cczC4zNF.s:45     .text.RS_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:50     .text.RS_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:57     .text.RS_low_LCD:0000000000000000 RS_low_LCD
-     /tmp/cczC4zNF.s:78     .text.RS_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:83     .text.RW_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:90     .text.RW_high_LCD:0000000000000000 RW_high_LCD
-     /tmp/cczC4zNF.s:111    .text.RW_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:116    .text.RW_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:123    .text.RW_low_LCD:0000000000000000 RW_low_LCD
-     /tmp/cczC4zNF.s:144    .text.RW_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:149    .text.E_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:156    .text.E_high_LCD:0000000000000000 E_high_LCD
-     /tmp/cczC4zNF.s:177    .text.E_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:182    .text.E_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:189    .text.E_low_LCD:0000000000000000 E_low_LCD
-     /tmp/cczC4zNF.s:210    .text.E_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:215    .text.DB0_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:222    .text.DB0_high_LCD:0000000000000000 DB0_high_LCD
-     /tmp/cczC4zNF.s:243    .text.DB0_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:248    .text.DB0_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:255    .text.DB0_low_LCD:0000000000000000 DB0_low_LCD
-     /tmp/cczC4zNF.s:276    .text.DB0_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:281    .text.DB1_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:288    .text.DB1_high_LCD:0000000000000000 DB1_high_LCD
-     /tmp/cczC4zNF.s:309    .text.DB1_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:314    .text.DB1_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:321    .text.DB1_low_LCD:0000000000000000 DB1_low_LCD
-     /tmp/cczC4zNF.s:342    .text.DB1_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:347    .text.DB2_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:354    .text.DB2_high_LCD:0000000000000000 DB2_high_LCD
-     /tmp/cczC4zNF.s:375    .text.DB2_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:380    .text.DB2_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:387    .text.DB2_low_LCD:0000000000000000 DB2_low_LCD
-     /tmp/cczC4zNF.s:408    .text.DB2_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:413    .text.DB3_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:420    .text.DB3_high_LCD:0000000000000000 DB3_high_LCD
-     /tmp/cczC4zNF.s:441    .text.DB3_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:446    .text.DB3_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:453    .text.DB3_low_LCD:0000000000000000 DB3_low_LCD
-     /tmp/cczC4zNF.s:474    .text.DB3_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:479    .text.DB4_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:486    .text.DB4_high_LCD:0000000000000000 DB4_high_LCD
-     /tmp/cczC4zNF.s:507    .text.DB4_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:512    .text.DB4_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:519    .text.DB4_low_LCD:0000000000000000 DB4_low_LCD
-     /tmp/cczC4zNF.s:540    .text.DB4_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:545    .text.DB5_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:552    .text.DB5_high_LCD:0000000000000000 DB5_high_LCD
-     /tmp/cczC4zNF.s:573    .text.DB5_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:578    .text.DB5_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:585    .text.DB5_low_LCD:0000000000000000 DB5_low_LCD
-     /tmp/cczC4zNF.s:606    .text.DB5_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:611    .text.DB6_high_LCD:0000000000000000 $t
-ARM GAS  /tmp/cczC4zNF.s 			page 17
+     /tmp/ccb5ddER.s:16     .text.RS_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:24     .text.RS_high_LCD:0000000000000000 RS_high_LCD
+     /tmp/ccb5ddER.s:47     .text.RS_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:52     .text.RS_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:59     .text.RS_low_LCD:0000000000000000 RS_low_LCD
+     /tmp/ccb5ddER.s:81     .text.RS_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:86     .text.RW_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:93     .text.RW_high_LCD:0000000000000000 RW_high_LCD
+     /tmp/ccb5ddER.s:115    .text.RW_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:120    .text.RW_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:127    .text.RW_low_LCD:0000000000000000 RW_low_LCD
+     /tmp/ccb5ddER.s:149    .text.RW_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:154    .text.E_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:161    .text.E_high_LCD:0000000000000000 E_high_LCD
+     /tmp/ccb5ddER.s:183    .text.E_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:188    .text.E_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:195    .text.E_low_LCD:0000000000000000 E_low_LCD
+     /tmp/ccb5ddER.s:217    .text.E_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:222    .text.DB0_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:229    .text.DB0_high_LCD:0000000000000000 DB0_high_LCD
+     /tmp/ccb5ddER.s:251    .text.DB0_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:256    .text.DB0_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:263    .text.DB0_low_LCD:0000000000000000 DB0_low_LCD
+     /tmp/ccb5ddER.s:285    .text.DB0_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:290    .text.DB1_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:297    .text.DB1_high_LCD:0000000000000000 DB1_high_LCD
+     /tmp/ccb5ddER.s:319    .text.DB1_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:324    .text.DB1_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:331    .text.DB1_low_LCD:0000000000000000 DB1_low_LCD
+     /tmp/ccb5ddER.s:353    .text.DB1_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:358    .text.DB2_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:365    .text.DB2_high_LCD:0000000000000000 DB2_high_LCD
+     /tmp/ccb5ddER.s:387    .text.DB2_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:392    .text.DB2_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:399    .text.DB2_low_LCD:0000000000000000 DB2_low_LCD
+     /tmp/ccb5ddER.s:421    .text.DB2_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:426    .text.DB3_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:433    .text.DB3_high_LCD:0000000000000000 DB3_high_LCD
+     /tmp/ccb5ddER.s:455    .text.DB3_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:460    .text.DB3_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:467    .text.DB3_low_LCD:0000000000000000 DB3_low_LCD
+     /tmp/ccb5ddER.s:489    .text.DB3_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:494    .text.DB4_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:501    .text.DB4_high_LCD:0000000000000000 DB4_high_LCD
+     /tmp/ccb5ddER.s:523    .text.DB4_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:528    .text.DB4_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:535    .text.DB4_low_LCD:0000000000000000 DB4_low_LCD
+     /tmp/ccb5ddER.s:557    .text.DB4_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:562    .text.DB5_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:569    .text.DB5_high_LCD:0000000000000000 DB5_high_LCD
+     /tmp/ccb5ddER.s:591    .text.DB5_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:596    .text.DB5_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:603    .text.DB5_low_LCD:0000000000000000 DB5_low_LCD
+     /tmp/ccb5ddER.s:625    .text.DB5_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:630    .text.DB6_high_LCD:0000000000000000 $t
+ARM GAS  /tmp/ccb5ddER.s 			page 17
 
 
-     /tmp/cczC4zNF.s:618    .text.DB6_high_LCD:0000000000000000 DB6_high_LCD
-     /tmp/cczC4zNF.s:639    .text.DB6_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:644    .text.DB6_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:651    .text.DB6_low_LCD:0000000000000000 DB6_low_LCD
-     /tmp/cczC4zNF.s:672    .text.DB6_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:677    .text.DB7_high_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:684    .text.DB7_high_LCD:0000000000000000 DB7_high_LCD
-     /tmp/cczC4zNF.s:705    .text.DB7_high_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:710    .text.DB7_low_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:717    .text.DB7_low_LCD:0000000000000000 DB7_low_LCD
-     /tmp/cczC4zNF.s:738    .text.DB7_low_LCD:0000000000000010 $d
-     /tmp/cczC4zNF.s:743    .text.Ready_LCD:0000000000000000 $t
-     /tmp/cczC4zNF.s:750    .text.Ready_LCD:0000000000000000 Ready_LCD
+     /tmp/ccb5ddER.s:637    .text.DB6_high_LCD:0000000000000000 DB6_high_LCD
+     /tmp/ccb5ddER.s:659    .text.DB6_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:664    .text.DB6_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:671    .text.DB6_low_LCD:0000000000000000 DB6_low_LCD
+     /tmp/ccb5ddER.s:693    .text.DB6_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:698    .text.DB7_high_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:705    .text.DB7_high_LCD:0000000000000000 DB7_high_LCD
+     /tmp/ccb5ddER.s:727    .text.DB7_high_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:732    .text.DB7_low_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:739    .text.DB7_low_LCD:0000000000000000 DB7_low_LCD
+     /tmp/ccb5ddER.s:761    .text.DB7_low_LCD:0000000000000010 $d
+     /tmp/ccb5ddER.s:766    .text.Ready_LCD:0000000000000000 $t
+     /tmp/ccb5ddER.s:773    .text.Ready_LCD:0000000000000000 Ready_LCD
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

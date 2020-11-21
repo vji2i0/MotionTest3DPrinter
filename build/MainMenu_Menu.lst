@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccVe8Vz2.s 			page 1
+ARM GAS  /tmp/ccXNIaDp.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -15,16 +15,159 @@ ARM GAS  /tmp/ccVe8Vz2.s 			page 1
   12              		.text
   13              	.Ltext0:
   14              		.cfi_sections	.debug_frame
-  15              		.section	.text.setMainMenu_Menu,"ax",%progbits
-  16              		.align	1
-  17              		.global	setMainMenu_Menu
-  18              		.syntax unified
-  19              		.thumb
-  20              		.thumb_func
-  21              		.fpu softvfp
-  23              	setMainMenu_Menu:
-  24              	.LFB3:
-  25              		.file 1 "Src/Menu/MainMenu_Menu.c"
+  15              		.section	.rodata.setMainMenu_Menu.str4.4,"aMS",%progbits,4
+  16              		.align	2
+  17              	.LC0:
+  18 0000 20000000 		.ascii	" \000\000\000P\000\000\000r\000\000\000i\000\000\000"
+  18      50000000 
+  18      72000000 
+  18      69000000 
+  19 0010 6E000000 		.ascii	"n\000\000\000t\000\000\000\000\000\000\000"
+  19      74000000 
+  19      00000000 
+  20              		.align	2
+  21              	.LC1:
+  22 001c 4D000000 		.ascii	"M\000\000\000A\000\000\000I\000\000\000N\000\000\000"
+  22      41000000 
+  22      49000000 
+  22      4E000000 
+  23 002c 20000000 		.ascii	" \000\000\000M\000\000\000E\000\000\000N\000\000\000"
+  23      4D000000 
+  23      45000000 
+  23      4E000000 
+  24 003c 55000000 		.ascii	"U\000\000\000\000\000\000\000"
+  24      00000000 
+  25              		.align	2
+  26              	.LC2:
+  27 0044 20000000 		.ascii	" \000\000\000C\000\000\000h\000\000\000a\000\000\000"
+  27      43000000 
+  27      68000000 
+  27      61000000 
+  28 0054 6E000000 		.ascii	"n\000\000\000g\000\000\000e\000\000\000 \000\000\000"
+  28      67000000 
+  28      65000000 
+  28      20000000 
+  29 0064 66000000 		.ascii	"f\000\000\000i\000\000\000l\000\000\000a\000\000\000"
+  29      69000000 
+  29      6C000000 
+  29      61000000 
+  30 0074 6D000000 		.ascii	"m\000\000\000e\000\000\000n\000\000\000t\000\000\000"
+  30      65000000 
+  30      6E000000 
+  30      74000000 
+  31 0084 00000000 		.ascii	"\000\000\000\000"
+  32              		.align	2
+  33              	.LC3:
+ARM GAS  /tmp/ccXNIaDp.s 			page 2
+
+
+  34 0088 20000000 		.ascii	" \000\000\000S\000\000\000e\000\000\000t\000\000\000"
+  34      53000000 
+  34      65000000 
+  34      74000000 
+  35 0098 20000000 		.ascii	" \000\000\000t\000\000\000h\000\000\000e\000\000\000"
+  35      74000000 
+  35      68000000 
+  35      65000000 
+  36 00a8 20000000 		.ascii	" \000\000\000t\000\000\000e\000\000\000m\000\000\000"
+  36      74000000 
+  36      65000000 
+  36      6D000000 
+  37 00b8 70000000 		.ascii	"p\000\000\000e\000\000\000r\000\000\000a\000\000\000"
+  37      65000000 
+  37      72000000 
+  37      61000000 
+  38 00c8 74000000 		.ascii	"t\000\000\000u\000\000\000r\000\000\000e\000\000\000"
+  38      75000000 
+  38      72000000 
+  38      65000000 
+  39 00d8 00000000 		.ascii	"\000\000\000\000"
+  40              		.align	2
+  41              	.LC4:
+  42 00dc 43000000 		.ascii	"C\000\000\000H\000\000\000A\000\000\000N\000\000\000"
+  42      48000000 
+  42      41000000 
+  42      4E000000 
+  43 00ec 47000000 		.ascii	"G\000\000\000E\000\000\000 \000\000\000F\000\000\000"
+  43      45000000 
+  43      20000000 
+  43      46000000 
+  44 00fc 49000000 		.ascii	"I\000\000\000L\000\000\000A\000\000\000M\000\000\000"
+  44      4C000000 
+  44      41000000 
+  44      4D000000 
+  45 010c 45000000 		.ascii	"E\000\000\000N\000\000\000T\000\000\000\000\000\000"
+  45      4E000000 
+  45      54000000 
+  45      000000
+  46 011b 00       		.ascii	"\000"
+  47              		.align	2
+  48              	.LC5:
+  49 011c 20000000 		.ascii	" \000\000\000L\000\000\000a\000\000\000n\000\000\000"
+  49      4C000000 
+  49      61000000 
+  49      6E000000 
+  50 012c 67000000 		.ascii	"g\000\000\000u\000\000\000a\000\000\000g\000\000\000"
+  50      75000000 
+  50      61000000 
+  50      67000000 
+  51 013c 65000000 		.ascii	"e\000\000\000\000\000\000\000"
+  51      00000000 
+  52              		.align	2
+  53              	.LC6:
+  54 0144 20000000 		.ascii	" \000\000\000E\000\000\000n\000\000\000g\000\000\000"
+  54      45000000 
+  54      6E000000 
+ARM GAS  /tmp/ccXNIaDp.s 			page 3
+
+
+  54      67000000 
+  55 0154 6C000000 		.ascii	"l\000\000\000i\000\000\000s\000\000\000h\000\000\000"
+  55      69000000 
+  55      73000000 
+  55      68000000 
+  56 0164 00000000 		.ascii	"\000\000\000\000"
+  57              		.align	2
+  58              	.LC7:
+  59 0168 4C000000 		.ascii	"L\000\000\000A\000\000\000N\000\000\000G\000\000\000"
+  59      41000000 
+  59      4E000000 
+  59      47000000 
+  60 0178 55000000 		.ascii	"U\000\000\000A\000\000\000G\000\000\000E\000\000\000"
+  60      41000000 
+  60      47000000 
+  60      45000000 
+  61 0188 00000000 		.ascii	"\000\000\000\000"
+  62              		.align	2
+  63              	.LC8:
+  64 018c 20000000 		.ascii	" \000\000\000R\000\000\000u\000\000\000s\000\000\000"
+  64      52000000 
+  64      75000000 
+  64      73000000 
+  65 019c 73000000 		.ascii	"s\000\000\000i\000\000\000a\000\000\000n\000\000\000"
+  65      69000000 
+  65      61000000 
+  65      6E000000 
+  66 01ac 00000000 		.ascii	"\000\000\000\000"
+  67              		.align	2
+  68              	.LC9:
+  69 01b0 20000000 		.ascii	" \000\000\000H\000\000\000e\000\000\000l\000\000\000"
+  69      48000000 
+  69      65000000 
+  69      6C000000 
+  70 01c0 70000000 		.ascii	"p\000\000\000\000\000\000\000"
+  70      00000000 
+  71              		.section	.text.setMainMenu_Menu,"ax",%progbits
+  72              		.align	1
+  73              		.global	setMainMenu_Menu
+  74              		.arch armv7-m
+  75              		.syntax unified
+  76              		.thumb
+  77              		.thumb_func
+  78              		.fpu softvfp
+  80              	setMainMenu_Menu:
+  81              	.LFB3:
+  82              		.file 1 "Src/Menu/MainMenu_Menu.c"
    1:Src/Menu/MainMenu_Menu.c **** #include "MainMenu_Menu.h"
    2:Src/Menu/MainMenu_Menu.c **** 
    3:Src/Menu/MainMenu_Menu.c **** #include "Constructor_Menu.h"
@@ -35,449 +178,319 @@ ARM GAS  /tmp/ccVe8Vz2.s 			page 1
    8:Src/Menu/MainMenu_Menu.c **** #include <wchar.h>
    9:Src/Menu/MainMenu_Menu.c **** #include "stdbool.h"
   10:Src/Menu/MainMenu_Menu.c **** 
+ARM GAS  /tmp/ccXNIaDp.s 			page 4
+
+
   11:Src/Menu/MainMenu_Menu.c **** 
   12:Src/Menu/MainMenu_Menu.c **** 
   13:Src/Menu/MainMenu_Menu.c **** 
   14:Src/Menu/MainMenu_Menu.c **** void setMainMenu_Menu(void)
   15:Src/Menu/MainMenu_Menu.c **** {
-  26              		.loc 1 15 0
-  27              		.cfi_startproc
-  28              		@ args = 0, pretend = 0, frame = 0
-  29              		@ frame_needed = 0, uses_anonymous_args = 0
-  30 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
-  31              	.LCFI0:
-  32              		.cfi_def_cfa_offset 24
-  33              		.cfi_offset 3, -24
-  34              		.cfi_offset 4, -20
-  35              		.cfi_offset 5, -16
-  36              		.cfi_offset 6, -12
-  37              		.cfi_offset 7, -8
-  38              		.cfi_offset 14, -4
+  83              		.loc 1 15 1 view -0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  88              	.LCFI0:
+  89              		.cfi_def_cfa_offset 24
+  90              		.cfi_offset 3, -24
+  91              		.cfi_offset 4, -20
+  92              		.cfi_offset 5, -16
+  93              		.cfi_offset 6, -12
+  94              		.cfi_offset 7, -8
+  95              		.cfi_offset 14, -4
   16:Src/Menu/MainMenu_Menu.c ****     createFirstNode_Menu(L"MAIN MENU", L" Print");
-  39              		.loc 1 16 0
-  40 0002 4149     		ldr	r1, .L3
-  41 0004 4148     		ldr	r0, .L3+4
-  42 0006 FFF7FEFF 		bl	createFirstNode_Menu
-ARM GAS  /tmp/ccVe8Vz2.s 			page 2
-
-
-  43              	.LVL0:
+  96              		.loc 1 16 5 view .LVU1
+  97 0002 4149     		ldr	r1, .L3
+  98 0004 4148     		ldr	r0, .L3+4
+  99 0006 FFF7FEFF 		bl	createFirstNode_Menu
+ 100              	.LVL0:
   17:Src/Menu/MainMenu_Menu.c ****     setFunctionUp(&simpleNavigationUp_Menu);
-  44              		.loc 1 17 0
-  45 000a 414D     		ldr	r5, .L3+8
-  46 000c 2846     		mov	r0, r5
-  47 000e FFF7FEFF 		bl	setFunctionUp
-  48              	.LVL1:
+ 101              		.loc 1 17 5 view .LVU2
+ 102 000a 414D     		ldr	r5, .L3+8
+ 103 000c 2846     		mov	r0, r5
+ 104 000e FFF7FEFF 		bl	setFunctionUp
+ 105              	.LVL1:
   18:Src/Menu/MainMenu_Menu.c ****     setFunctionDown(&simpleNavigationDown_Menu);
-  49              		.loc 1 18 0
-  50 0012 404C     		ldr	r4, .L3+12
-  51 0014 2046     		mov	r0, r4
-  52 0016 FFF7FEFF 		bl	setFunctionDown
-  53              	.LVL2:
+ 106              		.loc 1 18 5 view .LVU3
+ 107 0012 404C     		ldr	r4, .L3+12
+ 108 0014 2046     		mov	r0, r4
+ 109 0016 FFF7FEFF 		bl	setFunctionDown
+ 110              	.LVL2:
   19:Src/Menu/MainMenu_Menu.c ****     setFunctionOk(&printOk_Menu);
-  54              		.loc 1 19 0
-  55 001a 3F48     		ldr	r0, .L3+16
-  56 001c FFF7FEFF 		bl	setFunctionOk
-  57              	.LVL3:
+ 111              		.loc 1 19 5 view .LVU4
+ 112 001a 3F48     		ldr	r0, .L3+16
+ 113 001c FFF7FEFF 		bl	setFunctionOk
+ 114              	.LVL3:
   20:Src/Menu/MainMenu_Menu.c ****     setFunctionBack(&emptyFunction_Menu);
-  58              		.loc 1 20 0
-  59 0020 3E4E     		ldr	r6, .L3+20
-  60 0022 3046     		mov	r0, r6
-  61 0024 FFF7FEFF 		bl	setFunctionBack
-  62              	.LVL4:
+ 115              		.loc 1 20 5 view .LVU5
+ 116 0020 3E4E     		ldr	r6, .L3+20
+ 117 0022 3046     		mov	r0, r6
+ 118 0024 FFF7FEFF 		bl	setFunctionBack
+ 119              	.LVL4:
   21:Src/Menu/MainMenu_Menu.c **** 
   22:Src/Menu/MainMenu_Menu.c **** 
   23:Src/Menu/MainMenu_Menu.c ****     createDownNode_Menu(L" Change filament");
-  63              		.loc 1 23 0
-  64 0028 3D48     		ldr	r0, .L3+24
-  65 002a FFF7FEFF 		bl	createDownNode_Menu
-  66              	.LVL5:
+ 120              		.loc 1 23 5 view .LVU6
+ 121 0028 3D48     		ldr	r0, .L3+24
+ 122 002a FFF7FEFF 		bl	createDownNode_Menu
+ 123              	.LVL5:
   24:Src/Menu/MainMenu_Menu.c ****     moveDown_Menu();
-  67              		.loc 1 24 0
-  68 002e FFF7FEFF 		bl	moveDown_Menu
-  69              	.LVL6:
+ 124              		.loc 1 24 5 view .LVU7
+ 125 002e FFF7FEFF 		bl	moveDown_Menu
+ARM GAS  /tmp/ccXNIaDp.s 			page 5
+
+
+ 126              	.LVL6:
   25:Src/Menu/MainMenu_Menu.c ****     setFunctionUp(&simpleNavigationUp_Menu);
-  70              		.loc 1 25 0
-  71 0032 2846     		mov	r0, r5
-  72 0034 FFF7FEFF 		bl	setFunctionUp
-  73              	.LVL7:
+ 127              		.loc 1 25 5 view .LVU8
+ 128 0032 2846     		mov	r0, r5
+ 129 0034 FFF7FEFF 		bl	setFunctionUp
+ 130              	.LVL7:
   26:Src/Menu/MainMenu_Menu.c ****     setFunctionDown(&simpleNavigationDown_Menu);
-  74              		.loc 1 26 0
-  75 0038 2046     		mov	r0, r4
-  76 003a FFF7FEFF 		bl	setFunctionDown
-  77              	.LVL8:
+ 131              		.loc 1 26 5 view .LVU9
+ 132 0038 2046     		mov	r0, r4
+ 133 003a FFF7FEFF 		bl	setFunctionDown
+ 134              	.LVL8:
   27:Src/Menu/MainMenu_Menu.c ****     setFunctionOk(&changeFilamentOk_Menu);
-  78              		.loc 1 27 0
-  79 003e 3948     		ldr	r0, .L3+28
-  80 0040 FFF7FEFF 		bl	setFunctionOk
-  81              	.LVL9:
+ 135              		.loc 1 27 5 view .LVU10
+ 136 003e 3948     		ldr	r0, .L3+28
+ 137 0040 FFF7FEFF 		bl	setFunctionOk
+ 138              	.LVL9:
   28:Src/Menu/MainMenu_Menu.c ****     setFunctionBack(&emptyFunction_Menu);
-  82              		.loc 1 28 0
-  83 0044 3046     		mov	r0, r6
-  84 0046 FFF7FEFF 		bl	setFunctionBack
-  85              	.LVL10:
+ 139              		.loc 1 28 5 view .LVU11
+ 140 0044 3046     		mov	r0, r6
+ 141 0046 FFF7FEFF 		bl	setFunctionBack
+ 142              	.LVL10:
   29:Src/Menu/MainMenu_Menu.c **** 
   30:Src/Menu/MainMenu_Menu.c ****         createRightNode_Menu(L"CHANGE FILAMENT", L" Set the temperature");
-ARM GAS  /tmp/ccVe8Vz2.s 			page 3
-
-
-  86              		.loc 1 30 0
-  87 004a 3749     		ldr	r1, .L3+32
-  88 004c 3748     		ldr	r0, .L3+36
-  89 004e FFF7FEFF 		bl	createRightNode_Menu
-  90              	.LVL11:
+ 143              		.loc 1 30 9 view .LVU12
+ 144 004a 3749     		ldr	r1, .L3+32
+ 145 004c 3748     		ldr	r0, .L3+36
+ 146 004e FFF7FEFF 		bl	createRightNode_Menu
+ 147              	.LVL11:
   31:Src/Menu/MainMenu_Menu.c ****         moveRight_Menu();
-  91              		.loc 1 31 0
-  92 0052 FFF7FEFF 		bl	moveRight_Menu
-  93              	.LVL12:
+ 148              		.loc 1 31 9 view .LVU13
+ 149 0052 FFF7FEFF 		bl	moveRight_Menu
+ 150              	.LVL12:
   32:Src/Menu/MainMenu_Menu.c ****         setFunctionUp(&setTheTemperatureUp_Menu);
-  94              		.loc 1 32 0
-  95 0056 3648     		ldr	r0, .L3+40
-  96 0058 FFF7FEFF 		bl	setFunctionUp
-  97              	.LVL13:
+ 151              		.loc 1 32 9 view .LVU14
+ 152 0056 3648     		ldr	r0, .L3+40
+ 153 0058 FFF7FEFF 		bl	setFunctionUp
+ 154              	.LVL13:
   33:Src/Menu/MainMenu_Menu.c ****         setFunctionDown(&setTheTemperatureDown_Menu);
-  98              		.loc 1 33 0
-  99 005c 3548     		ldr	r0, .L3+44
- 100 005e FFF7FEFF 		bl	setFunctionDown
- 101              	.LVL14:
+ 155              		.loc 1 33 9 view .LVU15
+ 156 005c 3548     		ldr	r0, .L3+44
+ 157 005e FFF7FEFF 		bl	setFunctionDown
+ 158              	.LVL14:
   34:Src/Menu/MainMenu_Menu.c ****         setFunctionOk(&setTheTemperatureOk_Menu);
- 102              		.loc 1 34 0
- 103 0062 3548     		ldr	r0, .L3+48
- 104 0064 FFF7FEFF 		bl	setFunctionOk
- 105              	.LVL15:
+ 159              		.loc 1 34 9 view .LVU16
+ 160 0062 3548     		ldr	r0, .L3+48
+ 161 0064 FFF7FEFF 		bl	setFunctionOk
+ 162              	.LVL15:
   35:Src/Menu/MainMenu_Menu.c ****         setFunctionBack(&setTheTemperatureBack_Menu);
- 106              		.loc 1 35 0
- 107 0068 3448     		ldr	r0, .L3+52
- 108 006a FFF7FEFF 		bl	setFunctionBack
- 109              	.LVL16:
+ 163              		.loc 1 35 9 view .LVU17
+ 164 0068 3448     		ldr	r0, .L3+52
+ 165 006a FFF7FEFF 		bl	setFunctionBack
+ 166              	.LVL16:
   36:Src/Menu/MainMenu_Menu.c **** 
   37:Src/Menu/MainMenu_Menu.c ****         moveLeft_Menu();
- 110              		.loc 1 37 0
- 111 006e FFF7FEFF 		bl	moveLeft_Menu
- 112              	.LVL17:
+ 167              		.loc 1 37 9 view .LVU18
+ 168 006e FFF7FEFF 		bl	moveLeft_Menu
+ 169              	.LVL17:
+ARM GAS  /tmp/ccXNIaDp.s 			page 6
+
+
   38:Src/Menu/MainMenu_Menu.c **** 
   39:Src/Menu/MainMenu_Menu.c ****     createDownNode_Menu(L" Language");
- 113              		.loc 1 39 0
- 114 0072 3348     		ldr	r0, .L3+56
- 115 0074 FFF7FEFF 		bl	createDownNode_Menu
- 116              	.LVL18:
+ 170              		.loc 1 39 5 view .LVU19
+ 171 0072 3348     		ldr	r0, .L3+56
+ 172 0074 FFF7FEFF 		bl	createDownNode_Menu
+ 173              	.LVL18:
   40:Src/Menu/MainMenu_Menu.c ****     moveDown_Menu();
- 117              		.loc 1 40 0
- 118 0078 FFF7FEFF 		bl	moveDown_Menu
- 119              	.LVL19:
+ 174              		.loc 1 40 5 view .LVU20
+ 175 0078 FFF7FEFF 		bl	moveDown_Menu
+ 176              	.LVL19:
   41:Src/Menu/MainMenu_Menu.c ****     setFunctionUp(&simpleNavigationUp_Menu);
- 120              		.loc 1 41 0
- 121 007c 2846     		mov	r0, r5
- 122 007e FFF7FEFF 		bl	setFunctionUp
- 123              	.LVL20:
+ 177              		.loc 1 41 5 view .LVU21
+ 178 007c 2846     		mov	r0, r5
+ 179 007e FFF7FEFF 		bl	setFunctionUp
+ 180              	.LVL20:
   42:Src/Menu/MainMenu_Menu.c ****     setFunctionDown(&simpleNavigationDown_Menu);
- 124              		.loc 1 42 0
- 125 0082 2046     		mov	r0, r4
- 126 0084 FFF7FEFF 		bl	setFunctionDown
- 127              	.LVL21:
+ 181              		.loc 1 42 5 view .LVU22
+ 182 0082 2046     		mov	r0, r4
+ 183 0084 FFF7FEFF 		bl	setFunctionDown
+ 184              	.LVL21:
   43:Src/Menu/MainMenu_Menu.c ****     setFunctionOk(&simpleNavigationOk_Menu);
- 128              		.loc 1 43 0
- 129 0088 2E48     		ldr	r0, .L3+60
-ARM GAS  /tmp/ccVe8Vz2.s 			page 4
-
-
- 130 008a FFF7FEFF 		bl	setFunctionOk
- 131              	.LVL22:
+ 185              		.loc 1 43 5 view .LVU23
+ 186 0088 2E48     		ldr	r0, .L3+60
+ 187 008a FFF7FEFF 		bl	setFunctionOk
+ 188              	.LVL22:
   44:Src/Menu/MainMenu_Menu.c ****     setFunctionBack(&emptyFunction_Menu);
- 132              		.loc 1 44 0
- 133 008e 3046     		mov	r0, r6
- 134 0090 FFF7FEFF 		bl	setFunctionBack
- 135              	.LVL23:
+ 189              		.loc 1 44 5 view .LVU24
+ 190 008e 3046     		mov	r0, r6
+ 191 0090 FFF7FEFF 		bl	setFunctionBack
+ 192              	.LVL23:
   45:Src/Menu/MainMenu_Menu.c **** 
   46:Src/Menu/MainMenu_Menu.c ****         createRightNode_Menu(L"LANGUAGE", L" English");
- 136              		.loc 1 46 0
- 137 0094 2C49     		ldr	r1, .L3+64
- 138 0096 2D48     		ldr	r0, .L3+68
- 139 0098 FFF7FEFF 		bl	createRightNode_Menu
- 140              	.LVL24:
+ 193              		.loc 1 46 9 view .LVU25
+ 194 0094 2C49     		ldr	r1, .L3+64
+ 195 0096 2D48     		ldr	r0, .L3+68
+ 196 0098 FFF7FEFF 		bl	createRightNode_Menu
+ 197              	.LVL24:
   47:Src/Menu/MainMenu_Menu.c ****         moveRight_Menu();
- 141              		.loc 1 47 0
- 142 009c FFF7FEFF 		bl	moveRight_Menu
- 143              	.LVL25:
+ 198              		.loc 1 47 9 view .LVU26
+ 199 009c FFF7FEFF 		bl	moveRight_Menu
+ 200              	.LVL25:
   48:Src/Menu/MainMenu_Menu.c ****         setFunctionUp(&emptyFunction_Menu);
- 144              		.loc 1 48 0
- 145 00a0 3046     		mov	r0, r6
- 146 00a2 FFF7FEFF 		bl	setFunctionUp
- 147              	.LVL26:
+ 201              		.loc 1 48 9 view .LVU27
+ 202 00a0 3046     		mov	r0, r6
+ 203 00a2 FFF7FEFF 		bl	setFunctionUp
+ 204              	.LVL26:
   49:Src/Menu/MainMenu_Menu.c ****         setFunctionDown(&simpleNavigationDown_Menu);
- 148              		.loc 1 49 0
- 149 00a6 2046     		mov	r0, r4
- 150 00a8 FFF7FEFF 		bl	setFunctionDown
- 151              	.LVL27:
+ 205              		.loc 1 49 9 view .LVU28
+ 206 00a6 2046     		mov	r0, r4
+ 207 00a8 FFF7FEFF 		bl	setFunctionDown
+ 208              	.LVL27:
   50:Src/Menu/MainMenu_Menu.c ****         setFunctionOk(&englishOk_Menu);
- 152              		.loc 1 50 0
- 153 00ac 2848     		ldr	r0, .L3+72
- 154 00ae FFF7FEFF 		bl	setFunctionOk
- 155              	.LVL28:
+ 209              		.loc 1 50 9 view .LVU29
+ 210 00ac 2848     		ldr	r0, .L3+72
+ 211 00ae FFF7FEFF 		bl	setFunctionOk
+ 212              	.LVL28:
   51:Src/Menu/MainMenu_Menu.c ****         setFunctionBack(&simpleNavigationBack_Menu);
- 156              		.loc 1 51 0
- 157 00b2 284F     		ldr	r7, .L3+76
- 158 00b4 3846     		mov	r0, r7
- 159 00b6 FFF7FEFF 		bl	setFunctionBack
- 160              	.LVL29:
+ARM GAS  /tmp/ccXNIaDp.s 			page 7
+
+
+ 213              		.loc 1 51 9 view .LVU30
+ 214 00b2 284F     		ldr	r7, .L3+76
+ 215 00b4 3846     		mov	r0, r7
+ 216 00b6 FFF7FEFF 		bl	setFunctionBack
+ 217              	.LVL29:
   52:Src/Menu/MainMenu_Menu.c **** 
   53:Src/Menu/MainMenu_Menu.c ****         createDownNode_Menu(L" Russian");
- 161              		.loc 1 53 0
- 162 00ba 2748     		ldr	r0, .L3+80
- 163 00bc FFF7FEFF 		bl	createDownNode_Menu
- 164              	.LVL30:
+ 218              		.loc 1 53 9 view .LVU31
+ 219 00ba 2748     		ldr	r0, .L3+80
+ 220 00bc FFF7FEFF 		bl	createDownNode_Menu
+ 221              	.LVL30:
   54:Src/Menu/MainMenu_Menu.c ****         moveDown_Menu();
- 165              		.loc 1 54 0
- 166 00c0 FFF7FEFF 		bl	moveDown_Menu
- 167              	.LVL31:
+ 222              		.loc 1 54 9 view .LVU32
+ 223 00c0 FFF7FEFF 		bl	moveDown_Menu
+ 224              	.LVL31:
   55:Src/Menu/MainMenu_Menu.c ****         setFunctionUp(&simpleNavigationUp_Menu);
- 168              		.loc 1 55 0
- 169 00c4 2846     		mov	r0, r5
- 170 00c6 FFF7FEFF 		bl	setFunctionUp
- 171              	.LVL32:
+ 225              		.loc 1 55 9 view .LVU33
+ 226 00c4 2846     		mov	r0, r5
+ 227 00c6 FFF7FEFF 		bl	setFunctionUp
+ 228              	.LVL32:
   56:Src/Menu/MainMenu_Menu.c ****         setFunctionDown(&emptyFunction_Menu);
- 172              		.loc 1 56 0
- 173 00ca 3046     		mov	r0, r6
-ARM GAS  /tmp/ccVe8Vz2.s 			page 5
-
-
- 174 00cc FFF7FEFF 		bl	setFunctionDown
- 175              	.LVL33:
+ 229              		.loc 1 56 9 view .LVU34
+ 230 00ca 3046     		mov	r0, r6
+ 231 00cc FFF7FEFF 		bl	setFunctionDown
+ 232              	.LVL33:
   57:Src/Menu/MainMenu_Menu.c ****         setFunctionOk(&russianOk_Menu);
- 176              		.loc 1 57 0
- 177 00d0 2248     		ldr	r0, .L3+84
- 178 00d2 FFF7FEFF 		bl	setFunctionOk
- 179              	.LVL34:
+ 233              		.loc 1 57 9 view .LVU35
+ 234 00d0 2248     		ldr	r0, .L3+84
+ 235 00d2 FFF7FEFF 		bl	setFunctionOk
+ 236              	.LVL34:
   58:Src/Menu/MainMenu_Menu.c ****         setFunctionBack(&simpleNavigationBack_Menu);
- 180              		.loc 1 58 0
- 181 00d6 3846     		mov	r0, r7
- 182 00d8 FFF7FEFF 		bl	setFunctionBack
- 183              	.LVL35:
+ 237              		.loc 1 58 9 view .LVU36
+ 238 00d6 3846     		mov	r0, r7
+ 239 00d8 FFF7FEFF 		bl	setFunctionBack
+ 240              	.LVL35:
   59:Src/Menu/MainMenu_Menu.c **** 
   60:Src/Menu/MainMenu_Menu.c ****         moveLeft_Menu();
- 184              		.loc 1 60 0
- 185 00dc FFF7FEFF 		bl	moveLeft_Menu
- 186              	.LVL36:
+ 241              		.loc 1 60 9 view .LVU37
+ 242 00dc FFF7FEFF 		bl	moveLeft_Menu
+ 243              	.LVL36:
   61:Src/Menu/MainMenu_Menu.c **** 
   62:Src/Menu/MainMenu_Menu.c ****     createDownNode_Menu(L" Help");
- 187              		.loc 1 62 0
- 188 00e0 1F48     		ldr	r0, .L3+88
- 189 00e2 FFF7FEFF 		bl	createDownNode_Menu
- 190              	.LVL37:
+ 244              		.loc 1 62 5 view .LVU38
+ 245 00e0 1F48     		ldr	r0, .L3+88
+ 246 00e2 FFF7FEFF 		bl	createDownNode_Menu
+ 247              	.LVL37:
   63:Src/Menu/MainMenu_Menu.c ****     moveDown_Menu();
- 191              		.loc 1 63 0
- 192 00e6 FFF7FEFF 		bl	moveDown_Menu
- 193              	.LVL38:
+ 248              		.loc 1 63 5 view .LVU39
+ 249 00e6 FFF7FEFF 		bl	moveDown_Menu
+ 250              	.LVL38:
   64:Src/Menu/MainMenu_Menu.c ****     setFunctionUp(&simpleNavigationUp_Menu);
- 194              		.loc 1 64 0
- 195 00ea 2846     		mov	r0, r5
- 196 00ec FFF7FEFF 		bl	setFunctionUp
- 197              	.LVL39:
+ 251              		.loc 1 64 5 view .LVU40
+ 252 00ea 2846     		mov	r0, r5
+ 253 00ec FFF7FEFF 		bl	setFunctionUp
+ 254              	.LVL39:
   65:Src/Menu/MainMenu_Menu.c ****     setFunctionDown(&simpleNavigationDown_Menu);
- 198              		.loc 1 65 0
- 199 00f0 2046     		mov	r0, r4
- 200 00f2 FFF7FEFF 		bl	setFunctionDown
- 201              	.LVL40:
+ 255              		.loc 1 65 5 view .LVU41
+ARM GAS  /tmp/ccXNIaDp.s 			page 8
+
+
+ 256 00f0 2046     		mov	r0, r4
+ 257 00f2 FFF7FEFF 		bl	setFunctionDown
+ 258              	.LVL40:
   66:Src/Menu/MainMenu_Menu.c ****     setFunctionOk(&helpOk_Menu);
- 202              		.loc 1 66 0
- 203 00f6 1B48     		ldr	r0, .L3+92
- 204 00f8 FFF7FEFF 		bl	setFunctionOk
- 205              	.LVL41:
+ 259              		.loc 1 66 5 view .LVU42
+ 260 00f6 1B48     		ldr	r0, .L3+92
+ 261 00f8 FFF7FEFF 		bl	setFunctionOk
+ 262              	.LVL41:
   67:Src/Menu/MainMenu_Menu.c ****     setFunctionBack(&helpBack_Menu);
- 206              		.loc 1 67 0
- 207 00fc 1A48     		ldr	r0, .L3+96
- 208 00fe FFF7FEFF 		bl	setFunctionBack
- 209              	.LVL42:
+ 263              		.loc 1 67 5 view .LVU43
+ 264 00fc 1A48     		ldr	r0, .L3+96
+ 265 00fe FFF7FEFF 		bl	setFunctionBack
+ 266              	.LVL42:
   68:Src/Menu/MainMenu_Menu.c **** 
   69:Src/Menu/MainMenu_Menu.c ****     moveToTheFirstNode_Menu();
- 210              		.loc 1 69 0
- 211 0102 FFF7FEFF 		bl	moveToTheFirstNode_Menu
- 212              	.LVL43:
+ 267              		.loc 1 69 5 view .LVU44
+ 268 0102 FFF7FEFF 		bl	moveToTheFirstNode_Menu
+ 269              	.LVL43:
   70:Src/Menu/MainMenu_Menu.c **** }
- 213              		.loc 1 70 0
- 214 0106 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 215              	.L4:
- 216              		.align	2
-ARM GAS  /tmp/ccVe8Vz2.s 			page 6
+ 270              		.loc 1 70 1 is_stmt 0 view .LVU45
+ 271 0106 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 272              	.L4:
+ 273              		.align	2
+ 274              	.L3:
+ 275 0108 00000000 		.word	.LC0
+ 276 010c 1C000000 		.word	.LC1
+ 277 0110 00000000 		.word	simpleNavigationUp_Menu
+ 278 0114 00000000 		.word	simpleNavigationDown_Menu
+ 279 0118 00000000 		.word	printOk_Menu
+ 280 011c 00000000 		.word	emptyFunction_Menu
+ 281 0120 44000000 		.word	.LC2
+ 282 0124 00000000 		.word	changeFilamentOk_Menu
+ 283 0128 88000000 		.word	.LC3
+ 284 012c DC000000 		.word	.LC4
+ 285 0130 00000000 		.word	setTheTemperatureUp_Menu
+ 286 0134 00000000 		.word	setTheTemperatureDown_Menu
+ 287 0138 00000000 		.word	setTheTemperatureOk_Menu
+ 288 013c 00000000 		.word	setTheTemperatureBack_Menu
+ 289 0140 1C010000 		.word	.LC5
+ 290 0144 00000000 		.word	simpleNavigationOk_Menu
+ 291 0148 44010000 		.word	.LC6
+ 292 014c 68010000 		.word	.LC7
+ 293 0150 00000000 		.word	englishOk_Menu
+ 294 0154 00000000 		.word	simpleNavigationBack_Menu
+ 295 0158 8C010000 		.word	.LC8
+ 296 015c 00000000 		.word	russianOk_Menu
+ 297 0160 B0010000 		.word	.LC9
+ 298 0164 00000000 		.word	helpOk_Menu
+ 299 0168 00000000 		.word	helpBack_Menu
+ 300              		.cfi_endproc
+ 301              	.LFE3:
+ 303              		.text
+ 304              	.Letext0:
+ 305              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+ 306              		.file 3 "/usr/include/newlib/sys/_types.h"
+ 307              		.file 4 "/usr/include/newlib/sys/reent.h"
+ 308              		.file 5 "/usr/include/newlib/sys/lock.h"
+ARM GAS  /tmp/ccXNIaDp.s 			page 9
 
 
- 217              	.L3:
- 218 0108 00000000 		.word	.LC0
- 219 010c 1C000000 		.word	.LC1
- 220 0110 00000000 		.word	simpleNavigationUp_Menu
- 221 0114 00000000 		.word	simpleNavigationDown_Menu
- 222 0118 00000000 		.word	printOk_Menu
- 223 011c 00000000 		.word	emptyFunction_Menu
- 224 0120 44000000 		.word	.LC2
- 225 0124 00000000 		.word	changeFilamentOk_Menu
- 226 0128 88000000 		.word	.LC3
- 227 012c DC000000 		.word	.LC4
- 228 0130 00000000 		.word	setTheTemperatureUp_Menu
- 229 0134 00000000 		.word	setTheTemperatureDown_Menu
- 230 0138 00000000 		.word	setTheTemperatureOk_Menu
- 231 013c 00000000 		.word	setTheTemperatureBack_Menu
- 232 0140 1C010000 		.word	.LC5
- 233 0144 00000000 		.word	simpleNavigationOk_Menu
- 234 0148 44010000 		.word	.LC6
- 235 014c 68010000 		.word	.LC7
- 236 0150 00000000 		.word	englishOk_Menu
- 237 0154 00000000 		.word	simpleNavigationBack_Menu
- 238 0158 8C010000 		.word	.LC8
- 239 015c 00000000 		.word	russianOk_Menu
- 240 0160 B0010000 		.word	.LC9
- 241 0164 00000000 		.word	helpOk_Menu
- 242 0168 00000000 		.word	helpBack_Menu
- 243              		.cfi_endproc
- 244              	.LFE3:
- 246              		.section	.rodata.setMainMenu_Menu.str4.4,"aMS",%progbits,4
- 247              		.align	2
- 248              	.LC0:
- 249 0000 20000000 		.ascii	" \000\000\000P\000\000\000r\000\000\000i\000\000\000"
- 249      50000000 
- 249      72000000 
- 249      69000000 
- 250 0010 6E000000 		.ascii	"n\000\000\000t\000\000\000\000\000\000\000"
- 250      74000000 
- 250      00000000 
- 251              	.LC1:
- 252 001c 4D000000 		.ascii	"M\000\000\000A\000\000\000I\000\000\000N\000\000\000"
- 252      41000000 
- 252      49000000 
- 252      4E000000 
- 253 002c 20000000 		.ascii	" \000\000\000M\000\000\000E\000\000\000N\000\000\000"
- 253      4D000000 
- 253      45000000 
- 253      4E000000 
- 254 003c 55000000 		.ascii	"U\000\000\000\000\000\000\000"
- 254      00000000 
- 255              	.LC2:
- 256 0044 20000000 		.ascii	" \000\000\000C\000\000\000h\000\000\000a\000\000\000"
- 256      43000000 
- 256      68000000 
- 256      61000000 
- 257 0054 6E000000 		.ascii	"n\000\000\000g\000\000\000e\000\000\000 \000\000\000"
- 257      67000000 
- 257      65000000 
-ARM GAS  /tmp/ccVe8Vz2.s 			page 7
-
-
- 257      20000000 
- 258 0064 66000000 		.ascii	"f\000\000\000i\000\000\000l\000\000\000a\000\000\000"
- 258      69000000 
- 258      6C000000 
- 258      61000000 
- 259 0074 6D000000 		.ascii	"m\000\000\000e\000\000\000n\000\000\000t\000\000\000"
- 259      65000000 
- 259      6E000000 
- 259      74000000 
- 260 0084 00000000 		.ascii	"\000\000\000\000"
- 261              	.LC3:
- 262 0088 20000000 		.ascii	" \000\000\000S\000\000\000e\000\000\000t\000\000\000"
- 262      53000000 
- 262      65000000 
- 262      74000000 
- 263 0098 20000000 		.ascii	" \000\000\000t\000\000\000h\000\000\000e\000\000\000"
- 263      74000000 
- 263      68000000 
- 263      65000000 
- 264 00a8 20000000 		.ascii	" \000\000\000t\000\000\000e\000\000\000m\000\000\000"
- 264      74000000 
- 264      65000000 
- 264      6D000000 
- 265 00b8 70000000 		.ascii	"p\000\000\000e\000\000\000r\000\000\000a\000\000\000"
- 265      65000000 
- 265      72000000 
- 265      61000000 
- 266 00c8 74000000 		.ascii	"t\000\000\000u\000\000\000r\000\000\000e\000\000\000"
- 266      75000000 
- 266      72000000 
- 266      65000000 
- 267 00d8 00000000 		.ascii	"\000\000\000\000"
- 268              	.LC4:
- 269 00dc 43000000 		.ascii	"C\000\000\000H\000\000\000A\000\000\000N\000\000\000"
- 269      48000000 
- 269      41000000 
- 269      4E000000 
- 270 00ec 47000000 		.ascii	"G\000\000\000E\000\000\000 \000\000\000F\000\000\000"
- 270      45000000 
- 270      20000000 
- 270      46000000 
- 271 00fc 49000000 		.ascii	"I\000\000\000L\000\000\000A\000\000\000M\000\000\000"
- 271      4C000000 
- 271      41000000 
- 271      4D000000 
- 272 010c 45000000 		.ascii	"E\000\000\000N\000\000\000T\000\000\000\000\000\000"
- 272      4E000000 
- 272      54000000 
- 272      000000
- 273 011b 00       		.ascii	"\000"
- 274              	.LC5:
- 275 011c 20000000 		.ascii	" \000\000\000L\000\000\000a\000\000\000n\000\000\000"
- 275      4C000000 
- 275      61000000 
- 275      6E000000 
- 276 012c 67000000 		.ascii	"g\000\000\000u\000\000\000a\000\000\000g\000\000\000"
- 276      75000000 
-ARM GAS  /tmp/ccVe8Vz2.s 			page 8
-
-
- 276      61000000 
- 276      67000000 
- 277 013c 65000000 		.ascii	"e\000\000\000\000\000\000\000"
- 277      00000000 
- 278              	.LC6:
- 279 0144 20000000 		.ascii	" \000\000\000E\000\000\000n\000\000\000g\000\000\000"
- 279      45000000 
- 279      6E000000 
- 279      67000000 
- 280 0154 6C000000 		.ascii	"l\000\000\000i\000\000\000s\000\000\000h\000\000\000"
- 280      69000000 
- 280      73000000 
- 280      68000000 
- 281 0164 00000000 		.ascii	"\000\000\000\000"
- 282              	.LC7:
- 283 0168 4C000000 		.ascii	"L\000\000\000A\000\000\000N\000\000\000G\000\000\000"
- 283      41000000 
- 283      4E000000 
- 283      47000000 
- 284 0178 55000000 		.ascii	"U\000\000\000A\000\000\000G\000\000\000E\000\000\000"
- 284      41000000 
- 284      47000000 
- 284      45000000 
- 285 0188 00000000 		.ascii	"\000\000\000\000"
- 286              	.LC8:
- 287 018c 20000000 		.ascii	" \000\000\000R\000\000\000u\000\000\000s\000\000\000"
- 287      52000000 
- 287      75000000 
- 287      73000000 
- 288 019c 73000000 		.ascii	"s\000\000\000i\000\000\000a\000\000\000n\000\000\000"
- 288      69000000 
- 288      61000000 
- 288      6E000000 
- 289 01ac 00000000 		.ascii	"\000\000\000\000"
- 290              	.LC9:
- 291 01b0 20000000 		.ascii	" \000\000\000H\000\000\000e\000\000\000l\000\000\000"
- 291      48000000 
- 291      65000000 
- 291      6C000000 
- 292 01c0 70000000 		.ascii	"p\000\000\000\000\000\000\000"
- 292      00000000 
- 293              		.text
- 294              	.Letext0:
- 295              		.file 2 "/usr/arm-none-eabi/include/sys/lock.h"
- 296              		.file 3 "/usr/arm-none-eabi/include/sys/_types.h"
- 297              		.file 4 "/usr/lib/gcc/arm-none-eabi/7.3.1/include/stddef.h"
- 298              		.file 5 "/usr/arm-none-eabi/include/sys/reent.h"
- 299              		.file 6 "Inc/Menu/Constructor_Menu.h"
-ARM GAS  /tmp/ccVe8Vz2.s 			page 9
+ 309              		.file 6 "Inc/Menu/Constructor_Menu.h"
+ARM GAS  /tmp/ccXNIaDp.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 MainMenu_Menu.c
-     /tmp/ccVe8Vz2.s:16     .text.setMainMenu_Menu:0000000000000000 $t
-     /tmp/ccVe8Vz2.s:23     .text.setMainMenu_Menu:0000000000000000 setMainMenu_Menu
-     /tmp/ccVe8Vz2.s:218    .text.setMainMenu_Menu:0000000000000108 $d
-     /tmp/ccVe8Vz2.s:247    .rodata.setMainMenu_Menu.str4.4:0000000000000000 $d
+     /tmp/ccXNIaDp.s:16     .rodata.setMainMenu_Menu.str4.4:0000000000000000 $d
+     /tmp/ccXNIaDp.s:72     .text.setMainMenu_Menu:0000000000000000 $t
+     /tmp/ccXNIaDp.s:80     .text.setMainMenu_Menu:0000000000000000 setMainMenu_Menu
+     /tmp/ccXNIaDp.s:275    .text.setMainMenu_Menu:0000000000000108 $d
 
 UNDEFINED SYMBOLS
 createFirstNode_Menu

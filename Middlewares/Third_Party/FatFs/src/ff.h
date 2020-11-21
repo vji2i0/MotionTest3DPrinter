@@ -77,8 +77,8 @@ typedef char TCHAR;
 
 typedef struct {
   union{
-	UINT	d32[_MAX_SS/4]; /* Force 32bits alignement */
-	BYTE	d8[_MAX_SS];	/* Disk access window for Directory, FAT (and file data at tiny cfg) */
+	UINT	d32[_MAX_SS/4]; /* Force 32bits alignement */     
+	BYTE	d8[_MAX_SS];	/* Disk access window for Directory, FAT (and file data at tiny cfg) */  
   }win;
 	BYTE	fs_type;		/* FAT sub-type (0:Not mounted) */
 	BYTE	drv;			/* Physical drive number */
@@ -108,7 +108,7 @@ typedef struct {
 	DWORD	dirbase;		/* Root directory start sector (FAT32:Cluster#) */
 	DWORD	database;		/* Data start sector */
 	DWORD	winsect;		/* Current sector appearing in the win[] */
-
+	
 } FATFS;
 
 
@@ -117,8 +117,8 @@ typedef struct {
 
 typedef struct {
 #if !_FS_TINY
-  union{
-	UINT	d32[_MAX_SS/4]; /* Force 32bits alignement */
+  union{  
+	UINT	d32[_MAX_SS/4]; /* Force 32bits alignement */     
 	BYTE	d8[_MAX_SS];	/* File data read/write buffer */
   }buf;
 #endif
@@ -150,11 +150,11 @@ typedef struct {
 
 typedef struct {
 #if !_FS_TINY
-  union{
-            UINT     d32[_MAX_SS/4];  /* Force 32bits alignement */
+  union{  
+            UINT     d32[_MAX_SS/4];  /* Force 32bits alignement */  
             BYTE   d8[_MAX_SS];  /* File data read/write buffer */
   }buf;
-#endif
+#endif   
 	FATFS*	fs;				/* Pointer to the owner file system object (**do not change order**) */
 	WORD	id;				/* Owner file system mount ID (**do not change order**) */
 	WORD	index;			/* Current read/write index number */
@@ -186,7 +186,7 @@ typedef struct {
 	BYTE	fattrib;		/* Attribute */
 	TCHAR	fname[13];		/* Short file name (8.3 format) */
 #if _USE_LFN
-	TCHAR	lfname[_MAX_LFN];			/* Pointer to the LFN buffer */
+	TCHAR*	lfname;			/* Pointer to the LFN buffer */
 	UINT 	lfsize;			/* Size of LFN buffer in TCHAR */
 #endif
 } FILINFO;
