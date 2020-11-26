@@ -64,6 +64,10 @@ void Error_Handler(void);
 #define STEP_E2_GPIO_Port GPIOC
 #define DIR_E2_Pin GPIO_PIN_5
 #define DIR_E2_GPIO_Port GPIOC
+#define Extr1_Temperature_Pin GPIO_PIN_0
+#define Extr1_Temperature_GPIO_Port GPIOB
+#define Ext1_Heater_Pin GPIO_PIN_1
+#define Ext1_Heater_GPIO_Port GPIOB
 #define EN_E1_Pin GPIO_PIN_7
 #define EN_E1_GPIO_Port GPIOE
 #define STEP_E1_Pin GPIO_PIN_8

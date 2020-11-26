@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "stm32f105",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Inc",
+                "${workspaceFolder}/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Middlewares/Third_Party/FatFs/src",
+                "${workspaceFolder}/Middlewares/Third_Party/FatFs/src/drivers",
+                "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Core/Inc",
+                "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Inc/Gcode",
+                "${workspaceFolder}/Inc/LCD",
+                "${workspaceFolder}/Inc/Menu",
+                "${workspaceFolder}/Inc/Motors",
+                "${workspaceFolder}/Inc/USB"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F105xC"
+            ],
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "clang-arm"
+        }
+    ],
+    "version": 4
+}

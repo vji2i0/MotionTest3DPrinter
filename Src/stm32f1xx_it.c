@@ -269,7 +269,7 @@ void TIM5_IRQHandler(void)
   /* USER CODE END TIM5_IRQn 0 */
   HAL_TIM_IRQHandler(&htim5);
   /* USER CODE BEGIN TIM5_IRQn 1 */
-  printf("%d, %d, %d, %d\n", getX_coordinates(), getY_coordinates(), getZ_coordinates(), getE_coordinates());
+  //printf("%d, %d, %d, %d\n", getX_coordinates(), getY_coordinates(), getZ_coordinates(), getE_coordinates());
   /* USER CODE END TIM5_IRQn 1 */
 }
 

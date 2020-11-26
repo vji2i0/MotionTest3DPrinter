@@ -30,9 +30,9 @@
 
 /* USER CODE END 1 */
 
-/** Configure pins as 
-        * Analog 
-        * Input 
+/** Configure pins as
+        * Analog
+        * Input
         * Output
         * EVENT_OUT
         * EXTI
@@ -45,28 +45,28 @@ void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, EN_E2_Pin|USB_Enable_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, STEP_E2_Pin|DIR_E2_Pin|LCD_DB4_Pin|LCD_DB5_Pin 
+  HAL_GPIO_WritePin(GPIOC, STEP_E2_Pin|DIR_E2_Pin|LCD_DB4_Pin|LCD_DB5_Pin
                           |LCD_DB6_Pin|LCD_DB7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, EN_E1_Pin|STEP_E1_Pin|DIR_E1_Pin|EN_Z2_Pin 
-                          |STEP_Z2_Pin|DIR_Z2_Pin|EN_Z1_Pin|STEP_Z1_Pin 
+  HAL_GPIO_WritePin(GPIOB, Ext1_Heater_Pin|EN_Y_Pin|STEP_Y_Pin|DIR_Y_Pin
+                          |DIR_X_Pin|STEP_X_Pin|EN_X_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOE, EN_E1_Pin|STEP_E1_Pin|DIR_E1_Pin|EN_Z2_Pin
+                          |STEP_Z2_Pin|DIR_Z2_Pin|EN_Z1_Pin|STEP_Z1_Pin
                           |DIR_Z1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, EN_Y_Pin|STEP_Y_Pin|DIR_Y_Pin|DIR_X_Pin 
-                          |STEP_X_Pin|EN_X_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, LCD_RS_Pin|LCD_RW_Pin|LCD_EN_Pin|LCD_DB0_Pin 
+  HAL_GPIO_WritePin(GPIOD, LCD_RS_Pin|LCD_RW_Pin|LCD_EN_Pin|LCD_DB0_Pin
                           |LCD_DB1_Pin|LCD_DB2_Pin|LCD_DB3_Pin|LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PAPin PAPin */
@@ -76,38 +76,38 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PCPin PCPin PCPin PCPin 
+  /*Configure GPIO pins : PCPin PCPin PCPin PCPin
                            PCPin PCPin */
-  GPIO_InitStruct.Pin = STEP_E2_Pin|DIR_E2_Pin|LCD_DB4_Pin|LCD_DB5_Pin 
+  GPIO_InitStruct.Pin = STEP_E2_Pin|DIR_E2_Pin|LCD_DB4_Pin|LCD_DB5_Pin
                           |LCD_DB6_Pin|LCD_DB7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PEPin PEPin PEPin PEPin 
-                           PEPin PEPin PEPin PEPin 
+  /*Configure GPIO pins : PBPin PBPin PBPin PBPin
+                           PBPin PBPin PBPin */
+  GPIO_InitStruct.Pin = Ext1_Heater_Pin|EN_Y_Pin|STEP_Y_Pin|DIR_Y_Pin
+                          |DIR_X_Pin|STEP_X_Pin|EN_X_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PEPin PEPin PEPin PEPin
+                           PEPin PEPin PEPin PEPin
                            PEPin */
-  GPIO_InitStruct.Pin = EN_E1_Pin|STEP_E1_Pin|DIR_E1_Pin|EN_Z2_Pin 
-                          |STEP_Z2_Pin|DIR_Z2_Pin|EN_Z1_Pin|STEP_Z1_Pin 
+  GPIO_InitStruct.Pin = EN_E1_Pin|STEP_E1_Pin|DIR_E1_Pin|EN_Z2_Pin
+                          |STEP_Z2_Pin|DIR_Z2_Pin|EN_Z1_Pin|STEP_Z1_Pin
                           |DIR_Z1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PBPin PBPin PBPin PBPin 
-                           PBPin PBPin */
-  GPIO_InitStruct.Pin = EN_Y_Pin|STEP_Y_Pin|DIR_Y_Pin|DIR_X_Pin 
-                          |STEP_X_Pin|EN_X_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PDPin PDPin PDPin PDPin 
+  /*Configure GPIO pins : PDPin PDPin PDPin PDPin
                            PDPin PDPin PDPin PDPin */
-  GPIO_InitStruct.Pin = LCD_RS_Pin|LCD_RW_Pin|LCD_EN_Pin|LCD_DB0_Pin 
+  GPIO_InitStruct.Pin = LCD_RS_Pin|LCD_RW_Pin|LCD_EN_Pin|LCD_DB0_Pin
                           |LCD_DB1_Pin|LCD_DB2_Pin|LCD_DB3_Pin|LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
