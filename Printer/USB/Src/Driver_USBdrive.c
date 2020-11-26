@@ -16,6 +16,7 @@ static FILINFO fileInformation;
 static FIL file;
 static TCHAR fname_arr[_MAX_LFN];
 
+
 void createDriver_USBdrive(void)
 {
     currentMountedStatus_USBdrive = UNMOUNTED_USBDRIVE;
