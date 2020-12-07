@@ -33,6 +33,8 @@
 #include "stdbool.h"
 
 #include "coordinates.h"
+
+#include "Driver_USBdrive.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -269,7 +271,9 @@ void TIM5_IRQHandler(void)
   /* USER CODE END TIM5_IRQn 0 */
   HAL_TIM_IRQHandler(&htim5);
   /* USER CODE BEGIN TIM5_IRQn 1 */
-  //printf("{%ld, %ld, %ld, %ld}\n", getCurrentCommandX_Gcode(), getCurrentCommandY_Gcode(), getCurrentCommandZ_Gcode(), getCurrentCommandE_Gcode());
+    //printf("%s\t%c\t%d\t%d\n", getPath_USBdrive(), getPath_USBdrive()[3], getPath_USBdrive()[3], '/');
+    printf("%s\n", getPath_USBdrive());
+
 
   printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
@@ -281,8 +285,6 @@ void TIM5_IRQHandler(void)
           (int)round(getCurrentSpeedZ_Gcode()),
           (int)round(getCurrentSpeedE_Gcode()));
 
-  //printf("{%ld, %ld, %ld }\n", getX_coordinates(),  getCurrentX_Gcode(), getCurrentCommandX_Gcode());
-  //printf("%ld, %ld, %ld, %ld\n", getX_coordinates(), getY_coordinates(), getZ_coordinates(), getE_coordinates());
   /* USER CODE END TIM5_IRQn 1 */
 }
 

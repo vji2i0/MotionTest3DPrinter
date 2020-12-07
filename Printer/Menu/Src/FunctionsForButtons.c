@@ -132,6 +132,23 @@ void simpleNavigationBack_Menu(void)
         moveUp_Menu();      moveUp_Menu();
         return;
     }
+    if (!ThereIsNodeBelow_Menu())
+    {
+        moveUp_Menu();
+        if (ThereIsNodeAbove_Menu())
+        {
+            moveDown_Menu();
+            wchar_t* currName = (wchar_t*) getName_Menu();  currName[0] = *L">";
+            putLine_TextConverter_LCD(currName, 4);         updateLine_TextConverter_LCD(4);    currName[0] = *L" ";
+            moveUp_Menu();
+            putLine_TextConverter_LCD(getName_Menu(), 3);   updateLine_TextConverter_LCD(3);
+            moveUp_Menu();
+            putLine_TextConverter_LCD(getName_Menu(), 2);   updateLine_TextConverter_LCD(2);
+            moveDown_Menu();
+            moveDown_Menu();
+            return;
+        }
+    }
     moveUp_Menu();      putLine_TextConverter_LCD(getName_Menu(), 2);   updateLine_TextConverter_LCD(2);
     moveDown_Menu();    wchar_t* currName = (wchar_t*) getName_Menu();  currName[0] = *L">";
     putLine_TextConverter_LCD(currName, 3);         updateLine_TextConverter_LCD(3);    currName[0] = *L" ";
@@ -152,17 +169,26 @@ void printOk_Menu(void)
     destroyRightNode_Menu();
 
     readItem_USBdrive();
-    putLine_TextConverter_LCD(getWideLongName_USBdrive(), 2);  updateLine_TextConverter_LCD(2);
-    if(getItemType_USBdrive() == ITEM_IS_EMPTY)
-        return;
     createRightNode_Menu(L"USB drive", getWideLongName_USBdrive());
     moveRight_Menu();
 
     setFunctionUp(&simpleNavigationUp_Menu);
     setFunctionDown(&simpleNavigationDown_Menu);
     setFunctionBack(&simpleNavigationBack_Menu);
+    setFunctionOk(&emptyFunction_Menu);
     if (getItemType_USBdrive() == ITEM_IS_DIRECTORY) setFunctionOk(&openDirectory_Menu);
     if (getItemType_USBdrive() == ITEM_IS_FILE)      setFunctionOk(&runGcode_Menu);
+    putLine_TextConverter_LCD(getWideLongName_USBdrive(), 2);  updateLine_TextConverter_LCD(2);
+
+
+    if(getItemType_USBdrive() == ITEM_IS_EMPTY)
+    {
+        putLine_TextConverter_LCD(getTitle_Menu(), 1);  updateLine_TextConverter_LCD(1);
+        putLine_TextConverter_LCD(EMPTY_STRING, 2); updateLine_TextConverter_LCD(2);
+        putLine_TextConverter_LCD(EMPTY_STRING, 3); updateLine_TextConverter_LCD(3);
+        putLine_TextConverter_LCD(EMPTY_STRING, 4); updateLine_TextConverter_LCD(4);
+        return;
+    }
 
     readItem_USBdrive();
     while(getItemType_USBdrive() != ITEM_IS_EMPTY)
@@ -172,6 +198,7 @@ void printOk_Menu(void)
         setFunctionUp(&simpleNavigationUp_Menu);
         setFunctionDown(&simpleNavigationDown_Menu);
         setFunctionBack(&simpleNavigationBack_Menu);
+        setFunctionOk(&emptyFunction_Menu);
         if (getItemType_USBdrive() == ITEM_IS_DIRECTORY) setFunctionOk(&openDirectory_Menu);
         if (getItemType_USBdrive() == ITEM_IS_FILE)      setFunctionOk(&runGcode_Menu);
         readItem_USBdrive();
@@ -221,8 +248,8 @@ void helpBack_Menu(void) {}
 
 void emptyFunction_Menu(void) {}
 
-void openDirectory_Menu(void) {}
-void closeDirectory_Menu(void) {}
+
+
 
 
 static _Bool GcodeFormat()
@@ -316,7 +343,7 @@ static TCHAR wchar_t2TCHAR(wchar_t character)
     return (TCHAR) character;
 }
 
-static void getFileNameTCHAR(TCHAR* nameTCHAR)
+static void getFileOrFolderNameTCHAR(TCHAR* nameTCHAR)
 {
     int letterNember;
     for (letterNember = 0; letterNember < MAX_WIDE_NAME_LENGTH-1; letterNember++)
@@ -333,7 +360,7 @@ void runGcode_Menu(void)
 
         TCHAR fileNameTCHAR[MAX_WIDE_NAME_LENGTH], pathToFile[PATH_LENGTH];
 
-        getFileNameTCHAR(fileNameTCHAR);    sprintf(pathToFile, "%s/%s", getPath_USBdrive(), fileNameTCHAR);    openFile_USBdrive(pathToFile);
+        getFileOrFolderNameTCHAR(fileNameTCHAR);    sprintf(pathToFile, "%s/%s", getPath_USBdrive(), fileNameTCHAR);    openFile_USBdrive(pathToFile);
 
         //wchar_t stringFromFile[LINELENGTH_TEXTCONVERTER_LCD];
         while(!endOfFile_USBdrive())
@@ -363,4 +390,92 @@ void runGcode_Menu(void)
         updateLine_TextConverter_LCD(1);
         wait(); returnFirstLine();
     }
+}
+
+
+
+void openDirectory_Menu(void)
+{
+    destroyRightNode_Menu();
+
+    TCHAR folderNameTCHAR[MAX_WIDE_NAME_LENGTH], pathToFolder[PATH_LENGTH];
+    getFileOrFolderNameTCHAR(folderNameTCHAR);    sprintf(pathToFolder, "%s/%s", getPath_USBdrive(), folderNameTCHAR);
+    openDirectory_USBdrive(pathToFolder);
+
+    readItem_USBdrive();
+    createRightNode_Menu(L"USB drive", getWideLongName_USBdrive());
+    moveRight_Menu();
+
+    setFunctionUp(&simpleNavigationUp_Menu);
+    setFunctionDown(&simpleNavigationDown_Menu);
+    setFunctionBack(&closeDirectory_Menu);
+    setFunctionOk(&emptyFunction_Menu);
+    if (getItemType_USBdrive() == ITEM_IS_DIRECTORY) setFunctionOk(&openDirectory_Menu);
+    if (getItemType_USBdrive() == ITEM_IS_FILE)      setFunctionOk(&runGcode_Menu);
+    putLine_TextConverter_LCD(getWideLongName_USBdrive(), 2);  updateLine_TextConverter_LCD(2);
+
+
+    if(getItemType_USBdrive() == ITEM_IS_EMPTY)
+    {
+        putLine_TextConverter_LCD(getTitle_Menu(), 1);  updateLine_TextConverter_LCD(1);
+        putLine_TextConverter_LCD(EMPTY_STRING, 2); updateLine_TextConverter_LCD(2);
+        putLine_TextConverter_LCD(EMPTY_STRING, 3); updateLine_TextConverter_LCD(3);
+        putLine_TextConverter_LCD(EMPTY_STRING, 4); updateLine_TextConverter_LCD(4);
+        return;
+    }
+
+    readItem_USBdrive();
+    while(getItemType_USBdrive() != ITEM_IS_EMPTY)
+    {
+        createDownNode_Menu(getWideLongName_USBdrive());
+        moveDown_Menu();
+        setFunctionUp(&simpleNavigationUp_Menu);
+        setFunctionDown(&simpleNavigationDown_Menu);
+        setFunctionBack(&closeDirectory_Menu);
+        setFunctionOk(&emptyFunction_Menu);
+        if (getItemType_USBdrive() == ITEM_IS_DIRECTORY) setFunctionOk(&openDirectory_Menu);
+        if (getItemType_USBdrive() == ITEM_IS_FILE)      setFunctionOk(&runGcode_Menu);
+        readItem_USBdrive();
+    }
+
+    while( ThereIsNodeAbove_Menu() )  moveUp_Menu();
+
+    putLine_TextConverter_LCD(getTitle_Menu(), 1);  updateLine_TextConverter_LCD(1);
+    wchar_t* currName = (wchar_t*) getName_Menu();  currName[0] = *L">";
+    putLine_TextConverter_LCD(currName, 2);         updateLine_TextConverter_LCD(2);    currName[0] = *L" ";
+    if(!ThereIsNodeBelow_Menu())
+    {
+        putLine_TextConverter_LCD(EMPTY_STRING, 3); updateLine_TextConverter_LCD(3);
+        putLine_TextConverter_LCD(EMPTY_STRING, 4); updateLine_TextConverter_LCD(4);
+        return;
+    }
+    moveDown_Menu();    putLine_TextConverter_LCD(getName_Menu(), 3);   updateLine_TextConverter_LCD(3);
+    if(!ThereIsNodeBelow_Menu())
+    {
+        putLine_TextConverter_LCD(EMPTY_STRING, 4); updateLine_TextConverter_LCD(4);
+        moveUp_Menu();
+        return;
+    }
+    moveDown_Menu();    putLine_TextConverter_LCD(getName_Menu(), 4);   updateLine_TextConverter_LCD(4);
+    moveUp_Menu();      moveUp_Menu();
+
+}
+
+static size_t findLastSlash(void)
+{
+    size_t j, lastSlashPosition=0;
+    for (j=0; j<PATH_LENGTH; j++) if((int)(getPath_USBdrive()[j])==(int)'/') lastSlashPosition = j;
+    return lastSlashPosition;
+}
+
+void closeDirectory_Menu(void)
+{
+    TCHAR path[PATH_LENGTH];
+
+    sprintf(path, "%s", getPath_USBdrive());
+    size_t j; for(j=findLastSlash(); j<PATH_LENGTH; j++) path[j]=0;
+    openDirectory_USBdrive((const TCHAR*)path);
+    destroyRightNode_Menu();
+
+    simpleNavigationBack_Menu();
 }
