@@ -69,11 +69,11 @@
 
 /* External variables --------------------------------------------------------*/
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
-extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim5;
 /* USER CODE BEGIN EV */
+command_Gcode current_command_Gcode;
 
 /* USER CODE END EV */
 
@@ -214,20 +214,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles TIM2 global interrupt.
-  */
-void TIM2_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM2_IRQn 0 */
-
-  /* USER CODE END TIM2_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim2);
-  /* USER CODE BEGIN TIM2_IRQn 1 */
-
-  /* USER CODE END TIM2_IRQn 1 */
-}
-
-/**
   * @brief This function handles TIM3 global interrupt.
   */
 void TIM3_IRQHandler(void)
@@ -239,6 +225,13 @@ void TIM3_IRQHandler(void)
   /* USER CODE BEGIN TIM3_IRQn 1 */
   if(evaluatePrinter_Gcode())
   {
+/*
+    current_command_Gcode = firstOutCommandBuffer_Gcode();
+    printf("{%ld, %ld, ",
+          current_command_Gcode.dXn, current_command_Gcode.dYn);
+    printf("%d, %d}\n",
+          (int)current_command_Gcode.AnX, (int)current_command_Gcode.AnY);
+*/
     sendCommandToPrinter_Gcode(firstOutCommandBuffer_Gcode());
     eraseFirstCommandBuffer_Gcode();
   }
@@ -272,8 +265,17 @@ void TIM5_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim5);
   /* USER CODE BEGIN TIM5_IRQn 1 */
     //printf("%s\t%c\t%d\t%d\n", getPath_USBdrive(), getPath_USBdrive()[3], getPath_USBdrive()[3], '/');
-    printf("%s\n", getPath_USBdrive());
-
+    //printf("%s\n", getPath_USBdrive());
+  //printf("1s\n");
+  /*
+  printf("{%ld, %ld, %d, %d, %d, %d }\n",
+          getVPcommand_Gcode().dXn,
+          getVPcommand_Gcode().dYn,
+          (int)getVPcommand_Gcode().FnX,
+          (int)getVPcommand_Gcode().FnY,
+          (int)getVPcommand_Gcode().AnX,
+          (int)getVPcommand_Gcode().AnY);
+  */
 
   printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
@@ -285,6 +287,17 @@ void TIM5_IRQHandler(void)
           (int)round(getCurrentSpeedZ_Gcode()),
           (int)round(getCurrentSpeedE_Gcode()));
 
+/*
+  printf("{%d, %d, %d, %d, %d, %d, %d, %d }\n",
+          (int)getContiniousVirtualPrinterX_Gcode(),
+          (int)getContiniousVirtualPrinterY_Gcode(),
+          (int)getContiniousVirtualPrinterZ_Gcode(),
+          (int)getContiniousVirtualPrinterE_Gcode(),
+          (int)round(getCurrentSpeedX_Gcode()),
+          (int)round(getCurrentSpeedY_Gcode()),
+          (int)round(getCurrentSpeedZ_Gcode()),
+          (int)round(getCurrentSpeedE_Gcode()));
+*/
   /* USER CODE END TIM5_IRQn 1 */
 }
 
