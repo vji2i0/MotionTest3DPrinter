@@ -40,9 +40,8 @@
 #include "Descritization_Gcode.h"
 #include "Buffer_Gcode.h"
 #include "VirtualPrinters_Gcode.h"
-
+#include "temperature.h"
 #include "coordinates.h"
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,7 +61,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+static uint8_t bed_pwm = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -132,6 +131,9 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM5_Init();
   MX_ADC1_Init();
+  MX_TIM1_Init();
+  MX_TIM6_Init();
+  MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim3);
   HAL_NVIC_EnableIRQ(TIM3_IRQn);
@@ -140,6 +142,12 @@ int main(void)
   create_coordinates();
   HAL_TIM_Base_Start_IT(&htim5);
   HAL_NVIC_EnableIRQ(TIM5_IRQn);
+
+  HAL_TIM_Base_Start(&htim1);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
+
+  HAL_TIM_Base_Start_IT(&htim6);
+  HAL_TIM_Base_Start_IT(&htim7);
 
   createGcodeConverter_Gcode();
   createDescretization_Gcode();
@@ -152,7 +160,7 @@ int main(void)
   setMainMenu_Menu();
   createState_USBdrive();
   createDriver_USBdrive();
-
+  init_Temperature();
 
 
   putLine_TextConverter_LCD(getTitle_Menu(), 1);  updateLine_TextConverter_LCD(1);
@@ -165,10 +173,21 @@ int main(void)
   moveToTheFirstNode_Menu();
 
 
+//__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 50000);
+  /*
+  for (uint16_t i=0; i<65535; i++){
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, i);
+    HAL_Delay(1);
+  }
+  */
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  setExtruder1_Temperature(220);
+  setBed_Temperature(60);
+  
   while (1)
   {
     /* USER CODE END WHILE */
@@ -182,8 +201,9 @@ int main(void)
 
     if (getState_USBdrive() == READY_USBDRIVE)  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
     else                                        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-
-
+    printf("%d %d\n", (uint8_t)getExtruder1_Temperature(), (uint8_t)getBed_Temperature());
+    HAL_Delay(100);
+    
   }
   /* USER CODE END 3 */
 }
@@ -240,7 +260,56 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if (htim->Instance == TIM6)
+  {
 
+    ADC_ChannelConfTypeDef sConfig = {0};
+
+    sConfig.Channel = ADC_CHANNEL_8;
+    sConfig.Rank = ADC_REGULAR_RANK_1;
+    sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+    HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+
+    HAL_ADC_Start(&hadc1);
+    if (HAL_ADC_PollForConversion(&hadc1, 10000) == HAL_OK)
+    {
+      regNewADCValue_Extruder1_Temperature(HAL_ADC_GetValue(&hadc1));
+    }
+    sConfig.Channel = ADC_CHANNEL_10;
+    sConfig.Rank = ADC_REGULAR_RANK_1;
+    sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+    HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+    HAL_ADC_Start(&hadc1);
+    if (HAL_ADC_PollForConversion(&hadc1, 10000) == HAL_OK)
+    {
+      regNewADCValue_Bed_Temperature(HAL_ADC_GetValue(&hadc1));
+    }
+    pidTimerCallBack_Temperature();
+  }
+  if (htim->Instance == TIM7)
+  {
+    static uint8_t i;
+    if (++i <= bed_pwm)
+    {
+      HAL_GPIO_WritePin(Bed_Heater_GPIO_Port, Bed_Heater_Pin, GPIO_PIN_SET);
+    }
+    else
+    {
+      HAL_GPIO_WritePin(Bed_Heater_GPIO_Port, Bed_Heater_Pin, GPIO_PIN_RESET);
+    }
+  }
+}
+
+void setExtruder1_PWM(uint16_t val)
+{
+  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, val);
+}
+void setBed_PWM(uint16_t val)
+{
+  bed_pwm = val;
+}
 /* USER CODE END 4 */
 
 /**

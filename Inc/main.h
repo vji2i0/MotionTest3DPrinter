@@ -58,6 +58,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Bed_Temperature_Pin GPIO_PIN_0
+#define Bed_Temperature_GPIO_Port GPIOC
 #define EN_E2_Pin GPIO_PIN_7
 #define EN_E2_GPIO_Port GPIOA
 #define STEP_E2_Pin GPIO_PIN_4
@@ -66,8 +68,6 @@ void Error_Handler(void);
 #define DIR_E2_GPIO_Port GPIOC
 #define Extr1_Temperature_Pin GPIO_PIN_0
 #define Extr1_Temperature_GPIO_Port GPIOB
-#define Ext1_Heater_Pin GPIO_PIN_1
-#define Ext1_Heater_GPIO_Port GPIOB
 #define EN_E1_Pin GPIO_PIN_7
 #define EN_E1_GPIO_Port GPIOE
 #define STEP_E1_Pin GPIO_PIN_8
@@ -134,6 +134,8 @@ void Error_Handler(void);
 #define Button_Ok_GPIO_Port GPIOB
 #define Button_Back_Pin GPIO_PIN_5
 #define Button_Back_GPIO_Port GPIOB
+#define Bed_Heater_Pin GPIO_PIN_1
+#define Bed_Heater_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

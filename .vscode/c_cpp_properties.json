@@ -24,11 +24,11 @@
                 "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
-                "${workspaceFolder}/Inc/Gcode",
-                "${workspaceFolder}/Inc/LCD",
-                "${workspaceFolder}/Inc/Menu",
-                "${workspaceFolder}/Inc/Motors",
-                "${workspaceFolder}/Inc/USB"
+                "${workspaceFolder}/Printer/Gcode/Inc",
+                "${workspaceFolder}/Printer/LCD/Inc",
+                "${workspaceFolder}/Printer/Menu/Inc",
+                "${workspaceFolder}/Printer/Motors/Inc",
+                "${workspaceFolder}/Printer/USB/Inc"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

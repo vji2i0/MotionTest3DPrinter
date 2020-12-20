@@ -59,6 +59,8 @@ void SysTick_Handler(void);
 void TIM3_IRQHandler(void);
 void TIM4_IRQHandler(void);
 void TIM5_IRQHandler(void);
+void TIM6_IRQHandler(void);
+void TIM7_IRQHandler(void);
 void OTG_FS_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 

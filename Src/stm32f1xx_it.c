@@ -54,7 +54,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -72,6 +71,8 @@ extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim5;
+extern TIM_HandleTypeDef htim6;
+extern TIM_HandleTypeDef htim7;
 /* USER CODE BEGIN EV */
 command_Gcode current_command_Gcode;
 
@@ -276,7 +277,7 @@ void TIM5_IRQHandler(void)
           (int)getVPcommand_Gcode().AnX,
           (int)getVPcommand_Gcode().AnY);
   */
-
+ /*
   printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
           getY_coordinates(),
@@ -286,7 +287,7 @@ void TIM5_IRQHandler(void)
           (int)round(getCurrentSpeedY_Gcode()),
           (int)round(getCurrentSpeedZ_Gcode()),
           (int)round(getCurrentSpeedE_Gcode()));
-
+*/
 /*
   printf("{%d, %d, %d, %d, %d, %d, %d, %d }\n",
           (int)getContiniousVirtualPrinterX_Gcode(),
@@ -299,6 +300,34 @@ void TIM5_IRQHandler(void)
           (int)round(getCurrentSpeedE_Gcode()));
 */
   /* USER CODE END TIM5_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM6 global interrupt.
+  */
+void TIM6_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM6_IRQn 0 */
+
+  /* USER CODE END TIM6_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim6);
+  /* USER CODE BEGIN TIM6_IRQn 1 */
+
+  /* USER CODE END TIM6_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM7 global interrupt.
+  */
+void TIM7_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM7_IRQn 0 */
+
+  /* USER CODE END TIM7_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim7);
+  /* USER CODE BEGIN TIM7_IRQn 1 */
+
+  /* USER CODE END TIM7_IRQn 1 */
 }
 
 /**
