@@ -362,19 +362,24 @@ void runGcode_Menu(void)
 
         getFileOrFolderNameTCHAR(fileNameTCHAR);    sprintf(pathToFile, "%s/%s", getPath_USBdrive(), fileNameTCHAR);    openFile_USBdrive(pathToFile);
 
-        //wchar_t stringFromFile[LINELENGTH_TEXTCONVERTER_LCD];
         while(!endOfFile_USBdrive())
         {
             convertCommand_Gcode((const char*)getStringFromFile_USBdrive());
             setDescreteCommand_Gcode(getConvertedCommand_Gcode());
             while(!enoghSpaceIsReservedCommandBuffer_Gcode()) {}
-            addElementToDescreteCommandBuffer_Gcode(getDescreteCommand_Gcode());
-            descreteCommandAnalyser_Gcode();
+            if(!descreteCommandIsRepeated(getDescreteCommand_Gcode()))
+            {
+                addElementToDescreteCommandBuffer_Gcode(getDescreteCommand_Gcode());
+                descreteCommandAnalyser_Gcode();
+            }
+
 
             /*
-            wait();
-            swprintf(stringFromFile, LINELENGTH_TEXTCONVERTER_LCD, L"%s", getStringFromFile_USBdrive());
-            putLine_TextConverter_LCD(stringFromFile, 1);   updateLine_TextConverter_LCD(1);
+            convertCommand_Gcode((const char*)getStringFromFile_USBdrive());
+            setDescreteCommand_Gcode(getConvertedCommand_Gcode());
+            while(!enoghSpaceIsReservedCommandBuffer_Gcode()) {}
+            addElementToDescreteCommandBuffer_Gcode(getDescreteCommand_Gcode());
+            descreteCommandAnalyser_Gcode();
             */
         }
         addElementToDescreteCommandBuffer_Gcode(defaultDescreteCommand);

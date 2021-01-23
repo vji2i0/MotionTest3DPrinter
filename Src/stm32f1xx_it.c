@@ -269,6 +269,13 @@ void TIM5_IRQHandler(void)
     //printf("%s\n", getPath_USBdrive());
   //printf("1s\n");
   /*
+  printf("{%ld, %ld, %ld, %ld }\n",
+          getX_coordinates(),
+          getY_coordinates(),
+          getZ_coordinates(),
+          getE_coordinates());
+  */
+  /*
   printf("{%ld, %ld, %d, %d, %d, %d }\n",
           getVPcommand_Gcode().dXn,
           getVPcommand_Gcode().dYn,
@@ -277,7 +284,7 @@ void TIM5_IRQHandler(void)
           (int)getVPcommand_Gcode().AnX,
           (int)getVPcommand_Gcode().AnY);
   */
- /*
+
   printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
           getY_coordinates(),
@@ -287,7 +294,7 @@ void TIM5_IRQHandler(void)
           (int)round(getCurrentSpeedY_Gcode()),
           (int)round(getCurrentSpeedZ_Gcode()),
           (int)round(getCurrentSpeedE_Gcode()));
-*/
+
 /*
   printf("{%d, %d, %d, %d, %d, %d, %d, %d }\n",
           (int)getContiniousVirtualPrinterX_Gcode(),
