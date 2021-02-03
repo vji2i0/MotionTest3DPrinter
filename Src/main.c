@@ -42,6 +42,7 @@
 #include "VirtualPrinters_Gcode.h"
 #include "temperature.h"
 #include "coordinates.h"
+#include "Driver_Motors.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -187,7 +188,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setExtruder1_Temperature(220);
   setBed_Temperature(60);
-
+  disable_Motors();
   while (1)
   {
     /* USER CODE END WHILE */
@@ -201,8 +202,8 @@ int main(void)
 
     if (getState_USBdrive() == READY_USBDRIVE)  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
     else                                        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-    //printf("%d %d\n", (uint8_t)getExtruder1_Temperature(), (uint8_t)getBed_Temperature());
-    //HAL_Delay(100);
+    printf("%d %d\n", (uint8_t)getExtruder1_Temperature(), (uint8_t)getBed_Temperature());
+    HAL_Delay(100);
 
   }
   /* USER CODE END 3 */

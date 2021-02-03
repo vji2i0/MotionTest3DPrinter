@@ -275,16 +275,8 @@ void TIM5_IRQHandler(void)
           getZ_coordinates(),
           getE_coordinates());
   */
-  /*
-  printf("{%ld, %ld, %d, %d, %d, %d }\n",
-          getVPcommand_Gcode().dXn,
-          getVPcommand_Gcode().dYn,
-          (int)getVPcommand_Gcode().FnX,
-          (int)getVPcommand_Gcode().FnY,
-          (int)getVPcommand_Gcode().AnX,
-          (int)getVPcommand_Gcode().AnY);
-  */
 
+/*
   printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
           getY_coordinates(),
@@ -294,7 +286,7 @@ void TIM5_IRQHandler(void)
           (int)round(getCurrentSpeedY_Gcode()),
           (int)round(getCurrentSpeedZ_Gcode()),
           (int)round(getCurrentSpeedE_Gcode()));
-
+*/
 /*
   printf("{%d, %d, %d, %d, %d, %d, %d, %d }\n",
           (int)getContiniousVirtualPrinterX_Gcode(),

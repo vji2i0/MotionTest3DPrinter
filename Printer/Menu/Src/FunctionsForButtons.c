@@ -10,6 +10,7 @@
 #include "Buffer_Gcode.h"
 #include "VirtualPrinters_Gcode.h"
 #include "Config_Gcode.h"
+#include "Driver_Motors.h"
 
 #include "fatfs.h"
 
@@ -354,6 +355,8 @@ void runGcode_Menu(void)
 {
     if(GcodeFormat())
     {
+        enable_Motors();    wait();
+
         putLine_TextConverter_LCD(L"Gcode file", 1);
         updateLine_TextConverter_LCD(1);
 
@@ -372,15 +375,6 @@ void runGcode_Menu(void)
                 addElementToDescreteCommandBuffer_Gcode(getDescreteCommand_Gcode());
                 descreteCommandAnalyser_Gcode();
             }
-
-
-            /*
-            convertCommand_Gcode((const char*)getStringFromFile_USBdrive());
-            setDescreteCommand_Gcode(getConvertedCommand_Gcode());
-            while(!enoghSpaceIsReservedCommandBuffer_Gcode()) {}
-            addElementToDescreteCommandBuffer_Gcode(getDescreteCommand_Gcode());
-            descreteCommandAnalyser_Gcode();
-            */
         }
         addElementToDescreteCommandBuffer_Gcode(defaultDescreteCommand);
         descreteCommandAnalyser_Gcode();
@@ -395,6 +389,7 @@ void runGcode_Menu(void)
         updateLine_TextConverter_LCD(1);
         wait(); returnFirstLine();
     }
+    disable_Motors();
 }
 
 
