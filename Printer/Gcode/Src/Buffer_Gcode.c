@@ -144,6 +144,7 @@ static _Bool conserveSpeedStart(long Xn, long Yn, long Zn)
         return false;
     if (lastCommand().type != MOVE_COMMAND)
         return false;
+
     long XnPrevious = lastCommand().dXn;
     long YnPrevious = lastCommand().dYn;
     float FnXPrevious = lastCommand().FnX;
@@ -156,6 +157,12 @@ static _Bool conserveSpeedStart(long Xn, long Yn, long Zn)
         return false;
     if (XnPrevious == 0 && YnPrevious == 0)
         return false;
+
+    float vStart = sqrtf( lastCommand().FnX*lastCommand().FnX + 2*lastCommand().AnX*(float)lastCommand().dXn
+                     + lastCommand().FnY*lastCommand().FnY + 2*lastCommand().AnY*(float)lastCommand().dYn );
+    if( vStart < (float)MIN_SPEED_MM_MIN_XY*(float)STEPS_PER_MM_XY/(float)SECONDS_IN_MINUTE )
+        return false;
+
     return true;
 }
 /*
@@ -621,6 +628,22 @@ void smoothStop_Gcode(void)
         cosE = (float)command.dEn/allowedDistance;
     }
 
+    float aStar = sqrtf(pow(command.AnX,2)+pow(command.AnY,2));
+    float lStar = acceleration*allowedDistance/(acceleration+aStar) + ( pow(speedAtTheEnd,2) - pow(speedAtTheStart,2) )/2/(acceleration+aStar);
+    float vStar = sqrtf( pow(speedAtTheStart,2) + 2*aStar*lStar );
+
+    if (lroundf(lStar)==0) return;
+
+    shiftRightAllTheCommandsTillThis(currentCommandNumber);
+
+    commandBuffer[number(currentCommandNumber)].dXn = lroundf(lStar*cosX);              commandBuffer[number(currentCommandNumber)].dYn = lroundf(lStar*cosY);              commandBuffer[number(currentCommandNumber)].dEn = lroundf(lStar*cosE);
+
+    currentCommandNumber = nextCommandNumber(currentCommandNumber);
+    commandBuffer[number(currentCommandNumber)].dXn = command.dXn-lroundf(lStar*cosX);  commandBuffer[number(currentCommandNumber)].dYn = command.dYn-lroundf(lStar*cosY);  commandBuffer[number(currentCommandNumber)].dEn = command.dEn-lroundf(lStar*cosE);
+    commandBuffer[number(currentCommandNumber)].FnX = vStar*cosX;                       commandBuffer[number(currentCommandNumber)].FnY = vStar*cosY;                       commandBuffer[number(currentCommandNumber)].FnE = vStar*cosE;
+    commandBuffer[number(currentCommandNumber)].AnX = -acceleration*cosX;               commandBuffer[number(currentCommandNumber)].AnY = -acceleration*cosY;               commandBuffer[number(currentCommandNumber)].AnE = -acceleration*cosE;
+
+/*
     shiftRightAllTheCommandsTillThis(currentCommandNumber);
 
     float aStar = sqrtf(pow(command.AnX,2)+pow(command.AnY,2));
@@ -633,6 +656,7 @@ void smoothStop_Gcode(void)
     commandBuffer[number(currentCommandNumber)].dXn = command.dXn-lroundf(lStar*cosX);  commandBuffer[number(currentCommandNumber)].dYn = command.dYn-lroundf(lStar*cosY);  commandBuffer[number(currentCommandNumber)].dEn = command.dEn-lroundf(lStar*cosE);
     commandBuffer[number(currentCommandNumber)].FnX = vStar*cosX;                       commandBuffer[number(currentCommandNumber)].FnY = vStar*cosY;                       commandBuffer[number(currentCommandNumber)].FnE = vStar*cosE;
     commandBuffer[number(currentCommandNumber)].AnX = -acceleration*cosX;               commandBuffer[number(currentCommandNumber)].AnY = -acceleration*cosY;               commandBuffer[number(currentCommandNumber)].AnE = -acceleration*cosE;
+*/
 }
 
 

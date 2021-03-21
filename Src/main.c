@@ -63,6 +63,7 @@
 
 /* USER CODE BEGIN PV */
 static uint8_t bed_pwm = 0;
+command_Gcode current_command_Gcode;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -202,8 +203,8 @@ int main(void)
 
     if (getState_USBdrive() == READY_USBDRIVE)  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
     else                                        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-    printf("%d %d\n", (uint8_t)getExtruder1_Temperature(), (uint8_t)getBed_Temperature());
-    HAL_Delay(100);
+    //printf("%d %d\n", (uint8_t)getExtruder1_Temperature(), (uint8_t)getBed_Temperature());
+    //HAL_Delay(100);
 
   }
   /* USER CODE END 3 */
@@ -263,6 +264,33 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+  if (htim->Instance == TIM3)
+  {
+    if(evaluatePrinter_Gcode())
+    {
+      //current_command_Gcode = firstOutCommandBuffer_Gcode();
+      //printf("{%ld, %d, %d}\n", current_command_Gcode.dXn, (int)current_command_Gcode.FnX, (int)current_command_Gcode.AnX);
+
+      sendCommandToPrinter_Gcode(firstOutCommandBuffer_Gcode());
+      eraseFirstCommandBuffer_Gcode();
+    }
+  }
+  if (htim->Instance == TIM4)
+  {
+    evaluate_Motors();
+  }
+  if (htim->Instance == TIM5)
+  {
+    printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
+          getX_coordinates(),
+          getY_coordinates(),
+          getZ_coordinates(),
+          getE_coordinates(),
+          (int)round(getCurrentSpeedX_Gcode()),
+          (int)round(getCurrentSpeedY_Gcode()),
+          (int)round(getCurrentSpeedZ_Gcode()),
+          (int)round(getCurrentSpeedE_Gcode()));
+  }
   if (htim->Instance == TIM6)
   {
 

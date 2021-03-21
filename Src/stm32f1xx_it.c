@@ -74,7 +74,7 @@ extern TIM_HandleTypeDef htim5;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim7;
 /* USER CODE BEGIN EV */
-command_Gcode current_command_Gcode;
+//command_Gcode current_command_Gcode;
 
 /* USER CODE END EV */
 
@@ -224,19 +224,16 @@ void TIM3_IRQHandler(void)
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
+/*
   if(evaluatePrinter_Gcode())
   {
-/*
     current_command_Gcode = firstOutCommandBuffer_Gcode();
-    printf("{%ld, %ld, ",
-          current_command_Gcode.dXn, current_command_Gcode.dYn);
-    printf("%d, %d}\n",
-          (int)current_command_Gcode.AnX, (int)current_command_Gcode.AnY);
-*/
+    printf("{%ld, %d, %d}\n", current_command_Gcode.dXn, (int)current_command_Gcode.FnX, (int)current_command_Gcode.AnX);
+
     sendCommandToPrinter_Gcode(firstOutCommandBuffer_Gcode());
     eraseFirstCommandBuffer_Gcode();
   }
-
+*/
 
   /* USER CODE END TIM3_IRQn 1 */
 }
@@ -251,7 +248,7 @@ void TIM4_IRQHandler(void)
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
-  evaluate_Motors();
+  //evaluate_Motors();
   /* USER CODE END TIM4_IRQn 1 */
 }
 
@@ -265,34 +262,17 @@ void TIM5_IRQHandler(void)
   /* USER CODE END TIM5_IRQn 0 */
   HAL_TIM_IRQHandler(&htim5);
   /* USER CODE BEGIN TIM5_IRQn 1 */
-    //printf("%s\t%c\t%d\t%d\n", getPath_USBdrive(), getPath_USBdrive()[3], getPath_USBdrive()[3], '/');
-    //printf("%s\n", getPath_USBdrive());
-  //printf("1s\n");
-  /*
-  printf("{%ld, %ld, %ld, %ld }\n",
-          getX_coordinates(),
-          getY_coordinates(),
-          getZ_coordinates(),
-          getE_coordinates());
-  */
 
+/*
+  current_command_Gcode = firstOutCommandBuffer_Gcode();
+  printf("{%ld, %d, %d}\n", current_command_Gcode.dXn, (int)current_command_Gcode.FnX, (int)current_command_Gcode.AnX);
+*/
 /*
   printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
           getY_coordinates(),
           getZ_coordinates(),
           getE_coordinates(),
-          (int)round(getCurrentSpeedX_Gcode()),
-          (int)round(getCurrentSpeedY_Gcode()),
-          (int)round(getCurrentSpeedZ_Gcode()),
-          (int)round(getCurrentSpeedE_Gcode()));
-*/
-/*
-  printf("{%d, %d, %d, %d, %d, %d, %d, %d }\n",
-          (int)getContiniousVirtualPrinterX_Gcode(),
-          (int)getContiniousVirtualPrinterY_Gcode(),
-          (int)getContiniousVirtualPrinterZ_Gcode(),
-          (int)getContiniousVirtualPrinterE_Gcode(),
           (int)round(getCurrentSpeedX_Gcode()),
           (int)round(getCurrentSpeedY_Gcode()),
           (int)round(getCurrentSpeedZ_Gcode()),
