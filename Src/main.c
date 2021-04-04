@@ -187,8 +187,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setExtruder1_Temperature(220);
-  setBed_Temperature(60);
+  //setExtruder1_Temperature(220);
+  //setBed_Temperature(60);
   disable_Motors();
   while (1)
   {
@@ -281,6 +281,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   }
   if (htim->Instance == TIM5)
   {
+    printf("{%d, %d , %d , %d, %ld }\n",
+          (int)round(getBed_Temperature()),
+          (int)round(getExtruder1_Temperature()),
+          (int)round(getTargetBed_Temperature()),
+          (int)round(getTargetExtruder1_Temperature()),
+          getX_coordinates()
+          );
+    /*
+    printf("{%d, %d , %d , %d }\n",
+          (int)round(getBed_Temperature()),
+          (int)round(getExtruder1_Temperature()),
+          (int)round(getTargetBed_Temperature()),
+          (int)round(getTargetExtruder1_Temperature())
+          );
+    */
+    /*
     printf("{%ld, %ld, %ld, %ld, %d, %d, %d, %d }\n",
           getX_coordinates(),
           getY_coordinates(),
@@ -290,6 +306,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
           (int)round(getCurrentSpeedY_Gcode()),
           (int)round(getCurrentSpeedZ_Gcode()),
           (int)round(getCurrentSpeedE_Gcode()));
+    */
   }
   if (htim->Instance == TIM6)
   {
@@ -304,7 +321,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_ADC_Start(&hadc1);
     if (HAL_ADC_PollForConversion(&hadc1, 10000) == HAL_OK)
     {
-      regNewADCValue_Extruder1_Temperature(HAL_ADC_GetValue(&hadc1));
+      regNewTemperature_Extruder1_Temperature(ADC2Temperature_Extruder1_Temperature(HAL_ADC_GetValue(&hadc1)));
     }
     sConfig.Channel = ADC_CHANNEL_10;
     sConfig.Rank = ADC_REGULAR_RANK_1;
@@ -313,7 +330,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_ADC_Start(&hadc1);
     if (HAL_ADC_PollForConversion(&hadc1, 10000) == HAL_OK)
     {
-      regNewADCValue_Bed_Temperature(HAL_ADC_GetValue(&hadc1));
+      regNewTemperature_Bed_Temperature(ADC2Temperature_Bed_Temperature(HAL_ADC_GetValue(&hadc1)));
     }
     pidTimerCallBack_Temperature();
   }

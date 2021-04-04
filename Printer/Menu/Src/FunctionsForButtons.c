@@ -11,6 +11,7 @@
 #include "VirtualPrinters_Gcode.h"
 #include "Config_Gcode.h"
 #include "Driver_Motors.h"
+#include "temperature.h"
 
 #include "fatfs.h"
 
@@ -390,6 +391,8 @@ void runGcode_Menu(void)
         wait(); returnFirstLine();
     }
     disable_Motors();
+    turnOffExtruder1_Temperature();
+    turnOffBed_Temperature();
 }
 
 
