@@ -18,4 +18,12 @@ void decY_coordinates(void);
 void decZ_coordinates(void);
 void decE_coordinates(void);
 
+long getZ1_coordinates(void);
+void incZ1_coordinates(void);
+void decZ1_coordinates(void);
+long getZ2_coordinates(void);
+void incZ2_coordinates(void);
+void decZ2_coordinates(void);
+
+
 #endif

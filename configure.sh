@@ -6,12 +6,14 @@ cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/inc/Confi
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/inc/Descritization_Gcode.h ./Printer/Gcode/Inc/
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/inc/GcodeConverter_Gcode.h ./Printer/Gcode/Inc/
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/inc/VirtualPrinters_Gcode.h ./Printer/Gcode/Inc/
+cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/inc/Boundary_Gcode.h ./Printer/Gcode/Inc
 #Gcode/Src
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/src/Buffer_Gcode.c ./Printer/Gcode/Src/
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/src/Descritization_Gcode.c ./Printer/Gcode/Src/
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/src/GcodeConverter_Gcode.c ./Printer/Gcode/Src/
 cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/src/VirtualPrinters_Gcode.c ./Printer/Gcode/Src/
 sed -i -e 's/^#include "Fake_Motors.h"/#include "Driver_Motors.h"/' ./Printer/Gcode/Src/VirtualPrinters_Gcode.c
+cp ./../Tests4Printer/3DPrinterV3/G-code/Gcode_GcodeConverter/firmware/src/Boundary_Gcode.c ./Printer/Gcode/Src/
 #LCD/Inc
 cp ./../Tests4Printer/3DPrinterV3/LCD/LCD_Interface/firmware/inc/CharacterConverter_LCD.h ./Printer/LCD/Inc/
 cp ./../Tests4Printer/3DPrinterV3/LCD/LCD_Driver/firmware/inc/Driver_LCD.h ./Printer/LCD/Inc/

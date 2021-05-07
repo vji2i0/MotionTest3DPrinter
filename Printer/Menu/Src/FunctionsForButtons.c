@@ -380,7 +380,7 @@ void runGcode_Menu(void)
         addElementToDescreteCommandBuffer_Gcode(defaultDescreteCommand);
         descreteCommandAnalyser_Gcode();
 
-        while( (checkFreeSpaceCommandBuffer_Gcode()!=COMMAND_BUFFER_LENGTH) || (!moveComleted()) ) {}
+        while( (checkFreeSpaceCommandBuffer_Gcode()!=COMMAND_BUFFER_LENGTH) || (!moveCompleted()) ) {}
 
         wait(); returnFirstLine();
     }

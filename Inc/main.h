@@ -60,6 +60,18 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define Bed_Temperature_Pin GPIO_PIN_0
 #define Bed_Temperature_GPIO_Port GPIOC
+#define Boundary_X_Pin GPIO_PIN_2
+#define Boundary_X_GPIO_Port GPIOC
+#define Boundary_Y_Pin GPIO_PIN_3
+#define Boundary_Y_GPIO_Port GPIOC
+#define Boundary_Z1_Pin GPIO_PIN_0
+#define Boundary_Z1_GPIO_Port GPIOA
+#define Boundary_Z2_Pin GPIO_PIN_1
+#define Boundary_Z2_GPIO_Port GPIOA
+#define Boundary_E1_Pin GPIO_PIN_2
+#define Boundary_E1_GPIO_Port GPIOA
+#define Boundary_E2_Pin GPIO_PIN_3
+#define Boundary_E2_GPIO_Port GPIOA
 #define EN_E2_Pin GPIO_PIN_7
 #define EN_E2_GPIO_Port GPIOA
 #define STEP_E2_Pin GPIO_PIN_4

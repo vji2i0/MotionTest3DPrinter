@@ -43,6 +43,7 @@
 #include "temperature.h"
 #include "coordinates.h"
 #include "Driver_Motors.h"
+#include "Boundary_Gcode.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -163,6 +164,7 @@ int main(void)
   createState_USBdrive();
   createDriver_USBdrive();
   init_Temperature();
+  createBoundary_Gcode();
 
 
   putLine_TextConverter_LCD(getTitle_Menu(), 1);  updateLine_TextConverter_LCD(1);
@@ -264,30 +266,36 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  if (htim->Instance == TIM3)
+  if (htim->Instance == TIM3) // Virtual printer evaluation & boundaries check
   {
+    if(HAL_GPIO_ReadPin(Boundary_Z1_GPIO_Port, Boundary_Z1_Pin) & GPIO_PIN_SET) setBoundaryZ1isReached_Gcode(); else setBoundaryZ1isNotReached_Gcode();
+    if(HAL_GPIO_ReadPin(Boundary_Z2_GPIO_Port, Boundary_Z2_Pin) & GPIO_PIN_SET) setBoundaryZ2isReached_Gcode(); else setBoundaryZ2isNotReached_Gcode();
     if(evaluatePrinter_Gcode())
     {
-      //current_command_Gcode = firstOutCommandBuffer_Gcode();
-      //printf("{%ld, %d, %d}\n", current_command_Gcode.dXn, (int)current_command_Gcode.FnX, (int)current_command_Gcode.AnX);
-
       sendCommandToPrinter_Gcode(firstOutCommandBuffer_Gcode());
       eraseFirstCommandBuffer_Gcode();
     }
   }
-  if (htim->Instance == TIM4)
+  if (htim->Instance == TIM4) // Motors evaluation
   {
     evaluate_Motors();
   }
-  if (htim->Instance == TIM5)
+  if (htim->Instance == TIM5) // Debug through UART
   {
-    printf("{%d, %d , %d , %d, %ld }\n",
+    printf("{%ld, %ld, %ld, %d, %d}\n",
+          getZ_coordinates(),
+          getZ1_coordinates(),
+          getZ2_coordinates(),
+          boundaryZ1isReached_Gcode(),
+          boundaryZ2isReached_Gcode()
+          );
+    /*printf("{%d, %d , %d , %d, %ld }\n",
           (int)round(getBed_Temperature()),
           (int)round(getExtruder1_Temperature()),
           (int)round(getTargetBed_Temperature()),
           (int)round(getTargetExtruder1_Temperature()),
           getX_coordinates()
-          );
+          );*/
     /*
     printf("{%d, %d , %d , %d }\n",
           (int)round(getBed_Temperature()),
@@ -308,7 +316,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
           (int)round(getCurrentSpeedE_Gcode()));
     */
   }
-  if (htim->Instance == TIM6)
+  if (htim->Instance == TIM6) //Temperature Control
   {
 
     ADC_ChannelConfTypeDef sConfig = {0};
@@ -334,7 +342,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
     pidTimerCallBack_Temperature();
   }
-  if (htim->Instance == TIM7)
+  if (htim->Instance == TIM7) // PWM for temperature
   {
     static uint8_t i;
     if (++i <= bed_pwm)
